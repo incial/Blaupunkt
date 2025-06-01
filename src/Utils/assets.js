@@ -22,9 +22,11 @@ export const vids = {
 };
 
 // Logo and Brand Assets
+import logoWhiteUrl from '../assets/Images/Logo_white.svg'
+
 export const logos = {
   main: '/Logo.svg',
-  white: '/src/assets/Images/Logo_white.svg', 
+  white: logoWhiteUrl, 
   icon: ''
 };
 
@@ -35,11 +37,13 @@ export const heroIcons = {
 };
 
 // Home Section Images
+import heroImageUrl from '../assets/Images/HeroImage.png'
+
 export const homeImgs = {
   aboutUs: '',
-  HeroImage: '/src/assets/Images/HeroImage.png',
+  HeroImage: heroImageUrl,
   aboutUsSection: '',
-  logoWhite: '/src/assets/Images/Logo_white.svg',
+  logoWhite: logoWhiteUrl,
   logo: '/Logo.svg',
 };
 
@@ -143,4 +147,4 @@ export const preloadVideos = (videoSources) => {
 
 // Common exports for easy importing
 export const footerImage = homeImgs.footerImage; // Empty - no footer image found
-export const whiteLogo = logos.white; // Available: /src/assets/Images/Logo_white.svg
+export const whiteLogo = logos.white; // Available: logoWhiteUrl (imported)
