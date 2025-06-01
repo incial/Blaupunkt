@@ -1,0 +1,63 @@
+@import "tailwindcss";
+
+/* Blaupunkt Custom Color Variables */
+:root {
+  /* Primary Blues */
+  --blaupunkt-primary: #199BD3;
+  --blaupunkt-primary-dark: #005A98;
+  --blaupunkt-primary-darker: #00417F;
+  
+  /* Secondary Blues */
+  --blaupunkt-secondary: #5E90BC;
+  --blaupunkt-secondary-light: #96B2D1;
+  
+  /* Dark Theme */
+  --blaupunkt-dark: #18161A;
+  
+  /* Accent Colors */
+  --blaupunkt-accent-red: #CE071D;
+  --blaupunkt-accent-pink: #D88196;
+  
+  /* Neutral */
+  --blaupunkt-gray: #909294;
+  --blaupunkt-white: #FFFFFF;
+}
+
+/* Custom Blaupunkt color classes */
+.bg-blaupunkt-primary { background-color: var(--blaupunkt-primary); }
+.bg-blaupunkt-primary-dark { background-color: var(--blaupunkt-primary-dark); }
+.bg-blaupunkt-primary-darker { background-color: var(--blaupunkt-primary-darker); }
+.bg-blaupunkt-secondary { background-color: var(--blaupunkt-secondary); }
+.bg-blaupunkt-secondary-light { background-color: var(--blaupunkt-secondary-light); }
+.bg-blaupunkt-dark { background-color: var(--blaupunkt-dark); }
+.bg-blaupunkt-accent-red { background-color: var(--blaupunkt-accent-red); }
+.bg-blaupunkt-accent-pink { background-color: var(--blaupunkt-accent-pink); }
+.bg-blaupunkt-gray { background-color: var(--blaupunkt-gray); }
+
+.text-blaupunkt-primary { color: var(--blaupunkt-primary); }
+.text-blaupunkt-primary-dark { color: var(--blaupunkt-primary-dark); }
+.text-blaupunkt-primary-darker { color: var(--blaupunkt-primary-darker); }
+.text-blaupunkt-secondary { color: var(--blaupunkt-secondary); }
+.text-blaupunkt-secondary-light { color: var(--blaupunkt-secondary-light); }
+.text-blaupunkt-dark { color: var(--blaupunkt-dark); }
+.text-blaupunkt-accent-red { color: var(--blaupunkt-accent-red); }
+.text-blaupunkt-accent-pink { color: var(--blaupunkt-accent-pink); }
+.text-blaupunkt-gray { color: var(--blaupunkt-gray); }
+.text-blaupunkt-white { color: var(--blaupunkt-white); }
+
+.border-blaupunkt-primary { border-color: var(--blaupunkt-primary); }
+.border-blaupunkt-primary-dark { border-color: var(--blaupunkt-primary-dark); }
+.border-blaupunkt-primary-darker { border-color: var(--blaupunkt-primary-darker); }
+.border-blaupunkt-secondary { border-color: var(--blaupunkt-secondary); }
+.border-blaupunkt-secondary-light { border-color: var(--blaupunkt-secondary-light); }
+.border-blaupunkt-dark { border-color: var(--blaupunkt-dark); }
+.border-blaupunkt-accent-red { border-color: var(--blaupunkt-accent-red); }
+.border-blaupunkt-accent-pink { border-color: var(--blaupunkt-accent-pink); }
+.border-blaupunkt-gray { border-color: var(--blaupunkt-gray); }
+
+/* Hover variants */
+.hover\:bg-blaupunkt-primary:hover { background-color: var(--blaupunkt-primary); }
+.hover\:bg-blaupunkt-primary-dark:hover { background-color: var(--blaupunkt-primary-dark); }
+.hover\:text-blaupunkt-primary:hover { color: var(--blaupunkt-primary); }
+.hover\:text-blaupunkt-white:hover { color: var(--blaupunkt-white); }
+.hover\:border-blaupunkt-primary:hover { border-color: var(--blaupunkt-primary); }
