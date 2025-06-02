@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { IoChevronDown } from 'react-icons/io5'
 import heroVideoSrc from '../assets/Videos/HeoIntro.mp4'
-import heroImageSrc from '../assets/Images/HeroImage.png'
+// import heroImageSrc from '../assets/Images/HeroImage.png' // File doesn't exist - commented out
 
 const HeroSection = () => {
   const [isVideoLoaded, setIsVideoLoaded] = useState(false)
@@ -29,10 +29,9 @@ const HeroSection = () => {
         </div>{' '}
         {/* Hero Background Video Container */}
         <div className='w-full mb-12 lg:mb-16'>
-          <div className='w-full h-[50vh] lg:h-[525px] rounded-2xl relative overflow-hidden shadow-xl bg-gray-100'>
-            {/* Hero Image Placeholder */}
+          <div className='w-full h-[50vh] lg:h-[525px] rounded-2xl relative overflow-hidden shadow-xl bg-gray-100'>            {/* Hero Image Placeholder */}
             <img
-              src={heroImageSrc}
+              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='525' viewBox='0 0 800 525'%3E%3Crect width='800' height='525' fill='%2396B2D1'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dominant-baseline='middle' fill='%23ffffff' font-size='24' font-family='Arial, sans-serif'%3EEV Charging Equipment%3C/text%3E%3C/svg%3E"
               alt='Electric Vehicle Charging'
               className={`w-full h-full object-cover absolute top-0 left-0 transition-opacity duration-1000 ease-in-out ${
                 showVideo ? 'opacity-0' : 'opacity-100'
