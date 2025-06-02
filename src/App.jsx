@@ -7,11 +7,10 @@ import ChargingCables from './Pages/ChargingCables'
 import ChargingStations from './Pages/ChargingStations'
 
 const App = () => {
-  return (
-    <Router>
+  return (    <Router>
       <div className="min-h-screen flex flex-col">
         <Navbar />
-        <main className="flex-grow">
+        <main className="flex-grow pt-20 lg:pt-24">
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/charging-cables" element={<ChargingCables />} />

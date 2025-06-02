@@ -21,9 +21,17 @@ export const vids = {
   connectWithUs: '' // Fallback for Connectwithus.mp4
 };
 
-// Logo and Brand Assets
+// Import all image assets
 import logoWhiteUrl from '../assets/Images/Logo_white.svg'
+// import heroImageUrl from '../assets/Images/HeroImage.png' // File doesn't exist - commented out
+import chargingStationsUrl from '../assets/Images/Charging_Stations.png'
+import dcChargingStationUrl from '../assets/Images/DC_Charging_Station.png'
+import dcFastChargingUrl from '../assets/Images/DC_Fast_Charging_Station.png'
+import evChargingUrl from '../assets/Images/Ev_charging.png'
+import portableEvChargingUrl from '../assets/Images/Portable_EV_Charging.png'
+import productImageUrl from '../assets/Images/product_image.png'
 
+// Logo and Brand Assets
 export const logos = {
   main: '/Logo.svg',
   white: logoWhiteUrl, 
@@ -37,14 +45,25 @@ export const heroIcons = {
 };
 
 // Home Section Images
-import heroImageUrl from '../assets/Images/HeroImage.png'
-
 export const homeImgs = {
   aboutUs: '',
-  HeroImage: heroImageUrl,
+  hero: '', // No hero image available
   aboutUsSection: '',
   logoWhite: logoWhiteUrl,
   logo: '/Logo.svg',
+  // EV Charging related images
+  evCharging: evChargingUrl,
+};
+
+// Charging Station Images (New Category)
+export const chargingImgs = {
+  // Charging Stations
+  stations: chargingStationsUrl,
+  dcStation: dcChargingStationUrl,
+  dcFast: dcFastChargingUrl,
+  portable: portableEvChargingUrl,
+  evGeneral: evChargingUrl,
+  productImage: productImageUrl, // New Figma product image
 };
 
 // Client Images
@@ -61,18 +80,26 @@ export const clientImgs = {
   client10: ''
 };
 
-// EV Charging Images
+// EV Charging Images (Updated with actual images)
 export const evImgs = {
+  // Charging stations
+  stations: chargingStationsUrl,
+  dcStation: dcChargingStationUrl,
+  dcFast: dcFastChargingUrl,
+  portable: portableEvChargingUrl,
+  charging: evChargingUrl,
+  
+  // Legacy names (keeping for backward compatibility)
   acAbout: '',
   acCharger: '',
   cpoAbout: '',
   cpo: '',
   dcAbout: '',
-  dcCharger: '',
+  dcCharger: dcChargingStationUrl,
   engineeringWorks: '',
   ewAbout: '',
   moreAbout: '',
-  charger: '',
+  charger: chargingStationsUrl,
   more: ''
 };
 
@@ -108,6 +135,7 @@ export const getImageSrc = (imageKey, category = 'homeImgs') => {
     homeImgs, 
     clientImgs, 
     evImgs, 
+    chargingImgs, // Added new category
     wasteImgs 
   };
   const imageMap = imageMaps[category];

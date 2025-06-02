@@ -61,3 +61,27 @@
 .hover\:text-blaupunkt-primary:hover { color: var(--blaupunkt-primary); }
 .hover\:text-blaupunkt-white:hover { color: var(--blaupunkt-white); }
 .hover\:border-blaupunkt-primary:hover { border-color: var(--blaupunkt-primary); }
+
+/* Fixed navbar utilities */
+.no-scroll {
+  overflow: hidden;
+}
+
+/* Hide scrollbar while keeping scroll functionality */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;     /* Firefox */
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;             /* Safari and Chrome */
+}
+
+.navbar-fixed-spacing {
+  padding-top: 5rem; /* 80px for mobile */
+}
+
+@media (min-width: 1024px) {
+  .navbar-fixed-spacing {
+    padding-top: 6rem; /* 96px for desktop */
+  }
+}
