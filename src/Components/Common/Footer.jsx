@@ -65,10 +65,11 @@ const Footer = () => {
             isMobile ? 'w-[180px] text-sm' : 'min-w-[140px] text-sm'
           }`}
         >
-          <span>{selectedRegion}</span>          <FiChevronDown
+          <span>{selectedRegion}</span>{' '}
+          <FiChevronDown
             className={`ml-2 transition-transform ${
               isRegionDropdownOpen ? 'rotate-180' : ''
-            } ${isMobile ? 'w-4 h-4' : 'w-4 h-4'}`}
+            } ${isMobile ? 'w-4 h-4' : 'w-12 h-4'}`}
           />
         </button>
 
@@ -143,7 +144,9 @@ const Footer = () => {
             <RegionSelector />
           </div>
 
-          <div className='flex justify-end'>            <div className='grid grid-cols-2 gap-x-5 gap-y-2 md:gap-x-6 md:gap-y-3'>
+          <div className='flex justify-end'>
+            {' '}
+            <div className='grid grid-cols-2 gap-x-5 gap-y-2 md:gap-x-6 md:gap-y-3'>
               {FOOTER_LINKS.map((link, index) => (
                 <Link
                   key={index}
