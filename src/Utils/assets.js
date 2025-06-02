@@ -29,7 +29,7 @@ import dcChargingStationUrl from '../assets/Images/DC_Charging_Station.png'
 import dcFastChargingUrl from '../assets/Images/DC_Fast_Charging_Station.png'
 import evChargingUrl from '../assets/Images/Ev_charging.png'
 import portableEvChargingUrl from '../assets/Images/Portable_EV_Charging.png'
-import productImageUrl from '../assets/Images/product_image.png'
+import productImageUrl from '../assets/Images/Product_image.png'
 
 // Logo and Brand Assets
 export const logos = {
