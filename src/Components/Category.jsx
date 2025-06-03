@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import Card from './Common/Card'
 import { chargingImgs } from '../Utils/assets'
 
@@ -8,27 +9,31 @@ const Category = () => {
       id: 1,
       title: "EV Charging Cables",
       image: chargingImgs.evGeneral,
+      path: "/charging-cables"
     },
     {
       id: 2,
       title: "Charging Stations",
       image: chargingImgs.stations,
+      path: "/charging-stations"
     },
     {
       id: 3,
       title: "DC Charging Station",
       image: chargingImgs.dcStation,
+      path: "/dc-charging-station"
     },
     {
       id: 4,
       title: "DC Fast Charging Station",
       image: chargingImgs.dcFast,
+      path: "/dc-fast-charging-station"
     },
     {
       id: 5,
       title: "Portable EV Charging",
       image: chargingImgs.portable,
-
+      path: "/portable-ev-charging"
     }
   ]
   return (
@@ -40,11 +45,12 @@ const Category = () => {
         </h2>        {/* Cards Grid */}
         <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6 lg:gap-8 justify-items-center max-w-6xl mx-auto">
           {categoryData.map((category) => (
-            <Card
-              key={category.id}
-              title={category.title}
-              image={category.image}
-            />
+            <Link key={category.id} to={category.path} className="w-full h-full">
+              <Card
+                title={category.title}
+                image={category.image}
+              />
+            </Link>
           ))}
         </div>
       </div>
