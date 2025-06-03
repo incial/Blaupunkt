@@ -66,6 +66,16 @@ export const chargingImgs = {
   productImage: productImageUrl, // New Figma product image
 };
 
+// Product Images for Product Pages
+export const productImgs = {
+  chargingCables: productImageUrl,
+  chargingStations: chargingStationsUrl,
+  dcCharging: dcChargingStationUrl,
+  dcFastCharging: dcFastChargingUrl,
+  portableCharging: portableEvChargingUrl,
+  evCharging: evChargingUrl,
+};
+
 // Client Images
 export const clientImgs = {
   client1: '',
@@ -136,6 +146,7 @@ export const getImageSrc = (imageKey, category = 'homeImgs') => {
     clientImgs, 
     evImgs, 
     chargingImgs, // Added new category
+    productImgs, // Added product images category
     wasteImgs 
   };
   const imageMap = imageMaps[category];
