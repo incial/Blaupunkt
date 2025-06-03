@@ -108,8 +108,7 @@ const Products = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
           <h1 className="text-3xl sm:text-4xl font-semibold text-blaupunkt-dark font-myriad mb-6 text-center">
             All Products
-          </h1
-          >
+          </h1>
           
           {/* Search Bar */}
           <SearchBar 

@@ -76,6 +76,15 @@
   display: none;             /* Safari and Chrome */
 }
 
+/* Hide scrollbar for all elements */
+*::-webkit-scrollbar {
+  display: none;
+}
+* {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+
 .navbar-fixed-spacing {
   padding-top: 5rem; /* 80px for mobile */
 }
