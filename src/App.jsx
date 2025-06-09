@@ -17,14 +17,24 @@ const App = () => {
       <div className='min-h-screen flex flex-col'>
         <Navbar />
         <main className='flex-grow pt-20 lg:pt-24'>
-          {' '}          <Routes>
+          {' '}
+          <Routes>
             <Route path='/' element={<HomePage />} />
             <Route path='/products' element={<Products />} />
             <Route path='/charging-cables' element={<ChargingCables />} />
             <Route path='/charging-stations' element={<ChargingStations />} />
-            <Route path='/dc-charging-station' element={<DCChargingStation />} />
-            <Route path='/dc-fast-charging-station' element={<DCFastChargingStation />} />
-            <Route path='/portable-ev-charging' element={<PortableEVCharging />} />
+            <Route
+              path='/dc-charging-station'
+              element={<DCChargingStation />}
+            />
+            <Route
+              path='/dc-fast-charging-station'
+              element={<DCFastChargingStation />}
+            />
+            <Route
+              path='/portable-ev-charging'
+              element={<PortableEVCharging />}
+            />
             <Route path='*' element={<NotFound />} />
           </Routes>
         </main>

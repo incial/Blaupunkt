@@ -125,6 +125,16 @@ export const wasteImgs = {
   swAbout: ''
 };
 
+// Background Images for Text Backgrounds
+export const bgImgs = {
+  evChargingCables: productImageUrl, // Using Product_image.png as fallback
+  chargingStations: chargingStationsUrl,
+  dcChargingStation: dcChargingStationUrl,
+  dcFastChargingStation: dcFastChargingUrl,
+  portableEVCharging: portableEvChargingUrl,
+  evCharging: evChargingUrl,
+};
+
 // Utility function to get video source with error handling
 export const getVideoSrc = (videoKey, category = 'heroVids') => {
   const videoMaps = { heroVids, vids };
@@ -147,7 +157,8 @@ export const getImageSrc = (imageKey, category = 'homeImgs') => {
     evImgs, 
     chargingImgs, // Added new category
     productImgs, // Added product images category
-    wasteImgs 
+    wasteImgs,
+    bgImgs // Added background images category
   };
   const imageMap = imageMaps[category];
   
