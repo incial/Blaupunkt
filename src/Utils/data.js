@@ -41,6 +41,7 @@ export const Entirepagedata = {
           },
           {
             subheading: 'Advantages Monta Backend Integration:',
+            active: false,
             listItems: [
               'Effortless Setup: With pre-configuration, your charging station is ready to use right out of the box. No need for complex installations or technical adjustments – simply plug in and charge.',
               'Enhanced Control and Monitoring: Through the Monta platform, gain full control over your charging sessions. Monitor energy usage, set charging schedules, and access detailed reports, all from a user-friendly interface.',
@@ -199,6 +200,7 @@ export const Entirepagedata = {
           },
           {
             subheading: 'Advantages Monta Backend Integration:',
+            active: true,
             listItems: [
               'Effortless Setup: With pre-configuration, your charging station is ready to use right out of the box. No need for complex installations or technical adjustments – simply plug in and charge.',
               'Enhanced Control and Monitoring: Through the Monta platform, gain full control over your charging sessions. Monitor energy usage, set charging schedules, and access detailed reports, all from a user-friendly interface.',
@@ -349,8 +351,7 @@ export const Entirepagedata = {
       { src: 'DC_Charging_Station.png', alt: 'DC Station Connectors' },
       { src: 'DC_Charging_Station.png', alt: 'DC Station Installation' },
       { src: 'DC_Charging_Station.png', alt: 'DC Station Specifications' }
-    ],
-    OverviewData: {
+    ],    OverviewData: {
       BgImage: bgImgs.dcChargingStation,
       para: {
         active: true,
@@ -369,6 +370,7 @@ export const Entirepagedata = {
           },
           {
             subheading: 'Advantages Monta Backend Integration:',
+            active: true,
             listItems: [
               'Effortless Setup: With pre-configuration, your charging station is ready to use right out of the box. No need for complex installations or technical adjustments – simply plug in and charge.',
               'Enhanced Control and Monitoring: Through the Monta platform, gain full control over your charging sessions. Monitor energy usage, set charging schedules, and access detailed reports, all from a user-friendly interface.',
@@ -558,8 +560,7 @@ export const Entirepagedata = {
       { src: 'DC_Fast_Charging_Station.png', alt: 'Fast Charging Ports' },
       { src: 'DC_Fast_Charging_Station.png', alt: 'Fast Charging Network' },
       { src: 'DC_Fast_Charging_Station.png', alt: 'Fast Charging Capabilities' }
-    ],
-    OverviewData: {
+    ],    OverviewData: {
       BgImage: bgImgs.dcFastChargingStation,
       para: {
         active: true,
@@ -582,6 +583,7 @@ export const Entirepagedata = {
           },
           {
             subheading: 'Advantages Monta Backend Integration:',
+            active: true,
             listItems: [
               'Effortless Setup: With pre-configuration, your charging station is ready to use right out of the box. No need for complex installations or technical adjustments – simply plug in and charge.',
               'Enhanced Control and Monitoring: Through the Monta platform, gain full control over your charging sessions. Monitor energy usage, set charging schedules, and access detailed reports, all from a user-friendly interface.',
@@ -731,8 +733,7 @@ export const Entirepagedata = {
       { src: 'Portable_EV_Charging.png', alt: 'Portable Charger Setup' },
       { src: 'Portable_EV_Charging.png', alt: 'Portable Charger Adapters' },
       { src: 'Portable_EV_Charging.png', alt: 'Portable Charger in Use' }
-    ],
-    OverviewData: {
+    ],    OverviewData: {
       BgImage: bgImgs.portableEVCharging,
       para: {
         active: true,
@@ -751,6 +752,7 @@ export const Entirepagedata = {
           },
           {
             subheading: 'Advantages Monta Backend Integration:',
+            active: false,
             listItems: [
               'Effortless Setup: With pre-configuration, your charging station is ready to use right out of the box. No need for complex installations or technical adjustments – simply plug in and charge.',
               'Enhanced Control and Monitoring: Through the Monta platform, gain full control over your charging sessions. Monitor energy usage, set charging schedules, and access detailed reports, all from a user-friendly interface.',
@@ -895,8 +897,7 @@ export const Entirepagedata = {
       { src: 'DC_Charging_Station.png', alt: 'DC Charging' },
       { src: 'DC_Fast_Charging_Station.png', alt: 'Fast Charging' },
       { src: 'Portable_EV_Charging.png', alt: 'Portable Charging' }
-    ],
-    OverviewData: {
+    ],    OverviewData: {
       BgImage: bgImgs.evCharging,
       para: {
         active: true,
@@ -912,9 +913,9 @@ export const Entirepagedata = {
           {
             subheading: 'Pre-Configured for Seamless Integration',
             text: 'What sets our charging stations apart is their pre-configuration with the Monta backend. This advanced feature allows for a quick and hassle-free setup, enabling you to start charging immediately with minimal effort.'
-          },
-          {
+          },          {
             subheading: 'Advantages Monta Backend Integration:',
+            active: false,
             listItems: [
               'Effortless Setup: With pre-configuration, your charging station is ready to use right out of the box. No need for complex installations or technical adjustments – simply plug in and charge.',
               'Enhanced Control and Monitoring: Through the Monta platform, gain full control over your charging sessions. Monitor energy usage, set charging schedules, and access detailed reports, all from a user-friendly interface.',

@@ -104,28 +104,26 @@ const Overview = ({ overviewData }) => {
             )}
           </div>
         </div>
-        {/* Section 2: Advantages Monta Backend Integration: */}
-        <div className='px-8'>
+        {/* Section 2: Advantages Monta Backend Integration: */}        <div className='px-8'>
           <div className='sm:max-w-6xl mx-auto'>
-            {overviewData?.para?.data?.some(
+            {overviewData?.para?.active && overviewData?.para?.data?.some(
               item =>
-                typeof item === 'object' &&
-                item.subheading?.includes('Monta Backend Integration')
+                typeof item === 'object' && 
+                item.subheading?.includes('Monta Backend Integration') && 
+                item.active
             ) && (
               <div className='py-6 sm:font-medium'>
                 {overviewData.para.data
                   .filter(
                     item =>
                       typeof item === 'object' &&
-                      item.subheading?.includes('Monta Backend Integration')
-                  )
-                  .map((item, index) => (
-                    <div key={`monta-${index}`}>
-                      {' '}
+                      item.subheading?.includes('Monta Backend Integration') &&
+                      item.active
+                  )                  .map((item, index) => (                    <div key={`monta-${index}`}>
                       <h3 className='text-2xl font-semibold text-black mb-3 text-left'>
                         {item.subheading}
                       </h3>
-                      <p className='text-2xl text-left text-black py-2 leading-relaxed'>
+                      <p className='text-lg text-left text-black py-2 leading-relaxed font-medium'>
                         {item.text}
                       </p>
                       {/* Display list items if available in the data */}
@@ -135,8 +133,7 @@ const Overview = ({ overviewData }) => {
                             <li
                               key={`monta-mobile-list-${i}`}
                               className='flex items-start'
-                            >
-                              <span className='text-lg text-gray-700 font-normal'>
+                            >                      <span className='text-lg text-gray-700 font-medium'>
                                 {listItem.includes(':') ? (
                                   <>
                                     <strong>{listItem.split(':')[0]}</strong>:
@@ -227,29 +224,27 @@ const Overview = ({ overviewData }) => {
             )}
         </div>
       </div>{' '}
-      {/* Monta Backend Integration Section - Desktop */}
-      <div className='hidden md:block mt-4 px-28 py-16'>
+      {/* Monta Backend Integration Section - Desktop */}      <div className='hidden md:block mt-4 px-28 py-16'>
         <div>
           {/* Enhanced way to show Monta Integration from para data */}
-          {overviewData?.para?.data?.some(
+          {overviewData?.para?.active && overviewData?.para?.data?.some(
             item =>
-              typeof item === 'object' &&
-              item.subheading?.includes('Monta Backend Integration')
+              typeof item === 'object' && 
+              item.subheading?.includes('Monta Backend Integration') &&
+              item.active
           ) && (
             <div className='mt-6'>
               {overviewData.para.data
                 .filter(
                   item =>
                     typeof item === 'object' &&
-                    item.subheading?.includes('Monta Backend Integration')
-                )
-                .map((item, index) => (
-                  <div key={`monta-desktop-${index}`} className='text-left'>
-                    {' '}
+                    item.subheading?.includes('Monta Backend Integration') &&
+                    item.active
+                )                .map((item, index) => (                  <div key={`monta-desktop-${index}`} className='text-left'>
                     <h3 className='text-3xl font-semibold text-black mb-10'>
                       {item.subheading}
                     </h3>{' '}
-                    <p className='text-lg text-black leading-relaxed'>
+                    <p className='text-lg text-black leading-relaxed font-medium'>
                       {item.text}
                     </p>{' '}
                     {/* Display list items if available in the data */}
