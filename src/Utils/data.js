@@ -1,5 +1,7 @@
 // Import background images from assets
+import { data } from 'react-router-dom'
 import { bgImgs } from './assets.js'
+import { title } from 'framer-motion/client'
 
 // Hero section data for different pages
 export const Entirepagedata = {
@@ -22,10 +24,12 @@ export const Entirepagedata = {
       { src: 'Product_image.png', alt: 'Cable in Use' },
       { src: 'Product_image.png', alt: 'Cable Specifications' },
       { src: 'Product_image.png', alt: 'Cable Storage' }
-    ],    OverviewData: {
+    ],
+    OverviewData: {
       BgImage: bgImgs.evChargingCables,
+      
       para: {
-        active: false,
+        active: true,
         data: [
           {
             subheading: 'Superior Build Quality',
@@ -53,7 +57,8 @@ export const Entirepagedata = {
         ]
       },
       list: {
-        active: true,
+        active: false,
+        title: 'Product Specifications',
         data: [
           'Compatible with Type 1 & Type 2 connectors supports up to 3-phase charging',
           'Rated for up to 32A safely delivers a charging power of up to 22 kW',
@@ -62,6 +67,28 @@ export const Entirepagedata = {
           'Includes a durable carry case for easy transport and protection',
           'CE certified by a leading independent testing laboratory',
           'Engineered with Blaupunkt’s commitment to quality and safety'
+        ]
+      },
+      IdealandFeaturesImage: 'Product_image.png',
+      features: {
+        active: false,
+        title: 'Features',
+        data: [
+          'High-quality copper conductors for efficient power transfer',
+          'Flexible and durable PVC insulation for long-lasting performance',
+          'Ergonomic design for easy handling and connection',
+          'Built-in LED indicator for charging status',
+          'Reinforced connectors for secure and stable connections'
+        ]
+      },
+      ideal: {
+        active: false,
+        title: 'Ideal',
+        data: [
+          'Home charging stations for electric vehicles',
+          'Commercial charging points in parking lots and garages',
+          'Fleet management for electric car rental services',
+          'Emergency charging solutions for long-distance travel'
         ]
       },
       image: 'Product_image.png'
@@ -181,7 +208,8 @@ export const Entirepagedata = {
       { src: 'Charging_Stations.png', alt: 'Charging Station Interface' },
       { src: 'Charging_Stations.png', alt: 'Charging Station in Use' },
       { src: 'Charging_Stations.png', alt: 'Charging Station Features' }
-    ],    OverviewData: {
+    ],
+    OverviewData: {
       BgImage: bgImgs.chargingStations,
       para: {
         active: true,
@@ -194,7 +222,8 @@ export const Entirepagedata = {
           {
             subheading: 'Durability and Safety You Can Rely On',
             text: "Built with durability in mind, Blaupunkt's charging station features a robust construction designed to withstand everyday use, whether installed indoors or outdoors. The IP54-rated charger provides reliable protection against the elements, ensuring long-lasting performance in various outdoor conditions."
-          },          {
+          },
+          {
             subheading: 'Pre-Configured for Seamless Integration',
             text: 'What sets this charging station apart is its pre-configuration with the Monta backend. This advanced feature allows for a quick and hassle-free setup, enabling you to start charging immediately with minimal effort.'
           },
@@ -213,6 +242,7 @@ export const Entirepagedata = {
       },
       list: {
         active: false,
+        title: 'Key Specifications',
         data: [
           'Three-phase charging capability for faster and more efficient charging',
           'IP54-rated for reliable protection against dust and water splashes',
@@ -222,7 +252,28 @@ export const Entirepagedata = {
           'Smart connectivity with easy setup and user-friendly interface'
         ]
       },
-
+      IdealandFeaturesImage: 'Product_image.png',
+            features: {
+        active: true,
+        title: 'Features',
+        data: [
+          'High-quality copper conductors for efficient power transfer',
+          'Flexible and durable PVC insulation for long-lasting performance',
+          'Ergonomic design for easy handling and connection',
+          'Built-in LED indicator for charging status',
+          'Reinforced connectors for secure and stable connections'
+        ]
+      },
+      ideal: {
+        active: true,
+        title: 'Ideal For',
+        data: [
+          'Residential charging solutions',
+          'Business and workplace installations',
+          'Public parking facilities',
+          'Fleet management systems'
+        ]
+      },
       imageHeight: {
         mobile: '400px',
         desktop: '1000px'
@@ -351,7 +402,8 @@ export const Entirepagedata = {
       { src: 'DC_Charging_Station.png', alt: 'DC Station Connectors' },
       { src: 'DC_Charging_Station.png', alt: 'DC Station Installation' },
       { src: 'DC_Charging_Station.png', alt: 'DC Station Specifications' }
-    ],    OverviewData: {
+    ],
+    OverviewData: {
       BgImage: bgImgs.dcChargingStation,
       para: {
         active: true,
@@ -383,6 +435,7 @@ export const Entirepagedata = {
       },
       list: {
         active: false,
+        title: 'DC Charger Features',
         data: [
           '50kW to 150kW DC fast charging capability',
           'CCS and CHAdeMO connector compatibility',
@@ -393,6 +446,28 @@ export const Entirepagedata = {
           'Dynamic load management system',
           'Power quality monitoring and protection',
           'Remote firmware updates and configuration'
+        ]
+      },
+      IdealandFeaturesImage: 'Product_image.png',
+            features: {
+        active: true,
+        title: 'Features',
+        data: [
+          'High-quality copper conductors for efficient power transfer',
+          'Flexible and durable PVC insulation for long-lasting performance',
+          'Ergonomic design for easy handling and connection',
+          'Built-in LED indicator for charging status',
+          'Reinforced connectors for secure and stable connections'
+        ]
+      },
+      ideal: {
+        active: true,
+        title: 'Ideal For',
+        data: [
+          'Commercial charging hubs',
+          'Shopping centers and retail locations',
+          'Corporate campuses and business parks',
+          'Transportation depots and fleet operators'
         ]
       },
       imageHeight: {
@@ -424,7 +499,8 @@ export const Entirepagedata = {
           icon: 'payment'
         }
       ]
-    },    specificationsData: {
+    },
+    specificationsData: {
       title: 'Technical Specifications',
       specs: [
         { label: 'Power Output', value: '50kW / 100kW / 150kW' },
@@ -436,11 +512,17 @@ export const Entirepagedata = {
         { label: 'Cooling', value: 'Liquid cooled' },
         { label: 'Display', value: '15-inch touchscreen' },
         { label: 'Dimensions', value: '1800 x 800 x 600mm' },
-        { label: 'Weight', value: '350kg (50kW) / 420kg (100kW) / 480kg (150kW)' },
+        {
+          label: 'Weight',
+          value: '350kg (50kW) / 420kg (100kW) / 480kg (150kW)'
+        },
         { label: 'Operating Temperature', value: '-30°C to +50°C' },
         { label: 'Humidity Range', value: '5% to 95%, non-condensing' },
         { label: 'Protection Rating', value: 'IP54 / IK10' },
-        { label: 'Network Connectivity', value: '4G/LTE, WiFi, Ethernet, OCPP 1.6J/2.0' }
+        {
+          label: 'Network Connectivity',
+          value: '4G/LTE, WiFi, Ethernet, OCPP 1.6J/2.0'
+        }
       ]
     },
     modelsData: {
@@ -480,7 +562,8 @@ export const Entirepagedata = {
           popular: false
         }
       ]
-    },    installationData: {
+    },
+    installationData: {
       title: 'Installation Requirements',
       requirements: [
         {
@@ -560,7 +643,8 @@ export const Entirepagedata = {
       { src: 'DC_Fast_Charging_Station.png', alt: 'Fast Charging Ports' },
       { src: 'DC_Fast_Charging_Station.png', alt: 'Fast Charging Network' },
       { src: 'DC_Fast_Charging_Station.png', alt: 'Fast Charging Capabilities' }
-    ],    OverviewData: {
+    ],
+    OverviewData: {
       BgImage: bgImgs.dcFastChargingStation,
       para: {
         active: true,
@@ -571,7 +655,7 @@ export const Entirepagedata = {
           },
           {
             subheading: 'Power, Durability, and Safety Combined',
-            text: 'For high-demand environments, Blaupunkt\'s 60-160 kW DC Charger delivers the perfect blend of power and durability. Its IP54-rated enclosure ensures that it can handle any outdoor condition while maintaining peak performance. Built for heavy daily use, this charger is ideal for locations where fast and efficient charging is essential.'
+            text: "For high-demand environments, Blaupunkt's 60-160 kW DC Charger delivers the perfect blend of power and durability. Its IP54-rated enclosure ensures that it can handle any outdoor condition while maintaining peak performance. Built for heavy daily use, this charger is ideal for locations where fast and efficient charging is essential."
           },
           {
             subheading: 'Efficient Maintenance with Plug-In Control Module',
@@ -596,6 +680,7 @@ export const Entirepagedata = {
       },
       list: {
         active: false,
+        title: 'Fast Charging Capabilities',
         data: [
           'Ultra-fast 350kW charging capability',
           'Multiple vehicle charging simultaneously',
@@ -603,6 +688,28 @@ export const Entirepagedata = {
           'Plug & Charge technology support',
           'Grid-tie and energy storage integration',
           'Future-ready for next-gen vehicles'
+        ]
+      },
+      IdealandFeaturesImage: 'Product_image.png',
+            features: {
+        active: true,
+        title: 'Features',
+        data: [
+          'High-quality copper conductors for efficient power transfer',
+          'Flexible and durable PVC insulation for long-lasting performance',
+          'Ergonomic design for easy handling and connection',
+          'Built-in LED indicator for charging status',
+          'Reinforced connectors for secure and stable connections'
+        ]
+      },
+      ideal: {
+        active: true,
+        title: 'Ideal For',
+        data: [
+          'Highway rest stops and service stations',
+          'Major transportation hubs',
+          'High-traffic urban charging centers',
+          'Large-scale fleet operations'
         ]
       },
       imageHeight: {
@@ -733,7 +840,8 @@ export const Entirepagedata = {
       { src: 'Portable_EV_Charging.png', alt: 'Portable Charger Setup' },
       { src: 'Portable_EV_Charging.png', alt: 'Portable Charger Adapters' },
       { src: 'Portable_EV_Charging.png', alt: 'Portable Charger in Use' }
-    ],    OverviewData: {
+    ],
+    OverviewData: {
       BgImage: bgImgs.portableEVCharging,
       para: {
         active: true,
@@ -765,6 +873,7 @@ export const Entirepagedata = {
       },
       list: {
         active: false,
+        title: 'Portable Features',
         data: [
           'Lightweight and portable design',
           'Multiple adapter compatibility',
@@ -772,6 +881,27 @@ export const Entirepagedata = {
           'Smart charging with app control',
           'Compact storage solution',
           'Travel-friendly carrying case'
+        ]
+      },
+            features: {
+        active: true,
+        title: 'Features',
+        data: [
+          'High-quality copper conductors for efficient power transfer',
+          'Flexible and durable PVC insulation for long-lasting performance',
+          'Ergonomic design for easy handling and connection',
+          'Built-in LED indicator for charging status',
+          'Reinforced connectors for secure and stable connections'
+        ]
+      },
+      ideal: {
+        active: true,
+        title: 'Ideal For',
+        data: [
+          'Emergency charging situations',
+          'Travel and road trips',
+          'Temporary charging needs',
+          'Locations without fixed infrastructure'
         ]
       },
       imageHeight: {
@@ -897,7 +1027,8 @@ export const Entirepagedata = {
       { src: 'DC_Charging_Station.png', alt: 'DC Charging' },
       { src: 'DC_Fast_Charging_Station.png', alt: 'Fast Charging' },
       { src: 'Portable_EV_Charging.png', alt: 'Portable Charging' }
-    ],    OverviewData: {
+    ],
+    OverviewData: {
       BgImage: bgImgs.evCharging,
       para: {
         active: true,
@@ -913,7 +1044,8 @@ export const Entirepagedata = {
           {
             subheading: 'Pre-Configured for Seamless Integration',
             text: 'What sets our charging stations apart is their pre-configuration with the Monta backend. This advanced feature allows for a quick and hassle-free setup, enabling you to start charging immediately with minimal effort.'
-          },          {
+          },
+          {
             subheading: 'Advantages Monta Backend Integration:',
             active: false,
             listItems: [
@@ -928,6 +1060,7 @@ export const Entirepagedata = {
       },
       list: {
         active: true,
+        title: 'Blaupunkt Advantages',
         data: [
           'Complete range of EV charging solutions',
           'German engineering and quality standards',

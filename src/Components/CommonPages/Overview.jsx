@@ -104,53 +104,61 @@ const Overview = ({ overviewData }) => {
             )}
           </div>
         </div>
-        {/* Section 2: Advantages Monta Backend Integration: */}        <div className='px-8'>
+        {/* Section 2: Advantages Monta Backend Integration: */}{' '}
+        <div className='px-8'>
           <div className='sm:max-w-6xl mx-auto'>
-            {overviewData?.para?.active && overviewData?.para?.data?.some(
-              item =>
-                typeof item === 'object' && 
-                item.subheading?.includes('Monta Backend Integration') && 
-                item.active
-            ) && (
-              <div className='py-6 sm:font-medium'>
-                {overviewData.para.data
-                  .filter(
-                    item =>
-                      typeof item === 'object' &&
-                      item.subheading?.includes('Monta Backend Integration') &&
-                      item.active
-                  )                  .map((item, index) => (                    <div key={`monta-${index}`}>
-                      <h3 className='text-2xl font-semibold text-black mb-3 text-left'>
-                        {item.subheading}
-                      </h3>
-                      <p className='text-lg text-left text-black py-2 leading-relaxed font-medium'>
-                        {item.text}
-                      </p>
-                      {/* Display list items if available in the data */}
-                      {item.listItems && item.listItems.length > 0 && (
-                        <ul className='mt-3 space-y-2'>
-                          {item.listItems.map((listItem, i) => (
-                            <li
-                              key={`monta-mobile-list-${i}`}
-                              className='flex items-start'
-                            >                      <span className='text-lg text-gray-700 font-medium'>
-                                {listItem.includes(':') ? (
-                                  <>
-                                    <strong>{listItem.split(':')[0]}</strong>:
-                                    {listItem.split(':').slice(1).join(':')}
-                                  </>
-                                ) : (
-                                  listItem
-                                )}
-                              </span>
-                            </li>
-                          ))}
-                        </ul>
-                      )}
-                    </div>
-                  ))}
-              </div>
-            )}
+            {overviewData?.para?.active &&
+              overviewData?.para?.data?.some(
+                item =>
+                  typeof item === 'object' &&
+                  item.subheading?.includes('Monta Backend Integration') &&
+                  item.active
+              ) && (
+                <div className='py-6 sm:font-medium'>
+                  {overviewData.para.data
+                    .filter(
+                      item =>
+                        typeof item === 'object' &&
+                        item.subheading?.includes(
+                          'Monta Backend Integration'
+                        ) &&
+                        item.active
+                    )
+                    .map((item, index) => (
+                      <div key={`monta-${index}`}>
+                        <h3 className='text-2xl font-semibold text-black mb-3 text-left'>
+                          {item.subheading}
+                        </h3>
+                        <p className='text-lg text-left text-black py-2 leading-relaxed font-medium'>
+                          {item.text}
+                        </p>
+                        {/* Display list items if available in the data */}
+                        {item.listItems && item.listItems.length > 0 && (
+                          <ul className='mt-3 space-y-2'>
+                            {item.listItems.map((listItem, i) => (
+                              <li
+                                key={`monta-mobile-list-${i}`}
+                                className='flex items-start'
+                              >
+                                {' '}
+                                <span className='text-lg text-gray-700 font-medium'>
+                                  {listItem.includes(':') ? (
+                                    <>
+                                      <strong>{listItem.split(':')[0]}</strong>:
+                                      {listItem.split(':').slice(1).join(':')}
+                                    </>
+                                  ) : (
+                                    listItem
+                                  )}
+                                </span>
+                              </li>
+                            ))}
+                          </ul>
+                        )}
+                      </div>
+                    ))}
+                </div>
+              )}
           </div>
         </div>{' '}
       </div>
@@ -224,56 +232,195 @@ const Overview = ({ overviewData }) => {
             )}
         </div>
       </div>{' '}
-      {/* Monta Backend Integration Section - Desktop */}      <div className='hidden md:block mt-4 px-28 py-16'>
+      {/* Monta Backend Integration Section - Desktop */}{' '}
+      <div className='hidden md:block mt-4 px-28 py-16'>
         <div>
           {/* Enhanced way to show Monta Integration from para data */}
-          {overviewData?.para?.active && overviewData?.para?.data?.some(
-            item =>
-              typeof item === 'object' && 
-              item.subheading?.includes('Monta Backend Integration') &&
-              item.active
-          ) && (
-            <div className='mt-6'>
-              {overviewData.para.data
-                .filter(
-                  item =>
-                    typeof item === 'object' &&
-                    item.subheading?.includes('Monta Backend Integration') &&
-                    item.active
-                )                .map((item, index) => (                  <div key={`monta-desktop-${index}`} className='text-left'>
-                    <h3 className='text-3xl font-semibold text-black mb-10'>
-                      {item.subheading}
-                    </h3>{' '}
-                    <p className='text-lg text-black leading-relaxed font-medium'>
-                      {item.text}
-                    </p>{' '}
-                    {/* Display list items if available in the data */}
-                    {item.listItems && item.listItems.length > 0 && (
-                      <ul className='mt-4 space-y-6  text-left'>
-                        {item.listItems.map((listItem, i) => (
+          {overviewData?.para?.active &&
+            overviewData?.para?.data?.some(
+              item =>
+                typeof item === 'object' &&
+                item.subheading?.includes('Monta Backend Integration') &&
+                item.active
+            ) && (
+              <div className='mt-6'>
+                {overviewData.para.data
+                  .filter(
+                    item =>
+                      typeof item === 'object' &&
+                      item.subheading?.includes('Monta Backend Integration') &&
+                      item.active
+                  )
+                  .map((item, index) => (
+                    <div key={`monta-desktop-${index}`} className='text-left'>
+                      <h3 className='text-3xl font-semibold text-black mb-10'>
+                        {item.subheading}
+                      </h3>{' '}
+                      <p className='text-lg text-black leading-relaxed font-medium'>
+                        {item.text}
+                      </p>{' '}
+                      {/* Display list items if available in the data */}
+                      {item.listItems && item.listItems.length > 0 && (
+                        <ul className='mt-4 space-y-6  text-left'>
+                          {item.listItems.map((listItem, i) => (
+                            <li
+                              key={`monta-list-${i}`}
+                              className='flex items-start'
+                            >
+                              <span className='text-lg text-gray-700 leading-relaxed font-medium'>
+                                {listItem.includes(':') ? (
+                                  <>
+                                    <strong>{listItem.split(':')[0]}</strong>:
+                                    {listItem.split(':').slice(1).join(':')}
+                                  </>
+                                ) : (
+                                  listItem
+                                )}
+                              </span>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </div>
+                  ))}
+              </div>
+            )}
+        </div>{' '}
+      </div>{' '}
+      {/* Features and Ideal Use Cases Section */}
+      <div className='max-w-7xl mx-auto px-8 py-12 md:mt-8'>
+        {(overviewData?.features?.active ||
+          overviewData?.ideal?.active ||
+          overviewData?.IdealandFeaturesImage) && (
+          <>
+            {' '}
+            {/* Desktop Layout - Flex Row */}
+            <div className='hidden md:flex md:items-start md:gap-12'>
+              {/* Content Section - Left Side */}
+              <div className='flex-[2] space-y-8'>
+                {/* Features Section */}
+                {overviewData?.features?.active &&
+                  overviewData.features.data?.length > 0 && (
+                    <div>
+                      {overviewData.features.title && (
+                        <h4 className='text-xl font-medium text-black mb-4'>
+                          {overviewData.features.title}
+                        </h4>
+                      )}
+                      <ul className='list-disc list-inside space-y-2 pl-4'>
+                        {overviewData.features.data.map((item, index) => (
                           <li
-                            key={`monta-list-${i}`}
-                            className='flex items-start'
+                            key={`feature-${index}`}
+                            className='text-lg text-gray-700 leading-relaxed'
                           >
-                            <span className='text-lg text-gray-700 leading-relaxed font-medium'>
-                              {listItem.includes(':') ? (
-                                <>
-                                  <strong>{listItem.split(':')[0]}</strong>:
-                                  {listItem.split(':').slice(1).join(':')}
-                                </>
-                              ) : (
-                                listItem
-                              )}
-                            </span>
+                            {item}
                           </li>
                         ))}
                       </ul>
+                    </div>
+                  )}
+
+                {/* Ideal Use Cases Section */}
+                {overviewData?.ideal?.active &&
+                  overviewData.ideal.data?.length > 0 && (
+                    <div>
+                      {overviewData.ideal.title && (
+                        <h4 className='text-xl font-medium text-black mb-4'>
+                          {overviewData.ideal.title}
+                        </h4>
+                      )}
+                      <ul className='list-disc list-inside space-y-2 pl-4'>
+                        {' '}
+                        {overviewData.ideal.data.map((item, index) => (
+                          <li
+                            key={`ideal-${index}`}
+                            className='text-lg text-gray-700 leading-relaxed'
+                          >
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+              </div>
+
+              {/* Image Section - Right Side */}
+              {overviewData?.IdealandFeaturesImage && (
+                <div className='flex-[1] flex justify-center'>
+                  <img
+                    src={overviewData.IdealandFeaturesImage}
+                    alt='Features and Ideal Use Cases'
+                    className='w-full h-auto rounded-lg shadow-lg object-cover'
+                    style={{
+                      maxHeight: '500px',
+                      minHeight: '400px'
+                    }}
+                  />
+                </div>
+              )}
+            </div>            {/* Mobile Layout - Stacked */}
+            <div className='md:hidden space-y-6'>
+              {/* Image Section - Hidden in mobile view */}
+              {/* {overviewData?.IdealandFeaturesImage && (
+                <div className='flex justify-center'>
+                  <img
+                    src={overviewData.IdealandFeaturesImage}
+                    alt='Features and Ideal Use Cases'
+                    className='w-full h-auto rounded-lg shadow-lg object-cover'
+                    style={{
+                      maxHeight: '400px',
+                      minHeight: '300px'
+                    }}
+                  />
+                </div>
+              )} */}
+
+              {/* Features Section */}
+              {overviewData?.features?.active &&
+                overviewData.features.data?.length > 0 && (
+                  <div>
+                    {overviewData.features.title && (
+                      <h4 className='text-xl font-medium text-black mb-3'>
+                        {overviewData.features.title}
+                      </h4>
                     )}
+                    <ul className='list-disc list-inside space-y-2 '>
+                      {overviewData.features.data.map((item, index) => (
+                        <li
+                          key={`feature-mobile-${index}`}
+                          className='text-lg text-gray-700 leading-relaxed'
+                        >
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
                   </div>
-                ))}
+                )}
+
+              {/* Ideal Use Cases Section */}
+              {overviewData?.ideal?.active &&
+                overviewData.ideal.data?.length > 0 && (
+                  <div>
+                    {overviewData.ideal.title && (
+                      <h4 className='text-xl font-medium text-black mb-3'>
+                        {overviewData.ideal.title}
+                      </h4>
+                    )}
+                    <ul className='list-disc list-inside space-y-2'>
+                      {overviewData.ideal.data.map((item, index) => (
+                        <li
+                          key={`ideal-mobile-${index}`}
+                          className='text-lg text-gray-700 leading-relaxed'
+                        >
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
             </div>
-          )}
-        </div>{' '}
+          </>
+        )}
       </div>
     </div>
   )
