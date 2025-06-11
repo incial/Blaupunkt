@@ -1,8 +1,12 @@
 import React from 'react'
 import HeroSection from '../Components/CommonPages/HeroSection'
+import Specifications from '../Components/CommonPages/Specifications.jsx'
+import ImageHeader from '../Components/Common/ImageHeader'
+import OverviewSection from '../Components/Common/Overview/OverviewSection'
+import OverviewFeatureasandideal from '../Components/Common/Overview/OverviewFeatureasandideal'
+import DownloadButton from '../Components/CommonPages/DownlaodButton'
 import { Entirepagedata } from '../Utils/data.js'
 import portableEVChargingImage from '../assets/Images/Portable_EV_Charging.png'
-import Overview from '../Components/CommonPages/Overview.jsx'
 
 const PortableEVCharging = () => {
   // Get data from Entirepagedata
@@ -22,20 +26,6 @@ const PortableEVCharging = () => {
     image: portableEVChargingImage,
     alt: thumb.alt
   }));
-  // Process overview data with actual image
-  const processedOverviewData = {
-    ...OverviewData,
-    image: portableEVChargingImage,
-    imageHeight: {
-      mobile: '350px',
-      desktop: '450px'
-    },
-    imageMinHeight: {
-      mobile: '250px',
-      desktop: '350px'
-    }
-  };
-
   return (
     <div>
       <HeroSection 
@@ -45,10 +35,20 @@ const PortableEVCharging = () => {
         buttonText={buttonText}
         mainImage={portableEVChargingImage}
         imageAlt={imageAlt}
-        thumbnails={thumbnails}      />
-      <Overview 
-        overviewData={processedOverviewData}
+        thumbnails={thumbnails}
       />
+      {/* Overview Header */}
+      <ImageHeader
+        title='Overview'
+        backgroundImage={OverviewData?.BgImage}
+        showBackgroundImage={!!OverviewData?.BgImage}
+      />      {/* All three overview components for Portable EV Charging */}
+      <OverviewSection overviewData={{...OverviewData, category: 'portableEVCharging', image: portableEVChargingImage}} />
+      <OverviewFeatureasandideal overviewData={{...OverviewData, category: 'portableEVCharging', IdealandFeaturesImage: portableEVChargingImage}} />      <Specifications
+        productImage={portableEVChargingImage}
+        category="portableEVCharging"
+      />
+      <DownloadButton productCategory='portableEVCharging' />
     </div>
   )
 }

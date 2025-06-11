@@ -1,7 +1,5 @@
 // Import background images from assets
-import { data } from 'react-router-dom'
 import { bgImgs } from './assets.js'
-import { title } from 'framer-motion/client'
 
 // Hero section data for different pages
 export const Entirepagedata = {
@@ -119,7 +117,7 @@ export const Entirepagedata = {
       ]
     },
     specificationsData: {
-      title: 'Technical Specifications',
+      title: 'Specifications',
       specs: [
         { label: 'Charging Current', value: '16A / 32A' },
         { label: 'Voltage', value: '230V AC' },
@@ -306,7 +304,7 @@ export const Entirepagedata = {
       ]
     },
     specificationsData: {
-      title: 'Technical Specifications',
+      title: 'Specifications',
       specs: [
         { label: 'Power Output', value: '7.4kW / 11kW / 22kW' },
         { label: 'Input Voltage', value: '400V AC 3-phase' },
@@ -469,11 +467,11 @@ export const Entirepagedata = {
           'Corporate campuses and business parks',
           'Transportation depots and fleet operators'
         ]
-      },
-      imageHeight: {
+      },      imageHeight: {
         mobile: '450px',
         desktop: '550px'
-      }
+      },
+      image: 'DC_Charging_Station.png'
     },
     highlightsData: {
       title: 'DC Charging Benefits',
@@ -501,7 +499,7 @@ export const Entirepagedata = {
       ]
     },
     specificationsData: {
-      title: 'Technical Specifications',
+      title: 'Specifications',
       specs: [
         { label: 'Power Output', value: '50kW / 100kW / 150kW' },
         { label: 'Input Voltage', value: '400V AC 3-phase' },
@@ -711,11 +709,11 @@ export const Entirepagedata = {
           'High-traffic urban charging centers',
           'Large-scale fleet operations'
         ]
-      },
-      imageHeight: {
+      },      imageHeight: {
         mobile: '450px',
         desktop: '750px'
-      }
+      },
+      image: 'DC_Fast_Charging_Station.png'
     },
     highlightsData: {
       title: 'Ultra-Fast Features',
@@ -743,7 +741,7 @@ export const Entirepagedata = {
       ]
     },
     specificationsData: {
-      title: 'Technical Specifications',
+      title: 'Specifications',
       specs: [
         { label: 'Max Power Output', value: '350kW' },
         { label: 'Input Voltage', value: '800V AC 3-phase' },
@@ -903,11 +901,11 @@ export const Entirepagedata = {
           'Temporary charging needs',
           'Locations without fixed infrastructure'
         ]
-      },
-      imageHeight: {
+      },      imageHeight: {
         mobile: '350px',
         desktop: '450px'
-      }
+      },
+      image: 'Portable_EV_Charging.png'
     },
     highlightsData: {
       title: 'Portable Advantages',
@@ -935,7 +933,7 @@ export const Entirepagedata = {
       ]
     },
     specificationsData: {
-      title: 'Technical Specifications',
+      title: 'Specifications',
       specs: [
         { label: 'Max Power', value: '3.6kW (16A)' },
         { label: 'Input Voltage', value: '230V AC single phase' },
@@ -1445,4 +1443,13 @@ export const Entirepagedata = {
       }
     ]
   }
+}
+
+// Export specifications data for different categories
+export const specificationsData = {
+  chargingCables: Entirepagedata.chargingCables.specificationsData,
+  chargingStations: Entirepagedata.chargingStations.specificationsData,
+  dcChargingStation: Entirepagedata.dcChargingStation.specificationsData,
+  dcFastChargingStation: Entirepagedata.dcFastChargingStation.specificationsData,
+  portableEVCharging: Entirepagedata.portableEVCharging.specificationsData
 }

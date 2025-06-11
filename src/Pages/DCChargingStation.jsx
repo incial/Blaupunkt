@@ -1,12 +1,14 @@
 import React from 'react'
 import HeroSection from '../Components/CommonPages/HeroSection'
+import Specifications from '../Components/CommonPages/Specifications.jsx'
+import ImageHeader from '../Components/Common/ImageHeader'
+import OverviewSection from '../Components/Common/Overview/OverviewSection'
+import OverviewAdvantage from '../Components/Common/Overview/OverviewAdvantage'
+import OverviewFeatureasandideal from '../Components/Common/Overview/OverviewFeatureasandideal'
+import DownloadButton from '../Components/CommonPages/DownlaodButton'
 import { Entirepagedata } from '../Utils/data.js'
 import dcChargingStationImage from '../assets/Images/DC_Charging_Station.png'
-import Overview from '../Components/CommonPages/Overview.jsx'
-import Specifications from '../Components/CommonPages/Specifications'
-import Highligths from '../Components/CommonPages/Highligths'
-import Models from '../Components/CommonPages/Models'
-import DownlaodButton from '../Components/CommonPages/DownlaodButton'
+
 
 const DCChargingStation = () => {
   // Get data from Entirepagedata
@@ -17,11 +19,7 @@ const DCChargingStation = () => {
     buttonText,
     imageAlt,
     OverviewData,
-    specificationsData,
-    highlightsData,
-    modelsData,
   } = Entirepagedata.dcChargingStation;
-  
   // Process thumbnails with actual images
   const thumbnails = Entirepagedata.dcChargingStation.thumbnails.map(thumb => ({
     ...thumb,
@@ -29,20 +27,6 @@ const DCChargingStation = () => {
     alt: thumb.alt
   }));
   
-  // Process overview data with actual image
-  const processedOverviewData = {
-    ...OverviewData,
-    image: dcChargingStationImage,
-    imageHeight: {
-      mobile: '450px',
-      desktop: '550px'
-    },
-    imageMinHeight: {
-      mobile: '350px',
-      desktop: '625px'
-    }
-  };
-
   return (
     <div>
       <HeroSection 
@@ -54,18 +38,20 @@ const DCChargingStation = () => {
         imageAlt={imageAlt}
         thumbnails={thumbnails}
       />
-      <Overview 
-        overviewData={processedOverviewData}
+      {/* Overview Header */}
+      <ImageHeader
+        title='Overview'
+        backgroundImage={OverviewData?.BgImage}
+        showBackgroundImage={!!OverviewData?.BgImage}
+      />      {/* All three overview components for DC Charging Station */}
+      <OverviewSection overviewData={{...OverviewData, category: 'dcChargingStation', image: dcChargingStationImage}} />
+      <OverviewAdvantage overviewData={{...OverviewData, category: 'dcChargingStation'}} />
+      <OverviewFeatureasandideal overviewData={{...OverviewData, category: 'dcChargingStation', IdealandFeaturesImage: dcChargingStationImage}} />
+        <Specifications 
+        productImage={dcChargingStationImage}
+        category="dcChargingStation"
       />
-      {specificationsData && (
-        <Specifications specificationsData={specificationsData} />
-      )}
-      {highlightsData && (
-        <Highligths highlightsData={highlightsData} />
-      )}      {modelsData && (
-        <Models modelsData={modelsData} />
-      )}
-      <DownlaodButton title="Download DC Charging Station Brochure" />
+      <DownloadButton productCategory='dcChargingStation' />
     </div>
   )
 }

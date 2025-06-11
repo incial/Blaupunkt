@@ -2,7 +2,11 @@ import React from 'react'
 import HeroSection from '../Components/CommonPages/HeroSection'
 import { Entirepagedata } from '../Utils/data.js'
 import productImage from '../assets/Images/Product_image.png'
-import Overview from '../Components/CommonPages/Overview.jsx'
+import Specifications from '../Components/CommonPages/Specifications.jsx'
+import ImageHeader from '../Components/Common/ImageHeader'
+import OverviewSection from '../Components/Common/Overview/OverviewSection'
+import Models from '../Components/CommonPages/Models.jsx'
+import DownloadButton from '../Components/CommonPages/DownlaodButton'
 
 const ChargingCables = () => {
   // Get data from Entirepagedata
@@ -12,30 +16,17 @@ const ChargingCables = () => {
     breadcrumbs,
     buttonText,
     imageAlt,
-    OverviewData,
-  } = Entirepagedata.chargingCables;
+    OverviewData
+  } = Entirepagedata.chargingCables
   // Process thumbnails with actual images
   const thumbnails = Entirepagedata.chargingCables.thumbnails.map(thumb => ({
     ...thumb,
     image: productImage,
     alt: thumb.alt
-  }));
-  // Process overview data with actual image
-  const processedOverviewData = {
-    ...OverviewData,
-    image: productImage,    imageHeight: {
-      mobile: '400px',
-      desktop: '500px'
-    },
-    imageMinHeight: {
-      mobile: '300px',
-      desktop: '400px'
-    }
-  };
-
+  }))
   return (
     <div>
-      <HeroSection 
+      <HeroSection
         title={title}
         description={description}
         breadcrumbs={breadcrumbs}
@@ -44,9 +35,24 @@ const ChargingCables = () => {
         imageAlt={imageAlt}
         thumbnails={thumbnails}
       />
-      <Overview 
-        overviewData={processedOverviewData}
-      />
+      {/* Overview Header */}
+      <div>
+        <ImageHeader
+          title='Overview'
+          backgroundImage={OverviewData?.BgImage}
+          showBackgroundImage={!!OverviewData?.BgImage}
+        />{' '}
+        {/* Only Overview Section for Charging Cables */}
+        <OverviewSection
+          overviewData={{
+            ...OverviewData,
+            category: 'chargingCables',
+            image: productImage
+          }}
+        />      </div>
+      <Specifications productImage={productImage} category='chargingCables' />
+      <Models productImage={productImage} category='chargingCables' />
+      <DownloadButton productCategory='chargingCables' />
     </div>
   )
 }
