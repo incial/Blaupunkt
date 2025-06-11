@@ -1,8 +1,10 @@
 import React from 'react'
 import ProductCard from './Common/ProductCard'
 import { chargingImgs } from '../Utils/assets'
+import { useNavigate } from 'react-router-dom'
 
 const OurProducts = () => {
+  const navigate = useNavigate()
   const productData = [
     {
       id: 1,
@@ -66,7 +68,10 @@ const OurProducts = () => {
         </div>
         {/* View All Products Button */}
         <div className='flex justify-center mt-12 sm:mt-16 lg:mt-20'>
-          <button className='bg-white text-blue-800 px-6 py-3 sm:px-8 sm:py-4 rounded-3xl font-semibold text-base sm:text-lg lg:text-xl hover:bg-gray-50 transition-colors duration-300 shadow-lg hover:shadow-xl'>
+          <button
+            className='bg-white text-blue-800 px-6 py-3 sm:px-8 sm:py-4 rounded-3xl font-semibold text-base sm:text-lg lg:text-xl hover:bg-gray-50 transition-colors duration-300 shadow-lg hover:shadow-xl cursor-pointer'
+            onClick={() => navigate('/products')}
+          >
             View All Products
           </button>
         </div>

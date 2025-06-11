@@ -7,9 +7,9 @@ import OverviewAdvantage from '../Components/Common/Overview/OverviewAdvantage'
 import OverviewFeatureasandideal from '../Components/Common/Overview/OverviewFeatureasandideal'
 import DownloadButton from '../Components/CommonPages/DownlaodButton'
 import { Entirepagedata } from '../Utils/data.js'
-import chargingStationsImage from '../assets/Images/Charging_Stations.png'
+import dcFastChargingStationImage from '../assets/Images/DC_Fast_Charging_Station.png'
 
-const ChargingStations = () => {
+const DCFastChargingStation = () => {
   // Get data from Entirepagedata
   const {
     title,
@@ -17,58 +17,42 @@ const ChargingStations = () => {
     breadcrumbs,
     buttonText,
     imageAlt,
-    OverviewData
-  } = Entirepagedata.chargingStations
-
+    OverviewData,
+  } = Entirepagedata.dcFastChargingStation;
+  
   // Process thumbnails with actual images
-  const thumbnails = Entirepagedata.chargingStations.thumbnails.map(thumb => ({
+  const thumbnails = Entirepagedata.dcFastChargingStation.thumbnails.map(thumb => ({
     ...thumb,
-    image: chargingStationsImage,
+    image: dcFastChargingStationImage,
     alt: thumb.alt
-  }))
+  }));
   return (
     <div>
-      <HeroSection
+      <HeroSection 
         title={title}
         description={description}
         breadcrumbs={breadcrumbs}
         buttonText={buttonText}
-        mainImage={chargingStationsImage}
+        mainImage={dcFastChargingStationImage}
         imageAlt={imageAlt}
         thumbnails={thumbnails}
       />
       {/* Overview Header */}
-      <div className='gap-y-'>
       <ImageHeader
         title='Overview'
         backgroundImage={OverviewData?.BgImage}
         showBackgroundImage={!!OverviewData?.BgImage}
-      />{' '}
-      {/* All three overview components for Charging Stations */}
-      <OverviewSection
-        overviewData={{
-          ...OverviewData,
-          category: 'chargingStations',
-          image: chargingStationsImage
-        }}
+      />      {/* All three overview components for DC Fast Charging Station */}
+      <OverviewSection overviewData={{...OverviewData, category: 'dcFastChargingStation', image: dcFastChargingStationImage}} />
+      <OverviewAdvantage overviewData={{...OverviewData, category: 'dcFastChargingStation'}} />
+      <OverviewFeatureasandideal overviewData={{...OverviewData, category: 'dcFastChargingStation', IdealandFeaturesImage: dcFastChargingStationImage}} />
+        <Specifications 
+        productImage={dcFastChargingStationImage}
+        category="dcFastChargingStation"
       />
-      <OverviewAdvantage
-        overviewData={{ ...OverviewData, category: 'chargingStations' }}
-      />
-      <OverviewFeatureasandideal
-        overviewData={{
-          ...OverviewData,
-          category: 'chargingStations',
-          IdealandFeaturesImage: chargingStationsImage
-        }}
-      />
-      </div>      <Specifications
-        productImage={chargingStationsImage}
-        category='chargingStations'
-      />
-      <DownloadButton productCategory='chargingStations' />
+      <DownloadButton productCategory='dcFastChargingStation' />
     </div>
   )
 }
 
-export default ChargingStations
+export default DCFastChargingStation
