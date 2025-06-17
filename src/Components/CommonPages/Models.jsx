@@ -1,8 +1,23 @@
-﻿import React, { useState, useEffect, useRef } from 'react'
+﻿import React, { useState, useEffect, useRef, useMemo } from 'react'
 import ImageHeader from '../Common/ImageHeader'
 import FiltersContainer from '../Products/FiltersContainer'
+import ModelCard from './ModelCard'
+import { Entirepagedata } from '../../Utils/data'
 
-const Models = () => {
+// Simple icon components
+const ChevronDownIcon = ({ className }) => (
+  <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+  </svg>
+)
+
+const RefreshIcon = ({ className }) => (
+  <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+  </svg>
+)
+
+const Models = ({ productImage, category }) => {
   // Filter and sorting state
   const [sortBy, setSortBy] = useState('Popularity')
   const [productType, setProductType] = useState('All')
@@ -10,6 +25,16 @@ const Models = () => {
   const [connectorType, setConnectorType] = useState('All')
   const [phaseType, setPhaseType] = useState('All')
   const [showMobileFilters, setShowMobileFilters] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
+
+  // Reset filters function
+  const resetFilters = () => {
+    setSortBy('Popularity')
+    setProductType('All')
+    setChargingSpeed('All')
+    setConnectorType('All')
+    setPhaseType('All')
+  }
 
   // Dropdown menus open/close state
   const [sortByOpen, setSortByOpen] = useState(false)
@@ -17,6 +42,162 @@ const Models = () => {
   const [chargingSpeedOpen, setChargingSpeedOpen] = useState(false)
   const [connectorTypeOpen, setConnectorTypeOpen] = useState(false)
   const [phaseTypeOpen, setPhaseTypeOpen] = useState(false)
+
+  // Get models data based on category with error handling
+  const getModelsData = () => {
+    try {
+      switch (category) {
+        case 'chargingCables':
+          return Entirepagedata.chargingCables?.modelsData || { models: [] }
+        case 'chargingStations':
+          return Entirepagedata.chargingStations?.modelsData || { models: [] }
+        case 'dcChargingStation':
+          return Entirepagedata.dcChargingStation?.modelsData || { models: [] }
+        case 'dcFastChargingStation':
+          return Entirepagedata.dcFastChargingStation?.modelsData || { models: [] }
+        case 'portableEVCharging':
+          return Entirepagedata.portableEVCharging?.modelsData || { models: [] }
+        default:
+          return { models: [] }
+      }
+    } catch (error) {
+      console.error('Error getting models data:', error)
+      return { models: [] }
+    }
+  }
+
+  const modelsData = getModelsData()
+  const [filteredModels, setFilteredModels] = useState(modelsData.models || [])
+
+  // Update filtered models when modelsData changes
+  useEffect(() => {
+    setFilteredModels(modelsData.models || [])
+  }, [modelsData])
+
+  // Get unique filter options from current models data using useMemo
+  const { connectorTypes, phaseTypes } = useMemo(() => {
+    const models = modelsData.models || []
+    
+    const connectorTypes = ['All', ...new Set(models.map(model => 
+      model.connectorType || model.connector
+    ).filter(Boolean))]
+    
+    const phaseTypes = ['All', ...new Set(models.map(model => 
+      model.phaseType || model.phase
+    ).filter(Boolean))]
+    
+    return { connectorTypes, phaseTypes }
+  }, [modelsData.models])
+
+  // Filter models based on current filters
+  useEffect(() => {
+    setIsLoading(true)
+    
+    // Add a small delay to show loading state for better UX
+    const filterTimeout = setTimeout(() => {
+      let filtered = modelsData.models || []
+
+      // Apply product type filter (for multi-category filtering)
+      if (productType !== 'All') {
+        switch (productType) {
+          case 'Charging Cables':
+            // Only show if current category is charging cables
+            if (category !== 'chargingCables') {
+              filtered = []
+            }
+            break
+          case 'Charging Stations':
+            // Only show if current category is charging stations
+            if (!['chargingStations', 'dcChargingStation', 'dcFastChargingStation', 'portableEVCharging'].includes(category)) {
+              filtered = []
+            }
+            break
+          case 'Portable Chargers':
+            // Only show if current category is portable charging
+            if (category !== 'portableEVCharging') {
+              filtered = []
+            }
+            break
+        }
+      }
+
+      // Apply connector type filter
+      if (connectorType !== 'All') {
+        filtered = filtered.filter(model => {
+          const modelConnectorType = model.connectorType || model.connector || ''
+          return modelConnectorType.toLowerCase().includes(connectorType.toLowerCase().replace('type ', ''))
+        })
+      }
+
+      // Apply phase type filter
+      if (phaseType !== 'All') {
+        filtered = filtered.filter(model => {
+          const modelPhaseType = model.phaseType || model.phase || ''
+          return modelPhaseType.toLowerCase().includes(phaseType.toLowerCase().replace(' phase', '').replace('-', '').trim())
+        })
+      }
+
+      // Apply charging speed filter
+      if (chargingSpeed !== 'All') {
+        filtered = filtered.filter(model => {
+          const current = parseInt(model.current || model.ratedCurrent || '0')
+          const power = parseInt(model.power || model.maxPower || '0')
+          
+          switch (chargingSpeed) {
+            case 'Slow':
+              return current <= 16 || power <= 11
+            case 'Fast':
+              return (current > 16 && current <= 32) || (power > 11 && power <= 22)
+            case 'Rapid':
+              return current > 32 || power > 22
+            default:
+              return true
+          }
+        })
+      }
+
+      // Sort by the selected criteria
+      switch (sortBy) {
+        case 'Price: Low to High':
+          // Sort by current (lower current = lower price typically)
+          filtered.sort((a, b) => {
+            const currentA = parseInt(a.current || a.ratedCurrent || '0')
+            const currentB = parseInt(b.current || b.ratedCurrent || '0')
+            return currentA - currentB
+          })
+          break
+        case 'Price: High to Low':
+          // Sort by current (higher current = higher price typically)
+          filtered.sort((a, b) => {
+            const currentA = parseInt(a.current || a.ratedCurrent || '0')
+            const currentB = parseInt(b.current || b.ratedCurrent || '0')
+            return currentB - currentA
+          })
+          break
+        case 'Newest':
+          // Sort by model code (assuming newer models have higher codes)
+          filtered.sort((a, b) => {
+            if (a.popular && !b.popular) return -1
+            if (!a.popular && b.popular) return 1
+            const modelCodeA = a.modelCode || a.name || ''
+            const modelCodeB = b.modelCode || b.name || ''
+            return modelCodeB.localeCompare(modelCodeA)
+          })
+          break
+        default: // Popularity
+          filtered.sort((a, b) => {
+            if (a.popular && !b.popular) return -1
+            if (!a.popular && b.popular) return 1
+            return 0
+          })
+      }
+
+      setFilteredModels(filtered)
+      setIsLoading(false)
+    }, 200)
+
+    return () => clearTimeout(filterTimeout)
+  }, [modelsData.models, sortBy, productType, chargingSpeed, connectorType, phaseType, category])
 
   // Close dropdowns when clicking outside
   const dropdownRefs = {
@@ -133,13 +314,11 @@ const Models = () => {
                 {/* Sort By Filter */}
                 <div className='relative' ref={dropdownRefs.sortBy}>
                   <button
-                    className='flex items-center gap-2 bg-blaupunkt-primary-darker hover:bg-blaupunkt-primary-dark text-white py-2 px-4 rounded-md text-sm transition-colors duration-200'
+                    className='flex items-center gap-1.5 bg-blaupunkt-primary-darker hover:bg-blaupunkt-primary-dark text-white py-2 px-3 rounded text-sm transition-colors duration-200'
                     onClick={() => setSortByOpen(!sortByOpen)}
                   >
-                    <span>Sort By: {sortBy}</span>
-                    <svg className='w-4 h-4 fill-current' viewBox='0 0 20 20'>
-                      <path d='M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z' />
-                    </svg>
+                    <span>Sort: {sortBy}</span>
+                    <ChevronDownIcon className='w-3.5 h-3.5' />
                   </button>
                   {/* Dropdown Menu */}
                   {sortByOpen && (
@@ -178,13 +357,11 @@ const Models = () => {
                 {/* Product Type Filter */}
                 <div className='relative' ref={dropdownRefs.productType}>
                   <button
-                    className='flex items-center gap-2 bg-blaupunkt-primary-darker hover:bg-blaupunkt-primary-dark text-white py-2 px-4 rounded-md text-sm transition-colors duration-200'
+                    className='flex items-center gap-1.5 bg-blaupunkt-primary-darker hover:bg-blaupunkt-primary-dark text-white py-2 px-3 rounded text-sm transition-colors duration-200'
                     onClick={() => setProductTypeOpen(!productTypeOpen)}
                   >
-                    <span>Product Type: {productType}</span>
-                    <svg className='w-4 h-4 fill-current' viewBox='0 0 20 20'>
-                      <path d='M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z' />
-                    </svg>
+                    <span>Type: {productType}</span>
+                    <ChevronDownIcon className='w-3.5 h-3.5' />
                   </button>
                   {/* Dropdown Menu */}
                   {productTypeOpen && (
@@ -223,13 +400,11 @@ const Models = () => {
                 {/* Charging Speed Filter */}
                 <div className='relative' ref={dropdownRefs.chargingSpeed}>
                   <button
-                    className='flex items-center gap-2 bg-blaupunkt-primary-darker hover:bg-blaupunkt-primary-dark text-white py-2 px-4 rounded-md text-sm transition-colors duration-200'
+                    className='flex items-center gap-1.5 bg-blaupunkt-primary-darker hover:bg-blaupunkt-primary-dark text-white py-2 px-3 rounded text-sm transition-colors duration-200'
                     onClick={() => setChargingSpeedOpen(!chargingSpeedOpen)}
                   >
-                    <span>Charging Speed: {chargingSpeed}</span>
-                    <svg className='w-4 h-4 fill-current' viewBox='0 0 20 20'>
-                      <path d='M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z' />
-                    </svg>
+                    <span>Speed: {chargingSpeed}</span>
+                    <ChevronDownIcon className='w-3.5 h-3.5' />
                   </button>
                   {/* Dropdown Menu */}
                   {chargingSpeedOpen && (
@@ -263,13 +438,11 @@ const Models = () => {
                 {/* Connector Type Filter */}
                 <div className='relative' ref={dropdownRefs.connectorType}>
                   <button
-                    className='flex items-center gap-2 bg-blaupunkt-primary-darker hover:bg-blaupunkt-primary-dark text-white py-2 px-4 rounded-md text-sm transition-colors duration-200'
+                    className='flex items-center gap-1.5 bg-blaupunkt-primary-darker hover:bg-blaupunkt-primary-dark text-white py-2 px-3 rounded text-sm transition-colors duration-200'
                     onClick={() => setConnectorTypeOpen(!connectorTypeOpen)}
                   >
-                    <span>Connector Type: {connectorType}</span>
-                    <svg className='w-4 h-4 fill-current' viewBox='0 0 20 20'>
-                      <path d='M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z' />
-                    </svg>
+                    <span>Connector: {connectorType}</span>
+                    <ChevronDownIcon className='w-3.5 h-3.5' />
                   </button>
                   {/* Dropdown Menu */}
                   {connectorTypeOpen && (
@@ -279,8 +452,7 @@ const Models = () => {
                         role='menu'
                         aria-orientation='vertical'
                       >
-                        {['All', 'Type 1', 'Type 2', 'CCS', 'CHAdeMO'].map(
-                          option => (
+                      {connectorTypes.map(option => (
                             <button
                               key={option}
                               className={`${
@@ -295,8 +467,7 @@ const Models = () => {
                             >
                               {option}
                             </button>
-                          )
-                        )}
+                          ))}
                       </div>
                     </div>
                   )}
@@ -305,13 +476,11 @@ const Models = () => {
                 {/* Phase Type Filter */}
                 <div className='relative' ref={dropdownRefs.phaseType}>
                   <button
-                    className='flex items-center gap-2 bg-blaupunkt-primary-darker hover:bg-blaupunkt-primary-dark text-white py-2 px-4 rounded-md text-sm transition-colors duration-200'
+                    className='flex items-center gap-1.5 bg-blaupunkt-primary-darker hover:bg-blaupunkt-primary-dark text-white py-2 px-3 rounded text-sm transition-colors duration-200'
                     onClick={() => setPhaseTypeOpen(!phaseTypeOpen)}
                   >
-                    <span>Phase Type: {phaseType}</span>
-                    <svg className='w-4 h-4 fill-current' viewBox='0 0 20 20'>
-                      <path d='M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z' />
-                    </svg>
+                    <span>Phase: {phaseType}</span>
+                    <ChevronDownIcon className='w-3.5 h-3.5' />
                   </button>
                   {/* Dropdown Menu */}
                   {phaseTypeOpen && (
@@ -321,7 +490,7 @@ const Models = () => {
                         role='menu'
                         aria-orientation='vertical'
                       >
-                        {['All', 'Single Phase', 'Three Phase'].map(option => (
+                        {phaseTypes.map(option => (
                           <button
                             key={option}
                             className={`${
@@ -341,6 +510,15 @@ const Models = () => {
                     </div>
                   )}
                 </div>
+
+                {/* Reset Filters Button */}
+                <button
+                  onClick={resetFilters}
+                  className='flex items-center gap-1.5 bg-gray-100 hover:bg-gray-200 text-gray-700 py-2 px-3 rounded text-sm transition-colors duration-200'
+                >
+                  <RefreshIcon className='w-3.5 h-3.5' />
+                  Reset
+                </button>
               </div>
             </div>
           </div>
@@ -363,6 +541,60 @@ const Models = () => {
             />
           </div>
         </div>
+      </div>
+
+      {/* Product Grid */}
+      <div className='container mx-auto px-8 py-8'>
+        {isLoading ? (
+          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6'>
+            {[...Array(8)].map((_, index) => (
+              <div key={`skeleton-${index}`} className='animate-pulse'>
+                <div className='bg-gray-200 rounded-xl aspect-square mb-4'></div>
+                <div className='space-y-2'>
+                  <div className='h-4 bg-gray-200 rounded w-3/4'></div>
+                  <div className='h-3 bg-gray-200 rounded w-full'></div>
+                  <div className='h-3 bg-gray-200 rounded w-5/6'></div>
+                  <div className='h-3 bg-gray-200 rounded w-4/5'></div>
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : filteredModels && filteredModels.length > 0 ? (
+          <>
+            <div className='mb-4 text-gray-600'>
+              Showing {filteredModels.length} of {modelsData.models?.length || 0} models
+            </div>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6'>
+              {filteredModels.map((model, index) => (
+                <div key={model.modelCode || model.name || `model-${index}`}>
+                  <ModelCard
+                    image={productImage}
+                    modelCode={model.modelCode || model.name || `Model ${index + 1}`}
+                    connectorType={model.connectorType || model.connector || 'N/A'}
+                    current={model.current || model.ratedCurrent || model.amperage || 'N/A'}
+                    cableLength={model.cableLength || model.dimensions || model.length || 'N/A'}
+                    ipClass={model.ipClass || model.protection || model.ipRating || 'N/A'}
+                    phaseType={model.phaseType || model.phase || model.phases || 'N/A'}
+                  />
+                </div>
+              ))}
+            </div>
+          </>
+        ) : (
+          <div className='text-center py-12'>
+            <div className='mb-4'>
+              <svg className='w-16 h-16 text-gray-300 mx-auto' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+                <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={1} d='M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z' />
+              </svg>
+            </div>
+            <p className='text-gray-500 text-lg mb-2'>
+              No models found matching your criteria
+            </p>
+            <p className='text-gray-400 text-sm'>
+              Try adjusting your filters to see more results
+            </p>
+          </div>
+        )}
       </div>
     </div>
   )

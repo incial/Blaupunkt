@@ -128,37 +128,62 @@ export const Entirepagedata = {
         { label: 'Cable Diameter', value: '32mm' },
         { label: 'Weight', value: '3.2kg (5m version)' }
       ]
-    },
-    modelsData: {
+    },    modelsData: {
       title: 'Available Models',
       models: [
         {
-          name: 'Standard Cable 5m',
-          price: '$299',
-          features: ['16A charging', 'Type 2 connector', '5m length'],
+          modelCode: 'B1P16AT1',
+          connectorType: 'Type 1',
+          current: '16A',
+          cableLength: '2 Meters',
+          ipClass: '65',
+          phaseType: 'Single - Phase',
           popular: false
         },
         {
-          name: 'Professional Cable 7.5m',
-          price: '$399',
-          features: [
-            '32A charging',
-            'Type 2 connector',
-            '7.5m length',
-            'LED indicators'
-          ],
+          modelCode: 'B1P16AT2',
+          connectorType: 'Type 1',
+          current: '16A',
+          cableLength: '5 Meters',
+          ipClass: '65',
+          phaseType: 'Single - Phase',
           popular: true
         },
         {
-          name: 'Extended Cable 10m',
-          price: '$499',
-          features: [
-            '32A charging',
-            'Type 2 connector',
-            '10m length',
-            'Premium carrying case'
-          ],
+          modelCode: 'B2P16AT1',
+          connectorType: 'Type 2',
+          current: '16A',
+          cableLength: '2 Meters',
+          ipClass: '65',
+          phaseType: 'Single - Phase',
           popular: false
+        },
+        {
+          modelCode: 'B2P16AT2',
+          connectorType: 'Type 2',
+          current: '16A',
+          cableLength: '5 Meters',
+          ipClass: '65',
+          phaseType: 'Single - Phase',
+          popular: false
+        },
+        {
+          modelCode: 'B2P32AT1',
+          connectorType: 'Type 2',
+          current: '32A',
+          cableLength: '2 Meters',
+          ipClass: '65',
+          phaseType: 'Three - Phase',
+          popular: false
+        },
+        {
+          modelCode: 'B2P32AT2',
+          connectorType: 'Type 2',
+          current: '32A',
+          cableLength: '5 Meters',
+          ipClass: '65',
+          phaseType: 'Three - Phase',
+          popular: true
         }
       ]
     },

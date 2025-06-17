@@ -30,8 +30,7 @@ const App = () => {
             <Route
               path='/dc-fast-charging-station'
               element={<DCFastChargingStation />}
-            />
-            <Route
+            />            <Route
               path='/portable-ev-charging'
               element={<PortableEVCharging />}
             />
