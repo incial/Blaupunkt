@@ -6,6 +6,7 @@ import OverviewSection from '../Components/Common/Overview/OverviewSection'
 import OverviewAdvantage from '../Components/Common/Overview/OverviewAdvantage'
 import OverviewFeatureasandideal from '../Components/Common/Overview/OverviewFeatureasandideal'
 import DownloadButton from '../Components/CommonPages/DownlaodButton'
+import Models from '../Components/CommonPages/Models.jsx'
 import { Entirepagedata } from '../Utils/data.js'
 import dcFastChargingStationImage from '../assets/Images/DC_Fast_Charging_Station.png'
 
@@ -46,10 +47,10 @@ const DCFastChargingStation = () => {
       <OverviewSection overviewData={{...OverviewData, category: 'dcFastChargingStation', image: dcFastChargingStationImage}} />
       <OverviewAdvantage overviewData={{...OverviewData, category: 'dcFastChargingStation'}} />
       <OverviewFeatureasandideal overviewData={{...OverviewData, category: 'dcFastChargingStation', IdealandFeaturesImage: dcFastChargingStationImage}} />
-        <Specifications 
-        productImage={dcFastChargingStationImage}
+        <Specifications        productImage={dcFastChargingStationImage}
         category="dcFastChargingStation"
       />
+      <Models productImage={dcFastChargingStationImage} category='dcFastChargingStation' />
       <DownloadButton productCategory='dcFastChargingStation' />
     </div>
   )

@@ -42,37 +42,183 @@ const Models = ({ productImage, category }) => {
   const [chargingSpeedOpen, setChargingSpeedOpen] = useState(false)
   const [connectorTypeOpen, setConnectorTypeOpen] = useState(false)
   const [phaseTypeOpen, setPhaseTypeOpen] = useState(false)
+  
+  // Group models by section (for charging cables) or length
+  const groupModelsByCableLength = (models) => {
+    const groups = {};
+    
+    if (!models || models.length === 0) return groups;
+    
+    models.forEach(model => {
+      // Use the section property if available (for charging cables)
+      if (model.section) {
+        const sectionKey = model.section;
+        
+        // Initialize the group if it doesn't exist
+        if (!groups[sectionKey]) {
+          groups[sectionKey] = [];
+        }
+        
+        // Add the model to its group
+        groups[sectionKey].push(model);
+        return;
+      }
+      
+      // Fallback to cable length if section is not available
+      const cableLengthValue = model.cableLength || model.dimensions || model.length || '';
+      
+      // Extract just the numeric value with unit (e.g., "2 Meters")
+      let lengthKey = 'Other';
+      
+      if (cableLengthValue) {
+        // Try to extract the length value (e.g., "2 Meters" -> "2 Meter")
+        const match = cableLengthValue.toString().match(/(\d+)\s*([A-Za-z]+)/);
+        if (match) {
+          const value = match[1];
+          const unit = match[2].toLowerCase().startsWith('meter') ? 'Meter' : match[2];
+          lengthKey = `${value} ${unit}`;
+          
+          // Standardize to singular form for consistency in headers
+          if (unit.toLowerCase().endsWith('s')) {
+            lengthKey = `${value} ${unit.substring(0, unit.length - 1)}`;
+          }
+        }
+      }
+      
+      // Initialize the group if it doesn't exist
+      if (!groups[lengthKey]) {
+        groups[lengthKey] = [];
+      }
+      
+      // Add the model to its group
+      groups[lengthKey].push(model);
+    });
+    
+    return groups;
+  };
 
-  // Get models data based on category with error handling
-  const getModelsData = () => {
+  // Group models by category (Basic, Smart, etc.)
+  const groupModelsByCategory = (models) => {
+    const groups = {};
+    
+    if (!models || models.length === 0) return groups;
+    
+    models.forEach(model => {
+      // Extract the category - could be stored in different properties
+      const categoryValue = model.category || model.type || 'Basic';
+      
+      // Use default category if none specified
+      const categoryKey = categoryValue || 'Basic';
+      
+      // Initialize the group if it doesn't exist
+      if (!groups[categoryKey]) {
+        groups[categoryKey] = [];
+      }
+      
+      // Add the model to its category group
+      groups[categoryKey].push(model);
+    });
+    
+    // Ensure "Basic" category comes first if it exists
+    const orderedGroups = {};
+    if (groups['Basic']) orderedGroups['Basic'] = groups['Basic'];
+    if (groups['Smart']) orderedGroups['Smart'] = groups['Smart'];
+    if (groups['Full']) orderedGroups['Full'] = groups['Full'];
+
+    // Add any other categories
+    Object.keys(groups).forEach(key => {
+      if (key !== 'Basic' && key !== 'Smart' && key !== 'Full') {
+        orderedGroups[key] = groups[key];
+      }
+    });
+    
+    return orderedGroups;
+  };
+
+  // Get models data from the page data based on the current category
+  const modelsData = useMemo(() => {
+    // Get models data based on category with error handling
     try {
+      let pageData;
       switch (category) {
         case 'chargingCables':
-          return Entirepagedata.chargingCables?.modelsData || { models: [] }
+          pageData = Entirepagedata.chargingCables;
+          return {
+            ...pageData?.modelsData || { models: [] },
+            groupingMethod: pageData?.modelsData?.groupingMethod || 'length',
+            additionalText: pageData?.modelsData?.additionalText || ''
+          };
         case 'chargingStations':
-          return Entirepagedata.chargingStations?.modelsData || { models: [] }
+          pageData = Entirepagedata.chargingStations;
+          return {
+            ...pageData?.modelsData || { models: [] },
+            groupingMethod: pageData?.modelsData?.groupingMethod || 'category',
+            additionalText: pageData?.modelsData?.additionalText || ''
+          };
         case 'dcChargingStation':
-          return Entirepagedata.dcChargingStation?.modelsData || { models: [] }
+          pageData = Entirepagedata.dcChargingStation;
+          return {
+            ...pageData?.modelsData || { models: [] },
+            groupingMethod: pageData?.modelsData?.groupingMethod || 'category',
+            additionalText: pageData?.modelsData?.additionalText || ''
+          };
         case 'dcFastChargingStation':
-          return Entirepagedata.dcFastChargingStation?.modelsData || { models: [] }
+          pageData = Entirepagedata.dcFastChargingStation;
+          return {
+            ...pageData?.modelsData || { models: [] },
+            groupingMethod: pageData?.modelsData?.groupingMethod || 'category',
+            additionalText: pageData?.modelsData?.additionalText || ''
+          };
         case 'portableEVCharging':
-          return Entirepagedata.portableEVCharging?.modelsData || { models: [] }
+          pageData = Entirepagedata.portableEVCharging;
+          return {
+            ...pageData?.modelsData || { models: [] },
+            groupingMethod: pageData?.modelsData?.groupingMethod || 'category',
+            additionalText: pageData?.modelsData?.additionalText || ''
+          };
         default:
-          return { models: [] }
+          return { 
+            models: [],
+            groupingMethod: 'length',
+            additionalText: ''
+          };
       }
     } catch (error) {
       console.error('Error getting models data:', error)
-      return { models: [] }
+      return { 
+        models: [],
+        groupingMethod: 'length', 
+        additionalText: ''
+      };
     }
-  }
-
-  const modelsData = getModelsData()
+  }, [category])
+  
   const [filteredModels, setFilteredModels] = useState(modelsData.models || [])
+  const [groupedModels, setGroupedModels] = useState({})
 
   // Update filtered models when modelsData changes
   useEffect(() => {
     setFilteredModels(modelsData.models || [])
   }, [modelsData])
+  
+  // The grouping method is taken directly from modelsData
+  
+  // Update grouped models when filtered models change or grouping method changes
+  useEffect(() => {
+    if (modelsData.groupingMethod === 'none' || 
+        category === 'dcChargingStation' || 
+        category === 'dcFastChargingStation' || 
+        category === 'portableEVCharging') {
+      // For 'none' grouping or specific categories, put all models under a single key to avoid categories
+      setGroupedModels({ '': filteredModels });
+    } else if (modelsData.groupingMethod === 'category') {
+      setGroupedModels(groupModelsByCategory(filteredModels));
+    } else if (modelsData.groupingMethod === 'section') {
+      setGroupedModels(groupModelsByCableLength(filteredModels));
+    } else {
+      setGroupedModels(groupModelsByCableLength(filteredModels));
+    }
+  }, [filteredModels, modelsData.groupingMethod, category])
 
   // Get unique filter options from current models data using useMemo
   const { connectorTypes, phaseTypes } = useMemo(() => {
@@ -270,18 +416,25 @@ const Models = ({ productImage, category }) => {
       <div className='w-full'>
         {/* Mobile Layout - Stacked */}
         <div className='block lg:hidden'>
-          <ImageHeader
-            title='Models'
-            backgroundImage={'/src/assets/Images/charger.jpg'}
-            showBackgroundImage={true}
-            textColor={{
-              mobile: 'text-white',
-              desktop: 'text-gray-800'
-            }}
-            className='font-semibold md:text-left px-40'
-            desktopClassName='py-0'
-            mobileClassName='py-0'
-          />
+          <div>
+            <ImageHeader
+              title='Models'
+              backgroundImage={'/src/assets/Images/charger.jpg'}
+              showBackgroundImage={true}
+              textColor={{
+                mobile: 'text-white',
+                desktop: 'text-gray-800'
+              }}
+              className='font-semibold md:text-left px-40'
+              desktopClassName='py-0'
+              mobileClassName='py-0'
+            />
+            {modelsData.additionalText && (
+              <div className='px-4 py-2'>
+                <span className='text-sm text-gray-600'>{modelsData.additionalText}</span>
+              </div>
+            )}
+          </div>
 
           {/* Filters */}
           <FiltersContainer
@@ -304,9 +457,12 @@ const Models = ({ productImage, category }) => {
         <div className='hidden lg:block'>
           <div className='container mx-auto px-8'>
             <div className='flex flex-row items-center justify-between py-4'>
-              {/* Models Title */}
-              <div>
+              {/* Models Title with optional additional text */}
+              <div className="flex items-center gap-3">
                 <h1 className='text-4xl font-semibold text-gray-800'>Models</h1>
+                {modelsData.additionalText && (
+                  <span className='text-lg text-gray-600'>{modelsData.additionalText}</span>
+                )}
               </div>
 
               {/* All filters as dropdown buttons in a single row */}
@@ -521,6 +677,8 @@ const Models = ({ productImage, category }) => {
                 </button>
               </div>
             </div>
+
+            {/* No view toggle, always use grouped view */}
           </div>
 
           {/* Hidden FiltersContainer to maintain state but not show the default UI */}
@@ -564,21 +722,78 @@ const Models = ({ productImage, category }) => {
             <div className='mb-4 text-gray-600'>
               Showing {filteredModels.length} of {modelsData.models?.length || 0} models
             </div>
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6'>
-              {filteredModels.map((model, index) => (
-                <div key={model.modelCode || model.name || `model-${index}`}>
-                  <ModelCard
-                    image={productImage}
-                    modelCode={model.modelCode || model.name || `Model ${index + 1}`}
-                    connectorType={model.connectorType || model.connector || 'N/A'}
-                    current={model.current || model.ratedCurrent || model.amperage || 'N/A'}
-                    cableLength={model.cableLength || model.dimensions || model.length || 'N/A'}
-                    ipClass={model.ipClass || model.protection || model.ipRating || 'N/A'}
-                    phaseType={model.phaseType || model.phase || model.phases || 'N/A'}
-                  />
-                </div>
-              ))}
-            </div>
+            
+            {/* Always show Grouped View */}
+            {Object.keys(groupedModels).length > 0 ? (
+              <div className="space-y-12">
+                {Object.entries(groupedModels)
+                  .sort(([keyA], [keyB]) => {
+                    // For cable length or section, sort numerically
+                    if (modelsData.groupingMethod === 'length' || modelsData.groupingMethod === 'section') {
+                      const numA = parseInt(keyA.match(/^\d+/) || "999");
+                      const numB = parseInt(keyB.match(/^\d+/) || "999");
+                      return numA - numB;
+                    }
+                    // For categories, keep the order (already sorted in groupModelsByCategory)
+                    return 0;
+                  })
+                  .map(([groupKey, models]) => (
+                  <div key={groupKey} className={`${(category === 'dcChargingStation' || 
+                                               category === 'dcFastChargingStation' || 
+                                               category === 'portableEVCharging') ? '' : 'mb-8'}`}>
+                    {/* Category or Cable Length/Section Heading - Hidden for DC charging stations and portable chargers */}
+                    {(groupKey !== '') && !(category === 'dcChargingStation' || 
+                                          category === 'dcFastChargingStation' || 
+                                          category === 'portableEVCharging') && (
+                      <div className="flex items-baseline gap-3 mb-6 border-b border-gray-200 pb-2">
+                        <h2 className="text-2xl font-semibold text-blaupunkt-primary-darker">
+                          {groupKey}
+                        </h2>
+                        {category === 'chargingStations' && modelsData.categoryDescriptions && (
+                          <span className="text-sm text-gray-500 font-normal">
+                            {modelsData.categoryDescriptions[groupKey]}
+                          </span>
+                        )}
+                      </div>
+                    )}
+                    
+                    {/* Products Grid for this category */}
+                    <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6'>
+                      {models.map((model, index) => (
+                        <div key={model.modelCode || model.name || `model-${groupKey}-${index}`}>
+                          <ModelCard
+                            image={productImage}
+                            modelCode={model.modelCode || model.name || `Model ${index + 1}`}
+                            connectorType={model.connectorType || model.connector || 'N/A'}
+                            current={model.current || model.ratedCurrent || model.amperage || 'N/A'}
+                            cableLength={model.cableLength || model.dimensions || model.length || 'N/A'}
+                            ipClass={model.ipClass || model.protection || model.ipRating || 'N/A'}
+                            phaseType={model.phaseType || model.phase || model.phases || 'N/A'}
+                          />
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              /* Fallback to standard view if grouping doesn't work */
+              <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6'>
+                {filteredModels.map((model, index) => (
+                  <div key={model.modelCode || model.name || `model-${index}`}>
+                    <ModelCard
+                      image={productImage}
+                      modelCode={model.modelCode || model.name || `Model ${index + 1}`}
+                      connectorType={model.connectorType || model.connector || 'N/A'}
+                      current={model.current || model.ratedCurrent || model.amperage || 'N/A'}
+                      cableLength={model.cableLength || model.dimensions || model.length || 'N/A'}
+                      ipClass={model.ipClass || model.protection || model.ipRating || 'N/A'}
+                      phaseType={model.phaseType || model.phase || model.phases || 'N/A'}
+                    />
+                  </div>
+                ))}
+              </div>
+            )}
           </>
         ) : (
           <div className='text-center py-12'>

@@ -1,28 +1,101 @@
 // Import background images from assets
 import { bgImgs } from './assets.js'
 
+// Utility functions to reduce code repetition
+const createBreadcrumbs = (pageName, path) => [
+  { text: 'Home', path: '/' },
+  { text: 'Electric Vehicle Charging Equipment', path: '/ev-charging' },
+  { text: pageName, path, active: true }
+];
+
+const createThumbnails = (imageName) => Array.from({ length: 5 }, (_, i) => ({
+  src: imageName,
+  alt: `${imageName.split('.')[0]} View ${i + 1}`
+}));
+
+const createMontaIntegrationData = (isActive = true) => ({
+  subheading: 'Advantages Monta Backend Integration:',
+  active: isActive,
+  listItems: [
+    'Effortless Setup: With pre-configuration, your charging station is ready to use right out of the box. No need for complex installations or technical adjustments – simply plug in and charge.',
+    'Enhanced Control and Monitoring: Through the Monta platform, gain full control over your charging sessions. Monitor energy usage, set charging schedules, and access detailed reports, all from a user-friendly interface.',
+    'Optimized Charging Efficiency: The pre-configuration ensures that your charging station operates at peak performance, delivering up to 11KW or 22 KW of power depending on the model. The charging capacity can be set between 8A and 32A depending on the model.',
+    'Integrated Safety Features: The inbuilt 6mA DC RCM provides the highest level of protection, eliminating the need for an additional DC protection RCCB during installation, ensuring your home and vehicle are safeguarded at all times.',
+    'Future-Ready Technology: Stay ahead with automatic updates and continuous feature enhancements via the Monta backend, keeping your charging station aligned with the latest technological advancements.'
+  ]
+});
+
+const createStandardFeatures = () => ({
+  active: true,
+  title: 'Features',
+  data: [
+    'High-quality copper conductors for efficient power transfer',
+    'Flexible and durable PVC insulation for long-lasting performance',
+    'Ergonomic design for easy handling and connection',
+    'Built-in LED indicator for charging status',
+    'Reinforced connectors for secure and stable connections'
+  ]
+});
+
+const createSupplierData = (manufacturer, suppliers) => ({
+  manufacturer,
+  suppliers: suppliers.map(supplier => ({
+    name: supplier.name,
+    region: supplier.region,
+    contact: supplier.contact,
+    specialization: supplier.specialization
+  }))
+});
+
+// Create model data for different product types
+const createCableModels = (sections) => {
+  const models = [];
+  sections.forEach(section => {
+    section.models.forEach(model => {
+      models.push({
+        modelCode: model.modelCode,
+        connectorType: model.connectorType,
+        current: model.current,
+        cableLength: model.cableLength,
+        ipClass: model.ipClass || '65',
+        phaseType: model.phaseType,
+        popular: model.popular || false,
+        section: section.name
+      });
+    });
+  });
+  return models;
+};
+
+// Create highlights data with common structure  
+const createHighlightsData = (title, features) => ({
+  title,
+  features: features.map(feature => ({
+    title: feature.title,
+    description: feature.description,
+    icon: feature.icon
+  }))
+});
+
+// Create specifications data with common structure
+const createSpecificationsData = (title, specs) => ({
+  title,
+  specs: specs.map(spec => ({
+    label: spec.label,
+    value: spec.value
+  }))
+});
+
 // Hero section data for different pages
-export const Entirepagedata = {
-  chargingCables: {
+export const Entirepagedata = {  chargingCables: {
     title: 'EV Charging Cables',
-    description:
-      'Durable, efficient, and compatible with most electric vehicles.',
+    description: 'Durable, efficient, and compatible with most electric vehicles.',
     active: true,
-    breadcrumbs: [
-      { text: 'Home', path: '/' },
-      { text: 'Electric Vehicle Charging Equipment', path: '/ev-charging' },
-      { text: 'EV Charging Cables', path: '/charging-cables', active: true }
-    ],
+    breadcrumbs: createBreadcrumbs('EV Charging Cables', '/charging-cables'),
     buttonText: 'Connect',
     mainImage: 'Product_image.png',
     imageAlt: 'EV Charging Cable',
-    thumbnails: [
-      { src: 'Product_image.png', alt: 'Cable Front View' },
-      { src: 'Product_image.png', alt: 'Cable Connector' },
-      { src: 'Product_image.png', alt: 'Cable in Use' },
-      { src: 'Product_image.png', alt: 'Cable Specifications' },
-      { src: 'Product_image.png', alt: 'Cable Storage' }
-    ],
+    thumbnails: createThumbnails('Product_image.png'),
     OverviewData: {
       BgImage: bgImgs.evChargingCables,
       
@@ -39,19 +112,8 @@ export const Entirepagedata = {
           },
           {
             subheading: 'Pre-Configured for Seamless Integration',
-            text: 'What sets this charging station apart is its pre-configuration with the Monta backend. This advanced feature allows for a quick and hassle-free setup, enabling you to start charging immediately with minimal effort.'
-          },
-          {
-            subheading: 'Advantages Monta Backend Integration:',
-            active: false,
-            listItems: [
-              'Effortless Setup: With pre-configuration, your charging station is ready to use right out of the box. No need for complex installations or technical adjustments – simply plug in and charge.',
-              'Enhanced Control and Monitoring: Through the Monta platform, gain full control over your charging sessions. Monitor energy usage, set charging schedules, and access detailed reports, all from a user-friendly interface.',
-              'Optimized Charging Efficiency: The pre-configuration ensures that your charging station operates at peak performance, delivering up to 11KW or 22 KW of power depending on the model. The charging capacity can be set between 8A and 32A depending on the model.',
-              'Integrated Safety Features: The inbuilt 6mA DC RCM provides the highest level of protection, eliminating the need for an additional DC protection RCCB during installation, ensuring your home and vehicle are safeguarded at all times.',
-              'Future-Ready Technology: Stay ahead with automatic updates and continuous feature enhancements via the Monta backend, keeping your charging station aligned with the latest technological advancements.'
-            ]
-          }
+            text: 'What sets this charging station apart is its pre-configuration with the Monta backend. This advanced feature allows for a quick and hassle-free setup, enabling you to start charging immediately with minimal effort.'          },
+          createMontaIntegrationData(false)
         ]
       },
       list: {
@@ -68,17 +130,7 @@ export const Entirepagedata = {
         ]
       },
       IdealandFeaturesImage: 'Product_image.png',
-      features: {
-        active: false,
-        title: 'Features',
-        data: [
-          'High-quality copper conductors for efficient power transfer',
-          'Flexible and durable PVC insulation for long-lasting performance',
-          'Ergonomic design for easy handling and connection',
-          'Built-in LED indicator for charging status',
-          'Reinforced connectors for secure and stable connections'
-        ]
-      },
+      features: createStandardFeatures(),
       ideal: {
         active: false,
         title: 'Ideal',
@@ -90,148 +142,73 @@ export const Entirepagedata = {
         ]
       },
       image: 'Product_image.png'
-    },
-    highlightsData: {
-      title: 'Key Features',
-      features: [
+    },    highlightsData: createHighlightsData('Key Features', [
+      { title: 'Universal Compatibility', description: 'Works with Tesla, BMW, Audi, and all major EV brands', icon: 'compatibility' },
+      { title: 'Weather Resistant', description: 'IP67 rated for all-weather outdoor use', icon: 'weather' },
+      { title: 'Fast Charging', description: 'Supports up to 32A charging current', icon: 'speed' },
+      { title: 'Portable Design', description: 'Lightweight and easy to store in your vehicle', icon: 'portable' }
+    ]),    specificationsData: createSpecificationsData('Specifications', [
+      { label: 'Charging Current', value: '16A / 32A' },
+      { label: 'Voltage', value: '230V AC' },
+      { label: 'Cable Length', value: '5m / 7.5m / 10m' },
+      { label: 'Connector Type', value: 'Type 1 / Type 2' },
+      { label: 'Protection Rating', value: 'IP67' },
+      { label: 'Operating Temperature', value: '-30°C to +50°C' },
+      { label: 'Cable Diameter', value: '32mm' },
+      { label: 'Weight', value: '3.2kg (5m version)' }
+    ]),modelsData: {
+      title: 'Models',
+      groupingMethod: 'section',
+      additionalText: '',
+      models: createCableModels([
         {
-          title: 'Universal Compatibility',
-          description: 'Works with Tesla, BMW, Audi, and all major EV brands',
-          icon: 'compatibility'
+          name: '2 Meter Section',
+          models: [
+            { modelCode: 'B1P16AT1', connectorType: 'Type 1', current: '16A', cableLength: '2 Meters', phaseType: 'Single - Phase' },
+            { modelCode: 'B2P16AT1', connectorType: 'Type 2', current: '16A', cableLength: '2 Meters', phaseType: 'Single - Phase' },
+            { modelCode: 'B2P32AT1', connectorType: 'Type 2', current: '32A', cableLength: '2 Meters', phaseType: 'Three - Phase' }
+          ]
         },
         {
-          title: 'Weather Resistant',
-          description: 'IP67 rated for all-weather outdoor use',
-          icon: 'weather'
-        },
-        {
-          title: 'Fast Charging',
-          description: 'Supports up to 32A charging current',
-          icon: 'speed'
-        },
-        {
-          title: 'Portable Design',
-          description: 'Lightweight and easy to store in your vehicle',
-          icon: 'portable'
+          name: '5 Meter Section',
+          models: [
+            { modelCode: 'B1P16AT2', connectorType: 'Type 1', current: '16A', cableLength: '5 Meters', phaseType: 'Single - Phase', popular: true },
+            { modelCode: 'B2P16AT2', connectorType: 'Type 2', current: '16A', cableLength: '5 Meters', phaseType: 'Single - Phase' },
+            { modelCode: 'B2P32AT2', connectorType: 'Type 2', current: '32A', cableLength: '5 Meters', phaseType: 'Three - Phase', popular: true }
+          ]
         }
-      ]
+      ])
     },
-    specificationsData: {
-      title: 'Specifications',
-      specs: [
-        { label: 'Charging Current', value: '16A / 32A' },
-        { label: 'Voltage', value: '230V AC' },
-        { label: 'Cable Length', value: '5m / 7.5m / 10m' },
-        { label: 'Connector Type', value: 'Type 1 / Type 2' },
-        { label: 'Protection Rating', value: 'IP67' },
-        { label: 'Operating Temperature', value: '-30°C to +50°C' },
-        { label: 'Cable Diameter', value: '32mm' },
-        { label: 'Weight', value: '3.2kg (5m version)' }
-      ]
-    },    modelsData: {
-      title: 'Available Models',
-      models: [
-        {
-          modelCode: 'B1P16AT1',
-          connectorType: 'Type 1',
-          current: '16A',
-          cableLength: '2 Meters',
-          ipClass: '65',
-          phaseType: 'Single - Phase',
-          popular: false
-        },
-        {
-          modelCode: 'B1P16AT2',
-          connectorType: 'Type 1',
-          current: '16A',
-          cableLength: '5 Meters',
-          ipClass: '65',
-          phaseType: 'Single - Phase',
-          popular: true
-        },
-        {
-          modelCode: 'B2P16AT1',
-          connectorType: 'Type 2',
-          current: '16A',
-          cableLength: '2 Meters',
-          ipClass: '65',
-          phaseType: 'Single - Phase',
-          popular: false
-        },
-        {
-          modelCode: 'B2P16AT2',
-          connectorType: 'Type 2',
-          current: '16A',
-          cableLength: '5 Meters',
-          ipClass: '65',
-          phaseType: 'Single - Phase',
-          popular: false
-        },
-        {
-          modelCode: 'B2P32AT1',
-          connectorType: 'Type 2',
-          current: '32A',
-          cableLength: '2 Meters',
-          ipClass: '65',
-          phaseType: 'Three - Phase',
-          popular: false
-        },
-        {
-          modelCode: 'B2P32AT2',
-          connectorType: 'Type 2',
-          current: '32A',
-          cableLength: '5 Meters',
-          ipClass: '65',
-          phaseType: 'Three - Phase',
-          popular: true
-        }
-      ]
-    },
-    supplierData: {
-      manufacturer: 'Blaupunkt Technologies',
-      suppliers: [
-        {
-          name: 'EV Components Ltd',
-          region: 'Europe',
-          contact: 'europe@evcomponents.com',
-          specialization: 'Cable assemblies and connectors'
-        },
-        {
-          name: 'PowerTech Solutions',
-          region: 'North America',
-          contact: 'na@powertech.com',
-          specialization: 'Charging infrastructure'
-        },
-        {
-          name: 'GreenCharge Industries',
-          region: 'Asia Pacific',
-          contact: 'apac@greencharge.com',
-          specialization: 'Portable charging solutions'
-        }
-      ]
-    }
+    supplierData: createSupplierData('Blaupunkt Technologies', [
+      {
+        name: 'EV Components Ltd',
+        region: 'Europe',
+        contact: 'europe@evcomponents.com',
+        specialization: 'Cable assemblies and connectors'
+      },
+      {
+        name: 'PowerTech Solutions',
+        region: 'North America',
+        contact: 'na@powertech.com',
+        specialization: 'Charging infrastructure'
+      },
+      {
+        name: 'GreenCharge Industries',
+        region: 'Asia Pacific',
+        contact: 'apac@greencharge.com',
+        specialization: 'Portable charging solutions'
+      }
+    ])
   },
-
   chargingStations: {
     title: 'Charging Stations',
-    description:
-      'Reliable and efficient charging solutions for your electric vehicle.',
+    description: 'Reliable and efficient charging solutions for your electric vehicle.',
     active: true,
-    breadcrumbs: [
-      { text: 'Home', path: '/' },
-      { text: 'Electric Vehicle Charging Equipment', path: '/ev-charging' },
-      { text: 'Charging Stations', path: '/charging-stations', active: true }
-    ],
+    breadcrumbs: createBreadcrumbs('Charging Stations', '/charging-stations'),
     buttonText: 'Learn More',
     mainImage: 'Charging_Stations.png',
     imageAlt: 'EV Charging Station',
-    thumbnails: [
-      { src: 'Charging_Stations.png', alt: 'Charging Station Front' },
-      { src: 'Charging_Stations.png', alt: 'Charging Station Side' },
-      { src: 'Charging_Stations.png', alt: 'Charging Station Interface' },
-      { src: 'Charging_Stations.png', alt: 'Charging Station in Use' },
-      { src: 'Charging_Stations.png', alt: 'Charging Station Features' }
-    ],
+    thumbnails: createThumbnails('Charging_Stations.png'),
     OverviewData: {
       BgImage: bgImgs.chargingStations,
       para: {
@@ -250,17 +227,7 @@ export const Entirepagedata = {
             subheading: 'Pre-Configured for Seamless Integration',
             text: 'What sets this charging station apart is its pre-configuration with the Monta backend. This advanced feature allows for a quick and hassle-free setup, enabling you to start charging immediately with minimal effort.'
           },
-          {
-            subheading: 'Advantages Monta Backend Integration:',
-            active: true,
-            listItems: [
-              'Effortless Setup: With pre-configuration, your charging station is ready to use right out of the box. No need for complex installations or technical adjustments – simply plug in and charge.',
-              'Enhanced Control and Monitoring: Through the Monta platform, gain full control over your charging sessions. Monitor energy usage, set charging schedules, and access detailed reports, all from a user-friendly interface.',
-              'Optimized Charging Efficiency: The pre-configuration ensures that your charging station operates at peak performance, delivering up to 11KW or 22 KW of power depending on the model. The charging capacity can be set between 8A and 32A depending on the model.',
-              'Integrated Safety Features: The inbuilt 6mA DC RCM provides the highest level of protection, eliminating the need for an additional DC protection RCCB during installation, ensuring your home and vehicle are safeguarded at all times.',
-              'Future-Ready Technology: Stay ahead with automatic updates and continuous feature enhancements via the Monta backend, keeping your charging station aligned with the latest technological advancements.'
-            ]
-          }
+          createMontaIntegrationData(true),
         ]
       },
       list: {
@@ -276,17 +243,7 @@ export const Entirepagedata = {
         ]
       },
       IdealandFeaturesImage: 'Product_image.png',
-            features: {
-        active: true,
-        title: 'Features',
-        data: [
-          'High-quality copper conductors for efficient power transfer',
-          'Flexible and durable PVC insulation for long-lasting performance',
-          'Ergonomic design for easy handling and connection',
-          'Built-in LED indicator for charging status',
-          'Reinforced connectors for secure and stable connections'
-        ]
-      },
+            features: createStandardFeatures(),
       ideal: {
         active: true,
         title: 'Ideal For',
@@ -302,106 +259,237 @@ export const Entirepagedata = {
         desktop: '1000px'
       },
       image: 'Charging_Stations.png'
-    },
-    highlightsData: {
-      title: 'Station Features',
-      features: [
+    },    highlightsData: createHighlightsData('Station Features', [
+      { title: 'Smart Connectivity', description: 'WiFi and 4G connectivity for remote monitoring', icon: 'connectivity' },
+      { title: 'Multiple Outlets', description: 'Charge up to 2 vehicles simultaneously', icon: 'multiple' },
+      { title: 'Energy Management', description: 'Built-in load balancing and power management', icon: 'energy' },
+      { title: 'User Authentication', description: 'RFID cards and mobile app authentication', icon: 'security' }
+    ]),    specificationsData: createSpecificationsData('Specifications', [
+      { label: 'Power Output', value: '7.4kW / 11kW / 22kW' },
+      { label: 'Input Voltage', value: '400V AC 3-phase' },
+      { label: 'Charging Ports', value: '1 or 2 Type 2 outlets' },
+      { label: 'Protection', value: 'IP54 rated enclosure' },
+      { label: 'Communication', value: 'WiFi, 4G, Ethernet' },
+      { label: 'Display', value: '7-inch color touchscreen' },
+      { label: 'Dimensions', value: '1200 x 300 x 200mm' },
+      { label: 'Weight', value: '45kg' }    ]),    modelsData: {
+      title: 'Models',
+      groupingMethod: 'section',
+      additionalText: '',
+      descriptiveText: 'Our comprehensive range of charging stations is designed to meet the diverse needs of residential, commercial, and public charging applications. Each model combines German engineering excellence with cutting-edge technology to deliver reliable, efficient, and safe charging solutions.',
+      sections: [
         {
-          title: 'Smart Connectivity',
-          description: 'WiFi and 4G connectivity for remote monitoring',
-          icon: 'connectivity'
+          name: 'Stations With Cable',
+          categories: [
+            {
+              name: 'Basic',
+              description: 'Users who need a reliable and secure charging solution without advanced connectivity features.',
+              models: [
+                {
+                  modelCode: 'BW3P32ACB',
+                  maximumPower: '22 kWh',
+                  current: '32A',
+                  cableLength: '5 Meters',
+                  phaseType: 'Three - Phase',
+                  image: 'charging_station_cable.png'
+                },
+                {
+                  modelCode: 'BW3P16ACB',
+                  maximumPower: '11 kWh',
+                  current: '16A',
+                  cableLength: '5 Meters',
+                  phaseType: 'Three - Phase',
+                  image: 'charging_station_cable.png'
+                },
+                {
+                  modelCode: 'BW1P32ACB',
+                  maximumPower: '7.4 kWh',
+                  current: '32A',
+                  cableLength: '5 Meters',
+                  phaseType: 'Single - Phase',
+                  image: 'charging_station_cable.png'
+                }
+              ]
+            },
+            {
+              name: 'Smart',
+              description: 'Users requiring advanced features like remote management, energy monitoring, and integration with smart home systems.',
+              models: [
+                {
+                  modelCode: 'BW3P32ACS',
+                  maximumPower: '22 kWh',
+                  current: '32A',
+                  cableLength: '5 Meters',
+                  phaseType: 'Three - Phase',
+                  image: 'charging_station_cable.png'
+                },
+                {
+                  modelCode: 'BW3P16ACS',
+                  maximumPower: '11 kWh',
+                  current: '16A',
+                  cableLength: '5 Meters',
+                  phaseType: 'Three - Phase',
+                  image: 'charging_station_cable.png'
+                },
+                {
+                  modelCode: 'BW1P32ACS',
+                  maximumPower: '7.4 kWh',
+                  current: '32A',
+                  cableLength: '5 Meters',
+                  phaseType: 'Single - Phase',
+                  image: 'charging_station_cable.png'
+                }
+              ]
+            },
+            {
+              name: 'Full',
+              description: 'Users who need the highest level of connectivity and control, especially in areas with unstable internet connections.',
+              models: [
+                {
+                  modelCode: 'BW3P32ACF',
+                  maximumPower: '22 kWh',
+                  current: '32A',
+                  cableLength: '5 Meters',
+                  phaseType: 'Three - Phase',
+                  image: 'charging_station_cable.png'
+                },
+                {
+                  modelCode: 'BW3P16ACF',
+                  maximumPower: '11 kWh',
+                  current: '16A',
+                  cableLength: '5 Meters',
+                  phaseType: 'Three - Phase',
+                  image: 'charging_station_cable.png'
+                },
+                {
+                  modelCode: 'BW1P16ACF',
+                  maximumPower: '11 kWh',
+                  current: '16A',
+                  cableLength: '5 Meters',
+                  phaseType: 'Single - Phase',
+                  image: 'charging_station_cable.png'
+                }
+              ]
+            }
+          ]
         },
         {
-          title: 'Multiple Outlets',
-          description: 'Charge up to 2 vehicles simultaneously',
-          icon: 'multiple'
-        },
-        {
-          title: 'Energy Management',
-          description: 'Built-in load balancing and power management',
-          icon: 'energy'
-        },
-        {
-          title: 'User Authentication',
-          description: 'RFID cards and mobile app authentication',
-          icon: 'security'
+          name: 'Stations With Socket',
+          categories: [
+            {
+              name: 'Basic',
+              description: 'Users who need a reliable and secure charging solution without advanced connectivity features.',
+              models: [
+                {
+                  modelCode: 'BW3P32ACB',
+                  maximumPower: '22 kWh',
+                  current: '32A',
+                  cableLength: '5 Meters',
+                  phaseType: 'Three - Phase',
+                  image: 'charging_station_socket.png'
+                },
+                {
+                  modelCode: 'BW3P16ACB',
+                  maximumPower: '11 kWh',
+                  current: '16A',
+                  cableLength: '5 Meters',
+                  phaseType: 'Three - Phase',
+                  image: 'charging_station_socket.png'
+                },
+                {
+                  modelCode: 'BW1P32ACB',
+                  maximumPower: '7.4 kWh',
+                  current: '32A',
+                  cableLength: '5 Meters',
+                  phaseType: 'Single - Phase',
+                  image: 'charging_station_socket.png'
+                }
+              ]
+            },
+            {
+              name: 'Smart',
+              description: 'Users requiring advanced features like remote management, energy monitoring, and integration with smart home systems.',
+              models: [
+                {
+                  modelCode: 'BW3P32ACS',
+                  maximumPower: '22 kWh',
+                  current: '32A',
+                  cableLength: '5 Meters',
+                  phaseType: 'Three - Phase',
+                  image: 'charging_station_socket.png'
+                },
+                {
+                  modelCode: 'BW3P16ACS',
+                  maximumPower: '11 kWh',
+                  current: '16A',
+                  cableLength: '5 Meters',
+                  phaseType: 'Three - Phase',
+                  image: 'charging_station_socket.png'
+                },
+                {
+                  modelCode: 'BW1P32ACS',
+                  maximumPower: '7.4 kWh',
+                  current: '32A',
+                  cableLength: '5 Meters',
+                  phaseType: 'Single - Phase',
+                  image: 'charging_station_socket.png'
+                }
+              ]
+            },
+            {
+              name: 'Full',
+              description: 'Users who need the highest level of connectivity and control, especially in areas with unstable internet connections.',
+              models: [
+                {
+                  modelCode: 'BW3P32ACF',
+                  maximumPower: '22 kWh',
+                  current: '32A',
+                  cableLength: '5 Meters',
+                  phaseType: 'Three - Phase',
+                  image: 'charging_station_socket.png'
+                },
+                {
+                  modelCode: 'BW3P16ACF',
+                  maximumPower: '11 kWh',
+                  current: '16A',
+                  cableLength: '5 Meters',
+                  phaseType: 'Three - Phase',
+                  image: 'charging_station_socket.png'
+                },
+                {
+                  modelCode: 'BW1P16ACF',
+                  maximumPower: '11 kWh',
+                  current: '16A',
+                  cableLength: '5 Meters',
+                  phaseType: 'Single - Phase',
+                  image: 'charging_station_socket.png'
+                }
+              ]
+            }
+          ]
         }
       ]
     },
-    specificationsData: {
-      title: 'Specifications',
-      specs: [
-        { label: 'Power Output', value: '7.4kW / 11kW / 22kW' },
-        { label: 'Input Voltage', value: '400V AC 3-phase' },
-        { label: 'Charging Ports', value: '1 or 2 Type 2 outlets' },
-        { label: 'Protection', value: 'IP54 rated enclosure' },
-        { label: 'Communication', value: 'WiFi, 4G, Ethernet' },
-        { label: 'Display', value: '7-inch color touchscreen' },
-        { label: 'Dimensions', value: '1200 x 300 x 200mm' },
-        { label: 'Weight', value: '45kg' }
-      ]
-    },
-    modelsData: {
-      title: 'Available Models',
-      models: [
-        {
-          name: 'Home Station 7.4kW',
-          price: '$1,299',
-          features: [
-            'Single outlet',
-            'WiFi connectivity',
-            'Mobile app',
-            'Wall mounted'
-          ],
-          popular: false
-        },
-        {
-          name: 'Business Station 22kW',
-          price: '$2,899',
-          features: [
-            'Dual outlets',
-            '4G + WiFi',
-            'RFID access',
-            'Pedestal mount'
-          ],
-          popular: true
-        },
-        {
-          name: 'Enterprise Station 22kW',
-          price: '$3,599',
-          features: [
-            'Dual outlets',
-            'Advanced analytics',
-            'Fleet management',
-            'Custom branding'
-          ],
-          popular: false
-        }
-      ]
-    },
-    supplierData: {
-      manufacturer: 'Blaupunkt Technologies',
-      suppliers: [
-        {
-          name: 'StationTech Europe',
-          region: 'Europe',
-          contact: 'stations@stationtech.eu',
-          specialization: 'AC charging stations and infrastructure'
-        },
-        {
-          name: 'ChargePoint Americas',
-          region: 'North America',
-          contact: 'info@chargepoint-am.com',
-          specialization: 'Smart charging solutions'
-        },
-        {
-          name: 'PowerGrid Asia',
-          region: 'Asia Pacific',
-          contact: 'sales@powergrid-asia.com',
-          specialization: 'Commercial charging infrastructure'
-        }
-      ]
-    }
+    supplierData: createSupplierData('Blaupunkt Technologies', [
+      {
+        name: 'StationTech Europe',
+        region: 'Europe',
+        contact: 'stations@stationtech.eu',
+        specialization: 'AC charging stations and infrastructure'
+      },
+      {
+        name: 'ChargePoint Americas',
+        region: 'North America',
+        contact: 'info@chargepoint-am.com',
+        specialization: 'Smart charging solutions'
+      },
+      {
+        name: 'PowerGrid Asia',
+        region: 'Asia Pacific',
+        contact: 'sales@powergrid-asia.com',
+        specialization: 'Commercial charging infrastructure'
+      }
+    ])
   },
   dcChargingStation: {
     title: 'DC Charging Station',
@@ -443,17 +531,7 @@ export const Entirepagedata = {
             subheading: 'Pre-Configured for Seamless Integration',
             text: 'What sets this charging station apart is its pre-configuration with the Monta backend. This advanced feature allows for a quick and hassle-free setup, enabling you to start charging immediately with minimal effort.'
           },
-          {
-            subheading: 'Advantages Monta Backend Integration:',
-            active: true,
-            listItems: [
-              'Effortless Setup: With pre-configuration, your charging station is ready to use right out of the box. No need for complex installations or technical adjustments – simply plug in and charge.',
-              'Enhanced Control and Monitoring: Through the Monta platform, gain full control over your charging sessions. Monitor energy usage, set charging schedules, and access detailed reports, all from a user-friendly interface.',
-              'Optimized Charging Efficiency: The pre-configuration ensures that your charging station operates at peak performance, delivering up to 11KW or 22 KW of power depending on the model. The charging capacity can be set between 8A and 32A depending on the model.',
-              'Integrated Safety Features: The inbuilt 6mA DC RCM provides the highest level of protection, eliminating the need for an additional DC protection RCCB during installation, ensuring your home and vehicle are safeguarded at all times.',
-              'Future-Ready Technology: Stay ahead with automatic updates and continuous feature enhancements via the Monta backend, keeping your charging station aligned with the latest technological advancements.'
-            ]
-          }
+          createMontaIntegrationData(true),
         ]
       },
       list: {
@@ -472,17 +550,7 @@ export const Entirepagedata = {
         ]
       },
       IdealandFeaturesImage: 'Product_image.png',
-            features: {
-        active: true,
-        title: 'Features',
-        data: [
-          'High-quality copper conductors for efficient power transfer',
-          'Flexible and durable PVC insulation for long-lasting performance',
-          'Ergonomic design for easy handling and connection',
-          'Built-in LED indicator for charging status',
-          'Reinforced connectors for secure and stable connections'
-        ]
-      },
+            features: createStandardFeatures(),
       ideal: {
         active: true,
         title: 'Ideal For',
@@ -545,15 +613,17 @@ export const Entirepagedata = {
         {
           label: 'Network Connectivity',
           value: '4G/LTE, WiFi, Ethernet, OCPP 1.6J/2.0'
-        }
-      ]
-    },
-    modelsData: {
-      title: 'Available Models',
+        }      ]
+    },    modelsData: {
+      title: 'Models',
+      groupingMethod: 'none',
+      additionalText: '',
+      descriptiveText: 'Our DC charging stations represent the pinnacle of fast-charging technology, delivering high-power charging capabilities for commercial and public applications. These stations are engineered for high-traffic environments where charging speed and reliability are paramount. Featuring advanced cooling systems, multiple connector options, and robust construction, our DC chargers ensure optimal performance in demanding conditions while maintaining the highest safety standards.',
       models: [
         {
           name: 'DC50 Station',
           price: '$29,999',
+          category: 'Basic',
           features: [
             '50kW output',
             'Single connector',
@@ -563,8 +633,21 @@ export const Entirepagedata = {
           popular: false
         },
         {
+          name: 'DC75 Station',
+          price: '$37,999',
+          category: 'Basic',
+          features: [
+            '75kW output',
+            'Single connector',
+            'Standard display',
+            'Multiple payment options'
+          ],
+          popular: false
+        },
+        {
           name: 'DC100 Station',
           price: '$45,999',
+          category: 'Smart',
           features: [
             '100kW output',
             'Dual connectors',
@@ -574,8 +657,21 @@ export const Entirepagedata = {
           popular: true
         },
         {
+          name: 'DC120 Premium',
+          price: '$53,999',
+          category: 'Smart',
+          features: [
+            '120kW output',
+            'Dual connectors',
+            'Premium interface',
+            'Advanced monitoring'
+          ],
+          popular: false
+        },
+        {
           name: 'DC150 Ultra',
           price: '$65,999',
+          category: 'Full',
           features: [
             '150kW output',
             'Liquid cooling',
@@ -583,6 +679,18 @@ export const Entirepagedata = {
             'Fleet management'
           ],
           popular: false
+        },
+        {
+          name: 'DC175 Enterprise',
+          price: '$79,999',
+          category: 'Full',
+          features: [
+            '175kW output',
+            'Advanced cooling',
+            'Enterprise dashboard',
+            'Grid integration'
+          ],
+          popular: true
         }
       ]
     },
@@ -619,29 +727,26 @@ export const Entirepagedata = {
       ]
     },
 
-    supplierData: {
-      manufacturer: 'Blaupunkt Technologies',
-      suppliers: [
-        {
-          name: 'FastCharge Europe GmbH',
-          region: 'Europe',
-          contact: 'dc@fastcharge.eu',
-          specialization: 'DC fast charging infrastructure'
-        },
-        {
-          name: 'RapidPower USA',
-          region: 'North America',
-          contact: 'sales@rapidpower.com',
-          specialization: 'High-power charging systems'
-        },
-        {
-          name: 'ElectroCharge Solutions',
-          region: 'Asia Pacific',
-          contact: 'info@electrocharge.asia',
-          specialization: 'DC charging technology'
-        }
-      ]
-    }
+    supplierData: createSupplierData('Blaupunkt Technologies', [
+      {
+        name: 'FastCharge Europe GmbH',
+        region: 'Europe',
+        contact: 'dc@fastcharge.eu',
+        specialization: 'DC fast charging infrastructure'
+      },
+      {
+        name: 'RapidPower USA',
+        region: 'North America',
+        contact: 'sales@rapidpower.com',
+        specialization: 'High-power charging systems'
+      },
+      {
+        name: 'ElectroCharge Solutions',
+        region: 'Asia Pacific',
+        contact: 'info@electrocharge.asia',
+        specialization: 'DC charging technology'
+      }
+    ])
   },
 
   dcFastChargingStation: {
@@ -688,17 +793,7 @@ export const Entirepagedata = {
             subheading: 'Pre-Configured for Seamless Integration',
             text: 'What sets this charging station apart is its pre-configuration with the Monta backend. This advanced feature allows for a quick and hassle-free setup, enabling you to start charging immediately with minimal effort.'
           },
-          {
-            subheading: 'Advantages Monta Backend Integration:',
-            active: true,
-            listItems: [
-              'Effortless Setup: With pre-configuration, your charging station is ready to use right out of the box. No need for complex installations or technical adjustments – simply plug in and charge.',
-              'Enhanced Control and Monitoring: Through the Monta platform, gain full control over your charging sessions. Monitor energy usage, set charging schedules, and access detailed reports, all from a user-friendly interface.',
-              'Optimized Charging Efficiency: The pre-configuration ensures that your charging station operates at peak performance, delivering up to 11KW or 22 KW of power depending on the model. The charging capacity can be set between 8A and 32A depending on the model.',
-              'Integrated Safety Features: The inbuilt 6mA DC RCM provides the highest level of protection, eliminating the need for an additional DC protection RCCB during installation, ensuring your home and vehicle are safeguarded at all times.',
-              'Future-Ready Technology: Stay ahead with automatic updates and continuous feature enhancements via the Monta backend, keeping your charging station aligned with the latest technological advancements.'
-            ]
-          }
+          createMontaIntegrationData(true),
         ]
       },
       list: {
@@ -714,17 +809,7 @@ export const Entirepagedata = {
         ]
       },
       IdealandFeaturesImage: 'Product_image.png',
-            features: {
-        active: true,
-        title: 'Features',
-        data: [
-          'High-quality copper conductors for efficient power transfer',
-          'Flexible and durable PVC insulation for long-lasting performance',
-          'Ergonomic design for easy handling and connection',
-          'Built-in LED indicator for charging status',
-          'Reinforced connectors for secure and stable connections'
-        ]
-      },
+            features: createStandardFeatures(),
       ideal: {
         active: true,
         title: 'Ideal For',
@@ -776,14 +861,15 @@ export const Entirepagedata = {
         { label: 'Cooling System', value: 'Liquid + forced air' },
         { label: 'Communication', value: '5G, WiFi, Ethernet' },
         { label: 'Footprint', value: '2000 x 1000 x 800mm' }
-      ]
-    },
-    modelsData: {
-      title: 'Available Models',
+      ]    },    modelsData: {
+      title: 'Models',
+      groupingMethod: 'none',
+      additionalText: '',
       models: [
         {
           name: 'UltraFast 175kW',
           price: '$89,999',
+          category: 'Basic',
           features: [
             '175kW per port',
             '2 charging ports',
@@ -795,6 +881,7 @@ export const Entirepagedata = {
         {
           name: 'UltraFast 350kW',
           price: '$149,999',
+          category: 'Smart',
           features: [
             '350kW total power',
             '4 charging ports',
@@ -806,6 +893,7 @@ export const Entirepagedata = {
         {
           name: 'UltraFast Pro 350kW',
           price: '$199,999',
+          category: 'Full',
           features: [
             '350kW per port',
             '2 premium ports',
@@ -816,29 +904,26 @@ export const Entirepagedata = {
         }
       ]
     },
-    supplierData: {
-      manufacturer: 'Blaupunkt Technologies',
-      suppliers: [
-        {
-          name: 'UltraCharge Systems',
-          region: 'Europe',
-          contact: 'ultra@ultracharge.eu',
-          specialization: 'Ultra-fast charging technology'
-        },
-        {
-          name: 'HyperPower Inc',
-          region: 'North America',
-          contact: 'sales@hyperpower.com',
-          specialization: 'High-power charging infrastructure'
-        },
-        {
-          name: 'NextGen Charging',
-          region: 'Asia Pacific',
-          contact: 'info@nextgen-charging.com',
-          specialization: 'Future charging technologies'
-        }
-      ]
-    }
+    supplierData: createSupplierData('Blaupunkt Technologies', [
+      {
+        name: 'UltraCharge Systems',
+        region: 'Europe',
+        contact: 'ultra@ultracharge.eu',
+        specialization: 'Ultra-fast charging technology'
+      },
+      {
+        name: 'HyperPower Inc',
+        region: 'North America',
+        contact: 'sales@hyperpower.com',
+        specialization: 'High-power charging infrastructure'
+      },
+      {
+        name: 'NextGen Charging',
+        region: 'Asia Pacific',
+        contact: 'info@nextgen-charging.com',
+        specialization: 'Future charging technologies'
+      }
+    ])
   },
 
   portableEVCharging: {
@@ -879,19 +964,8 @@ export const Entirepagedata = {
           },
           {
             subheading: 'Pre-Configured for Seamless Integration',
-            text: 'What sets this charging station apart is its pre-configuration with the Monta backend. This advanced feature allows for a quick and hassle-free setup, enabling you to start charging immediately with minimal effort.'
-          },
-          {
-            subheading: 'Advantages Monta Backend Integration:',
-            active: false,
-            listItems: [
-              'Effortless Setup: With pre-configuration, your charging station is ready to use right out of the box. No need for complex installations or technical adjustments – simply plug in and charge.',
-              'Enhanced Control and Monitoring: Through the Monta platform, gain full control over your charging sessions. Monitor energy usage, set charging schedules, and access detailed reports, all from a user-friendly interface.',
-              'Optimized Charging Efficiency: The pre-configuration ensures that your charging station operates at peak performance, delivering up to 11KW or 22 KW of power depending on the model. The charging capacity can be set between 8A and 32A depending on the model.',
-              'Integrated Safety Features: The inbuilt 6mA DC RCM provides the highest level of protection, eliminating the need for an additional DC protection RCCB during installation, ensuring your home and vehicle are safeguarded at all times.',
-              'Future-Ready Technology: Stay ahead with automatic updates and continuous feature enhancements via the Monta backend, keeping your charging station aligned with the latest technological advancements.'
-            ]
-          }
+            text: 'What sets this charging station apart is its pre-configuration with the Monta backend. This advanced feature allows for a quick and hassle-free setup, enabling you to start charging immediately with minimal effort.'          },
+          createMontaIntegrationData(false)
         ]
       },
       list: {
@@ -906,17 +980,7 @@ export const Entirepagedata = {
           'Travel-friendly carrying case'
         ]
       },
-            features: {
-        active: true,
-        title: 'Features',
-        data: [
-          'High-quality copper conductors for efficient power transfer',
-          'Flexible and durable PVC insulation for long-lasting performance',
-          'Ergonomic design for easy handling and connection',
-          'Built-in LED indicator for charging status',
-          'Reinforced connectors for secure and stable connections'
-        ]
-      },
+            features: createStandardFeatures(),
       ideal: {
         active: true,
         title: 'Ideal For',
@@ -968,14 +1032,15 @@ export const Entirepagedata = {
         { label: 'Weight', value: '1.8kg' },
         { label: 'Dimensions', value: '300 x 200 x 100mm' },
         { label: 'Temperature Range', value: '-20°C to +45°C' }
-      ]
-    },
-    modelsData: {
+      ]    },    modelsData: {
       title: 'Available Models',
+      groupingMethod: 'none',
+      additionalText: '',
       models: [
         {
           name: 'Portable Basic',
           price: '$399',
+          category: 'Basic',
           features: [
             '3.6kW charging',
             '5m cable',
@@ -987,6 +1052,7 @@ export const Entirepagedata = {
         {
           name: 'Portable Smart',
           price: '$599',
+          category: 'Smart',
           features: [
             '3.6kW charging',
             'App control',
@@ -998,6 +1064,7 @@ export const Entirepagedata = {
         {
           name: 'Portable Pro',
           price: '$799',
+          category: 'Full',
           features: [
             '7.2kW charging',
             'Advanced app',
@@ -1008,29 +1075,26 @@ export const Entirepagedata = {
         }
       ]
     },
-    supplierData: {
-      manufacturer: 'Blaupunkt Technologies',
-      suppliers: [
-        {
-          name: 'MobileCharge Europe',
-          region: 'Europe',
-          contact: 'portable@mobilecharge.eu',
-          specialization: 'Portable charging solutions'
-        },
-        {
-          name: 'OnTheGo Power',
-          region: 'North America',
-          contact: 'sales@onthego-power.com',
-          specialization: 'Mobile charging technology'
-        },
-        {
-          name: 'FlexiCharge Asia',
-          region: 'Asia Pacific',
-          contact: 'info@flexicharge.asia',
-          specialization: 'Compact charging devices'
-        }
-      ]
-    }
+    supplierData: createSupplierData('Blaupunkt Technologies', [
+      {
+        name: 'MobileCharge Europe',
+        region: 'Europe',
+        contact: 'portable@mobilecharge.eu',
+        specialization: 'Portable charging solutions'
+      },
+      {
+        name: 'OnTheGo Power',
+        region: 'North America',
+        contact: 'sales@onthego-power.com',
+        specialization: 'Mobile charging technology'
+      },
+      {
+        name: 'FlexiCharge Asia',
+        region: 'Asia Pacific',
+        contact: 'info@flexicharge.asia',
+        specialization: 'Compact charging devices'
+      }
+    ])
   },
 
   // HomePage data

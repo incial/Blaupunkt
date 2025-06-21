@@ -2,12 +2,13 @@
   "name": "blaupunkt",
   "private": true,
   "version": "0.0.0",
-  "type": "module",
-  "scripts": {
+  "type": "module",  "scripts": {
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "init-data-manager": "node scripts/init-data-manager.js",
+    "start-data-server": "cd server && npm run dev"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.8",

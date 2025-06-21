@@ -5,6 +5,7 @@ import ImageHeader from '../Components/Common/ImageHeader'
 import OverviewSection from '../Components/Common/Overview/OverviewSection'
 import OverviewFeatureasandideal from '../Components/Common/Overview/OverviewFeatureasandideal'
 import DownloadButton from '../Components/CommonPages/DownlaodButton'
+import Models from '../Components/CommonPages/Models.jsx'
 import { Entirepagedata } from '../Utils/data.js'
 import portableEVChargingImage from '../assets/Images/Portable_EV_Charging.png'
 
@@ -44,10 +45,10 @@ const PortableEVCharging = () => {
         showBackgroundImage={!!OverviewData?.BgImage}
       />      {/* All three overview components for Portable EV Charging */}
       <OverviewSection overviewData={{...OverviewData, category: 'portableEVCharging', image: portableEVChargingImage}} />
-      <OverviewFeatureasandideal overviewData={{...OverviewData, category: 'portableEVCharging', IdealandFeaturesImage: portableEVChargingImage}} />      <Specifications
-        productImage={portableEVChargingImage}
+      <OverviewFeatureasandideal overviewData={{...OverviewData, category: 'portableEVCharging', IdealandFeaturesImage: portableEVChargingImage}} />      <Specifications        productImage={portableEVChargingImage}
         category="portableEVCharging"
       />
+      <Models productImage={portableEVChargingImage} category='portableEVCharging' />
       <DownloadButton productCategory='portableEVCharging' />
     </div>
   )

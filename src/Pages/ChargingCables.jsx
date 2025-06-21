@@ -49,7 +49,8 @@ const ChargingCables = () => {
             category: 'chargingCables',
             image: productImage
           }}
-        />      </div>
+        />{' '}
+      </div>
       <Specifications productImage={productImage} category='chargingCables' />
       <Models productImage={productImage} category='chargingCables' />
       <DownloadButton productCategory='chargingCables' />
