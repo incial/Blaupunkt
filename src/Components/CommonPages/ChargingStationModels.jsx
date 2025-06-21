@@ -1,10 +1,12 @@
 import React from 'react'
 import ImageHeader from '../Common/ImageHeader'
 import { Entirepagedata } from '../../Utils/data'
+import chargingStationsImage from '../../assets/Images/Charging_Stations.png'
+import dcChargingStationImage from '../../assets/Images/DC_Charging_Station.png'
 
-// Placeholder images from the Figma design
-const chargingStationCableImage = 'http://localhost:3845/assets/02ddd4f661e166d8045cc0bd82cb4b96ed83cc36.png'
-const chargingStationSocketImage = 'http://localhost:3845/assets/d79cfdbe4df1f7110eee0aea32518af785ef23fb.png'
+// Use actual images from the assets folder
+const chargingStationCableImage = chargingStationsImage
+const chargingStationSocketImage = dcChargingStationImage
 
 const ChargingStationModels = ({ category }) => {
   // Get models data from the page data based on the current category
@@ -45,53 +47,56 @@ const ChargingStationModels = ({ category }) => {
                           {category.description}
                         </p>
                       </div>
-                    </div>{/* Models Grid */}
-                    <div className="flex gap-4 sm:gap-6 lg:gap-7 overflow-x-auto pb-4 -mx-4 px-4 sm:mx-0 sm:px-0">
+                    </div>                    {/* Models Grid */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 lg:gap-8">
                       {category.models?.map((model, modelIndex) => (
                         <div 
                           key={modelIndex}
-                          className="relative flex-shrink-0 group"
-                          style={{ width: 'clamp(220px, 30vw, 246px)' }}
-                        >
-                          {/* Model Card */}
-                          <div className="bg-white rounded-xl border-2 border-blaupunkt-secondary-light overflow-hidden mb-3 sm:mb-4"
-                               style={{ 
-                                 width: 'clamp(220px, 30vw, 246px)', 
-                                 height: 'clamp(230px, 30vw, 258px)' 
-                               }}>
-                            {/* Model Image */}
-                            <div 
-                              className="w-full h-full bg-white bg-cover bg-center relative"
-                              style={{ 
-                                backgroundImage: `url('${section.name.includes('Cable') ? chargingStationCableImage : chargingStationSocketImage}')`,
-                                backgroundSize: section.name.includes('Cable') ? '100% 126.51%' : '103.82% 100%'
-                              }}
-                            >                              {/* Model Code - positioned at bottom of image */}
-                              <div 
-                                className="absolute text-blaupunkt-primary-darker font-medium text-base sm:text-lg"
-                                style={{
-                                  left: 'clamp(10px, 2vw, 15px)',
-                                  bottom: 'clamp(10px, 2vw, 15px)'
-                                }}
-                              >
-                                {model.modelCode}
+                          className="w-full max-w-[300px] mx-auto"
+                        >                          {/* Outer container with light blue border */}
+                          <div className='rounded-xl h-full'>
+                            {/* White inner container */}
+                            <div className='bg-white rounded-lg overflow-hidden h-full flex flex-col'>                              {/* Product Image Container */}
+                              <div className='w-full aspect-square flex items-center justify-center border-3 border-[#93C5FD] rounded-xl'>
+                                <div 
+                                  className="w-full h-full bg-white bg-cover bg-center relative rounded-lg"
+                                  style={{ 
+                                    backgroundImage: `url('${section.name.includes('Cable') ? chargingStationCableImage : chargingStationSocketImage}')`,
+                                    backgroundSize: section.name.includes('Cable') ? '100% 126.51%' : '103.82% 100%'
+                                  }}
+                                >
+                                </div>
                               </div>
-                            </div>
-                          </div>
-
-                          {/* Specifications - positioned below the card */}
-                          <div className="space-y-2 sm:space-y-3">
-                            <div className="text-blaupunkt-dark text-sm sm:text-base font-normal">
-                              Maximum Power: {model.maximumPower}
-                            </div>
-                            <div className="text-blaupunkt-dark text-sm sm:text-base font-normal">
-                              Current: {model.current}
-                            </div>
-                            <div className="text-blaupunkt-dark text-sm sm:text-base font-normal">
-                              Cable Length: {model.cableLength}
-                            </div>
-                            <div className="text-blaupunkt-dark text-sm sm:text-base font-normal">
-                              Phase Type: {model.phaseType}
+                                {/* Product Details */}
+                              <div className='pt-10 pb-6'>
+                                {/* Model Code - Primary heading */}
+                                <h3 className='text-lg font-bold text-[#1E3A8A] mb-4 text-left'>
+                                  {model.modelCode}
+                                </h3>
+                                
+                                {/* Specifications List */}
+                                <div className='space-y-1 text-md'>
+                                  <div className='flex items-center'>
+                                    <span className='font-normal text-gray-700'>Maximum Power: </span>
+                                    <span className='text-gray-900 font-normal'>{model.maximumPower}</span>
+                                  </div>
+                                  
+                                  <div className='flex items-center'>
+                                    <span className='font-normal text-gray-700'>Current: </span>
+                                    <span className='text-gray-900 font-normal'>{model.current}</span>
+                                  </div>
+                                  
+                                  <div className='flex items-center'>
+                                    <span className='font-normal text-gray-700'>Cable Length: </span>
+                                    <span className='text-gray-900 font-normal'>{model.cableLength}</span>
+                                  </div>
+                                  
+                                  <div className='flex items-center'>
+                                    <span className='font-normal text-gray-700'>Phase Type: </span>
+                                    <span className='text-gray-900 font-normal'>{model.phaseType}</span>
+                                  </div>
+                                </div>
+                              </div>
                             </div>
                           </div>
                         </div>

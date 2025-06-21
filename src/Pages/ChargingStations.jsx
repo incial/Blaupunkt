@@ -63,7 +63,8 @@ const ChargingStations = () => {
             IdealandFeaturesImage: chargingStationsImage
           }}
         />
-      </div>{' '}      <Specifications
+      </div>{' '}
+      <Specifications
         productImage={chargingStationsImage}
         category='chargingStations'
       />
