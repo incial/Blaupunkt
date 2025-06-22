@@ -8,7 +8,7 @@ import OverviewFeatureasandideal from '../Components/Common/Overview/OverviewFea
 import DownloadButton from '../Components/CommonPages/DownlaodButton'
 import Models from '../Components/CommonPages/Models.jsx'
 import { Entirepagedata } from '../Utils/data.js'
-import dcChargingStationImage from '../assets/Images/DC_Charging_Station.png'
+import dcChargingStationImage from '../assets/Images/CatImages/DC_Charging_Station.png'
 
 
 const DCChargingStation = () => {

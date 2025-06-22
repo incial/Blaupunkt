@@ -1,7 +1,7 @@
 import React from 'react'
 import HeroSection from '../Components/CommonPages/HeroSection'
 import { Entirepagedata } from '../Utils/data.js'
-import productImage from '../assets/Images/Product_image.png'
+import productImage from '../assets/Images/CatImages/Ev_charging.png'
 import Specifications from '../Components/CommonPages/Specifications.jsx'
 import ImageHeader from '../Components/Common/ImageHeader'
 import OverviewSection from '../Components/Common/Overview/OverviewSection'

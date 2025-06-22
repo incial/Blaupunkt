@@ -7,7 +7,7 @@ import OverviewFeatureasandideal from '../Components/Common/Overview/OverviewFea
 import DownloadButton from '../Components/CommonPages/DownlaodButton'
 import Models from '../Components/CommonPages/Models.jsx'
 import { Entirepagedata } from '../Utils/data.js'
-import portableEVChargingImage from '../assets/Images/Portable_EV_Charging.png'
+import portableEVChargingImage from '../assets/Images/CatImages/Portable_EV_Charging.png'
 
 const PortableEVCharging = () => {
   // Get data from Entirepagedata

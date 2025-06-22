@@ -1,8 +1,8 @@
 import React from 'react'
 import ImageHeader from '../Common/ImageHeader'
 import { Entirepagedata } from '../../Utils/data'
-import chargingStationsImage from '../../assets/Images/Charging_Stations.png'
-import dcChargingStationImage from '../../assets/Images/DC_Charging_Station.png'
+import chargingStationsImage from '../../assets/Images/CatImages/Charging_Stations.png'
+import dcChargingStationImage from '../../assets/Images/CatImages/DC_Charging_Station.png'
 
 // Use actual images from the assets folder
 const chargingStationCableImage = chargingStationsImage

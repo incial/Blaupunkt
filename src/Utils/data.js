@@ -7,7 +7,7 @@
 // =============================================================================
 
 // Import background images from assets
-import { bgImgs, evCableImgs } from './assets.js'
+import { bgImgs, evCableImgs, overviewImgs } from './assets.js'
 
 // =============================================================================
 // UTILITY FUNCTIONS
@@ -63,11 +63,13 @@ const createEVCableThumbnails = () => [
 /**
  * Creates Monta backend integration data
  * @param {boolean} isActive - Whether the integration is active
+ * @param {string} productType - Type of product for customized text
  * @returns {Object} Monta integration configuration
  */
-const createMontaIntegrationData = (isActive = true) => ({
-  subheading: 'Advantages Monta Backend Integration:',
+const createMontaIntegrationData = (isActive = true, productType = 'charging station') => ({
+  subheading: 'Monta Backend Integration Advantages',
   active: isActive,
+  text: `What sets this ${productType} apart is its pre-configuration with the Monta backend. This advanced feature allows for a quick and hassle-free setup, enabling you to start charging immediately with minimal effort.`,
   listItems: [
     'Effortless Setup: With pre-configuration, your charging station is ready to use right out of the box.',
     'Enhanced Control and Monitoring: Through the Monta platform, gain full control over your charging sessions.',
@@ -199,10 +201,10 @@ const createChargerModels = (sections) => ({
 
 const PRODUCT_IMAGES = {
   chargingCables: evCableImgs.main,
-  chargingStations: 'Charging_Stations.png',
-  dcCharging: 'DC_Charging_Station.png',
-  dcFastCharging: 'DC_Fast_Charging_Station.png',
-  portableCharging: 'Portable_EV_Charging.png',
+  chargingStations: 'CatImages/Charging_Stations.png',
+  dcCharging: 'CatImages/DC_Charging_Station.png',
+  dcFastCharging: 'CatImages/DC_Fast_Charging_Station.png',
+  portableCharging: 'CatImages/Portable_EV_Charging.png',
   heroVideo: 'HeoIntro.mp4'
 }
 
@@ -248,12 +250,12 @@ export const Entirepagedata = {
           {
             subheading: 'Universal Compatibility',
             text: 'Designed to work seamlessly with most electric vehicles, our cables feature industry-standard connectors and are compatible with both Type 1 and Type 2 charging ports.'
-          },
-          {
+          },          {
             subheading: 'Pre-Configured for Seamless Integration',
-            text: 'What sets this charging station apart is its pre-configuration with the Monta backend. This advanced feature allows for a quick and hassle-free setup, enabling you to start charging immediately with minimal effort.'
+            text: 'What sets this charging cable apart is its compatibility with charging stations pre-configured with the Monta backend. This advanced feature allows for a quick and hassle-free setup, enabling you to start charging immediately with minimal effort.',
+            active: true
           },
-          createMontaIntegrationData(false)
+          createMontaIntegrationData(true, 'charging cable')
         ]
       },
       
@@ -270,7 +272,7 @@ export const Entirepagedata = {
         ]
       },
       
-      IdealandFeaturesImage: evCableImgs.cable3,
+      IdealandFeaturesImage: overviewImgs.chargingCables?.feature || evCableImgs.cable3,
       features: createStandardFeatures(),
       
       ideal: {
@@ -283,7 +285,7 @@ export const Entirepagedata = {
           'Emergency charging solutions for long-distance travel'        ]
       },
       
-      image: evCableImgs.cable4
+      image: overviewImgs.chargingCables?.ideal || evCableImgs.cable4
     },
     
     highlightsData: createHighlightsData('Key Features', [
@@ -425,12 +427,12 @@ export const Entirepagedata = {
           {
             subheading: 'Durability and Safety You Can Rely On',
             text: "Built with durability in mind, Blaupunkt's charging station features a robust construction designed to withstand everyday use, whether installed indoors or outdoors. The IP54-rated charger provides reliable protection against the elements, ensuring long-lasting performance in various outdoor conditions."
-          },
-          {
+          },          {
             subheading: 'Pre-Configured for Seamless Integration',
-            text: 'What sets this charging station apart is its pre-configuration with the Monta backend. This advanced feature allows for a quick and hassle-free setup, enabling you to start charging immediately with minimal effort.'
+            text: 'What sets this charging station apart is its pre-configuration with the Monta backend. This advanced feature allows for a quick and hassle-free setup, enabling you to start charging immediately with minimal effort.',
+            active: true
           },
-          createMontaIntegrationData(true)
+          createMontaIntegrationData(true, 'charging station')
         ]
       },
       
@@ -447,7 +449,7 @@ export const Entirepagedata = {
         ]
       },
       
-      IdealandFeaturesImage: PRODUCT_IMAGES.chargingCables,
+      IdealandFeaturesImage: overviewImgs.chargingStations?.feature || PRODUCT_IMAGES.chargingCables,
       features: createStandardFeatures(),
       
       ideal: {
@@ -749,12 +751,12 @@ export const Entirepagedata = {
           {
             subheading: 'Commercial-Grade Reliability',
             text: "Engineered for heavy-duty commercial use, our DC charging stations feature robust construction, advanced cooling systems, and comprehensive safety features to ensure reliable operation in high-traffic environments."
-          },
-          {
+          },          {
             subheading: 'Universal Compatibility',
-            text: "Supports all major connector types including CCS, CHAdeMO, and Type 2, ensuring compatibility with virtually all electric vehicles on the market today."
+            text: "Supports all major connector types including CCS, CHAdeMO, and Type 2, ensuring compatibility with virtually all electric vehicles on the market today.",
+            active: true
           },
-          createMontaIntegrationData(true)
+          createMontaIntegrationData(true, 'DC charging station')
         ]
       },
       
@@ -950,12 +952,12 @@ export const Entirepagedata = {
           {
             subheading: 'Intelligent Safety Features',
             text: "Equipped with advanced safety systems including ground fault protection, over-voltage protection, and temperature monitoring, our portable charger provides peace of mind during every charging session."
-          },
-          {
+          },          {
             subheading: 'Universal Compatibility',
-            text: "Compatible with all Type 2 electric vehicles and designed to work with standard household outlets, making it the perfect backup charging solution for any EV owner."
+            text: "Compatible with all Type 2 electric vehicles and designed to work with standard household outlets, making it the perfect backup charging solution for any EV owner.",
+            active: true
           },
-          createMontaIntegrationData(false)
+          createMontaIntegrationData(false, 'portable charger')
         ]
       },
       
@@ -1129,12 +1131,12 @@ export const Entirepagedata = {
           {
             subheading: 'Future-Proof Infrastructure',
             text: "Designed for next-generation electric vehicles with 800V architecture, our DC fast chargers are equipped with the latest charging protocols and can adapt to evolving industry standards."
-          },
-          {
+          },          {
             subheading: 'Enterprise-Grade Performance',
-            text: "Built for high-throughput commercial operations, featuring advanced thermal management, modular design for easy maintenance, and comprehensive remote monitoring capabilities."
+            text: "Built for high-throughput commercial operations, featuring advanced thermal management, modular design for easy maintenance, and comprehensive remote monitoring capabilities.",
+            active: true
           },
-          createMontaIntegrationData(true)
+          createMontaIntegrationData(true, 'DC fast charging station')
         ]
       },
       
