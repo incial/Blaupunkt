@@ -922,10 +922,390 @@ export const Entirepagedata = {
         specialization: 'DC fast charging solutions'
       }
     ])
+  },
+
+  // =========================================================================
+  // PORTABLE EV CHARGING SECTION
+  // =========================================================================
+  portableEVCharging: {
+    title: 'Portable EV Charging',
+    description: 'Compact and convenient portable charging solution for electric vehicles.',
+    active: true,
+    breadcrumbs: createBreadcrumbs('Portable EV Charging', '/portable-ev-charging'),
+    buttonText: BUTTON_TEXTS.discover,
+    mainImage: PRODUCT_IMAGES.portableCharging,
+    imageAlt: 'Portable EV Charger',
+    thumbnails: createThumbnails(PRODUCT_IMAGES.portableCharging),
+    
+    OverviewData: {
+      BgImage: bgImgs.portableEVCharging,
+      
+      para: {
+        active: true,
+        data: [
+          {
+            subheading: 'Portable Charging Freedom',
+            text: "Blaupunkt's portable EV charger offers the ultimate flexibility for electric vehicle owners. Whether you're at home, work, or on the road, this compact charging solution ensures you're never stranded without power."
+          },
+          {
+            subheading: 'Intelligent Safety Features',
+            text: "Equipped with advanced safety systems including ground fault protection, over-voltage protection, and temperature monitoring, our portable charger provides peace of mind during every charging session."
+          },
+          {
+            subheading: 'Universal Compatibility',
+            text: "Compatible with all Type 2 electric vehicles and designed to work with standard household outlets, making it the perfect backup charging solution for any EV owner."
+          },
+          createMontaIntegrationData(false)
+        ]
+      },
+      
+      list: {
+        active: true,
+        title: 'Key Features',
+        data: [
+          'Compact and lightweight design for easy portability',
+          'Compatible with standard household outlets (230V)',
+          'Built-in safety features and automatic fault detection',
+          'LED status indicators for charging progress',
+          'Weather-resistant construction (IP65 rated)',
+          'Type 2 connector for universal EV compatibility',
+          'Adjustable charging current (6A, 8A, 10A, 13A, 16A)',
+          'Includes protective carrying case'
+        ]
+      },
+      
+      IdealandFeaturesImage: PRODUCT_IMAGES.portableCharging,
+      features: createStandardFeatures([
+        'Compact portable design for travel convenience',
+        'Multiple current settings for different power sources',
+        'Advanced safety monitoring and protection',
+        'Weather-resistant IP65 construction',
+        'LED charging status indicators'
+      ]),
+      
+      ideal: {
+        active: true,
+        title: 'Ideal For',
+        data: [
+          'Emergency charging situations',
+          'Travel and vacation charging needs',
+          'Apartment dwellers without dedicated charging',
+          'Backup charging solution for home use',
+          'Workplace charging where infrastructure is limited'
+        ]
+      },
+      
+      image: PRODUCT_IMAGES.portableCharging
+    },
+    
+    highlightsData: createHighlightsData('Key Benefits', [
+      { 
+        title: 'Ultra Portable', 
+        description: 'Lightweight design fits easily in your vehicle', 
+        icon: 'portable' 
+      },
+      { 
+        title: 'Plug & Play', 
+        description: 'Works with any standard household outlet', 
+        icon: 'easy' 
+      },
+      { 
+        title: 'Smart Safety', 
+        description: 'Automatic fault detection and protection', 
+        icon: 'safety' 
+      },
+      { 
+        title: 'Weather Proof', 
+        description: 'IP65 rated for outdoor use in all conditions', 
+        icon: 'weather' 
+      }
+    ]),
+    
+    specificationsData: createSpecificationsData('Technical Specifications', [
+      { label: 'Power Output', value: '3.7kW (16A) / 2.3kW (10A)' },
+      { label: 'Input Voltage', value: '230V AC single-phase' },
+      { label: 'Current Settings', value: '6A, 8A, 10A, 13A, 16A' },
+      { label: 'Connector Type', value: 'Type 2' },
+      { label: 'Cable Length', value: '5m charging cable' },
+      { label: 'Protection Rating', value: 'IP65' },
+      { label: 'Weight', value: '2.5kg' },
+      { label: 'Dimensions', value: '300 x 200 x 100mm' }
+    ]),
+    
+    modelsData: createChargerModels([
+      {
+        name: 'Standard Series',
+        description: 'Essential portable charging for everyday use',
+        models: [
+          {
+            modelCode: 'BP-PORT-16A',
+            maximumPower: '3.7kW',
+            connectorType: 'Type 2',
+            outputVoltage: '230V AC',
+            dimensions: '300 x 200 x 100mm',
+            weight: '2.5kg',
+            popular: true
+          },
+          {
+            modelCode: 'BP-PORT-10A',
+            maximumPower: '2.3kW',
+            connectorType: 'Type 2',
+            outputVoltage: '230V AC',
+            dimensions: '280 x 180 x 90mm',
+            weight: '2.0kg'
+          }
+        ]
+      },
+      {
+        name: 'Premium Series',
+        description: 'Advanced portable charging with smart features',
+        models: [
+          {
+            modelCode: 'BP-PORT-16A-SMART',
+            maximumPower: '3.7kW',
+            connectorType: 'Type 2',
+            outputVoltage: '230V AC',
+            dimensions: '320 x 210 x 110mm',
+            weight: '3.0kg',
+            popular: true
+          },
+          {
+            modelCode: 'BP-PORT-10A-SMART',
+            maximumPower: '2.3kW',
+            connectorType: 'Type 2',
+            outputVoltage: '230V AC',
+            dimensions: '300 x 190 x 100mm',
+            weight: '2.7kg'
+          }
+        ]
+      }
+    ]),
+    
+    supplierData: createSupplierData('Blaupunkt Technologies', [
+      {
+        name: 'PortableCharge Ltd',
+        region: 'Europe',
+        contact: 'portable@portablecharge.eu',
+        specialization: 'Portable charging solutions and accessories'
+      },
+      {
+        name: 'MobileEV Solutions',
+        region: 'North America',
+        contact: 'sales@mobileev.com',
+        specialization: 'Portable and mobile charging devices'
+      },
+      {
+        name: 'FlexCharge Asia',
+        region: 'Asia Pacific',
+        contact: 'info@flexcharge-asia.com',
+        specialization: 'Compact charging solutions'
+      }
+    ])
+  },
+
+  // =========================================================================
+  // DC FAST CHARGING STATION SECTION
+  // =========================================================================
+  dcFastChargingStation: {
+    title: 'DC Fast Charging Station',
+    description: 'Ultra-high power DC charging for the fastest charging experience.',
+    active: true,
+    breadcrumbs: createBreadcrumbs('DC Fast Charging Station', '/dc-fast-charging-station'),
+    buttonText: BUTTON_TEXTS.explore,
+    mainImage: PRODUCT_IMAGES.dcFastCharging,
+    imageAlt: 'DC Fast Charging Station',
+    thumbnails: createThumbnails(PRODUCT_IMAGES.dcFastCharging),
+    
+    OverviewData: {
+      BgImage: bgImgs.dcFastChargingStation,
+      
+      para: {
+        active: true,
+        data: [
+          {
+            subheading: 'Ultra-Fast Charging Technology',
+            text: "Blaupunkt's DC Fast Charging Station represents the pinnacle of charging technology, delivering up to 350kW of power for the fastest possible charging experience. Charge from 10% to 80% in under 20 minutes."
+          },
+          {
+            subheading: 'Future-Proof Infrastructure',
+            text: "Designed for next-generation electric vehicles with 800V architecture, our DC fast chargers are equipped with the latest charging protocols and can adapt to evolving industry standards."
+          },
+          {
+            subheading: 'Enterprise-Grade Performance',
+            text: "Built for high-throughput commercial operations, featuring advanced thermal management, modular design for easy maintenance, and comprehensive remote monitoring capabilities."
+          },
+          createMontaIntegrationData(true)
+        ]
+      },
+      
+      list: {
+        active: true,
+        title: 'Advanced Features',
+        data: [
+          'Power output: 150kW, 250kW, or 350kW configurations',
+          'Support for 400V and 800V vehicle architectures',
+          'Dynamic power sharing between multiple charging ports',
+          'Advanced liquid cooling with redundant safety systems',
+          'Modular design for scalability and easy maintenance',
+          'Real-time monitoring and predictive maintenance',
+          'Payment integration with multiple authentication methods',
+          'Future-ready for autonomous vehicle charging'
+        ]
+      },
+      
+      IdealandFeaturesImage: PRODUCT_IMAGES.dcFastCharging,
+      features: createStandardFeatures([
+        'Ultra-fast charging up to 350kW power output',
+        'Support for next-generation 800V vehicle architecture',
+        'Dynamic power management and load balancing',
+        'Advanced thermal management with liquid cooling',
+        'Modular design for easy scalability and maintenance'
+      ]),
+      
+      ideal: {
+        active: true,
+        title: 'Ideal Applications',
+        data: [
+          'Highway charging corridors and truck stops',
+          'Urban fast charging hubs and transportation centers',
+          'Fleet charging for commercial and delivery vehicles',
+          'Premium retail locations and destination charging',
+          'Future-ready installations for autonomous vehicles'
+        ]
+      },
+      
+      image: PRODUCT_IMAGES.dcFastCharging
+    },
+    
+    highlightsData: createHighlightsData('Advanced Features', [
+      { 
+        title: 'Ultra-Fast Power', 
+        description: 'Up to 350kW for the fastest charging experience', 
+        icon: 'lightning' 
+      },
+      { 
+        title: 'Future Ready', 
+        description: 'Supports next-gen 800V vehicle architecture', 
+        icon: 'future' 
+      },
+      { 
+        title: 'Smart Management', 
+        description: 'Dynamic power sharing and load balancing', 
+        icon: 'smart' 
+      },
+      { 
+        title: 'Enterprise Grade', 
+        description: 'Built for high-throughput commercial use', 
+        icon: 'enterprise' 
+      }
+    ]),
+    
+    specificationsData: createSpecificationsData('Technical Specifications', [
+      { label: 'Power Output', value: '150kW / 250kW / 350kW' },
+      { label: 'Input Voltage', value: '400V AC 3-phase' },
+      { label: 'Output Voltage', value: '200V - 800V DC' },
+      { label: 'Connector Types', value: 'CCS, CHAdeMO, Type 2' },
+      { label: 'Charging Ports', value: '1-4 simultaneous ports' },
+      { label: 'Protection Rating', value: 'IP54' },
+      { label: 'Cooling System', value: 'Advanced liquid cooling' },
+      { label: 'Weight', value: '1200kg - 1800kg' }
+    ]),
+    
+    modelsData: createChargerModels([
+      {
+        name: '150kW Series',
+        description: 'High-performance charging for premium locations',
+        models: [
+          {
+            modelCode: 'BP-DCFAST-150-1',
+            maximumPower: '150kW',
+            connectorType: 'CCS + CHAdeMO',
+            outputVoltage: '200V - 800V DC',
+            dimensions: '2000 x 900 x 450mm',
+            weight: '1200kg'
+          },
+          {
+            modelCode: 'BP-DCFAST-150-2',
+            maximumPower: '150kW',
+            connectorType: 'Dual CCS',
+            outputVoltage: '200V - 800V DC',
+            dimensions: '2000 x 900 x 450mm',
+            weight: '1200kg',
+            popular: true
+          }
+        ]
+      },
+      {
+        name: '250kW Series',
+        description: 'Ultra-fast charging for high-traffic locations',
+        models: [
+          {
+            modelCode: 'BP-DCFAST-250-1',
+            maximumPower: '250kW',
+            connectorType: 'CCS + CHAdeMO',
+            outputVoltage: '200V - 800V DC',
+            dimensions: '2200 x 1000 x 500mm',
+            weight: '1500kg',
+            popular: true
+          },
+          {
+            modelCode: 'BP-DCFAST-250-2',
+            maximumPower: '250kW',
+            connectorType: 'Dual CCS',
+            outputVoltage: '200V - 800V DC',
+            dimensions: '2200 x 1000 x 500mm',
+            weight: '1500kg'
+          }
+        ]
+      },
+      {
+        name: '350kW Series',
+        description: 'Maximum power for next-generation vehicles',
+        models: [
+          {
+            modelCode: 'BP-DCFAST-350-1',
+            maximumPower: '350kW',
+            connectorType: 'CCS + CHAdeMO',
+            outputVoltage: '200V - 800V DC',
+            dimensions: '2400 x 1200 x 600mm',
+            weight: '1800kg'
+          },
+          {
+            modelCode: 'BP-DCFAST-350-2',
+            maximumPower: '350kW',
+            connectorType: 'Dual CCS',
+            outputVoltage: '200V - 800V DC',
+            dimensions: '2400 x 1200 x 600mm',
+            weight: '1800kg',
+            popular: true
+          }
+        ]
+      }
+    ]),
+    
+    supplierData: createSupplierData('Blaupunkt Technologies', [
+      {
+        name: 'UltraFast Charging Systems',
+        region: 'Europe',
+        contact: 'ultrafast@ufcs.eu',
+        specialization: 'High-power DC charging infrastructure'
+      },
+      {
+        name: 'MegaCharge Corporation',
+        region: 'North America',
+        contact: 'sales@megacharge.com',
+        specialization: 'Enterprise charging solutions'
+      },
+      {
+        name: 'HyperCharge Technologies',
+        region: 'Asia Pacific',
+        contact: 'info@hypercharge-tech.com',
+        specialization: 'Ultra-fast charging systems'
+      }
+    ])
   }
 
-  // Note: Additional sections (dcFastChargingStation, portableEVCharging, etc.)
-  // would follow the same structured pattern for consistency and maintainability
+  // Note: Additional sections can be added following the same structured pattern
 }
 
 // =============================================================================
