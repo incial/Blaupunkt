@@ -1,36 +1,27 @@
-/**
- * Local Assets Utility
- * Provides shorter named imports for local images, videos, and icons
- */
-
 // Hero Section Videos
 export const heroVids = {
   heroSection: '/src/assets/Videos/HeoIntro.mp4',
 };
 
-// Other Videos
-export const vids = {
-  subfooter: '',
-  goatfooter: '',
-  subhero1: '',
-  subhero2: '',
-  // Fallback for missing video files
-  evCharging: '', // Fallback for EV_charging _video.mp4
-  wasteToEnergy: '', // Fallback for Waste_To_Energy.mp4
-  videoBanner: '', // Fallback for Video_Banner.mp4
-  connectWithUs: '' // Fallback for Connectwithus.mp4
-};
+// Import Product Images
+
+import evCabPd1 from '../assets/Images/pdImages/EVCab-Pd-1.png'
+import evCabPd2 from '../assets/Images/pdImages/EVCab-pd-2.png'
+import dcPd1 from '../assets/Images/pdImages/Dcpd1.png'
+import dcPd2 from '../assets/Images/pdImages/Dcpd2.png'
+import fastPd1 from '../assets/Images/pdImages/Fastpd1.png'
+import portEvPd1 from '../assets/Images/pdImages/PortEvPd1.png'
+import stationPd1 from '../assets/Images/pdImages/StationPd-1.png'
+import stationPd2 from '../assets/Images/pdImages/StationPd-2.png'
+
 
 // Import all image assets
 import logoWhiteUrl from '../assets/Images/Logo_white.svg'
-// import heroImageUrl from '../assets/Images/HeroImage.png' // File doesn't exist - commented out
 import chargingStationsUrl from '../assets/Images/CatImages/Charging_Stations.png'
 import dcChargingStationUrl from '../assets/Images/CatImages/DC_Charging_Station.png'
 import dcFastChargingUrl from '../assets/Images/CatImages/DC_Fast_Charging_Station.png'
 import evChargingUrl from '../assets/Images/CatImages/Ev_charging.png'
 import portableEvChargingUrl from '../assets/Images/CatImages/Portable_EV_Charging.png'
-// import productImageUrl from '../assets/Images/Product_image.png' // File doesn't exist - using fallback
-// import chargerUrl from '../assets/Images/charger.jpg' // File doesn't exist - using fallback
 
 // EV Charging Cable Images
 import evCab1Url from '../assets/Images/EvCables/EVCab-1.png'
@@ -44,20 +35,11 @@ import evCabMidRightUrl from '../assets/Images/EvCables/EVCab-Mid-Right.png'
 export const logos = {
   main: '/Logo.svg',
   white: logoWhiteUrl, 
-  icon: ''
-};
-
-// Hero Section Icons
-export const heroIcons = {
-  battery: '',
-  circle: '',
 };
 
 // Home Section Images
 export const homeImgs = {
-  aboutUs: '',
-  hero: '', // No hero image available
-  aboutUsSection: '',
+
   logoWhite: logoWhiteUrl,
   logo: '/Logo.svg',
   // EV Charging related images
@@ -77,7 +59,7 @@ export const chargingImgs = {
 
 // EV Charging Cables Images (New Category)
 export const evCableImgs = {
-  main: evChargingUrl, // Main product image fallback
+  main: evCabMidUrl, // Using specific cable image as main
   charger: chargingStationsUrl, // Using charging station as fallback
   cable1: evCab1Url,
   cable2: evCab2Url,
@@ -85,13 +67,13 @@ export const evCableImgs = {
   cable4: evCab4Url,
   cableMid: evCabMidUrl,
   cableMidRight: evCabMidRightUrl,
-  cablePd1: evCab1Url, // Using cable1 as fallback
-  cablePd2: evCab2Url, // Using cable2 as fallback
+  cablePd1: evCabPd1, // Using actual imported image
+  cablePd2: evCabPd2, // Using actual imported image
 };
 
 // Product Images for Product Pages
 export const productImgs = {
-  chargingCables: evChargingUrl, // Using EV charging as fallback
+  chargingCables: evCabMidUrl, // Using specific EV cable image
   chargingStations: chargingStationsUrl,
   dcCharging: dcChargingStationUrl,
   dcFastCharging: dcFastChargingUrl,
@@ -103,59 +85,22 @@ export const productImgs = {
   evCab2: evCab2Url,
   evCab3: evCab3Url,
   evCab4: evCab4Url,
-  evCabMid: evCabMidUrl,  evCabMidRight: evCabMidRightUrl,
-  evCabPd1: evCab1Url, // Using cable1 as fallback
-  evCabPd2: evCab2Url, // Using cable2 as fallback
+  evCabMid: evCabMidUrl,  
+  evCabMidRight: evCabMidRightUrl,
+  evCabPd1: evCabPd1, // Using actual imported image
+  evCabPd2: evCabPd2, // Using actual imported image
+  // DC Charging Product Images
+  dcPd1: dcPd1,
+  dcPd2: dcPd2,
+  // Fast Charging Product Images
+  fastPd1: fastPd1,
+  // Portable EV Charging Product Images
+  portEvPd1: portEvPd1,
+  // Station Product Images
+  stationPd1: stationPd1,
+  stationPd2: stationPd2,
 };
 
-// Client Images
-export const clientImgs = {
-  client1: '',
-  client2: '',
-  client3: '',
-  client4: '',
-  client5: '',
-  client6: '',
-  client7: '',
-  client8: '',
-  client9: '',
-  client10: ''
-};
-
-// EV Charging Images (Updated with actual images)
-export const evImgs = {
-  // Charging stations
-  stations: chargingStationsUrl,
-  dcStation: dcChargingStationUrl,
-  dcFast: dcFastChargingUrl,
-  portable: portableEvChargingUrl,
-  charging: evChargingUrl,
-  
-  // Legacy names (keeping for backward compatibility)
-  acAbout: '',
-  acCharger: '',
-  cpoAbout: '',
-  cpo: '',
-  dcAbout: '',
-  dcCharger: dcChargingStationUrl,
-  engineeringWorks: '',
-  ewAbout: '',
-  moreAbout: '',
-  charger: chargingStationsUrl,
-  more: ''
-};
-
-// Waste to Energy Images
-export const wasteImgs = {
-  containerizedPlant: '',
-  cpAbout: '',
-  household: '',
-  hsAbout: '',
-  largeScalePlant: '',
-  lsAbout: '',
-  smartWaste: '',
-  swAbout: ''
-};
 
 // Background Images for Text Backgrounds and Overview Sections
 export const bgImgs = {
@@ -203,7 +148,7 @@ export const overviewImgs = {
 
 // Utility function to get video source with error handling
 export const getVideoSrc = (videoKey, category = 'heroVids') => {
-  const videoMaps = { heroVids, vids };
+  const videoMaps = { heroVids };
   const videoMap = videoMaps[category];
   
   if (!videoMap || !videoMap[videoKey]) {
@@ -219,13 +164,10 @@ export const getImageSrc = (imageKey, category = 'homeImgs') => {
   const imageMaps = { 
     logos, 
     homeImgs, 
-    clientImgs, 
-    evImgs, 
     chargingImgs, // Added new category
     evCableImgs, // Added EV cable images category
     productImgs, // Added product images category
     overviewImgs, // Added overview images category
-    wasteImgs,
     bgImgs // Added background images category
   };
   const imageMap = imageMaps[category];
@@ -238,15 +180,6 @@ export const getImageSrc = (imageKey, category = 'homeImgs') => {
   return imageMap[imageKey];
 };
 
-// Utility function to get icon source with error handling
-export const getIconSrc = (iconKey) => {
-  if (!heroIcons[iconKey]) {
-    console.warn(`Icon not found: ${iconKey}`);
-    return '';
-  }
-  
-  return heroIcons[iconKey];
-};
 
 // Helper function to preload videos for better performance
 export const preloadVideo = (videoSrc) => {

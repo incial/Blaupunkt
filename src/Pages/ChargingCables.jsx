@@ -1,7 +1,7 @@
 import React from 'react'
 import HeroSection from '../Components/CommonPages/HeroSection'
 import { Entirepagedata } from '../Utils/data.js'
-import productImage from '../assets/Images/CatImages/Ev_charging.png'
+import productImage from '../assets/Images/EvCables/EVCab-Mid.png'
 import Specifications from '../Components/CommonPages/Specifications.jsx'
 import ImageHeader from '../Components/Common/ImageHeader'
 import OverviewSection from '../Components/Common/Overview/OverviewSection'
@@ -40,13 +40,12 @@ const ChargingCables = () => {
           title='Overview'
           backgroundImage={OverviewData?.BgImage}
           showBackgroundImage={!!OverviewData?.BgImage}
-        />{' '}
-        {/* Only Overview Section for Charging Cables */}
+        />{' '}        {/* Only Overview Section for Charging Cables */}
         <OverviewSection
           overviewData={{
             ...OverviewData,
             category: 'chargingCables',
-            image: productImage
+            image: OverviewData?.image || productImage
           }}
         />{' '}
       </div>
