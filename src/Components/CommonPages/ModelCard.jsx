@@ -16,7 +16,7 @@ const ModelCard = ({
         {/* White inner container */}
         <div className='bg-white rounded-lg overflow-hidden'>
           {/* Product Image Container */}
-          <div className='w-full aspect-square flex items-center justify-center border-3 border-[#93C5FD] rounded-xl'>
+          <div className='w-full   flex items-center justify-center border-2 border-blaupunkt-primary rounded-2xl'>
             {image ? (
               <img
                 src={image}
