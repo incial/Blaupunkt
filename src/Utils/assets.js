@@ -30,6 +30,17 @@ import dcFastChargingUrl from '../assets/Images/DC_Fast_Charging_Station.png'
 import evChargingUrl from '../assets/Images/Ev_charging.png'
 import portableEvChargingUrl from '../assets/Images/Portable_EV_Charging.png'
 import productImageUrl from '../assets/Images/Product_image.png'
+import chargerUrl from '../assets/Images/charger.jpg'
+
+// EV Charging Cable Images
+import evCab1Url from '../assets/Images/EVCab-1.png'
+import evCab2Url from '../assets/Images/EVCab-2.png'
+import evCab3Url from '../assets/Images/EVCab-3.png'
+import evCab4Url from '../assets/Images/EVCab-4.png'
+import evCabMidUrl from '../assets/Images/EVCab-Mid.png'
+import evCabMidRightUrl from '../assets/Images/EVCab-Mid-Right.png'
+import evCabPd1Url from '../assets/Images/EVCab-Pd-1.png'
+import evCabPd2Url from '../assets/Images/EVCab-pd-2.png'
 
 // Logo and Brand Assets
 export const logos = {
@@ -66,6 +77,20 @@ export const chargingImgs = {
   productImage: productImageUrl, // New Figma product image
 };
 
+// EV Charging Cables Images (New Category)
+export const evCableImgs = {
+  main: productImageUrl, // Main product image
+  charger: chargerUrl,
+  cable1: evCab1Url,
+  cable2: evCab2Url,
+  cable3: evCab3Url,
+  cable4: evCab4Url,
+  cableMid: evCabMidUrl,
+  cableMidRight: evCabMidRightUrl,
+  cablePd1: evCabPd1Url,
+  cablePd2: evCabPd2Url,
+};
+
 // Product Images for Product Pages
 export const productImgs = {
   chargingCables: productImageUrl,
@@ -74,6 +99,16 @@ export const productImgs = {
   dcFastCharging: dcFastChargingUrl,
   portableCharging: portableEvChargingUrl,
   evCharging: evChargingUrl,
+  charger: chargerUrl,
+  // EV Charging Cable variations
+  evCab1: evCab1Url,
+  evCab2: evCab2Url,
+  evCab3: evCab3Url,
+  evCab4: evCab4Url,
+  evCabMid: evCabMidUrl,
+  evCabMidRight: evCabMidRightUrl,
+  evCabPd1: evCabPd1Url,
+  evCabPd2: evCabPd2Url,
 };
 
 // Client Images
@@ -127,7 +162,7 @@ export const wasteImgs = {
 
 // Background Images for Text Backgrounds
 export const bgImgs = {
-  evChargingCables: productImageUrl, // Using Product_image.png as fallback
+  evChargingCables: evCableImgs.cableMidRight, // Using new EV cable image as background
   chargingStations: chargingStationsUrl,
   dcChargingStation: dcChargingStationUrl,
   dcFastChargingStation: dcFastChargingUrl,
@@ -156,6 +191,7 @@ export const getImageSrc = (imageKey, category = 'homeImgs') => {
     clientImgs, 
     evImgs, 
     chargingImgs, // Added new category
+    evCableImgs, // Added EV cable images category
     productImgs, // Added product images category
     wasteImgs,
     bgImgs // Added background images category
@@ -193,6 +229,20 @@ export const preloadVideo = (videoSrc) => {
 // Helper function to preload multiple videos
 export const preloadVideos = (videoSources) => {
   videoSources.forEach(src => preloadVideo(src));
+};
+
+// Helper exports for easy access to EV cable images
+export const EVCableImages = {
+  main: evCableImgs.main,
+  cable1: evCableImgs.cable1,
+  cable2: evCableImgs.cable2,
+  cable3: evCableImgs.cable3,
+  cable4: evCableImgs.cable4,
+  cableMid: evCableImgs.cableMid,
+  cableMidRight: evCableImgs.cableMidRight,
+  cablePd1: evCableImgs.cablePd1,
+  cablePd2: evCableImgs.cablePd2,
+  charger: evCableImgs.charger
 };
 
 // Common exports for easy importing

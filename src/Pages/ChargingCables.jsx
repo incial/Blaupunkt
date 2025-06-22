@@ -17,11 +17,10 @@ const ChargingCables = () => {
     buttonText,
     imageAlt,
     OverviewData
-  } = Entirepagedata.chargingCables
-  // Process thumbnails with actual images
+  } = Entirepagedata.chargingCables  // Process thumbnails with actual images
   const thumbnails = Entirepagedata.chargingCables.thumbnails.map(thumb => ({
     ...thumb,
-    image: productImage,
+    image: thumb.image, // Use the actual thumbnail image instead of productImage
     alt: thumb.alt
   }))
   return (

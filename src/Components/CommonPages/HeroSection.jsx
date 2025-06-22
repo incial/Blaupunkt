@@ -77,7 +77,7 @@ const HeroSection = ({
           </div>
           {/* Product Image Section */}
           <div className='lg:flex-1 lg:max-w-2xl'>
-            <div className='relative w-full h-[349px] lg:h-[500px] xl:h-[500px] bg-white rounded-2xl overflow-hidden shadow-lg'>
+            <div className='relative w-full h-[350px] lg:h-[500px] xl:h-[500px] bg-white rounded-2xl overflow-hidden shadow-lg'>
               {' '}
               {/* Product Image Background with animation */}
               <div className='w-full h-full bg-white relative overflow-hidden'>
@@ -85,7 +85,7 @@ const HeroSection = ({
                 <img
                   src={currentDisplayImage}
                   alt={currentAltText}
-                  className='w-full h-full object-cover bg-amber-600 transition-transform duration-500 ease-in-out hover:scale-105'
+                  className='w-full h-full object-contain transition-transform duration-500 ease-in-out hover:scale-105'
                   style={{ animation: 'fadeIn 0.5s ease-in-out' }}
                 />
                 <style jsx='true'>{`

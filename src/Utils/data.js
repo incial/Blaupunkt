@@ -7,7 +7,7 @@
 // =============================================================================
 
 // Import background images from assets
-import { bgImgs } from './assets.js'
+import { bgImgs, evCableImgs } from './assets.js'
 
 // =============================================================================
 // UTILITY FUNCTIONS
@@ -36,6 +36,29 @@ const createThumbnails = (imageName, count = 5) =>
     src: imageName,
     alt: `${imageName.split('.')[0]} View ${i + 1}`
   }))
+
+/**
+ * Creates EV charging cable thumbnails with different images
+ * @returns {Array} Array of EV cable thumbnail objects
+ */
+const createEVCableThumbnails = () => [
+  {
+    image: evCableImgs.cable1,
+    alt: 'EV Charging Cable - Cable 1'
+  },
+  {
+    image: evCableImgs.cable2,
+    alt: 'EV Charging Cable - Cable 2'
+  },
+  {
+    image: evCableImgs.cable3,
+    alt: 'EV Charging Cable - Cable 3'
+  },
+  {
+    image: evCableImgs.cable4,
+    alt: 'EV Charging Cable - Cable 4'
+  }
+]
 
 /**
  * Creates Monta backend integration data
@@ -148,7 +171,7 @@ const createCableModels = (sections) => ({
 // =============================================================================
 
 const PRODUCT_IMAGES = {
-  chargingCables: 'Product_image.png',
+  chargingCables: evCableImgs.main,
   chargingStations: 'Charging_Stations.png',
   dcCharging: 'DC_Charging_Station.png',
   dcFastCharging: 'DC_Fast_Charging_Station.png',
@@ -183,7 +206,7 @@ export const Entirepagedata = {
     buttonText: BUTTON_TEXTS.connect,
     mainImage: PRODUCT_IMAGES.chargingCables,
     imageAlt: 'EV Charging Cable',
-    thumbnails: createThumbnails(PRODUCT_IMAGES.chargingCables),
+    thumbnails: createEVCableThumbnails(),
     
     OverviewData: {
       BgImage: bgImgs.evChargingCables,
@@ -216,12 +239,11 @@ export const Entirepagedata = {
           'Cable length up to 8 meters offers maximum flexibility and reach',
           'IP54 rated – weather-resistant and safe for outdoor use',
           'Includes a durable carry case for easy transport and protection',
-          'CE certified by a leading independent testing laboratory',
-          'Engineered with Blaupunkt commitment to quality and safety'
+          'CE certified by a leading independent testing laboratory',          'Engineered with Blaupunkt commitment to quality and safety'
         ]
       },
       
-      IdealandFeaturesImage: PRODUCT_IMAGES.chargingCables,
+      IdealandFeaturesImage: evCableImgs.cable3,
       features: createStandardFeatures(),
       
       ideal: {
@@ -231,11 +253,10 @@ export const Entirepagedata = {
           'Home charging stations for electric vehicles',
           'Commercial charging points in parking lots and garages',
           'Fleet management for electric car rental services',
-          'Emergency charging solutions for long-distance travel'
-        ]
+          'Emergency charging solutions for long-distance travel'        ]
       },
       
-      image: PRODUCT_IMAGES.chargingCables
+      image: evCableImgs.cable4
     },
     
     highlightsData: createHighlightsData('Key Features', [
