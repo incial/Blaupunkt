@@ -12,13 +12,12 @@ export const PHASE_TYPE_OPTIONS = ['All', 'Single - Phase', 'Three - Phase', 'Un
 /**
  * Sample product data - in a real app this would come from an API
  */
-export const SAMPLE_PRODUCTS = [
-  {
+export const SAMPLE_PRODUCTS = [  {
     id: 1,
     title: 'EV Charging Cables',
     specifications: '22 kWh | 8 Meter | 3 Phase | Type 2',
     productCode: 'A3P32AT2',
-    image: productImgs.chargingCables,
+    image: productImgs.evCabPd1, // Using specific product detail image
     type: 'Cables',
     chargingSpeed: '22 kWh',
     connectorType: 'Type 2',
@@ -30,7 +29,7 @@ export const SAMPLE_PRODUCTS = [
     title: 'Fast Charging Station',
     specifications: '50 kWh | DC Fast | CCS | Commercial',
     productCode: 'FS50CCS',
-    image: productImgs.chargingCables,
+    image: productImgs.fastPd1, // Using specific fast charging product image
     type: 'Charging Stations',
     chargingSpeed: '50 kWh',
     connectorType: 'CCS',
@@ -42,19 +41,18 @@ export const SAMPLE_PRODUCTS = [
     title: 'Type 1 to Type 2 Adapter',
     specifications: '11 kWh | Portable | Type 1/Type 2',
     productCode: 'AD11T1T2',
-    image: productImgs.chargingCables,
+    image: productImgs.evCabPd2, // Using specific EV cable product image
     type: 'Adapters',
     chargingSpeed: '11 kWh',
     connectorType: 'Type 1',
     phaseType: 'Single - Phase',
     price: 89
-  },
-  {
+  },  {
     id: 4,
     title: 'Portable EV Charger',
     specifications: '7.4 kWh | 5 Meter | Single Phase | Type 2',
     productCode: 'PC74T2',
-    image: productImgs.chargingCables,
+    image: productImgs.portEvPd1, // Using specific portable EV product image
     type: 'Cables',
     chargingSpeed: '7.4 kWh',
     connectorType: 'Type 2',
@@ -66,7 +64,7 @@ export const SAMPLE_PRODUCTS = [
     title: 'Wall Mount Charging Station',
     specifications: '22 kWh | Wall Mount | Type 2 | Smart',
     productCode: 'WM22T2S',
-    image: productImgs.chargingCables,
+    image: productImgs.stationPd1, // Using specific station product image
     type: 'Charging Stations',
     chargingSpeed: '22 kWh',
     connectorType: 'Type 2',
@@ -78,7 +76,7 @@ export const SAMPLE_PRODUCTS = [
     title: 'CHAdeMO Adapter',
     specifications: '50 kWh | Fast Charging | CHAdeMO',
     productCode: 'CH50ADP',
-    image: productImgs.chargingCables,
+    image: productImgs.dcPd1, // Using specific DC product image
     type: 'Adapters',
     chargingSpeed: '50 kWh',
     connectorType: 'CHAdeMO',
@@ -90,19 +88,18 @@ export const SAMPLE_PRODUCTS = [
     title: 'Basic EV Cable',
     specifications: '3.7 kWh | 3 Meter | Single Phase | Type 1',
     productCode: 'BC37T1',
-    image: productImgs.chargingCables,
+    image: productImgs.evCab1,
     type: 'Cables',
     chargingSpeed: '3.7 kWh',
     connectorType: 'Type 1',
     phaseType: 'Single - Phase',
     price: 129
-  },
-  {
+  },  {
     id: 8,
     title: 'Premium Charging Station',
     specifications: '50 kWh | Floor Stand | Dual Port | CCS',
     productCode: 'PS50CCS',
-    image: productImgs.chargingCables,
+    image: productImgs.stationPd2, // Using specific station product image
     type: 'Charging Stations',
     chargingSpeed: '50 kWh',
     connectorType: 'CCS',
@@ -114,7 +111,7 @@ export const SAMPLE_PRODUCTS = [
     title: 'Cable Management Kit',
     specifications: 'Universal | Wall Mount | Accessories',
     productCode: 'CMK001',
-    image: productImgs.chargingCables,
+    image: productImgs.evCab2,
     type: 'Accessories',
     chargingSpeed: 'N/A',
     connectorType: 'Universal',
@@ -126,7 +123,7 @@ export const SAMPLE_PRODUCTS = [
     title: 'Heavy Duty EV Cable',
     specifications: '22 kWh | 10 Meter | 3 Phase | Type 2',
     productCode: 'HD22T2',
-    image: productImgs.chargingCables,
+    image: productImgs.evCabMidRight,
     type: 'Cables',
     chargingSpeed: '22 kWh',
     connectorType: 'Type 2',
@@ -138,31 +135,18 @@ export const SAMPLE_PRODUCTS = [
     title: 'Smart Charging Hub',
     specifications: '22 kWh | WiFi Enabled | App Control',
     productCode: 'SCH22W',
-    image: productImgs.chargingCables,
+    image: productImgs.dcPd2, // Using specific DC product image
     type: 'Charging Stations',
     chargingSpeed: '22 kWh',
     connectorType: 'Type 2',
     phaseType: 'Three - Phase',
-    price: 1299
-  },
+    price: 1299  },
   {
     id: 12,
     title: 'Travel Adapter Set',
     specifications: 'Multi-connector | Portable | Travel Kit',
     productCode: 'TAS001',
-    image: productImgs.chargingCables,
-    type: 'Accessories',
-    chargingSpeed: '11 kWh',
-    connectorType: 'Multi',
-    phaseType: 'Universal',
-    price: 199
-  },
-  {
-    id: 13,
-    title: 'Travel Adapter Set',
-    specifications: 'Multi-connector | Portable | Travel Kit',
-    productCode: 'TAS001',
-    image: productImgs.chargingCables,
+    image: productImgs.evCab3,
     type: 'Accessories',
     chargingSpeed: '11 kWh',
     connectorType: 'Multi',
