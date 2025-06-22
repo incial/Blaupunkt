@@ -1,12 +1,12 @@
 import React from 'react'
 import ImageHeader from '../Common/ImageHeader'
-import { specificationsData } from '../../Utils/data.js'
+import { AllSpecifications } from '../../Data/index.js'
 
 const Specifications = ({ productImage, category }) => {
   // Get specifications data based on category
   const getSpecificationsData = category => {
-    if (category && specificationsData[category]) {
-      return specificationsData[category]
+    if (category && AllSpecifications[category]) {
+      return AllSpecifications[category]
     }
 
     // Default specifications data if category not found

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { whiteLogo } from '../../Utils/assets'
+import { whiteLogo } from '../../Data/assets.js'
 import { FiChevronDown } from 'react-icons/fi'
 
 const REGIONS = [

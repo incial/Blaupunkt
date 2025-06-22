@@ -1,5 +1,5 @@
 import React from 'react'
-import { Entirepagedata } from '../../Utils/data'
+import { Entirepagedata } from '../../Data/index.js'
 import { FiDownload } from 'react-icons/fi'
 
 /**

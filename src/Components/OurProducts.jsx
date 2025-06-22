@@ -1,6 +1,6 @@
 import React from 'react'
 import ProductCard from './Common/ProductCard'
-import { chargingImgs } from '../Utils/assets'
+import { chargingImgs } from '../Data/assets.js'
 import { useNavigate } from 'react-router-dom'
 
 const OurProducts = () => {

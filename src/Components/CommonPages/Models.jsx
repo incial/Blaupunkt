@@ -2,7 +2,7 @@
 import ImageHeader from '../Common/ImageHeader'
 import FiltersContainer from '../Products/FiltersContainer'
 import ModelCard from './ModelCard'
-import { Entirepagedata } from '../../Utils/data'
+import { Entirepagedata } from '../../Data/index.js'
 
 // Simple icon components
 const ChevronDownIcon = ({ className }) => (
@@ -759,10 +759,9 @@ const Models = ({ productImage, category }) => {
                     
                     {/* Products Grid for this category */}
                     <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6'>
-                      {models.map((model, index) => (
-                        <div key={model.modelCode || model.name || `model-${groupKey}-${index}`}>
+                      {models.map((model, index) => (                        <div key={model.modelCode || model.name || `model-${groupKey}-${index}`}>
                           <ModelCard
-                            image={productImage}
+                            image={model.image || productImage}
                             modelCode={model.modelCode || model.name || `Model ${index + 1}`}
                             connectorType={model.connectorType || model.connector || 'N/A'}
                             current={model.current || model.ratedCurrent || model.amperage || 'N/A'}
@@ -779,10 +778,9 @@ const Models = ({ productImage, category }) => {
             ) : (
               /* Fallback to standard view if grouping doesn't work */
               <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6'>
-                {filteredModels.map((model, index) => (
-                  <div key={model.modelCode || model.name || `model-${index}`}>
+                {filteredModels.map((model, index) => (                  <div key={model.modelCode || model.name || `model-${index}`}>
                     <ModelCard
-                      image={productImage}
+                      image={model.image || productImage}
                       modelCode={model.modelCode || model.name || `Model ${index + 1}`}
                       connectorType={model.connectorType || model.connector || 'N/A'}
                       current={model.current || model.ratedCurrent || model.amperage || 'N/A'}

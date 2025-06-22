@@ -1,4 +1,4 @@
-import { productImgs } from "../../Utils/assets"
+import { productImgs } from "../../Data/assets.js"
 
 /**
  * Filter options constants for product filtering and sorting

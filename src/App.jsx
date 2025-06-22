@@ -9,7 +9,6 @@ import ChargingStations from './Pages/ChargingStations'
 import DCChargingStation from './Pages/DCChargingStation'
 import DCFastChargingStation from './Pages/DCFastChargingStation'
 import PortableEVCharging from './Pages/PortableEVCharging'
-import AdminPage from './Pages/AdminPage'
 import NotFound from './Pages/NotFound'
 
 const App = () => {
@@ -35,7 +34,6 @@ const App = () => {
               path='/portable-ev-charging'
               element={<PortableEVCharging />}
             />
-            <Route path='/admin' element={<AdminPage />} />
             <Route path='*' element={<NotFound />} />
           </Routes>
         </main>

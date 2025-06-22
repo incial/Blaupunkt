@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { logos } from '../../Utils/assets'
+import { logos } from '../../Data/assets.js'
 import { useState, useEffect } from 'react'
 
 const Navbar = () => {

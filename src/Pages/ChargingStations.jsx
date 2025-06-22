@@ -7,7 +7,7 @@ import OverviewAdvantage from '../Components/Common/Overview/OverviewAdvantage'
 import OverviewFeatureasandideal from '../Components/Common/Overview/OverviewFeatureasandideal'
 import DownloadButton from '../Components/CommonPages/DownlaodButton'
 import ChargingStationModels from '../Components/CommonPages/ChargingStationModels.jsx'
-import { Entirepagedata } from '../Utils/data.js'
+import { Entirepagedata } from '../Data/index.js'
 import chargingStationsImage from '../assets/Images/CatImages/Charging_Stations.png'
 
 const ChargingStations = () => {
@@ -37,14 +37,13 @@ const ChargingStations = () => {
         mainImage={chargingStationsImage}
         imageAlt={imageAlt}
         thumbnails={thumbnails}
-      />
-      {/* Overview Header */}
-      <div className='gap-y-'>
+      />      {/* Overview Header */}
+      <div className='gap-y-8'>
         <ImageHeader
           title='Overview'
           backgroundImage={OverviewData?.BgImage}
           showBackgroundImage={!!OverviewData?.BgImage}
-        />{' '}
+        />
         {/* All three overview components for Charging Stations */}
         <OverviewSection
           overviewData={{
@@ -60,10 +59,9 @@ const ChargingStations = () => {
           overviewData={{
             ...OverviewData,
             category: 'chargingStations',
-            IdealandFeaturesImage: chargingStationsImage
-          }}
+            IdealandFeaturesImage: chargingStationsImage          }}
         />
-      </div>{' '}
+      </div>
       <Specifications
         productImage={chargingStationsImage}
         category='chargingStations'

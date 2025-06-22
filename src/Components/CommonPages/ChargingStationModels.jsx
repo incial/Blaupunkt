@@ -1,6 +1,6 @@
 import React from 'react'
 import ImageHeader from '../Common/ImageHeader'
-import { Entirepagedata } from '../../Utils/data'
+import { Entirepagedata } from '../../Data/index.js'
 import chargingStationsImage from '../../assets/Images/CatImages/Charging_Stations.png'
 import dcChargingStationImage from '../../assets/Images/CatImages/DC_Charging_Station.png'
 

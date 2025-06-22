@@ -7,7 +7,7 @@ import OverviewAdvantage from '../Components/Common/Overview/OverviewAdvantage'
 import OverviewFeatureasandideal from '../Components/Common/Overview/OverviewFeatureasandideal'
 import DownloadButton from '../Components/CommonPages/DownlaodButton'
 import Models from '../Components/CommonPages/Models.jsx'
-import { Entirepagedata } from '../Utils/data.js'
+import { Entirepagedata } from '../Data/index.js'
 import dcFastChargingStationImage from '../assets/Images/CatImages/DC_Fast_Charging_Station.png'
 
 const DCFastChargingStation = () => {
