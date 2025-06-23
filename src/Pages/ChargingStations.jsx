@@ -7,8 +7,7 @@ import OverviewAdvantage from '../Components/Common/Overview/OverviewAdvantage'
 import OverviewFeatureasandideal from '../Components/Common/Overview/OverviewFeatureasandideal'
 import DownloadButton from '../Components/CommonPages/DownlaodButton'
 import ChargingStationModels from '../Components/CommonPages/ChargingStationModels.jsx'
-import { Entirepagedata } from '../Data/index.js'
-import chargingStationsImage from '../assets/Images/CatImages/Charging_Stations.png'
+import { Entirepagedata, chargingStationProductImages } from '../Data/index.js'
 
 const ChargingStations = () => {
   // Get data from Entirepagedata
@@ -19,12 +18,10 @@ const ChargingStations = () => {
     buttonText,
     imageAlt,
     OverviewData
-  } = Entirepagedata.chargingStations
-
-  // Process thumbnails with actual images
+  } = Entirepagedata.chargingStations  // Process thumbnails with actual images
   const thumbnails = Entirepagedata.chargingStations.thumbnails.map(thumb => ({
     ...thumb,
-    image: chargingStationsImage,
+    image: thumb.image, // Use the actual thumbnail image instead of productImage
     alt: thumb.alt
   }))
   return (
@@ -34,10 +31,10 @@ const ChargingStations = () => {
         description={description}
         breadcrumbs={breadcrumbs}
         buttonText={buttonText}
-        mainImage={chargingStationsImage}
         imageAlt={imageAlt}
         thumbnails={thumbnails}
-      />      {/* Overview Header */}
+      />
+      {/* Overview Header */}
       <div className='gap-y-8'>
         <ImageHeader
           title='Overview'
@@ -49,7 +46,7 @@ const ChargingStations = () => {
           overviewData={{
             ...OverviewData,
             category: 'chargingStations',
-            image: chargingStationsImage
+            image: OverviewData?.image || ""
           }}
         />
         <OverviewAdvantage
@@ -59,11 +56,12 @@ const ChargingStations = () => {
           overviewData={{
             ...OverviewData,
             category: 'chargingStations',
-            IdealandFeaturesImage: chargingStationsImage          }}
+            IdealandFeaturesImage: OverviewData?.IdealandFeaturesImage || ""
+          }}
         />
       </div>
       <Specifications
-        productImage={chargingStationsImage}
+        productImage={chargingStationProductImages.spec}
         category='chargingStations'
       />
       <ChargingStationModels category='chargingStations' />

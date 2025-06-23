@@ -72,7 +72,7 @@ export const chargingStationsData = {
       ]
     },
     
-    IdealandFeaturesImage: chargingStationProductImages.feature,
+    IdealandFeaturesImage: chargingStationProductImages.ideal,
     features: createStandardFeatures(),
     
     ideal: {
@@ -91,7 +91,7 @@ export const chargingStationsData = {
       desktop: '1000px'
     },
     
-    image: chargingStationProductImages.main
+    image: chargingStationProductImages.feature
   },
   
   highlightsData: createHighlightsData('Station Features', [
@@ -148,7 +148,7 @@ export const chargingStationsData = {
                 current: '32A',
                 cableLength: '5 Meters',
                 phaseType: 'Three - Phase',
-                image: 'charging_station_cable.png'
+                image: chargingStationImages.stationPd1
               },
               {
                 modelCode: 'BW3P16ACB',
@@ -156,7 +156,7 @@ export const chargingStationsData = {
                 current: '16A',
                 cableLength: '5 Meters',
                 phaseType: 'Three - Phase',
-                image: 'charging_station_cable.png'
+                image: chargingStationImages.stationPd1
               },
               {
                 modelCode: 'BW1P32ACB',
@@ -164,21 +164,20 @@ export const chargingStationsData = {
                 current: '32A',
                 cableLength: '5 Meters',
                 phaseType: 'Single - Phase',
-                image: 'charging_station_cable.png'
+                image: chargingStationImages.stationPd1
               }
             ]
           },
           {
             name: 'Smart',
             description: 'Users requiring advanced features like remote management, energy monitoring, and integration with smart home systems.',
-            models: [
-              {
+            models: [              {
                 modelCode: 'BW3P32ACS',
                 maximumPower: '22 kWh',
                 current: '32A',
                 cableLength: '5 Meters',
                 phaseType: 'Three - Phase',
-                image: 'charging_station_cable.png'
+                image: chargingStationImages.stationPd1
               },
               {
                 modelCode: 'BW3P16ACS',
@@ -186,7 +185,7 @@ export const chargingStationsData = {
                 current: '16A',
                 cableLength: '5 Meters',
                 phaseType: 'Three - Phase',
-                image: 'charging_station_cable.png'
+                image: chargingStationImages.stationPd1
               },
               {
                 modelCode: 'BW1P32ACS',
@@ -194,21 +193,20 @@ export const chargingStationsData = {
                 current: '32A',
                 cableLength: '5 Meters',
                 phaseType: 'Single - Phase',
-                image: 'charging_station_cable.png'
+                image: chargingStationImages.stationPd1
               }
             ]
           },
           {
             name: 'Full',
             description: 'Users who need the highest level of connectivity and control, especially in areas with unstable internet connections.',
-            models: [
-              {
+            models: [              {
                 modelCode: 'BW3P32ACF',
                 maximumPower: '22 kWh',
                 current: '32A',
                 cableLength: '5 Meters',
                 phaseType: 'Three - Phase',
-                image: 'charging_station_cable.png'
+                image: chargingStationImages.stationPd1
               },
               {
                 modelCode: 'BW3P16ACF',
@@ -216,7 +214,7 @@ export const chargingStationsData = {
                 current: '16A',
                 cableLength: '5 Meters',
                 phaseType: 'Three - Phase',
-                image: 'charging_station_cable.png'
+                image: chargingStationImages.stationPd1
               },
               {
                 modelCode: 'BW1P16ACF',
@@ -224,7 +222,7 @@ export const chargingStationsData = {
                 current: '16A',
                 cableLength: '5 Meters',
                 phaseType: 'Single - Phase',
-                image: 'charging_station_cable.png'
+                image: chargingStationImages.stationPd1
               }
             ]
           }
@@ -236,14 +234,13 @@ export const chargingStationsData = {
           {
             name: 'Basic',
             description: 'Users who need a reliable and secure charging solution without advanced connectivity features.',
-            models: [
-              {
+            models: [              {
                 modelCode: 'BW3P32ACB',
                 maximumPower: '22 kWh',
                 current: '32A',
                 cableLength: '5 Meters',
                 phaseType: 'Three - Phase',
-                image: 'charging_station_socket.png'
+                image: chargingStationImages.stationPd2
               },
               {
                 modelCode: 'BW3P16ACB',
@@ -251,7 +248,7 @@ export const chargingStationsData = {
                 current: '16A',
                 cableLength: '5 Meters',
                 phaseType: 'Three - Phase',
-                image: 'charging_station_socket.png'
+                image: chargingStationImages.stationPd2
               },
               {
                 modelCode: 'BW1P32ACB',
@@ -259,21 +256,20 @@ export const chargingStationsData = {
                 current: '32A',
                 cableLength: '5 Meters',
                 phaseType: 'Single - Phase',
-                image: 'charging_station_socket.png'
+                image: chargingStationImages.stationPd2
               }
             ]
           },
           {
             name: 'Smart',
             description: 'Users requiring advanced features like remote management, energy monitoring, and integration with smart home systems.',
-            models: [
-              {
+            models: [              {
                 modelCode: 'BW3P32ACS',
                 maximumPower: '22 kWh',
                 current: '32A',
                 cableLength: '5 Meters',
                 phaseType: 'Three - Phase',
-                image: 'charging_station_socket.png'
+                image: chargingStationImages.stationPd2
               },
               {
                 modelCode: 'BW3P16ACS',
@@ -281,7 +277,7 @@ export const chargingStationsData = {
                 current: '16A',
                 cableLength: '5 Meters',
                 phaseType: 'Three - Phase',
-                image: 'charging_station_socket.png'
+                image: chargingStationImages.stationPd2
               },
               {
                 modelCode: 'BW1P32ACS',
@@ -289,21 +285,20 @@ export const chargingStationsData = {
                 current: '32A',
                 cableLength: '5 Meters',
                 phaseType: 'Single - Phase',
-                image: 'charging_station_socket.png'
+                image: chargingStationImages.stationPd2
               }
             ]
           },
           {
             name: 'Full',
             description: 'Users who need the highest level of connectivity and control, especially in areas with unstable internet connections.',
-            models: [
-              {
+            models: [              {
                 modelCode: 'BW3P32ACF',
                 maximumPower: '22 kWh',
                 current: '32A',
                 cableLength: '5 Meters',
                 phaseType: 'Three - Phase',
-                image: 'charging_station_socket.png'
+                image: chargingStationImages.stationPd2
               },
               {
                 modelCode: 'BW3P16ACF',
@@ -311,7 +306,7 @@ export const chargingStationsData = {
                 current: '16A',
                 cableLength: '5 Meters',
                 phaseType: 'Three - Phase',
-                image: 'charging_station_socket.png'
+                image: chargingStationImages.stationPd2
               },
               {
                 modelCode: 'BW1P16ACF',
@@ -319,7 +314,7 @@ export const chargingStationsData = {
                 current: '16A',
                 cableLength: '5 Meters',
                 phaseType: 'Single - Phase',
-                image: 'charging_station_socket.png'
+                image: chargingStationImages.stationPd2
               }
             ]
           }

@@ -52,7 +52,8 @@ export const chargingStationProductImages = {
   background: chargingStationsUrl,
   pd1: stationPd1,
   pd2: stationPd2,
-  spec: stationSpec
+  spec: stationSpec,
+  specifications: stationSpec
 }
 
 /**

@@ -7,8 +7,7 @@ import OverviewAdvantage from '../Components/Common/Overview/OverviewAdvantage'
 import OverviewFeatureasandideal from '../Components/Common/Overview/OverviewFeatureasandideal'
 import DownloadButton from '../Components/CommonPages/DownlaodButton'
 import Models from '../Components/CommonPages/Models.jsx'
-import { Entirepagedata } from '../Data/index.js'
-import dcChargingStationImage from '../assets/Images/CatImages/DC_Charging_Station.png'
+import { Entirepagedata, dcChargingStationProductImages } from '../Data/index.js'
 
 
 const DCChargingStation = () => {
@@ -21,21 +20,20 @@ const DCChargingStation = () => {
     imageAlt,
     OverviewData,
   } = Entirepagedata.dcChargingStation;
+  
   // Process thumbnails with actual images
   const thumbnails = Entirepagedata.dcChargingStation.thumbnails.map(thumb => ({
     ...thumb,
-    image: dcChargingStationImage,
+    image: thumb.image, // Use the actual thumbnail image instead of productImage
     alt: thumb.alt
   }));
   
   return (
-    <div>
-      <HeroSection 
+    <div>      <HeroSection 
         title={title}
         description={description}
         breadcrumbs={breadcrumbs}
         buttonText={buttonText}
-        mainImage={dcChargingStationImage}
         imageAlt={imageAlt}
         thumbnails={thumbnails}
       />
@@ -45,13 +43,13 @@ const DCChargingStation = () => {
         backgroundImage={OverviewData?.BgImage}
         showBackgroundImage={!!OverviewData?.BgImage}
       />      {/* All three overview components for DC Charging Station */}
-      <OverviewSection overviewData={{...OverviewData, category: 'dcChargingStation', image: dcChargingStationImage}} />
+      <OverviewSection overviewData={{...OverviewData, category: 'dcChargingStation', image: OverviewData?.image || ""}} />
       <OverviewAdvantage overviewData={{...OverviewData, category: 'dcChargingStation'}} />
-      <OverviewFeatureasandideal overviewData={{...OverviewData, category: 'dcChargingStation', IdealandFeaturesImage: dcChargingStationImage}} />        <Specifications 
-        productImage={dcChargingStationImage}
+      <OverviewFeatureasandideal overviewData={{...OverviewData, category: 'dcChargingStation', IdealandFeaturesImage: OverviewData?.IdealandFeaturesImage || ""}} />      <Specifications 
+        productImage={dcChargingStationProductImages.main}
         category="dcChargingStation"
       />
-      <Models productImage={dcChargingStationImage} category='dcChargingStation' />
+      <Models category='dcChargingStation' />
       <DownloadButton productCategory='dcChargingStation' />
     </div>
   )

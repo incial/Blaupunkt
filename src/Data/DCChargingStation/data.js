@@ -60,7 +60,7 @@ export const dcChargingStationData = {
     },
     
     list: {
-      active: true,
+      active: false,
       title: 'Key Specifications',
       data: [
         'Power output: 50kW, 100kW, or 150kW configurations',

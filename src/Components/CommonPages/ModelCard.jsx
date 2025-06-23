@@ -7,7 +7,8 @@ const ModelCard = ({
   current = '16A',
   cableLength = '2 Meters',
   ipClass = '65',
-  phaseType = 'Single - Phase'
+  phaseType = 'Single - Phase',
+  customFields = null // New prop for custom field configurations
 }) => {
   return (
     <div className='relative w-full max-w-[300px] transition-all duration-300 mx-auto'>
@@ -57,33 +58,45 @@ const ModelCard = ({
             <h3 className='text-lg font-bold text-[#1E3A8A] mb-4 text-left'>
               {modelCode}
             </h3>
-            
-            {/* Specifications List */}
+              {/* Specifications List */}
             <div className='space-y-1 text-md'>
-              <div className='flex items-center'>
-                <span className='font-normal text-gray-700'>Connector:</span>
-                <span className='text-gray-900 font-normal'>{connectorType}</span>
-              </div>
-              
-              <div className='flex items-center'>
-                <span className='font-normal text-gray-700'>Current:</span>
-                <span className='text-gray-900 font-normal'>{current}</span>
-              </div>
-              
-              <div className='flex items-center'>
-                <span className='font-normal text-gray-700'>Cable Length:</span>
-                <span className='text-gray-900 font-normal'>{cableLength}</span>
-              </div>
-              
-              <div className='flex items-center'>
-                <span className='font-normal text-gray-700'>IP Class:</span>
-                <span className='text-gray-900 font-normal'>{ipClass}</span>
-              </div>
-              
-              <div className='flex items-center'>
-                <span className='font-normal text-gray-700'>Phase Type:</span>
-                <span className='text-gray-900 font-normal'>{phaseType}</span>
-              </div>
+              {customFields ? (
+                // Use custom fields if provided
+                customFields.map((field, index) => (
+                  <div key={index} className='flex items-center'>
+                    <span className='font-normal text-gray-700'>{field.label}:</span>
+                    <span className='text-gray-900 font-normal'>{field.value}</span>
+                  </div>
+                ))
+              ) : (
+                // Use default fields for charging cables
+                <>
+                  <div className='flex items-center'>
+                    <span className='font-normal text-gray-700'>Connector:</span>
+                    <span className='text-gray-900 font-normal'>{connectorType}</span>
+                  </div>
+                  
+                  <div className='flex items-center'>
+                    <span className='font-normal text-gray-700'>Current:</span>
+                    <span className='text-gray-900 font-normal'>{current}</span>
+                  </div>
+                  
+                  <div className='flex items-center'>
+                    <span className='font-normal text-gray-700'>Cable Length:</span>
+                    <span className='text-gray-900 font-normal'>{cableLength}</span>
+                  </div>
+                  
+                  <div className='flex items-center'>
+                    <span className='font-normal text-gray-700'>IP Class:</span>
+                    <span className='text-gray-900 font-normal'>{ipClass}</span>
+                  </div>
+                  
+                  <div className='flex items-center'>
+                    <span className='font-normal text-gray-700'>Phase Type:</span>
+                    <span className='text-gray-900 font-normal'>{phaseType}</span>
+                  </div>
+                </>
+              )}
             </div>
           </div>
         </div>

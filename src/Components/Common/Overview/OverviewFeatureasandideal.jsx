@@ -7,7 +7,9 @@ const OverviewFeatureasandideal = ({ overviewData }) => {
       {(overviewData?.features?.active ||
         overviewData?.ideal?.active ||
         overviewData?.IdealandFeaturesImage) && (
-        <div className='max-w-7xl mx-auto px-8'>          {/* Desktop Layout - Flex Row */}
+        <div className='max-w-7xl mx-auto px-8'>
+          {' '}
+          {/* Desktop Layout - Flex Row */}
           <div className='hidden md:flex md:items-start md:gap-12 py-4'>
             {/* Content Section - Left Side */}
             <div className='flex-[2] space-y-8'>
@@ -62,7 +64,7 @@ const OverviewFeatureasandideal = ({ overviewData }) => {
                 <img
                   src={overviewData.IdealandFeaturesImage}
                   alt='Features and Ideal Use Cases'
-                  className='w-full h-auto rounded-lg shadow-lg object-cover'
+                  className='w-full h-auto rounded-lg object-cover'
                   style={{
                     maxHeight: '500px',
                     minHeight: '400px'
@@ -70,7 +72,8 @@ const OverviewFeatureasandideal = ({ overviewData }) => {
                 />
               </div>
             )}
-          </div>          {/* Mobile Layout - Stacked */}
+          </div>{' '}
+          {/* Mobile Layout - Stacked */}
           <div className='md:hidden space-y-6 py-4'>
             {/* Features Section */}
             {overviewData?.features?.active &&

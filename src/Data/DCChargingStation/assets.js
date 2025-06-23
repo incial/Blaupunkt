@@ -59,18 +59,6 @@ export const createDCChargingStationThumbnails = () => [
   {
     image: dcChargingStationImages.thumb2,
     alt: 'DC Charging Station - View 2'
-  },
-  {
-    image: dcChargingStationImages.dcMid,
-    alt: 'DC Charging Station - Mid View'
-  },
-  {
-    image: dcChargingStationImages.dcMidHalf,
-    alt: 'DC Charging Station - Half View'
-  },
-  {
-    image: dcChargingStationImages.dcMidSpec,
-    alt: 'DC Charging Station - Specifications'
   }
 ]
 
