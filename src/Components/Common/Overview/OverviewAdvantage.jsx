@@ -3,7 +3,8 @@ import React from 'react'
 const OverviewAdvantage = ({ overviewData }) => {
   if (!overviewData) {
     return null
-  }  return (
+  }
+  return (
     <div className='w-full py-4'>
       {/* Monta Backend Integration Section - Desktop */}
       <div className='hidden md:block max-w-7xl mx-auto px-8 py-4'>
@@ -39,10 +40,10 @@ const OverviewAdvantage = ({ overviewData }) => {
                             key={`monta-list-${i}`}
                             className='flex items-start'
                           >
-                            <span className='text-lg text-gray-700 leading-relaxed'>
+                            <span className='text-lg  text-gray-700 leading-relaxed'>
                               {listItem.includes(':') ? (
                                 <>
-                                  <strong>{listItem.split(':')[0]}</strong>:
+                                  <span className='font-semibold'>{listItem.split(':')[0]}</span>:
                                   {listItem.split(':').slice(1).join(':')}
                                 </>
                               ) : (
@@ -57,7 +58,8 @@ const OverviewAdvantage = ({ overviewData }) => {
                 ))}
             </div>
           )}
-      </div>      {/* Monta Backend Integration Section - Mobile */}
+      </div>{' '}
+      {/* Monta Backend Integration Section - Mobile */}
       <div className='md:hidden max-w-7xl mx-auto px-4 py-4'>
         {/* Enhanced way to show Monta Integration from para data */}
         {overviewData?.para?.active &&
@@ -94,7 +96,7 @@ const OverviewAdvantage = ({ overviewData }) => {
                             <span className='text-base text-gray-700 leading-relaxed'>
                               {listItem.includes(':') ? (
                                 <>
-                                  <strong>{listItem.split(':')[0]}</strong>:
+                                  <span className='font-semibold'>{listItem.split(':')[0]}</span>:
                                   {listItem.split(':').slice(1).join(':')}
                                 </>
                               ) : (

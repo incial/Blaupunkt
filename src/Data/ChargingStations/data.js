@@ -6,8 +6,6 @@
 
 import { 
   createBreadcrumbs, 
-  createMontaIntegrationData, 
-  createStandardFeatures,
   createHighlightsData,
   createSpecificationsData,
   BUTTON_TEXTS,
@@ -21,6 +19,29 @@ import {
   createChargingStationThumbnails,
   CHARGING_STATIONS_IMAGES
 } from './assets.js'
+
+// =============================================================================
+// CHARGING STATIONS SPECIFIC UTILITIES
+// =============================================================================
+
+/**
+ * Creates Monta backend integration data specific to charging stations
+ * @param {boolean} isActive - Whether the integration is active
+ * @returns {Object} Monta integration configuration
+ */
+const createMontaIntegrationData = (isActive = true) => ({
+  subheading: 'Advantages of Monta Backend Integration:',
+  active: isActive,
+  listItems: [
+    'Effortless Setup: With pre-configuration, your charging station is ready to use right out of the box. No need for complex installations or technical adjustments - simply plug in and charge.',
+
+    'Enhanced Control and Monitoring: Through the Monta platform, gain full control over your charging sessions. Monitor energy usage, set charging schedules, and access detailed reports, all from a user-friendly interface.',
+
+    'Optimized Charging Efficiency: The pre-configuration ensures that your charging station operates at peak performance, delivering up to 11KW or 22 KW of power depending on the model. The charging capacity can be set between 8A and 32A depending on the model.',
+
+    'Future-Ready Technology: Stay ahead with automatic updates and continuous feature enhancements via the Monta backend, keeping your charging station aligned with the latest technological advancements.'
+  ]
+})
 
 // =============================================================================
 // CHARGING STATIONS MAIN DATA
@@ -44,7 +65,7 @@ export const chargingStationsData = {
       data: [
         {
           subheading: 'Reliable and Robust: Blaupunkt Three-Phase Charging Station',
-          text: "Charging your electric car is more than just a task – it's a matter of trust. That's why Blaupunkt's three-phase charging station is engineered to meet and exceed all applicable electrical safety requirements. Every product is rigorously tested and certified by leading independent laboratories, ensuring you receive only the highest quality equipment."
+          text: "Charging your electric car is more than just a task - it's a matter of trust. That's why Blaupunkt's three-phase charging station is engineered to meet and exceed all applicable electrical safety requirements. Every product is rigorously tested and certified by leading independent laboratories, ensuring you receive only the highest quality equipment."
         },
         {
           subheading: 'Durability and Safety You Can Rely On',
@@ -55,7 +76,7 @@ export const chargingStationsData = {
           text: 'What sets this charging station apart is its pre-configuration with the Monta backend. This advanced feature allows for a quick and hassle-free setup, enabling you to start charging immediately with minimal effort.',
           active: true
         },
-        createMontaIntegrationData(true, 'charging station')
+        createMontaIntegrationData(true)
       ]
     },
     
@@ -71,18 +92,27 @@ export const chargingStationsData = {
         'Smart connectivity with easy setup and user-friendly interface'
       ]
     },
-    
-    IdealandFeaturesImage: chargingStationProductImages.ideal,
-    features: createStandardFeatures(),
-    
+      IdealandFeaturesImage: chargingStationProductImages.ideal,
+    features: {
+      active: true,
+      title: 'Features',
+      isListFormat: true,
+      data: [
+        'OCPP 1.6J Compliance:Enables integration with various third-party backends for enhanced control and monitoring.',
+        'RFID Authorization:Provides secure access control, just like the Basic version.',
+        'Monta Preconfiguration:Pre-configured for seamless integration with the Monta backend, offering immediate setup and enhanced monitoring features.',
+        'Remote Management:Easily manage charging sessions, monitor energy usage, and set smart schedules through the Monta platform.',
+        'Adjustable Charging Capacity:Offers the same flexible charging options as the Basic version.',
+      ]
+    },
+
     ideal: {
       active: true,
-      title: 'Ideal For',
+      title: 'Ideal Applications',
+      isListFormat: true,
       data: [
-        'Residential charging solutions',
-        'Business and workplace installations',
-        'Public parking facilities',
-        'Fleet management systems'
+        'Users who require advanced features like remote management, energy monitoring, and integration with smart home systems.',
+        'Businesses or public spaces where monitoring and managing multiple charging stations is essential',
       ]
     },
     
@@ -118,14 +148,14 @@ export const chargingStationsData = {
   ]),
   
   specificationsData: createSpecificationsData('Specifications', [
-    { label: 'Power Output', value: '7.4kW / 11kW / 22kW' },
-    { label: 'Input Voltage', value: '400V AC 3-phase' },
-    { label: 'Charging Ports', value: '1 or 2 Type 2 outlets' },
-    { label: 'Protection', value: 'IP54 rated enclosure' },
-    { label: 'Communication', value: 'WiFi, 4G, Ethernet' },
-    { label: 'Display', value: '7-inch color touchscreen' },
-    { label: 'Dimensions', value: '1200 x 300 x 200mm' },
-    { label: 'Weight', value: '45kg' }
+    { label: 'Phases:', value: 'Single-Phase & Three-Phase' },
+    { label: 'Ampere:', value: '32A & 16A' },
+    { label: 'Maximum Power:', value: '22KW, 11KW, 4KW' },
+    { label: 'RFID Authorization:', value: 'Yes' },
+    { label: 'Wi-Fi / LAN:', value: 'Yes' },
+    { label: 'OCPP 1.6:', value: 'Yes' },
+    { label: 'Cable Length:', value: '5 meters' },
+    { label: 'Connector Type:', value: 'Type 2' }
   ]),
   
   modelsData: {

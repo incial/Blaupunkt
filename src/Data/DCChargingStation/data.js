@@ -6,11 +6,8 @@
 
 import { 
   createBreadcrumbs, 
-  createMontaIntegrationData, 
-  createStandardFeatures,
   createHighlightsData,
   createSpecificationsData,
-  createChargerModels,
   BUTTON_TEXTS
 } from '../Common/utilities.js'
 
@@ -21,6 +18,28 @@ import {
   createDCChargingStationThumbnails,
   DC_CHARGING_STATION_IMAGES
 } from './assets.js'
+
+// =============================================================================
+// DC CHARGING STATION SPECIFIC UTILITIES
+// =============================================================================
+
+/**
+ * Creates Monta backend integration data specific to DC charging stations
+ * @param {boolean} isActive - Whether the integration is active
+ * @returns {Object} Monta integration configuration
+ */
+const createMontaIntegrationData = (isActive = true) => ({
+  subheading: 'Monta Backend Integration Advantages',
+  active: isActive,
+  text: `What sets this DC charging station apart is its pre-configuration with the Monta backend. This advanced feature allows for a quick and hassle-free setup, enabling you to start charging immediately with minimal effort.`,
+  listItems: [
+    'Effortless Setup: With pre-configuration, your DC charging station is ready to use right out of the box.',
+    'Enhanced Control and Monitoring: Through the Monta platform, gain full control over your charging sessions.',
+    'Optimized Charging Efficiency: The pre-configuration ensures optimal power delivery based on the DC charger model.',
+    'Integrated Safety Features: Highest level of protection for commercial and fleet vehicles.',
+    'Future-Ready Technology: Automatic updates and continuous feature enhancements via the Monta backend.'
+  ]
+})
 
 // =============================================================================
 // DC CHARGING STATION MAIN DATA
@@ -37,25 +56,19 @@ export const dcChargingStationData = {
   thumbnails: createDCChargingStationThumbnails(),
   
   OverviewData: {
-    BgImage: dcChargingStationBgImages.overview,
+    BgImage: dcChargingStationImages.dcMid,
     
     para: {
       active: true,
       data: [
         {
-          subheading: 'High-Power DC Charging Technology',
-          text: "Blaupunkt's DC charging station delivers rapid charging capabilities with power outputs ranging from 50kW to 150kW, enabling electric vehicles to charge from 10% to 80% in as little as 30 minutes."
+          subheading: 'Powerful Performance in a Compact Design',
+          text: "The Blaupunkt 30-40 kW DC Charger delivers rapid, reliable charging in a compact footprint, ideal for mid-power applications. Designed for versatility, this charger provides efficient charging times suited for commercial environments like parking facilities, office complexes, and retail centers."
         },
         {
-          subheading: 'Commercial-Grade Reliability',
-          text: "Engineered for heavy-duty commercial use, our DC charging stations feature robust construction, advanced cooling systems, and comprehensive safety features to ensure reliable operation in high-traffic environments."
-        },
-        {
-          subheading: 'Universal Compatibility',
-          text: "Supports all major connector types including CCS, CHAdeMO, and Type 2, ensuring compatibility with virtually all electric vehicles on the market today.",
-          active: true
-        },
-        createMontaIntegrationData(true, 'DC charging station')
+          subheading: 'Durability and Safety You Can Rely On',
+          text: "Engineered for performance and reliability, Blaupunkt’s 30-40 kW DC Charger is built to last in any environment. Its robust design ensures dependable charging whether installed indoors or outdoors, and its IP54-rated enclosure provides superior protection against dust, water, and other elements, guaranteeing long-term performance under a wide range of weather conditions."        },
+        createMontaIntegrationData(true)
       ]
     },
     
@@ -73,19 +86,20 @@ export const dcChargingStationData = {
         'Remote monitoring and diagnostics capabilities'
       ]
     },
-    
-    IdealandFeaturesImage: dcChargingStationProductImages.feature,
-    features: createStandardFeatures([
-      'Rapid charging capabilities up to 150kW',
-      'Multiple connector support for universal compatibility',
-      'Advanced thermal management system',
-      'Remote diagnostics and monitoring',
-      'Modular design for easy maintenance'
-    ]),
+      IdealandFeaturesImage: dcChargingStationProductImages.feature,
+    features: {
+      active: true,
+      title: 'User-Friendly and Intuitive Operation',
+      isListFormat: false, // true for list, false for paragraph
+      data: [
+        'This DC charger is equipped with an easy-to-use interface, ensuring smooth operation for both new and experienced users. With RFID authorization, access to the charger is secure, allowing only authorized users to charge their vehicles. Additionally, the OCPP 1.6 compatibility ensures seamless integration into existing charging networks for remote monitoring and control. Ideal For: Commercial sites that require reliable, mid-speed EV charging solutions. Office buildings or small fleets that need faster charging than typical AC units. Locations seeking a balance of speed, affordability, and durability.'
+      ]
+    },
     
     ideal: {
       active: true,
-      title: 'Ideal Applications',
+      title: 'Ideal For',
+      isListFormat: true, // true for list, false for paragraph
       data: [
         'Highway rest stops and service areas',
         'Commercial parking facilities and shopping centers',
@@ -95,7 +109,7 @@ export const dcChargingStationData = {
       ]
     },
     
-    image: dcChargingStationProductImages.main
+    image: dcChargingStationImages.dcMid
   },
   
   highlightsData: createHighlightsData('Key Features', [
@@ -130,78 +144,62 @@ export const dcChargingStationData = {
     { label: 'Cooling System', value: 'Liquid cooling' },
     { label: 'Dimensions', value: '1800 x 800 x 400mm' },
     { label: 'Weight', value: '850kg' }
-  ]),
-  
-  modelsData: createChargerModels([
-    {
-      name: '50kW Series',
-      description: 'Entry-level DC fast charging for moderate-traffic locations',
-      models: [
-        {
-          modelCode: 'BP-DC50-CCS',
-          maximumPower: '50kW',
-          connectorType: 'CCS',
-          outputVoltage: '150V - 500V DC',
-          dimensions: '1600 x 700 x 350mm',
-          weight: '650kg'
-        },
-        {
-          modelCode: 'BP-DC50-CHD',
-          maximumPower: '50kW',
-          connectorType: 'CHAdeMO',
-          outputVoltage: '150V - 500V DC',
-          dimensions: '1600 x 700 x 350mm',
-          weight: '650kg'
-        }
-      ]
-    },
-    {
-      name: '100kW Series',
-      description: 'Balanced performance for commercial applications',
-      models: [
-        {
-          modelCode: 'BP-DC100-CCS',
-          maximumPower: '100kW',
-          connectorType: 'CCS',
-          outputVoltage: '150V - 500V DC',
-          dimensions: '1700 x 750 x 375mm',
-          weight: '750kg',
-          popular: true
-        },
-        {
-          modelCode: 'BP-DC100-CHD',
-          maximumPower: '100kW',
-          connectorType: 'CHAdeMO',
-          outputVoltage: '150V - 500V DC',
-          dimensions: '1700 x 750 x 375mm',
-          weight: '750kg'
-        }
-      ]
-    },
-    {
-      name: '150kW Series',
-      description: 'High-performance charging for premium locations',
-      models: [
-        {
-          modelCode: 'BP-DC150-CCS',
-          maximumPower: '150kW',
-          connectorType: 'CCS',
-          outputVoltage: '150V - 500V DC',
-          dimensions: '1800 x 800 x 400mm',
-          weight: '850kg',
-          popular: true
-        },
-        {
-          modelCode: 'BP-DC150-CHD',
-          maximumPower: '150kW',
-          connectorType: 'CHAdeMO',
-          outputVoltage: '150V - 500V DC',
-          dimensions: '1800 x 800 x 400mm',
-          weight: '850kg'
-        }
-      ]
-    }
-  ]),
+  ]),    modelsData: (() => {
+    // Create flat models array from sections for Models component compatibility
+    const sections = [
+      {
+        name: '50kW Series',
+        description: 'Entry-level DC fast charging for moderate-traffic locations',
+        models: [
+          {
+            modelCode: 'BP-DC50-CCS',
+            maximumPower: '50kW',
+            current: '125A',
+            cableLength: '5 Meters',
+            connectorType: 'CCS',
+            outputVoltage: '150V - 500V DC',
+            dimensions: '1600 x 700 x 350mm',
+            weight: '650kg',
+            protectionRating: 'IP54',
+            coolingSystem: 'Liquid cooling',
+            phaseType: 'Three - Phase',
+            image: dcChargingStationImages.dcPd1
+          },
+          {
+            modelCode: 'BP-DC50-CHD',
+            maximumPower: '50kW',
+            current: '125A',
+            cableLength: '5 Meters',
+            connectorType: 'CHAdeMO',
+            outputVoltage: '150V - 500V DC',
+            dimensions: '1600 x 700 x 350mm',
+            weight: '650kg',
+            protectionRating: 'IP54',
+            coolingSystem: 'Liquid cooling',
+            phaseType: 'Three - Phase',
+            image: dcChargingStationImages.dcPd2
+          }
+        ]
+      }
+    ];
+
+    // Flatten all models from all sections into a single array
+    const flatModels = [];
+    sections.forEach(section => {
+      section.models.forEach(model => {
+        flatModels.push({
+          ...model,
+          section: section.name
+        });
+      });
+    });
+
+    return {
+      title: 'Models',
+      groupingMethod: 'section',
+      models: flatModels,
+    };
+  })(),
   
   supplierData: {
     manufacturer: 'Blaupunkt Technologies',

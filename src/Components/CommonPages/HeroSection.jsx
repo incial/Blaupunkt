@@ -8,7 +8,9 @@ const HeroSection = ({
   buttonText,
   mainImage,
   imageAlt,
-  thumbnails
+  thumbnails,
+  thumbnailObjectFit = 'object-cover', // New prop with default value
+  mainImageObjectFit = 'object-contain' // New prop for main image with default value
 }) => {
   const [activeThumbIndex, setActiveThumbIndex] = useState(0)
   // Get currently displayed image from thumbnails or use main image
@@ -81,11 +83,10 @@ const HeroSection = ({
               {' '}
               {/* Product Image Background with animation */}
               <div className='w-full h-full bg-white relative overflow-hidden'>
-                {' '}
-                <img
+                {' '}                <img
                   src={currentDisplayImage}
                   alt={currentAltText}
-                  className='w-full h-full object-contain transition-transform duration-500 ease-in-out hover:scale-105'
+                  className={`w-full h-full ${mainImageObjectFit} transition-transform duration-500 ease-in-out hover:scale-105`}
                   style={{ animation: 'fadeIn 0.5s ease-in-out' }}
                 />
                 <style jsx='true'>{`
@@ -114,11 +115,10 @@ const HeroSection = ({
                             ? 'z-10 transform scale-110'
                             : ''
                         }`}
-                      >
-                        <img
+                      >                        <img
                           src={thumb.image || mainImage}
                           alt={thumb.alt || `Thumbnail ${index + 1}`}
-                          className={`w-[60px] h-[60px] lg:w-[60px] lg:h-[60px] xl:w-[60px] xl:h-[60px] object-cover rounded-lg shadow-md hover:scale-110 transition-all duration-300 cursor-pointer 
+                          className={`w-[60px] h-[60px] lg:w-[60px] lg:h-[60px] xl:w-[60px] xl:h-[60px] ${thumbnailObjectFit} rounded-lg shadow-md hover:scale-110 transition-all duration-300 cursor-pointer 
                           ${
                             activeThumbIndex === index
                               ? 'border-2 border-blaupunkt-primary-darker shadow-lg'
@@ -150,11 +150,10 @@ const HeroSection = ({
                               ? 'z-10 transform scale-110'
                               : ''
                           }`}
-                        >
-                          <img
+                        >                          <img
                             src={mainImage}
                             alt={`Thumbnail ${index + 1}`}
-                            className={`w-[60px] h-[60px] lg:w-[60px] lg:h-[60px] xl:w-[60px] xl:h-[60px] object-cover rounded-lg shadow-md hover:scale-110 transition-all duration-300 cursor-pointer
+                            className={`w-[60px] h-[60px] lg:w-[60px] lg:h-[60px] xl:w-[60px] xl:h-[60px] ${thumbnailObjectFit} rounded-lg shadow-md hover:scale-110 transition-all duration-300 cursor-pointer
                           ${
                             activeThumbIndex === index
                               ? 'border-2 border-blaupunkt-primary-darker shadow-lg'

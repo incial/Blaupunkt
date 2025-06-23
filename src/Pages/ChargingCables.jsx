@@ -1,7 +1,6 @@
 import React from 'react'
 import HeroSection from '../Components/CommonPages/HeroSection'
 import { Entirepagedata, chargingCableProductImages } from '../Data/index.js'
-
 import Specifications from '../Components/CommonPages/Specifications.jsx'
 import ImageHeader from '../Components/Common/ImageHeader'
 import OverviewSection from '../Components/Common/Overview/OverviewSection'
@@ -17,7 +16,7 @@ const ChargingCables = () => {
     buttonText,
     imageAlt,
     OverviewData
-  } = Entirepagedata.chargingCables  // Process thumbnails with actual images
+  } = Entirepagedata.chargingCables // Process thumbnails with actual images
   const thumbnails = Entirepagedata.chargingCables.thumbnails.map(thumb => ({
     ...thumb,
     image: thumb.image, // Use the actual thumbnail image instead of productImage
@@ -39,16 +38,20 @@ const ChargingCables = () => {
           title='Overview'
           backgroundImage={OverviewData?.BgImage}
           showBackgroundImage={!!OverviewData?.BgImage}
-        />{' '}        {/* Only Overview Section for Charging Cables */}
+        />{' '}
+        {/* Only Overview Section for Charging Cables */}
         <OverviewSection
           overviewData={{
             ...OverviewData,
             category: 'chargingCables',
-            image: OverviewData?.image || ""
+            image: OverviewData?.image || ''
           }}
         />{' '}
       </div>
-      <Specifications productImage={chargingCableProductImages.specifications} category='chargingCables' />
+      <Specifications
+        productImage={chargingCableProductImages.specifications}
+        category='chargingCables'
+      />
       <Models category='chargingCables' />
       <DownloadButton productCategory='chargingCables' />
     </div>

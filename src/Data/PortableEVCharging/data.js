@@ -6,7 +6,6 @@
 
 import { 
   createBreadcrumbs, 
-  createMontaIntegrationData, 
   createStandardFeatures,
   createHighlightsData,
   createSpecificationsData,
@@ -21,6 +20,32 @@ import {
   createPortableEvChargingThumbnails,
   PORTABLE_EV_CHARGING_IMAGES
 } from './assets.js'
+
+// =============================================================================
+// PORTABLE EV CHARGING SPECIFIC UTILITIES
+// =============================================================================
+
+/**
+ * Creates Monta backend integration data specific to portable EV chargers
+ * @param {boolean} isActive - Whether the integration is active
+ * @returns {Object} Monta integration configuration
+ */
+const createMontaIntegrationData = (isActive = true) => ({
+  subheading: 'Monta Backend Integration Advantages',
+  active: isActive,
+  text: `What sets this portable charger apart is its pre-configuration with the Monta backend. This advanced feature allows for a quick and hassle-free setup, enabling you to start charging immediately with minimal effort.`,
+  listItems: [
+    'Effortless Setup: With pre-configuration, your portable charger is ready to use right out of the box.',
+    'Enhanced Control and Monitoring: Through the Monta platform, gain full control over your charging sessions.',
+    'Optimized Charging Efficiency: The pre-configuration ensures optimal power delivery for portable charging.',
+    'Integrated Safety Features: Highest level of protection for mobile charging scenarios.',
+    'Future-Ready Technology: Automatic updates and continuous feature enhancements via the Monta backend.'
+  ]
+})
+
+// =============================================================================
+// PORTABLE EV CHARGING SPECIFIC UTILITIES
+// =============================================================================
 
 // =============================================================================
 // PORTABLE EV CHARGING MAIN DATA
@@ -55,12 +80,12 @@ export const portableEvChargingData = {
           text: "Compatible with all Type 2 electric vehicles and designed to work with standard household outlets, making it the perfect backup charging solution for any EV owner.",
           active: true
         },
-        createMontaIntegrationData(false, 'portable charger')
+        createMontaIntegrationData(false)
       ]
     },
     
     list: {
-      active: true,
+      active: false,
       title: 'Key Features',
       data: [
         'Compact and lightweight design for easy portability',
@@ -73,8 +98,7 @@ export const portableEvChargingData = {
         'Includes protective carrying case'
       ]
     },
-    
-    IdealandFeaturesImage: portableEvChargingProductImages.feature,
+      IdealandFeaturesImage: portableEvChargingProductImages.feature,
     features: createStandardFeatures([
       'Compact portable design for travel convenience',
       'Multiple current settings for different power sources',
@@ -95,7 +119,7 @@ export const portableEvChargingData = {
       ]
     },
     
-    image: portableEvChargingProductImages.main
+    image: portableEvChargingProductImages.specifications
   },
   
   highlightsData: createHighlightsData('Key Benefits', [
@@ -131,8 +155,7 @@ export const portableEvChargingData = {
     { label: 'Weight', value: '2.5kg' },
     { label: 'Dimensions', value: '300 x 200 x 100mm' }
   ]),
-  
-  modelsData: createChargerModels([
+    modelsData: createChargerModels([
     {
       name: 'Standard Series',
       description: 'Essential portable charging for everyday use',
@@ -144,7 +167,8 @@ export const portableEvChargingData = {
           outputVoltage: '230V AC',
           dimensions: '300 x 200 x 100mm',
           weight: '2.5kg',
-          popular: true
+          popular: true,
+          image: portableEvChargingProductImages.cable1
         },
         {
           modelCode: 'BP-PORT-10A',
@@ -152,7 +176,8 @@ export const portableEvChargingData = {
           connectorType: 'Type 2',
           outputVoltage: '230V AC',
           dimensions: '280 x 180 x 90mm',
-          weight: '2.0kg'
+          weight: '2.0kg',
+          image: portableEvChargingProductImages.cable2
         }
       ]
     },
@@ -167,7 +192,8 @@ export const portableEvChargingData = {
           outputVoltage: '230V AC',
           dimensions: '320 x 210 x 110mm',
           weight: '3.0kg',
-          popular: true
+          popular: true,
+          image: portableEvChargingProductImages.cable3
         },
         {
           modelCode: 'BP-PORT-10A-SMART',
@@ -175,7 +201,8 @@ export const portableEvChargingData = {
           connectorType: 'Type 2',
           outputVoltage: '230V AC',
           dimensions: '300 x 190 x 100mm',
-          weight: '2.7kg'
+          weight: '2.7kg',
+          image: portableEvChargingProductImages.pd1
         }
       ]
     }

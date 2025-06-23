@@ -6,8 +6,12 @@ import OverviewSection from '../Components/Common/Overview/OverviewSection'
 import OverviewFeatureasandideal from '../Components/Common/Overview/OverviewFeatureasandideal'
 import DownloadButton from '../Components/CommonPages/DownlaodButton'
 import Models from '../Components/CommonPages/Models.jsx'
-import { Entirepagedata } from '../Data/index.js'
-import portableEVChargingImage from '../assets/Images/CatImages/Portable_EV_Charging.png'
+import {
+  Entirepagedata,
+  portableEvChargingProductImages
+} from '../Data/index.js'
+import { portableEvChargingData } from '../Data/PortableEVCharging/index.js'
+import Highligths from '../Components/CommonPages/Highligths.jsx'
 
 const PortableEVCharging = () => {
   // Get data from Entirepagedata
@@ -17,38 +21,65 @@ const PortableEVCharging = () => {
     breadcrumbs,
     buttonText,
     imageAlt,
-    OverviewData,
-  } = Entirepagedata.portableEVCharging;
-  
-  // Get overview data
+    OverviewData
+  } = Entirepagedata.portableEVCharging
+
   // Process thumbnails with actual images
-  const thumbnails = Entirepagedata.portableEVCharging.thumbnails.map(thumb => ({
-    ...thumb,
-    image: portableEVChargingImage,
-    alt: thumb.alt
-  }));
+  const thumbnails = Entirepagedata.portableEVCharging.thumbnails.map(
+    thumb => ({
+      ...thumb,
+      image: thumb.image, // Use the actual thumbnail image instead of hardcoded image
+      alt: thumb.alt
+    })
+  )
+
   return (
-    <div>
-      <HeroSection 
+    <div>      <HeroSection
         title={title}
         description={description}
         breadcrumbs={breadcrumbs}
         buttonText={buttonText}
-        mainImage={portableEVChargingImage}
+        mainImage={
+          Entirepagedata.portableEVCharging.mainImage ||
+          portableEvChargingProductImages.main
+        }
         imageAlt={imageAlt}
         thumbnails={thumbnails}
+        thumbnailObjectFit='object-cover'
+        mainImageObjectFit='object-cover'
       />
       {/* Overview Header */}
       <ImageHeader
         title='Overview'
         backgroundImage={OverviewData?.BgImage}
         showBackgroundImage={!!OverviewData?.BgImage}
-      />      {/* All three overview components for Portable EV Charging */}
-      <OverviewSection overviewData={{...OverviewData, category: 'portableEVCharging', image: portableEVChargingImage}} />
-      <OverviewFeatureasandideal overviewData={{...OverviewData, category: 'portableEVCharging', IdealandFeaturesImage: portableEVChargingImage}} />      <Specifications        productImage={portableEVChargingImage}
-        category="portableEVCharging"
+      />{' '}
+      {/* All three overview components for Portable EV Charging */}
+      <OverviewSection
+        overviewData={{
+          ...OverviewData,
+          category: 'portableEVCharging',
+          image: OverviewData?.image || portableEvChargingProductImages.main
+        }}
       />
-      <Models productImage={portableEVChargingImage} category='portableEVCharging' />
+      <OverviewFeatureasandideal
+        overviewData={{
+          ...OverviewData,
+          category: 'portableEVCharging',
+          IdealandFeaturesImage:
+            OverviewData?.IdealandFeaturesImage ||
+            portableEvChargingProductImages.feature
+        }}
+      />{' '}
+      <Highligths />{' '}
+      <Specifications
+        productImage={portableEvChargingProductImages.specifications}
+        category='portableEVCharging'
+      />
+      <Models
+        category='portableEVCharging'
+        modelsData={portableEvChargingData.modelsData}
+      />
       <DownloadButton productCategory='portableEVCharging' />
     </div>
   )

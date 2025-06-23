@@ -1,11 +1,20 @@
 import React from 'react'
 import ImageHeader from '../Common/ImageHeader'
 import { AllSpecifications } from '../../Data/index.js'
+import { chargingStationsConfig } from '../../Data/ChargingStations/index.js'
 
 const Specifications = ({ productImage, category }) => {
   // Get specifications data based on category
   const getSpecificationsData = category => {
-    if (category && AllSpecifications[category]) {
+    // Use ChargingStations specific data when category is chargingStations
+    if (category === 'chargingStations') {      return {
+        title: chargingStationsConfig.specifications.title,
+        specs: chargingStationsConfig.specifications.specs
+      }
+    }
+    
+    // Use AllSpecifications for other categories
+    if (category && AllSpecifications && AllSpecifications[category]) {
       return AllSpecifications[category]
     }
 

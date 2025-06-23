@@ -22,7 +22,6 @@ export {
 // Re-export common utilities for convenience
 export {
   createBreadcrumbs,
-  createMontaIntegrationData,
   createStandardFeatures,
   createHighlightsData,
   createSpecificationsData,

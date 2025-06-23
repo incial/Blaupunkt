@@ -62,18 +62,6 @@ export const createDCFastChargingStationThumbnails = () => [
   {
     image: dcFastChargingStationImages.thumb2,
     alt: 'DC Fast Charging Station - View 2'
-  },
-  {
-    image: dcFastChargingStationImages.thumb3,
-    alt: 'DC Fast Charging Station - View 3'
-  },
-  {
-    image: dcFastChargingStationImages.fastMid,
-    alt: 'DC Fast Charging Station - Mid View'
-  },
-  {
-    image: dcFastChargingStationImages.fastHigh,
-    alt: 'DC Fast Charging Station - High View'
   }
 ]
 

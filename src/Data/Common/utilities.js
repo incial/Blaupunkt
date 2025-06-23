@@ -29,38 +29,16 @@ export const createThumbnails = (imageName, count = 5) =>
   }))
 
 /**
- * Creates Monta backend integration data
- * @param {boolean} isActive - Whether the integration is active
- * @param {string} productType - Type of product for customized text
- * @returns {Object} Monta integration configuration
- */
-export const createMontaIntegrationData = (isActive = true, productType = 'charging station') => ({
-  subheading: 'Monta Backend Integration Advantages',
-  active: isActive,
-  text: `What sets this ${productType} apart is its pre-configuration with the Monta backend. This advanced feature allows for a quick and hassle-free setup, enabling you to start charging immediately with minimal effort.`,
-  listItems: [
-    'Effortless Setup: With pre-configuration, your charging station is ready to use right out of the box.',
-    'Enhanced Control and Monitoring: Through the Monta platform, gain full control over your charging sessions.',
-    'Optimized Charging Efficiency: The pre-configuration ensures optimal power delivery based on the model.',
-    'Integrated Safety Features: Highest level of protection for your home and vehicle.',
-    'Future-Ready Technology: Automatic updates and continuous feature enhancements via the Monta backend.'
-  ]
-})
-
-/**
  * Creates standard product features
  * @param {Array} customFeatures - Optional custom features to add
+ * @param {boolean} isListFormat - Whether to display as list (true) or paragraphs (false)
  * @returns {Object} Features configuration object
  */
-export const createStandardFeatures = (customFeatures = []) => ({
+export const createStandardFeatures = (customFeatures = [], isListFormat = true) => ({
   active: true,
-  title: 'Features',
+  title: 'User-Friendly and Intuitive Operation',
+  isListFormat, // true for list, false for paragraph
   data: [
-    'High-quality copper conductors for efficient power transfer',
-    'Flexible and durable PVC insulation for long-lasting performance',
-    'Ergonomic design for easy handling and connection',
-    'Built-in LED indicator for charging status',
-    'Reinforced connectors for secure and stable connections',
     ...customFeatures
   ]
 })

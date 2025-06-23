@@ -13,47 +13,73 @@ const OverviewFeatureasandideal = ({ overviewData }) => {
           <div className='hidden md:flex md:items-start md:gap-12 py-4'>
             {/* Content Section - Left Side */}
             <div className='flex-[2] space-y-8'>
+              {' '}
               {/* Features Section */}
               {overviewData?.features?.active &&
                 overviewData.features.data?.length > 0 && (
                   <div>
                     {overviewData.features.title && (
-                      <h4 className='text-xl font-medium text-black mb-6'>
+                      <h4 className='text-xl font-semibold text-black mb-6'>
                         {overviewData.features.title}
                       </h4>
+                    )}                    {overviewData.features.isListFormat ? (
+                      <ul className='space-y-3 pl-6'>
+                        {overviewData.features.data.map((item, index) => (
+                          <li
+                            key={`feature-${index}`}
+                            className='text-lg text-gray-700 leading-relaxed list-disc'
+                            style={{ listStylePosition: 'outside' }}
+                          >
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+                    ) : (
+                      <div className='space-y-4'>
+                        {overviewData.features.data.map((item, index) => (
+                          <p
+                            key={`feature-para-${index}`}
+                            className='text-lg text-gray-700 leading-relaxed'
+                          >
+                            {item}
+                          </p>
+                        ))}
+                      </div>
                     )}
-                    <ul className='list-disc list-inside space-y-3 pl-4'>
-                      {overviewData.features.data.map((item, index) => (
-                        <li
-                          key={`feature-${index}`}
-                          className='text-lg text-gray-700 leading-relaxed'
-                        >
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
                   </div>
-                )}
-
+                )}{' '}
               {/* Ideal Use Cases Section */}
               {overviewData?.ideal?.active &&
                 overviewData.ideal.data?.length > 0 && (
                   <div>
                     {overviewData.ideal.title && (
-                      <h4 className='text-xl font-medium text-black mb-6'>
+                      <h4 className='text-xl font-semibold text-black mb-6'>
                         {overviewData.ideal.title}
                       </h4>
+                    )}                    {overviewData.ideal.isListFormat ? (
+                      <ul className='space-y-3 pl-6'>
+                        {overviewData.ideal.data.map((item, index) => (
+                          <li
+                            key={`ideal-${index}`}
+                            className='text-lg text-gray-700 leading-relaxed list-disc'
+                            style={{ listStylePosition: 'outside' }}
+                          >
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+                    ) : (
+                      <div className='space-y-4'>
+                        {overviewData.ideal.data.map((item, index) => (
+                          <p
+                            key={`ideal-para-${index}`}
+                            className='text-lg text-gray-700 leading-relaxed'
+                          >
+                            {item}
+                          </p>
+                        ))}
+                      </div>
                     )}
-                    <ul className='list-disc list-inside space-y-3 pl-4'>
-                      {overviewData.ideal.data.map((item, index) => (
-                        <li
-                          key={`ideal-${index}`}
-                          className='text-lg text-gray-700 leading-relaxed'
-                        >
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
                   </div>
                 )}
             </div>
@@ -75,6 +101,7 @@ const OverviewFeatureasandideal = ({ overviewData }) => {
           </div>{' '}
           {/* Mobile Layout - Stacked */}
           <div className='md:hidden space-y-6 py-4'>
+            {' '}
             {/* Features Section */}
             {overviewData?.features?.active &&
               overviewData.features.data?.length > 0 && (
@@ -83,20 +110,32 @@ const OverviewFeatureasandideal = ({ overviewData }) => {
                     <h4 className='text-xl font-medium text-black mb-6'>
                       {overviewData.features.title}
                     </h4>
+                  )}                  {overviewData.features.isListFormat ? (
+                    <ul className='space-y-3 pl-6'>
+                      {overviewData.features.data.map((item, index) => (
+                        <li
+                          key={`feature-mobile-${index}`}
+                          className='text-lg text-gray-700 leading-relaxed list-disc'
+                          style={{ listStylePosition: 'outside' }}
+                        >
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  ) : (
+                    <div className='space-y-4'>
+                      {overviewData.features.data.map((item, index) => (
+                        <p
+                          key={`feature-mobile-para-${index}`}
+                          className='text-lg text-gray-700 leading-relaxed'
+                        >
+                          {item}
+                        </p>
+                      ))}
+                    </div>
                   )}
-                  <ul className='list-disc list-inside space-y-3'>
-                    {overviewData.features.data.map((item, index) => (
-                      <li
-                        key={`feature-mobile-${index}`}
-                        className='text-lg text-gray-700 leading-relaxed'
-                      >
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
                 </div>
-              )}
-
+              )}{' '}
             {/* Ideal Use Cases Section */}
             {overviewData?.ideal?.active &&
               overviewData.ideal.data?.length > 0 && (
@@ -105,17 +144,30 @@ const OverviewFeatureasandideal = ({ overviewData }) => {
                     <h4 className='text-xl font-medium text-black mb-6'>
                       {overviewData.ideal.title}
                     </h4>
+                  )}                  {overviewData.ideal.isListFormat ? (
+                    <ul className='space-y-3 pl-6'>
+                      {overviewData.ideal.data.map((item, index) => (
+                        <li
+                          key={`ideal-mobile-${index}`}
+                          className='text-lg text-gray-700 leading-relaxed list-disc'
+                          style={{ listStylePosition: 'outside' }}
+                        >
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  ) : (
+                    <div className='space-y-4'>
+                      {overviewData.ideal.data.map((item, index) => (
+                        <p
+                          key={`ideal-mobile-para-${index}`}
+                          className='text-lg text-gray-700 leading-relaxed'
+                        >
+                          {item}
+                        </p>
+                      ))}
+                    </div>
                   )}
-                  <ul className='list-disc list-inside space-y-3'>
-                    {overviewData.ideal.data.map((item, index) => (
-                      <li
-                        key={`ideal-mobile-${index}`}
-                        className='text-lg text-gray-700 leading-relaxed'
-                      >
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
                 </div>
               )}
           </div>

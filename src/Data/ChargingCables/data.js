@@ -6,7 +6,6 @@
 
 import { 
   createBreadcrumbs, 
-  createMontaIntegrationData, 
   createStandardFeatures,
   createHighlightsData,
   createSpecificationsData,
@@ -22,6 +21,16 @@ import {
   createEVCableThumbnails,
   CHARGING_CABLES_IMAGES
 } from './assets.js'
+
+// =============================================================================
+// CHARGING CABLES SPECIFIC UTILITIES
+// =============================================================================
+
+/**
+ * Creates Monta backend integration data specific to charging cables
+ * @param {boolean} isActive - Whether the integration is active
+ * @returns {Object} Monta integration configuration
+ */
 
 // =============================================================================
 // CHARGING CABLES MAIN DATA
@@ -56,7 +65,6 @@ export const chargingCablesData = {
           text: 'What sets this charging cable apart is its compatibility with charging stations pre-configured with the Monta backend. This advanced feature allows for a quick and hassle-free setup, enabling you to start charging immediately with minimal effort.',
           active: true
         },
-        createMontaIntegrationData(true, 'charging cable')
       ]
     },
     
@@ -113,16 +121,19 @@ export const chargingCablesData = {
       icon: 'portable' 
     }
   ]),
-  
-  specificationsData: createSpecificationsData('Specifications', [
-    { label: 'Charging Current', value: '16A / 32A' },
-    { label: 'Voltage', value: '230V AC' },
-    { label: 'Cable Length', value: '5m / 7.5m / 10m' },
-    { label: 'Connector Type', value: 'Type 1 / Type 2' },
-    { label: 'Protection Rating', value: 'IP67' },
+    specificationsData: createSpecificationsData('Specifications', [
+    { label: 'Working Voltage', value: '110V – 250V' },
+    { label: 'Rated Current', value: 'Up to 32A' },
+    { label: 'Insulation Resistance', value: '>1000 MΩ' },
+    { label: 'Dielectric Strength', value: '2000V' },
+    { label: 'Contact Resistance', value: '< 0.5 mΩ' },
+    { label: 'Insertion & Extraction Force', value: '80N – 100N' },
+    { label: 'Main Materials', value: 'Thermoplastic, Silicon Rubber, Copper Alloy' },
+    { label: 'Cable Specification', value: '3×2.5mm² + 2×0.5mm²' },
+    { label: 'Cable Length', value: '8 meters' },
+    { label: 'Fire Rating', value: 'UL94 V-0 (Flame Retardant)' },
     { label: 'Operating Temperature', value: '-30°C to +50°C' },
-    { label: 'Cable Diameter', value: '32mm' },
-    { label: 'Weight', value: '3.2kg (5m version)' }
+    { label: 'Net Weight', value: '1.8 kg' }
   ]),
     modelsData: createFlatCableModels([
     {
