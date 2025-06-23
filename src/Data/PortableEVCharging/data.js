@@ -9,7 +9,6 @@ import {
   createStandardFeatures,
   createHighlightsData,
   createSpecificationsData,
-  createChargerModels,
   BUTTON_TEXTS
 } from '../Common/utilities.js'
 
@@ -155,59 +154,93 @@ export const portableEvChargingData = {
     { label: 'Fire Rating', value: 'UL94 V-0' },
     { label: 'Operating Temperature', value: '-30°C to +50°C' },
     { label: 'Net Weight', value: '2.8 kg' }
-  ]),
-    modelsData: createChargerModels([
-    {
-      name: 'Standard Series',
-      description: 'Essential portable charging for everyday use',
-      models: [
-        {
-          modelCode: 'BP-PORT-16A',
-          maximumPower: '3.7kW',
-          connectorType: 'Type 2',
-          outputVoltage: '230V AC',
-          dimensions: '300 x 200 x 100mm',
-          weight: '2.5kg',
-          popular: true,
-          image: portableEvChargingProductImages.cable1
-        },
-        {
-          modelCode: 'BP-PORT-10A',
-          maximumPower: '2.3kW',
-          connectorType: 'Type 2',
-          outputVoltage: '230V AC',
-          dimensions: '280 x 180 x 90mm',
-          weight: '2.0kg',
-          image: portableEvChargingProductImages.cable2
-        }
-      ]
-    },
-    {
-      name: 'Premium Series',
-      description: 'Advanced portable charging with smart features',
-      models: [
-        {
-          modelCode: 'BP-PORT-16A-SMART',
-          maximumPower: '3.7kW',
-          connectorType: 'Type 2',
-          outputVoltage: '230V AC',
-          dimensions: '320 x 210 x 110mm',
-          weight: '3.0kg',
-          popular: true,
-          image: portableEvChargingProductImages.cable3
-        },
-        {
-          modelCode: 'BP-PORT-10A-SMART',
-          maximumPower: '2.3kW',
-          connectorType: 'Type 2',
-          outputVoltage: '230V AC',
-          dimensions: '300 x 190 x 100mm',
-          weight: '2.7kg',
-          image: portableEvChargingProductImages.pd1
-        }
-      ]
-    }
-  ]),
+  ]),  modelsData: (() => {
+    // Create sections for portable EV charging models
+    const sections = [
+      {
+        name: 'Standard Series',
+        description: 'Essential portable charging for everyday use',
+        models: [
+          {
+            modelCode: 'BP-PORT-16A',
+            maximumPower: '3.7kW',
+            connectorType: 'Type 2',
+            outputVoltage: '230V AC',
+            dimensions: '300 x 200 x 100mm',
+            weight: '2.5kg',
+            current: '16A',
+            cableLength: '5 Meters',
+            phaseType: 'Single - Phase',
+            protectionRating: 'IP65',
+            popular: true,
+            image: portableEvChargingProductImages.cable1
+          },
+          {
+            modelCode: 'BP-PORT-10A',
+            maximumPower: '2.3kW',
+            connectorType: 'Type 2',
+            outputVoltage: '230V AC',
+            dimensions: '280 x 180 x 90mm',
+            weight: '2.0kg',
+            current: '10A',
+            cableLength: '5 Meters',
+            phaseType: 'Single - Phase',
+            protectionRating: 'IP65',
+            image: portableEvChargingProductImages.cable2
+          }
+        ]
+      },
+      {
+        name: 'Premium Series',
+        description: 'Advanced portable charging with smart features',
+        models: [
+          {
+            modelCode: 'BP-PORT-16A-SMART',
+            maximumPower: '3.7kW',
+            connectorType: 'Type 2',
+            outputVoltage: '230V AC',
+            dimensions: '320 x 210 x 110mm',
+            weight: '3.0kg',
+            current: '16A',
+            cableLength: '5 Meters',
+            phaseType: 'Single - Phase',
+            protectionRating: 'IP65',
+            smartFeatures: 'WiFi, App Control',
+            popular: true,
+            image: portableEvChargingProductImages.cable3
+          },
+          {
+            modelCode: 'BP-PORT-10A-SMART',
+            maximumPower: '2.3kW',
+            connectorType: 'Type 2',
+            outputVoltage: '230V AC',
+            dimensions: '300 x 190 x 100mm',
+            weight: '2.7kg',
+            current: '10A',
+            cableLength: '5 Meters',
+            phaseType: 'Single - Phase',
+            protectionRating: 'IP65',
+            smartFeatures: 'WiFi, App Control',
+            image: portableEvChargingProductImages.pd1
+          }
+        ]
+      }
+    ];
+
+    // Flatten all models from all sections into a single array for Models component
+    const flatModels = [];
+    sections.forEach(section => {
+      section.models.forEach(model => {
+        flatModels.push({
+          ...model,
+          section: section.name,
+          sectionDescription: section.description
+        });
+      });
+    });
+
+    return flatModels;
+  })(),
   
   supplierData: {
     manufacturer: 'Blaupunkt Technologies',

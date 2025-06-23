@@ -17,7 +17,7 @@ const RefreshIcon = ({ className }) => (
   </svg>
 )
 
-const Models = ({ productImage, category }) => {
+const Models = ({ productImage, category, modelsData: propModelsData }) => {
   // Filter and sorting state
   const [sortBy, setSortBy] = useState('Popularity')
   const [productType, setProductType] = useState('All')
@@ -134,9 +134,17 @@ const Models = ({ productImage, category }) => {
     
     return orderedGroups;
   };
-
   // Get models data from the page data based on the current category
   const modelsData = useMemo(() => {
+    // If modelsData is provided as prop, use it directly
+    if (propModelsData && Array.isArray(propModelsData)) {
+      return {
+        models: propModelsData,
+        groupingMethod: 'category',
+        additionalText: ''
+      };
+    }
+    
     // Get models data based on category with error handling
     try {
       let pageData;
@@ -191,7 +199,7 @@ const Models = ({ productImage, category }) => {
         additionalText: ''
       };
     }
-  }, [category])
+  }, [category, propModelsData])
   
   const [filteredModels, setFilteredModels] = useState(modelsData.models || [])
   const [groupedModels, setGroupedModels] = useState({})

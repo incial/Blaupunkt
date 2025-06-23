@@ -25,6 +25,5 @@ export {
   createStandardFeatures,
   createHighlightsData,
   createSpecificationsData,
-  createChargerModels,
   BUTTON_TEXTS
 } from '../Common/utilities.js'

@@ -71,8 +71,7 @@ const PortableEVCharging = () => {
             portableEvChargingProductImages.feature
         }}
       />{' '}
-      <Highligths />{' '}
-      <Specifications
+      <Highligths />{' '}      <Specifications
         productImage={portableEvChargingProductImages.specifications}
         category='portableEVCharging'
       />
