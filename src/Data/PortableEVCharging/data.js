@@ -144,16 +144,17 @@ export const portableEvChargingData = {
       icon: 'weather' 
     }
   ]),
-  
-  specificationsData: createSpecificationsData('Technical Specifications', [
-    { label: 'Power Output', value: '3.7kW (16A) / 2.3kW (10A)' },
-    { label: 'Input Voltage', value: '230V AC single-phase' },
-    { label: 'Current Settings', value: '6A, 8A, 10A, 13A, 16A' },
-    { label: 'Connector Type', value: 'Type 2' },
-    { label: 'Cable Length', value: '5m charging cable' },
-    { label: 'Protection Rating', value: 'IP65' },
-    { label: 'Weight', value: '2.5kg' },
-    { label: 'Dimensions', value: '300 x 200 x 100mm' }
+    specificationsData: createSpecificationsData('Specifications', [
+    { label: 'Rated Current', value: '8–10–13–16A' },
+    { label: 'Insulation Resistance', value: '>1000MΩ' },
+    { label: 'Resistance Voltage', value: '2000V' },
+    { label: 'Contact Resistance', value: 'Less than 0.5mΩ' },
+    { label: 'Insertion / Extraction Force', value: '80N < F < 100N' },
+    { label: 'Main Material', value: 'Thermoplastic / Silicon Rubber / Copper Alloy' },
+    { label: 'Cable Length', value: '8 meters' },
+    { label: 'Fire Rating', value: 'UL94 V-0' },
+    { label: 'Operating Temperature', value: '-30°C to +50°C' },
+    { label: 'Net Weight', value: '2.8 kg' }
   ]),
     modelsData: createChargerModels([
     {

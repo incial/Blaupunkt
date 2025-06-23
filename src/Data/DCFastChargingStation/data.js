@@ -140,16 +140,21 @@ export const dcFastChargingStationData = {
       icon: 'enterprise' 
     }
   ]),
-  
-  specificationsData: createSpecificationsData('Technical Specifications', [
-    { label: 'Power Output', value: '150kW / 250kW / 350kW' },
-    { label: 'Input Voltage', value: '400V AC 3-phase' },
-    { label: 'Output Voltage', value: '200V - 800V DC' },
-    { label: 'Connector Types', value: 'CCS, CHAdeMO, Type 2' },
-    { label: 'Charging Ports', value: '1-4 simultaneous ports' },
-    { label: 'Protection Rating', value: 'IP54' },
-    { label: 'Cooling System', value: 'Advanced liquid cooling' },
-    { label: 'Weight', value: '1200kg - 1800kg' }
+    specificationsData: createSpecificationsData('Specifications', [
+    { label: 'Product Dimensions', value: '780 × 580 × 205.5 mm (H × W × D)' },
+    { label: 'Work Altitude', value: 'Up to 2000m' },
+    { label: 'Operating Temperature', value: '-20°C to +55°C' },
+    { label: 'Storage Temperature', value: '-40°C to +85°C' },
+    { label: 'Installation', value: 'Floor-Stand' },
+    { label: 'Ingress Protection', value: 'IP54' },
+    { label: 'Net Weight', value: '67 kg' },
+    { label: 'Start Mode', value: 'RFID Reader / Plug & Play / Mobile App' },
+    { label: 'Communication', value: 'LAN / 4G' },
+    { label: 'Input Frequency', value: '50/60 Hz' },
+    { label: 'Input Voltage', value: '380V AC ±15%, 3P+N+PE' },
+    { label: 'Voltage Range', value: '150–1000V DC' },
+    { label: 'Rated Power', value: '60 kW / 80 kW / 120 kW / 160 kW' },
+    { label: 'Safety Features', value: 'Short Circuit Protection, Overload Protection, Over Temperature Protection, Leakage Protection, Over and Under Input Voltage Protection, Over and Under Output Voltage Protection, Over-current Protection' }
   ]),
     modelsData: (() => {
     // Create flat models array from sections for Models component compatibility

@@ -29,15 +29,14 @@ import {
  * @returns {Object} Monta integration configuration
  */
 const createMontaIntegrationData = (isActive = true) => ({
-  subheading: 'Monta Backend Integration Advantages',
+  subheading: 'Advantages Monta Backend Integration:',
   active: isActive,
-  text: `What sets this DC charging station apart is its pre-configuration with the Monta backend. This advanced feature allows for a quick and hassle-free setup, enabling you to start charging immediately with minimal effort.`,
   listItems: [
-    'Effortless Setup: With pre-configuration, your DC charging station is ready to use right out of the box.',
-    'Enhanced Control and Monitoring: Through the Monta platform, gain full control over your charging sessions.',
-    'Optimized Charging Efficiency: The pre-configuration ensures optimal power delivery based on the DC charger model.',
-    'Integrated Safety Features: Highest level of protection for commercial and fleet vehicles.',
-    'Future-Ready Technology: Automatic updates and continuous feature enhancements via the Monta backend.'
+    'Effortless Setup: With pre-configuration, your charging station is ready to use right out of the box. No need for complex installations or technical adjustments – simply plug in and charge.',
+
+    'Enhanced Control and Monitoring: Through the Monta platform, gain full control over your charging sessions. Monitor energy usage, set charging schedules, and access detailed reports, all from a user-friendly interface.',
+
+    'Future-Ready Technology: Stay ahead with automatic updates and continuous feature enhancements via the Monta backend, keeping your charging station aligned with the latest technological advancements.'
   ]
 })
 
@@ -95,8 +94,7 @@ export const dcChargingStationData = {
         'This DC charger is equipped with an easy-to-use interface, ensuring smooth operation for both new and experienced users. With RFID authorization, access to the charger is secure, allowing only authorized users to charge their vehicles. Additionally, the OCPP 1.6 compatibility ensures seamless integration into existing charging networks for remote monitoring and control. Ideal For: Commercial sites that require reliable, mid-speed EV charging solutions. Office buildings or small fleets that need faster charging than typical AC units. Locations seeking a balance of speed, affordability, and durability.'
       ]
     },
-    
-    ideal: {
+      ideal: {
       active: true,
       title: 'Ideal For',
       isListFormat: true, // true for list, false for paragraph
@@ -107,6 +105,11 @@ export const dcChargingStationData = {
         'Public charging networks and hubs',
         'Destination charging at hotels and businesses'
       ]
+    },
+    
+    imageHeight: {
+      mobile: '400px',
+      desktop: '700px'
     },
     
     image: dcChargingStationImages.dcMid
@@ -134,17 +137,22 @@ export const dcChargingStationData = {
       icon: 'smart' 
     }
   ]),
-  
-  specificationsData: createSpecificationsData('Technical Specifications', [
-    { label: 'Power Output', value: '50kW / 100kW / 150kW' },
-    { label: 'Input Voltage', value: '400V AC 3-phase' },
-    { label: 'Output Voltage', value: '150V - 500V DC' },
-    { label: 'Connector Types', value: 'CCS, CHAdeMO, Type 2' },
-    { label: 'Protection Rating', value: 'IP54' },
-    { label: 'Cooling System', value: 'Liquid cooling' },
-    { label: 'Dimensions', value: '1800 x 800 x 400mm' },
-    { label: 'Weight', value: '850kg' }
-  ]),    modelsData: (() => {
+    specificationsData: createSpecificationsData('Specifications', [
+    { label: 'Product Dimensions', value: '780 × 580 × 205.5 mm (H × W × D)' },
+    { label: 'Work Altitude', value: 'Up to 2000m' },
+    { label: 'Operating Temperature', value: '-20°C to +55°C' },
+    { label: 'Storage Temperature', value: '-40°C to +85°C' },
+    { label: 'Installation', value: 'Wall-Mount or Pole-Mount' },
+    { label: 'Ingress Protection', value: 'IP54' },
+    { label: 'Net Weight', value: '67 kg' },
+    { label: 'Start Mode', value: 'POS / RFID Reader / Plug & Play / Mobile App' },
+    { label: 'Communication', value: 'LAN / 4G' },
+    { label: 'Input Voltage', value: '380V AC ±15%, 3P+N+PE' },
+    { label: 'Rated Power', value: '30 kW / 40 kW' },
+    { label: 'Voltage Range', value: '150–1000V DC' },
+    { label: 'Rated Current', value: '5–100A' },
+    { label: 'Safety Features', value: 'Short Circuit Protection, Overload Protection, Over Temperature Protection, Leakage Protection, Over and Under Input Voltage Protection, Over and Under Output Voltage Protection, Over-current Protection' }
+  ]),modelsData: (() => {
     // Create flat models array from sections for Models component compatibility
     const sections = [
       {

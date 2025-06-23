@@ -1,22 +1,53 @@
 import React from 'react'
 import ImageHeader from '../Common/ImageHeader'
-import { AllSpecifications } from '../../Data/index.js'
 import { chargingStationsConfig } from '../../Data/ChargingStations/index.js'
+import { chargingCablesConfig } from '../../Data/ChargingCables/index.js'
+import { dcChargingStationConfig } from '../../Data/DCChargingStation/index.js'
+import { dcFastChargingStationConfig } from '../../Data/DCFastChargingStation/index.js'
+import { portableEvChargingConfig } from '../../Data/PortableEVCharging/index.js'
 
-const Specifications = ({ productImage, category }) => {
-  // Get specifications data based on category
+const Specifications = ({ productImage, category }) => {  // Get specifications data based on category
   const getSpecificationsData = category => {
     // Use ChargingStations specific data when category is chargingStations
-    if (category === 'chargingStations') {      return {
+    if (category === 'chargingStations') {
+      return {
         title: chargingStationsConfig.specifications.title,
         specs: chargingStationsConfig.specifications.specs
       }
     }
     
-    // Use AllSpecifications for other categories
-    if (category && AllSpecifications && AllSpecifications[category]) {
-      return AllSpecifications[category]
+    // Use ChargingCables specific data when category is chargingCables
+    if (category === 'chargingCables') {
+      return {
+        title: chargingCablesConfig.specifications.title,
+        specs: chargingCablesConfig.specifications.specs
+      }
     }
+    
+    // Use DCChargingStation specific data when category is dcChargingStation
+    if (category === 'dcChargingStation') {
+      return {
+        title: dcChargingStationConfig.specifications.title,
+        specs: dcChargingStationConfig.specifications.specs
+      }
+    }
+    
+    // Use DCFastChargingStation specific data when category is dcFastChargingStation
+    if (category === 'dcFastChargingStation') {
+      return {
+        title: dcFastChargingStationConfig.specifications.title,
+        specs: dcFastChargingStationConfig.specifications.specs
+      }
+    }
+    
+    // Use PortableEVCharging specific data when category is portableEvCharging
+    if (category === 'portableEvCharging') {
+      return {
+        title: portableEvChargingConfig.specifications.title,
+        specs: portableEvChargingConfig.specifications.specs
+      }
+    }
+    
 
     // Default specifications data if category not found
     return {

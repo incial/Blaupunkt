@@ -5,7 +5,9 @@ const OverviewSection = ({ overviewData }) => {
     return (
       <div className='w-full py-4'>
         <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
-          <p className='text-center text-gray-500'>No overview data available.</p>
+          <p className='text-center text-gray-500'>
+            No overview data available.
+          </p>
         </div>
       </div>
     )
@@ -59,7 +61,8 @@ const OverviewSection = ({ overviewData }) => {
             />
           </div>
         )}
-      </div>      {/* Desktop View - Flex Row Layout */}
+      </div>{' '}
+      {/* Desktop View - Flex Row Layout */}
       <div className='hidden md:flex md:items-stretch max-w-7xl mx-auto px-8 py-4 gap-12'>
         {/* Image - Left Side (60% width) */}
         <div className='flex-[4] flex items-start justify-center'>
