@@ -8,6 +8,7 @@ import OverviewFeatureasandideal from '../Components/Common/Overview/OverviewFea
 import DownloadButton from '../Components/CommonPages/DownlaodButton'
 import ChargingStationModels from '../Components/CommonPages/ChargingStationModels.jsx'
 import { Entirepagedata, chargingStationProductImages } from '../Data/index.js'
+import { chargingStationsConfig } from '../Data/ChargingStations/index.js'
 
 const ChargingStations = () => {
   // Get data from Entirepagedata
@@ -65,7 +66,10 @@ const ChargingStations = () => {
         category='chargingStations'
       />
       <ChargingStationModels category='chargingStations' />
-      <DownloadButton productCategory='chargingStations' />
+      <DownloadButton 
+        productCategory='chargingStations' 
+        downloadData={chargingStationsConfig.downloads}
+      />
     </div>
   )
 }

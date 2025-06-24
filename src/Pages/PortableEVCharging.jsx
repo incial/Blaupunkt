@@ -10,7 +10,7 @@ import {
   Entirepagedata,
   portableEvChargingProductImages
 } from '../Data/index.js'
-import { portableEvChargingData } from '../Data/PortableEVCharging/index.js'
+import { portableEvChargingData, portableEvChargingConfig } from '../Data/PortableEVCharging/index.js'
 import Highligths from '../Components/CommonPages/Highligths.jsx'
 
 const PortableEVCharging = () => {
@@ -79,7 +79,10 @@ const PortableEVCharging = () => {
         category='portableEVCharging'
         modelsData={portableEvChargingData.modelsData}
       />
-      <DownloadButton productCategory='portableEVCharging' />
+      <DownloadButton 
+        productCategory='portableEVCharging' 
+        downloadData={portableEvChargingConfig.downloads}
+      />
     </div>
   )
 }

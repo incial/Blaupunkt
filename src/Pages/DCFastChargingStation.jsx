@@ -8,7 +8,7 @@ import OverviewFeatureasandideal from '../Components/Common/Overview/OverviewFea
 import DownloadButton from '../Components/CommonPages/DownlaodButton'
 import Models from '../Components/CommonPages/Models.jsx'
 import { Entirepagedata, dcFastChargingStationImages } from '../Data/index.js'
-import { dcFastChargingStationData } from '../Data/DCFastChargingStation/index.js'
+import { dcFastChargingStationData, dcFastChargingStationConfig } from '../Data/DCFastChargingStation/index.js'
 import Highligths from '../Components/CommonPages/Highligths.jsx'
 
 const DCFastChargingStation = () => {
@@ -81,7 +81,10 @@ const DCFastChargingStation = () => {
         category='dcFastChargingStation'
         modelsData={dcFastChargingStationData.modelsData}
       />
-      <DownloadButton productCategory='dcFastChargingStation' />
+      <DownloadButton 
+        productCategory='dcFastChargingStation' 
+        downloadData={dcFastChargingStationConfig.downloads}
+      />
     </div>
   )
 }

@@ -1,6 +1,7 @@
 import React from 'react'
 import HeroSection from '../Components/CommonPages/HeroSection'
 import { Entirepagedata, chargingCableProductImages } from '../Data/index.js'
+import { chargingCablesConfig } from '../Data/ChargingCables/index.js'
 import Specifications from '../Components/CommonPages/Specifications.jsx'
 import ImageHeader from '../Components/Common/ImageHeader'
 import OverviewSection from '../Components/Common/Overview/OverviewSection'
@@ -51,9 +52,11 @@ const ChargingCables = () => {
       <Specifications
         productImage={chargingCableProductImages.specifications}
         category='chargingCables'
+      />      <Models category='chargingCables' />
+      <DownloadButton 
+        productCategory='chargingCables' 
+        downloadData={chargingCablesConfig.downloads}
       />
-      <Models category='chargingCables' />
-      <DownloadButton productCategory='chargingCables' />
     </div>
   )
 }

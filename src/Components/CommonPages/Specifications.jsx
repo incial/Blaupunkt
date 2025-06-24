@@ -6,48 +6,53 @@ import { dcChargingStationConfig } from '../../Data/DCChargingStation/index.js'
 import { dcFastChargingStationConfig } from '../../Data/DCFastChargingStation/index.js'
 import { portableEvChargingConfig } from '../../Data/PortableEVCharging/index.js'
 
-const Specifications = ({ productImage, category }) => {  // Get specifications data based on category
+const Specifications = ({ productImage, category }) => {
+  // Get specifications data based on category
   const getSpecificationsData = category => {
     // Use ChargingStations specific data when category is chargingStations
     if (category === 'chargingStations') {
       return {
         title: chargingStationsConfig.specifications.title,
-        specs: chargingStationsConfig.specifications.specs
+        specs: chargingStationsConfig.specifications.specs,
+        backgroundImage: chargingStationsConfig.backgroundImages.evmoboverbg
       }
     }
-    
+
     // Use ChargingCables specific data when category is chargingCables
     if (category === 'chargingCables') {
       return {
         title: chargingCablesConfig.specifications.title,
-        specs: chargingCablesConfig.specifications.specs
+        specs: chargingCablesConfig.specifications.specs,
+        backgroundImage: chargingCablesConfig.backgroundImages.evspecmob
       }
     }
-    
+
     // Use DCChargingStation specific data when category is dcChargingStation
     if (category === 'dcChargingStation') {
       return {
         title: dcChargingStationConfig.specifications.title,
-        specs: dcChargingStationConfig.specifications.specs
+        specs: dcChargingStationConfig.specifications.specs,
+        backgroundImage: dcChargingStationConfig.backgroundImages.overview
       }
     }
-    
+
     // Use DCFastChargingStation specific data when category is dcFastChargingStation
     if (category === 'dcFastChargingStation') {
       return {
         title: dcFastChargingStationConfig.specifications.title,
-        specs: dcFastChargingStationConfig.specifications.specs
+        specs: dcFastChargingStationConfig.specifications.specs,
+        backgroundImage: dcFastChargingStationConfig.backgroundImages.overview
       }
     }
-    
+
     // Use PortableEVCharging specific data when category is portableEvCharging
-    if (category === 'portableEvCharging') {
+    if (category === 'portableEVCharging') {
       return {
         title: portableEvChargingConfig.specifications.title,
-        specs: portableEvChargingConfig.specifications.specs
+        specs: portableEvChargingConfig.specifications.specs,
+        backgroundImage: portableEvChargingConfig.backgroundImages.overview
       }
     }
-    
 
     // Default specifications data if category not found
     return {
@@ -71,18 +76,16 @@ const Specifications = ({ productImage, category }) => {  // Get specifications 
       ]
     }
   }
-
   const specificationsInfo = getSpecificationsData(category)
   const specsToDisplay = specificationsInfo.specs
-  const imageToDisplay = productImage || '/src/assets/Images/charger.jpg'
+  const imageToDisplay = productImage
 
   return (
     <div className='w-full py-6'>
       {' '}
       <ImageHeader
         title={specificationsInfo.title || 'Specifications'}
-        backgroundImage={'/src/assets/Images/charger.jpg'}
-        showBackgroundImage={true}
+        backgroundImage={specificationsInfo.backgroundImage}
         textColor={{
           mobile: 'text-white',
           desktop: 'text-gray-800'
@@ -92,12 +95,10 @@ const Specifications = ({ productImage, category }) => {  // Get specifications 
         mobileClassName='py-0'
       />
       <div className='max-w-7xl mx-auto px-6'>
-        {' '}
-        <div className='grid lg:grid-cols-2 gap-8 lg:gap-36 items-center '>
+        <div className='grid lg:grid-cols-2 gap-8 lg:gap-36 items-center'>
           {/* Specifications Table */}
           <div className='w-full overflow-hidden'>
             <div className='overflow-x-auto'>
-              {' '}
               <table className='w-full'>
                 <thead className='bg-gray-50'>
                   <tr></tr>
@@ -116,13 +117,13 @@ const Specifications = ({ productImage, category }) => {  // Get specifications 
                 </tbody>
               </table>
             </div>
-          </div>{' '}
+          </div>
           {/* Product Image */}
           <div className='flex justify-center lg:justify-end w-full h-full min-h-[400px]'>
-            <div className='relative  rounded-2xl  flex items-center justify-center'>
+            <div className='relative rounded-2xl flex items-center justify-center'>
               <img
                 src={imageToDisplay}
-                alt='EV Charging Cable'
+                alt='Product Specifications'
                 className='w-full h-full object-cover rounded-xl'
               />
             </div>

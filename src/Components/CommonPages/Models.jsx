@@ -3,6 +3,11 @@ import ImageHeader from '../Common/ImageHeader'
 import FiltersContainer from '../Products/FiltersContainer'
 import ModelCard from './ModelCard'
 import { Entirepagedata } from '../../Data/index.js'
+import { chargingStationsConfig } from '../../Data/ChargingStations/index.js'
+import { chargingCablesConfig } from '../../Data/ChargingCables/index.js'
+import { dcChargingStationConfig } from '../../Data/DCChargingStation/index.js'
+import { dcFastChargingStationConfig } from '../../Data/DCFastChargingStation/index.js'
+import { portableEvChargingConfig } from '../../Data/PortableEVCharging/index.js'
 
 // Simple icon components
 const ChevronDownIcon = ({ className }) => (
@@ -131,9 +136,31 @@ const Models = ({ productImage, category, modelsData: propModelsData }) => {
         orderedGroups[key] = groups[key];
       }
     });
-    
-    return orderedGroups;
+      return orderedGroups;
   };
+  // Get models background image based on category
+  const getModelsBackgroundImage = (category) => {
+    try {
+      switch (category) {
+        case 'chargingCables':
+          return chargingCablesConfig.backgroundImages?.evmodelbg;
+        case 'chargingStations':
+          return chargingStationsConfig.backgroundImages?.overview;
+        case 'dcChargingStation':
+          return dcChargingStationConfig.backgroundImages?.overview;
+        case 'dcFastChargingStation':
+          return dcFastChargingStationConfig.backgroundImages?.overview;
+        case 'portableEVCharging':
+          return portableEvChargingConfig.backgroundImages?.overview;
+        default:
+          return '/src/assets/Images/charger.jpg'; // Fallback image
+      }
+    } catch (error) {
+      console.error('Error getting models background image:', error);
+      return '/src/assets/Images/charger.jpg'; // Fallback image
+    }
+  };
+
   // Get models data from the page data based on the current category
   const modelsData = useMemo(() => {
     // If modelsData is provided as prop, use it directly
@@ -424,10 +451,9 @@ const Models = ({ productImage, category, modelsData: propModelsData }) => {
       <div className='w-full'>
         {/* Mobile Layout - Stacked */}
         <div className='block lg:hidden'>
-          <div>
-            <ImageHeader
+          <div>            <ImageHeader
               title='Models'
-              backgroundImage={'/src/assets/Images/charger.jpg'}
+              backgroundImage={getModelsBackgroundImage(category)}
               showBackgroundImage={true}
               textColor={{
                 mobile: 'text-white',

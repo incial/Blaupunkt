@@ -31,7 +31,13 @@ export const Entirepagedata = {
   chargingStations: chargingStationsConfig.data,
   dcChargingStation: dcChargingStationConfig.data,
   dcFastChargingStation: dcFastChargingStationConfig.data,
-  portableEVCharging: portableEvChargingConfig.data
+  portableEVCharging: portableEvChargingConfig.data,  downloadData: {
+    categories: [
+      ...chargingCablesConfig.data.downloadData.categories,
+      ...chargingStationsConfig.data.downloadData.categories,
+      // Additional categories from other products will be added here
+    ]
+  }
 }
 
 // =============================================================================
@@ -143,6 +149,18 @@ export const AllSpecifications = {
 }
 
 // =============================================================================
+// DOWNLOAD DATA (Easy access to all download files)
+// =============================================================================
+
+export const AllDownloads = {
+  chargingCables: chargingCablesConfig.downloads,
+  chargingStations: chargingStationsConfig.downloads || null,
+  dcChargingStation: dcChargingStationConfig.downloads || null,
+  dcFastChargingStation: dcFastChargingStationConfig.downloads || null,
+  portableEVCharging: portableEvChargingConfig.downloads || null
+}
+
+// =============================================================================
 // UTILITY FUNCTIONS FOR EASY ACCESS
 // =============================================================================
 
@@ -179,6 +197,40 @@ export const getProductSpecifications = (productName) => {
  */
 export const getAvailableProducts = () => {
   return Object.keys(ProductConfigs)
+}
+
+/**
+ * Get download data by product category
+ * @param {string} productName - Name of the product section
+ * @returns {Object} Product download data
+ */
+export const getProductDownloads = (productName) => {
+  return AllDownloads[productName] || null
+}
+
+/**
+ * Get download files by model code
+ * @param {string} modelCode - Model code to filter downloads
+ * @param {string} productName - Product category name
+ * @returns {Array} Array of relevant download files
+ */
+export const getDownloadsByModelCode = (modelCode, productName) => {
+  const productDownloads = getProductDownloads(productName)
+  if (!productDownloads) return []
+  
+  const relevantFiles = []
+  productDownloads.categories?.forEach(category => {
+    category.files?.forEach(file => {
+      if (file.modelCodes?.includes(modelCode) || file.modelCodes?.includes('All Models')) {
+        relevantFiles.push({
+          ...file,
+          category: category.name
+        })
+      }
+    })
+  })
+  
+  return relevantFiles
 }
 
 // =============================================================================

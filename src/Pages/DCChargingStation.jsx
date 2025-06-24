@@ -11,7 +11,7 @@ import {
   Entirepagedata,
   dcChargingStationImages
 } from '../Data/index.js'
-import { dcChargingStationData } from '../Data/DCChargingStation/index.js'
+import { dcChargingStationData, dcChargingStationConfig } from '../Data/DCChargingStation/index.js'
 import Highligths from '../Components/CommonPages/Highligths.jsx'
 
 const DCChargingStation = () => {
@@ -76,7 +76,10 @@ const DCChargingStation = () => {
         category='dcChargingStation'
         modelsData={dcChargingStationData.modelsData}
       />
-      <DownloadButton productCategory='dcChargingStation' />
+      <DownloadButton 
+        productCategory='dcChargingStation' 
+        downloadData={dcChargingStationConfig.downloads}
+      />
     </div>
   )
 }

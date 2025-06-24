@@ -33,11 +33,13 @@ const createMontaIntegrationData = (isActive = true) => ({
   subheading: 'Advantages of Monta Backend Integration:',
   active: isActive,
   listItems: [
-    'Effortless Setup: With pre-configuration, your charging station is ready to use right out of the box. No need for complex installations or technical adjustments - simply plug in and charge.',
+    'Effortless Setup: With pre-configuration, your charging station is ready to use right out of the box. No need for complex installations or technical adjustments – simply plug in and charge.',
 
     'Enhanced Control and Monitoring: Through the Monta platform, gain full control over your charging sessions. Monitor energy usage, set charging schedules, and access detailed reports, all from a user-friendly interface.',
 
     'Optimized Charging Efficiency: The pre-configuration ensures that your charging station operates at peak performance, delivering up to 11KW or 22 KW of power depending on the model. The charging capacity can be set between 8A and 32A depending on the model.',
+
+    'Integrated Safety Features: The inbuilt 6mA DC RCM provides the highest level of protection, eliminating the need for an additional DC protection RCCB during installation, ensuring your home and vehicle are safeguarded at all times.',
 
     'Future-Ready Technology: Stay ahead with automatic updates and continuous feature enhancements via the Monta backend, keeping your charging station aligned with the latest technological advancements.'
   ]
@@ -92,23 +94,20 @@ export const chargingStationsData = {
         'Smart connectivity with easy setup and user-friendly interface'
       ]
     },
-      IdealandFeaturesImage: chargingStationProductImages.ideal,
-    features: {
+      IdealandFeaturesImage: chargingStationProductImages.ideal,    features: {
       active: true,
       title: 'Features',
       isListFormat: true,
       data: [
-        'OCPP 1.6J Compliance:Enables integration with various third-party backends for enhanced control and monitoring.',
-        'RFID Authorization:Provides secure access control, just like the Basic version.',
-        'Monta Preconfiguration:Pre-configured for seamless integration with the Monta backend, offering immediate setup and enhanced monitoring features.',
-        'Remote Management:Easily manage charging sessions, monitor energy usage, and set smart schedules through the Monta platform.',
-        'Adjustable Charging Capacity:Offers the same flexible charging options as the Basic version.',
+        'OCPP 1.6J Compliance: Enables integration with various third-party backends for enhanced control and monitoring.',
+        'RFID Authorization: Provides secure access control, just like the Basic version.',
+        'Monta Preconfiguration: Pre-configured for seamless integration with the Monta backend, offering immediate setup and enhanced monitoring features.',
+        'Remote Management: Easily manage charging sessions, monitor energy usage, and set smart schedules through the Monta platform.',
+        'Adjustable Charging Capacity: Offers the same flexible charging options as the Basic version.',
       ]
-    },
-
-    ideal: {
+    },    ideal: {
       active: true,
-      title: 'Ideal Applications',
+      title: 'Ideal For',
       isListFormat: true,
       data: [
         'Users who require advanced features like remote management, energy monitoring, and integration with smart home systems.',
@@ -200,8 +199,8 @@ export const chargingStationsData = {
           },
           {
             name: 'Smart',
-            description: 'Users requiring advanced features like remote management, energy monitoring, and integration with smart home systems.',
-            models: [              {
+            description: 'Users requiring advanced features like remote management, energy monitoring, and integration with smart home systems.',            models: [
+              {
                 modelCode: 'BW3P32ACS',
                 maximumPower: '22 kWh',
                 current: '32A',
@@ -229,8 +228,8 @@ export const chargingStationsData = {
           },
           {
             name: 'Full',
-            description: 'Users who need the highest level of connectivity and control, especially in areas with unstable internet connections.',
-            models: [              {
+            description: 'Users who need the highest level of connectivity and control, especially in areas with unstable internet connections.',            models: [
+              {
                 modelCode: 'BW3P32ACF',
                 maximumPower: '22 kWh',
                 current: '32A',
@@ -263,8 +262,8 @@ export const chargingStationsData = {
         categories: [
           {
             name: 'Basic',
-            description: 'Users who need a reliable and secure charging solution without advanced connectivity features.',
-            models: [              {
+            description: 'Users who need a reliable and secure charging solution without advanced connectivity features.',            models: [
+              {
                 modelCode: 'BW3P32ACB',
                 maximumPower: '22 kWh',
                 current: '32A',
@@ -292,8 +291,8 @@ export const chargingStationsData = {
           },
           {
             name: 'Smart',
-            description: 'Users requiring advanced features like remote management, energy monitoring, and integration with smart home systems.',
-            models: [              {
+            description: 'Users requiring advanced features like remote management, energy monitoring, and integration with smart home systems.',            models: [
+              {
                 modelCode: 'BW3P32ACS',
                 maximumPower: '22 kWh',
                 current: '32A',
@@ -321,8 +320,8 @@ export const chargingStationsData = {
           },
           {
             name: 'Full',
-            description: 'Users who need the highest level of connectivity and control, especially in areas with unstable internet connections.',
-            models: [              {
+            description: 'Users who need the highest level of connectivity and control, especially in areas with unstable internet connections.',            models: [
+              {
                 modelCode: 'BW3P32ACF',
                 maximumPower: '22 kWh',
                 current: '32A',
@@ -353,6 +352,55 @@ export const chargingStationsData = {
     ]
   },
   
+  // =============================================================================
+  // DOWNLOAD DATA SECTION
+  // =============================================================================
+    downloadData: {
+    title: 'Downloads & Documentation',
+    description: 'Access technical specifications, installation guides, and certification documents',
+    categories: [      {
+        name: 'Technical Specifications',
+        description: 'Detailed product specifications and technical documentation',
+        files: [
+          {
+            name: 'AC Charging Station Technical Specifications',
+            description: 'Complete technical specifications for all AC charging station models (Combined)',
+            url: '/src/assets/pdf/Stations/datasheet/Wallbox with Screen BW1P32ACS_BW3P16ACS_BW3P32ACS.pdf',
+            size: '2.3 MB',
+            type: 'PDF',
+            modelCodes: ['All Models']
+          }
+        ]
+      },
+      {
+        name: 'Installation Guides',
+        description: 'Installation and setup instructions',
+        files: []
+      },      {
+        name: 'Certification Documents',
+        description: 'CE certification and compliance documentation',
+        files: [
+          {
+            name: 'Declaration of Conformity - AC Charging Stations RFID/WiFi/Bluetooth/4G',
+            description: 'CE certification document for BW3P32ACS AC charging station',
+            url: '/src/assets/pdf/Stations/Delecration/AC charging stations - RFID,wifi,bluetooth,4G(3) BW3P32ACS.pdf',
+            size: '850 KB',
+            type: 'PDF',
+            modelCodes: ['BW3P32ACS']
+          },
+          {
+            name: 'Declaration of Conformity - Socket Model',
+            description: 'CE certification document for BW3P32ASS socket model',
+            url: '/src/assets/pdf/Stations/Delecration/Declaration of conformity BW3P32ASS.pdf',
+            size: '920 KB',
+            type: 'PDF',
+            modelCodes: ['BW3P32ASS']
+          }
+        ]
+      }
+    ]
+  },
+
   supplierData: {
     manufacturer: 'Blaupunkt Technologies',
     suppliers: [
@@ -390,12 +438,12 @@ export const chargingStationsConfig = {
   images: chargingStationImages,
   backgroundImages: chargingStationBgImages,
   productImages: chargingStationProductImages,
-  
-  // Quick access to key sections
+    // Quick access to key sections
   overview: chargingStationsData.OverviewData,
   highlights: chargingStationsData.highlightsData,
   specifications: chargingStationsData.specificationsData,
   models: chargingStationsData.modelsData,
+  downloads: chargingStationsData.downloadData,
   supplier: chargingStationsData.supplierData
 }
 

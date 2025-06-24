@@ -11,6 +11,9 @@ import evCab3Url from '../../assets/Images/EvCables/EVCab-3.png'
 import evCab4Url from '../../assets/Images/EvCables/EVCab-4.png'
 import evCabMidUrl from '../../assets/Images/EvCables/EVCab-Mid.png'
 import evCabMidRightUrl from '../../assets/Images/EvCables/EVCab-Mid-Right.png'
+import evmoboverbg from '../../assets/Images/EvCables/EVOverviewBgmob.png'
+import evmodelbg from '../../assets/Images/EvCables/EVOModelBgmob.png'
+import evspecmob from '../../assets/Images/EvCables/EVSpecBgmob.png'
 
 // Import Product Images for Charging Cables
 import evCabPd1 from '../../assets/Images/pdImages/EVCab-Pd-1.png'
@@ -35,7 +38,10 @@ export const chargingCableBgImages = {
   hero: evCabMidUrl,
   features: evCab3Url,
   specifications: evCabMidRightUrl,
-  ideal: evCab4Url
+  ideal: evCab4Url,
+  evmoboverbg: evmoboverbg,
+  evmodelbg: evmodelbg,
+  evspecmob: evspecmob
 }
 
 // Product images for different views
