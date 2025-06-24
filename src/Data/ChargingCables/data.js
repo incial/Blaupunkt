@@ -97,7 +97,7 @@ export const chargingCablesData = {
       ]
     },
 
-    image: chargingCableBgImages.evmoboverbg
+    image: chargingCableProductImages.overview
   },
 
   highlightsData: createHighlightsData('Key Features', [
