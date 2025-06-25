@@ -117,6 +117,17 @@ export const portableEvChargingData = {
         'Workplace charging where infrastructure is limited'
       ]
     },
+
+      imageHeight: {
+      spec: {
+        mobile: '400px',
+        desktop: '500px'
+      },
+      overview: {
+        mobile: '400px',
+        desktop: '1000px'
+      }
+    },
     
     image: portableEvChargingProductImages.specifications
   },

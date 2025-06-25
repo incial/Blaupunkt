@@ -107,6 +107,16 @@ export const dcChargingStationData = {
       ]
     },
     
+      imageHeight: {
+      spec: {
+        mobile: '400px',
+        desktop: '500px'
+      },
+      overview: {
+        mobile: '400px',
+        desktop: '1000px'
+      }
+    },
     
     image: dcChargingStationImages.dcMid
   },
