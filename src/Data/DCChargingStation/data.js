@@ -55,7 +55,7 @@ export const dcChargingStationData = {
   thumbnails: createDCChargingStationThumbnails(),
   
   OverviewData: {
-    BgImage: dcChargingStationImages.dcMid,
+    BgImage: dcChargingStationImages.dccharoverbg,
     
     para: {
       active: true,
@@ -107,10 +107,6 @@ export const dcChargingStationData = {
       ]
     },
     
-    imageHeight: {
-      mobile: '400px',
-      desktop: '700px'
-    },
     
     image: dcChargingStationImages.dcMid
   },

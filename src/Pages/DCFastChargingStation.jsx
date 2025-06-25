@@ -9,7 +9,6 @@ import DownloadButton from '../Components/CommonPages/DownlaodButton'
 import Models from '../Components/CommonPages/Models.jsx'
 import { Entirepagedata, dcFastChargingStationImages } from '../Data/index.js'
 import { dcFastChargingStationData, dcFastChargingStationConfig } from '../Data/DCFastChargingStation/index.js'
-import Highligths from '../Components/CommonPages/Highligths.jsx'
 
 const DCFastChargingStation = () => {
   // Get data from Entirepagedata
@@ -72,7 +71,6 @@ const DCFastChargingStation = () => {
             dcFastChargingStationImages.fastMid
         }}
       />{' '}
-      <Highligths />
       <Specifications
         productImage={dcFastChargingStationImages.fastMid}
         category='dcFastChargingStation'

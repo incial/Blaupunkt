@@ -97,6 +97,13 @@ export const chargingCablesData = {
       ]
     },
 
+    imageHeight: {
+      spec: {
+        mobile: '600px',
+        desktop: '800px'
+      }
+    },
+
     image: chargingCableProductImages.overview
   },
 

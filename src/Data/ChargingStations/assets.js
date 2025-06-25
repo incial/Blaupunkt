@@ -19,6 +19,8 @@ import stationThumb3 from '../../assets/Images/ChargIngStations/Thumb-3.png'
 import stationThumb4 from '../../assets/Images/ChargIngStations/Thumb-4.png'
 import stationThumb5 from '../../assets/Images/ChargIngStations/Thumb-5.png'
 import stationThumb6 from '../../assets/Images/ChargIngStations/Thumb-6.png'
+import chargingStationoverbg from '../../assets/Images/ChargIngStations/stationoverbg.png'
+import chargingStationspecbg from '../../assets/Images/ChargIngStations/stationspecbg.png'
 
 // Main charging station images
 export const chargingStationImages = {
@@ -34,6 +36,8 @@ export const chargingStationImages = {
   thumb4: stationThumb4,
   thumb5: stationThumb5,
   thumb6: stationThumb6,
+  chargingStationoverbg: chargingStationoverbg,
+  chargingStationspecbg: chargingStationspecbg
 }
 
 // Background images for overview sections
@@ -41,7 +45,9 @@ export const chargingStationBgImages = {
   overview: chargingStationsUrl,
   hero: chargingStationsUrl,
   features: station1,
-  ideal: station2
+  ideal: station2,
+  chargingStationoverbg: chargingStationoverbg,
+  chargingStationspecbg: chargingStationspecbg
 }
 
 // Product images for different views

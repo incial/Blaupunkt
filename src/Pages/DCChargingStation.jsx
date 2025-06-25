@@ -12,7 +12,6 @@ import {
   dcChargingStationImages
 } from '../Data/index.js'
 import { dcChargingStationData, dcChargingStationConfig } from '../Data/DCChargingStation/index.js'
-import Highligths from '../Components/CommonPages/Highligths.jsx'
 
 const DCChargingStation = () => {
   // Get data from Entirepagedata
@@ -67,7 +66,6 @@ const DCChargingStation = () => {
           IdealandFeaturesImage: OverviewData?.IdealandFeaturesImage || ''
         }}
       />{' '}
-      <Highligths />
       <Specifications
         productImage={dcChargingStationImages.dcMidSpec}
         category='dcChargingStation'

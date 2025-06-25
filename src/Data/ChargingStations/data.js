@@ -4,15 +4,15 @@
 // Complete data configuration for Charging Stations section
 // =============================================================================
 
-import { 
-  createBreadcrumbs, 
+import {
+  createBreadcrumbs,
   createHighlightsData,
   createSpecificationsData,
   BUTTON_TEXTS,
   DEFAULT_SUPPLIER_DATA
 } from '../Common/utilities.js'
 
-import { 
+import {
   chargingStationImages,
   chargingStationBgImages,
   chargingStationProductImages,
@@ -51,22 +51,24 @@ const createMontaIntegrationData = (isActive = true) => ({
 
 export const chargingStationsData = {
   title: 'Charging Stations',
-  description: 'Reliable and efficient charging solutions for your electric vehicle.',
+  description:
+    'Reliable and efficient charging solutions for your electric vehicle.',
   active: true,
   breadcrumbs: createBreadcrumbs('Charging Stations', '/charging-stations'),
   buttonText: BUTTON_TEXTS.learnMore,
   mainImage: CHARGING_STATIONS_IMAGES.MAIN,
   imageAlt: 'EV Charging Station',
   thumbnails: createChargingStationThumbnails(),
-  
+
   OverviewData: {
-    BgImage: chargingStationBgImages.overview,
-    
+    BgImage: chargingStationBgImages.chargingStationoverbg,
+
     para: {
       active: true,
       data: [
         {
-          subheading: 'Reliable and Robust: Blaupunkt Three-Phase Charging Station',
+          subheading:
+            'Reliable and Robust: Blaupunkt Three-Phase Charging Station',
           text: "Charging your electric car is more than just a task - it's a matter of trust. That's why Blaupunkt's three-phase charging station is engineered to meet and exceed all applicable electrical safety requirements. Every product is rigorously tested and certified by leading independent laboratories, ensuring you receive only the highest quality equipment."
         },
         {
@@ -81,7 +83,7 @@ export const chargingStationsData = {
         createMontaIntegrationData(true)
       ]
     },
-    
+
     list: {
       active: false,
       title: 'Key Specifications',
@@ -94,7 +96,8 @@ export const chargingStationsData = {
         'Smart connectivity with easy setup and user-friendly interface'
       ]
     },
-      IdealandFeaturesImage: chargingStationProductImages.ideal,    features: {
+    IdealandFeaturesImage: chargingStationProductImages.ideal,
+    features: {
       active: true,
       title: 'Features',
       isListFormat: true,
@@ -103,49 +106,56 @@ export const chargingStationsData = {
         'RFID Authorization: Provides secure access control, just like the Basic version.',
         'Monta Preconfiguration: Pre-configured for seamless integration with the Monta backend, offering immediate setup and enhanced monitoring features.',
         'Remote Management: Easily manage charging sessions, monitor energy usage, and set smart schedules through the Monta platform.',
-        'Adjustable Charging Capacity: Offers the same flexible charging options as the Basic version.',
+        'Adjustable Charging Capacity: Offers the same flexible charging options as the Basic version.'
       ]
-    },    ideal: {
+    },
+    ideal: {
       active: true,
       title: 'Ideal For',
       isListFormat: true,
       data: [
         'Users who require advanced features like remote management, energy monitoring, and integration with smart home systems.',
-        'Businesses or public spaces where monitoring and managing multiple charging stations is essential',
+        'Businesses or public spaces where monitoring and managing multiple charging stations is essential'
       ]
     },
-    
-    imageHeight: {
-      mobile: '400px',
-      desktop: '1000px'
+
+   imageHeight: {
+      spec: {
+        mobile: '400px',
+        desktop: '500px'
+      },
+      overview: {
+        mobile: '400px',
+        desktop: '1000px'
+      }
     },
-    
-    image: chargingStationProductImages.feature
+
+    image: chargingStationProductImages.feature,
   },
-  
+
   highlightsData: createHighlightsData('Station Features', [
-    { 
-      title: 'Smart Connectivity', 
-      description: 'WiFi and 4G connectivity for remote monitoring', 
-      icon: 'connectivity' 
+    {
+      title: 'Smart Connectivity',
+      description: 'WiFi and 4G connectivity for remote monitoring',
+      icon: 'connectivity'
     },
-    { 
-      title: 'Multiple Outlets', 
-      description: 'Charge up to 2 vehicles simultaneously', 
-      icon: 'multiple' 
+    {
+      title: 'Multiple Outlets',
+      description: 'Charge up to 2 vehicles simultaneously',
+      icon: 'multiple'
     },
-    { 
-      title: 'Energy Management', 
-      description: 'Built-in load balancing and power management', 
-      icon: 'energy' 
+    {
+      title: 'Energy Management',
+      description: 'Built-in load balancing and power management',
+      icon: 'energy'
     },
-    { 
-      title: 'User Authentication', 
-      description: 'RFID cards and mobile app authentication', 
-      icon: 'security' 
+    {
+      title: 'User Authentication',
+      description: 'RFID cards and mobile app authentication',
+      icon: 'security'
     }
   ]),
-  
+
   specificationsData: createSpecificationsData('Specifications', [
     { label: 'Phases:', value: 'Single-Phase & Three-Phase' },
     { label: 'Ampere:', value: '32A & 16A' },
@@ -156,20 +166,22 @@ export const chargingStationsData = {
     { label: 'Cable Length:', value: '5 meters' },
     { label: 'Connector Type:', value: 'Type 2' }
   ]),
-  
+
   modelsData: {
     title: 'Models',
     groupingMethod: 'section',
     additionalText: '',
-    descriptiveText: 'Our comprehensive range of charging stations is designed to meet the diverse needs of residential, commercial, and public charging applications. Each model combines German engineering excellence with cutting-edge technology to deliver reliable, efficient, and safe charging solutions.',
-    
+    descriptiveText:
+      'Our comprehensive range of charging stations is designed to meet the diverse needs of residential, commercial, and public charging applications. Each model combines German engineering excellence with cutting-edge technology to deliver reliable, efficient, and safe charging solutions.',
+
     sections: [
       {
         name: 'Stations With Cable',
         categories: [
           {
             name: 'Basic',
-            description: 'Users who need a reliable and secure charging solution without advanced connectivity features.',
+            description:
+              'Users who need a reliable and secure charging solution without advanced connectivity features.',
             models: [
               {
                 modelCode: 'BW3P32ACB',
@@ -199,7 +211,9 @@ export const chargingStationsData = {
           },
           {
             name: 'Smart',
-            description: 'Users requiring advanced features like remote management, energy monitoring, and integration with smart home systems.',            models: [
+            description:
+              'Users requiring advanced features like remote management, energy monitoring, and integration with smart home systems.',
+            models: [
               {
                 modelCode: 'BW3P32ACS',
                 maximumPower: '22 kWh',
@@ -228,7 +242,9 @@ export const chargingStationsData = {
           },
           {
             name: 'Full',
-            description: 'Users who need the highest level of connectivity and control, especially in areas with unstable internet connections.',            models: [
+            description:
+              'Users who need the highest level of connectivity and control, especially in areas with unstable internet connections.',
+            models: [
               {
                 modelCode: 'BW3P32ACF',
                 maximumPower: '22 kWh',
@@ -262,7 +278,9 @@ export const chargingStationsData = {
         categories: [
           {
             name: 'Basic',
-            description: 'Users who need a reliable and secure charging solution without advanced connectivity features.',            models: [
+            description:
+              'Users who need a reliable and secure charging solution without advanced connectivity features.',
+            models: [
               {
                 modelCode: 'BW3P32ACB',
                 maximumPower: '22 kWh',
@@ -291,7 +309,9 @@ export const chargingStationsData = {
           },
           {
             name: 'Smart',
-            description: 'Users requiring advanced features like remote management, energy monitoring, and integration with smart home systems.',            models: [
+            description:
+              'Users requiring advanced features like remote management, energy monitoring, and integration with smart home systems.',
+            models: [
               {
                 modelCode: 'BW3P32ACS',
                 maximumPower: '22 kWh',
@@ -320,7 +340,9 @@ export const chargingStationsData = {
           },
           {
             name: 'Full',
-            description: 'Users who need the highest level of connectivity and control, especially in areas with unstable internet connections.',            models: [
+            description:
+              'Users who need the highest level of connectivity and control, especially in areas with unstable internet connections.',
+            models: [
               {
                 modelCode: 'BW3P32ACF',
                 maximumPower: '22 kWh',
@@ -351,20 +373,24 @@ export const chargingStationsData = {
       }
     ]
   },
-  
+
   // =============================================================================
   // DOWNLOAD DATA SECTION
   // =============================================================================
-    downloadData: {
+  downloadData: {
     title: 'Downloads & Documentation',
-    description: 'Access technical specifications, installation guides, and certification documents',
-    categories: [      {
+    description:
+      'Access technical specifications, installation guides, and certification documents',
+    categories: [
+      {
         name: 'Technical Specifications',
-        description: 'Detailed product specifications and technical documentation',
+        description:
+          'Detailed product specifications and technical documentation',
         files: [
           {
             name: 'AC Charging Station Technical Specifications',
-            description: 'Complete technical specifications for all AC charging station models (Combined)',
+            description:
+              'Complete technical specifications for all AC charging station models (Combined)',
             url: '/src/assets/pdf/Stations/datasheet/Wallbox with Screen BW1P32ACS_BW3P16ACS_BW3P32ACS.pdf',
             size: '2.3 MB',
             type: 'PDF',
@@ -376,13 +402,15 @@ export const chargingStationsData = {
         name: 'Installation Guides',
         description: 'Installation and setup instructions',
         files: []
-      },      {
+      },
+      {
         name: 'Certification Documents',
         description: 'CE certification and compliance documentation',
         files: [
           {
             name: 'Declaration of Conformity - AC Charging Stations RFID/WiFi/Bluetooth/4G',
-            description: 'CE certification document for BW3P32ACS AC charging station',
+            description:
+              'CE certification document for BW3P32ACS AC charging station',
             url: '/src/assets/pdf/Stations/Delecration/AC charging stations - RFID,wifi,bluetooth,4G(3) BW3P32ACS.pdf',
             size: '850 KB',
             type: 'PDF',
@@ -433,12 +461,12 @@ export const chargingStationsData = {
 export const chargingStationsConfig = {
   // Main data
   data: chargingStationsData,
-  
+
   // Quick access to images
   images: chargingStationImages,
   backgroundImages: chargingStationBgImages,
   productImages: chargingStationProductImages,
-    // Quick access to key sections
+  // Quick access to key sections
   overview: chargingStationsData.OverviewData,
   highlights: chargingStationsData.highlightsData,
   specifications: chargingStationsData.specificationsData,

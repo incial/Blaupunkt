@@ -64,6 +64,7 @@ const ChargingStations = () => {
       <Specifications
         productImage={chargingStationProductImages.spec}
         category='chargingStations'
+        imageHeight={{ mobile: '400px', desktop: '600px' }}
       />
       <ChargingStationModels category='chargingStations' />
       <DownloadButton 

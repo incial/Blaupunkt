@@ -65,15 +65,15 @@ const OverviewSection = ({ overviewData }) => {
       {/* Desktop View - Flex Row Layout */}
       <div className='hidden md:flex md:items-stretch max-w-7xl mx-auto px-8 py-4 gap-12'>
         {/* Image - Left Side (60% width) */}
-        <div className='flex-[4] flex items-start justify-center'>
+        <div className='flex-[4] flex items-start justify-center object-contain'>
           {overviewData?.image && (
             <img
               src={overviewData.image}
               alt='Product Overview'
               className='w-full h-full rounded-lg object-cover'
               style={{
-                maxHeight: overviewData.imageHeight?.desktop || '500px',
-                minHeight: overviewData.imageMinHeight?.desktop || '400px'
+                maxHeight: overviewData.imageHeight?.overview?.desktop || '500px',
+                minHeight: overviewData.imageMinHeight?.overview?.desktop || '400px'
               }}
             />
           )}

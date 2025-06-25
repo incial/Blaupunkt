@@ -14,7 +14,9 @@ const Specifications = ({ productImage, category }) => {
       return {
         title: chargingStationsConfig.specifications.title,
         specs: chargingStationsConfig.specifications.specs,
-        backgroundImage: chargingStationsConfig.backgroundImages.evmoboverbg
+        backgroundImage:
+          chargingStationsConfig.backgroundImages.chargingStationspecbg,
+        imageHeight: chargingStationsConfig.overview?.imageHeight
       }
     }
 
@@ -23,7 +25,8 @@ const Specifications = ({ productImage, category }) => {
       return {
         title: chargingCablesConfig.specifications.title,
         specs: chargingCablesConfig.specifications.specs,
-        backgroundImage: chargingCablesConfig.backgroundImages.evspecmob
+        backgroundImage: chargingCablesConfig.backgroundImages.evspecmob,
+        imageHeight: chargingCablesConfig.overview?.imageHeight
       }
     }
 
@@ -32,7 +35,8 @@ const Specifications = ({ productImage, category }) => {
       return {
         title: dcChargingStationConfig.specifications.title,
         specs: dcChargingStationConfig.specifications.specs,
-        backgroundImage: dcChargingStationConfig.backgroundImages.overview
+        backgroundImage: dcChargingStationConfig.backgroundImages.dccharspecbg,
+        imageHeight: dcChargingStationConfig.overview?.imageHeight
       }
     }
 
@@ -41,7 +45,8 @@ const Specifications = ({ productImage, category }) => {
       return {
         title: dcFastChargingStationConfig.specifications.title,
         specs: dcFastChargingStationConfig.specifications.specs,
-        backgroundImage: dcFastChargingStationConfig.backgroundImages.overview
+        backgroundImage: dcFastChargingStationConfig.backgroundImages.overview,
+        imageHeight: dcFastChargingStationConfig.overview?.imageHeight
       }
     }
 
@@ -50,13 +55,16 @@ const Specifications = ({ productImage, category }) => {
       return {
         title: portableEvChargingConfig.specifications.title,
         specs: portableEvChargingConfig.specifications.specs,
-        backgroundImage: portableEvChargingConfig.backgroundImages.overview
+        backgroundImage: portableEvChargingConfig.backgroundImages.overview,
+        imageHeight: portableEvChargingConfig.overview?.imageHeight
       }
-    }
-
-    // Default specifications data if category not found
+    } // Default specifications data if category not found
     return {
       title: 'Technical Specifications',
+      imageHeight: {
+        mobile: '200px',
+        desktop: '700px'
+      },
       specs: [
         { label: 'Working Voltage:', value: '110V – 250V' },
         { label: 'Rated Current:', value: 'Up to 32A' },
@@ -81,7 +89,7 @@ const Specifications = ({ productImage, category }) => {
   const imageToDisplay = productImage
 
   return (
-    <div className='w-full py-6'>
+    <div className='w-full py-6 lg:pb-40'>
       {' '}
       <ImageHeader
         title={specificationsInfo.title || 'Specifications'}
@@ -117,14 +125,24 @@ const Specifications = ({ productImage, category }) => {
                 </tbody>
               </table>
             </div>
-          </div>
-          {/* Product Image */}
-          <div className='flex justify-center lg:justify-end w-full h-full min-h-[400px]'>
+          </div>{' '}          {/* Product Image */}
+          <div className='flex justify-center lg:justify-end w-full h-full'>
             <div className='relative rounded-2xl flex items-center justify-center'>
               <img
                 src={imageToDisplay}
                 alt='Product Specifications'
-                className='w-full h-full object-cover rounded-xl'
+                className='w-full object-cover rounded-xl hidden'
+                style={{
+                  height: specificationsInfo.imageHeight.spec?.mobile || '200px'
+                }}
+              />
+              <img
+                src={imageToDisplay}
+                alt='Product Specifications'
+                className= 'w-full object-cover rounded-xl  hidden lg:block'
+                style={{
+                  height: specificationsInfo.imageHeight.spec?.desktop || '500px'
+                }}
               />
             </div>
           </div>

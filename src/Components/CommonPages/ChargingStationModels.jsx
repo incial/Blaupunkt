@@ -250,15 +250,13 @@ const ChargingStationModels = ({ category }) => {
             <span className='text-sm text-gray-600'>{modelsData.additionalText}</span>
           </div>
         )}
-      </div>
-
-      <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16'>
+      </div>      <div className='max-w-7xl mx-auto py-8 sm:py-12 lg:py-16'>
         {/* Sections */}
         <div className='space-y-16 sm:space-y-20 lg:space-y-24'>
           {processedSections?.map((section, sectionIndex) => (
             <div key={sectionIndex} className='w-full'>
               {/* Section Title */}
-              <div className='mb-8 sm:mb-12 lg:mb-16'>
+              <div className='mb-8 sm:mb-12 lg:mb-16 px-4 sm:px-6 lg:px-8'>
                 <h2 className='text-2xl sm:text-3xl lg:text-4xl font-semibold text-blaupunkt-dark mb-4 sm:mb-6'>
                   {section.name}
                 </h2>
@@ -268,7 +266,7 @@ const ChargingStationModels = ({ category }) => {
                 {section.categories?.map((category, categoryIndex) => (
                   <div key={categoryIndex} className='w-full'>
                     {/* Category Header */}
-                    <div className='mb-6 sm:mb-8 lg:mb-9'>
+                    <div className='mb-6 sm:mb-8 lg:mb-9 px-4 sm:px-6 lg:px-8'>
                       <div className='flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2'>
                         <h3 className='text-blaupunkt-primary-darker font-medium text-lg sm:text-xl lg:text-2xl'>
                           {category.name}
@@ -279,19 +277,20 @@ const ChargingStationModels = ({ category }) => {
                       </div>
                     </div>
                     {/* Models Grid */}
-                    <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 lg:gap-8'>
+                    <div className='flex overflow-x-auto scrollbar-hide gap-4 pb-4 pl-4 pr-4 sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 sm:gap-6 lg:gap-8 sm:px-6 lg:px-8'>
                       {category.models?.map((model, modelIndex) => (
-                        <ModelCard
-                          key={modelIndex}
-                          image={model.image}
-                          modelCode={model.modelCode}
-                          customFields={[
-                            { label: 'Maximum Power', value: model.maximumPower },
-                            { label: 'Current', value: model.current },
-                            { label: 'Cable Length', value: model.cableLength },
-                            { label: 'Phase Type', value: model.phaseType }
-                          ]}
-                        />
+                        <div key={modelIndex} className='flex-shrink-0 w-72 sm:w-auto'>
+                          <ModelCard
+                            image={model.image}
+                            modelCode={model.modelCode}
+                            customFields={[
+                              { label: 'Maximum Power', value: model.maximumPower },
+                              { label: 'Current', value: model.current },
+                              { label: 'Cable Length', value: model.cableLength },
+                              { label: 'Phase Type', value: model.phaseType }
+                            ]}
+                          />
+                        </div>
                       ))}
                     </div>
                   </div>

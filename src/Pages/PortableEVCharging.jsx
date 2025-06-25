@@ -3,6 +3,7 @@ import HeroSection from '../Components/CommonPages/HeroSection'
 import Specifications from '../Components/CommonPages/Specifications.jsx'
 import ImageHeader from '../Components/Common/ImageHeader'
 import OverviewSection from '../Components/Common/Overview/OverviewSection'
+import OverviewAdvantage from '../Components/Common/Overview/OverviewAdvantage'
 import OverviewFeatureasandideal from '../Components/Common/Overview/OverviewFeatureasandideal'
 import DownloadButton from '../Components/CommonPages/DownlaodButton'
 import Models from '../Components/CommonPages/Models.jsx'
@@ -11,7 +12,6 @@ import {
   portableEvChargingProductImages
 } from '../Data/index.js'
 import { portableEvChargingData, portableEvChargingConfig } from '../Data/PortableEVCharging/index.js'
-import Highligths from '../Components/CommonPages/Highligths.jsx'
 
 const PortableEVCharging = () => {
   // Get data from Entirepagedata
@@ -61,8 +61,7 @@ const PortableEVCharging = () => {
           category: 'portableEVCharging',
           image: OverviewData?.image || portableEvChargingProductImages.main
         }}
-      />
-      <OverviewFeatureasandideal
+      />      <OverviewFeatureasandideal
         overviewData={{
           ...OverviewData,
           category: 'portableEVCharging',
@@ -71,7 +70,10 @@ const PortableEVCharging = () => {
             portableEvChargingProductImages.feature
         }}
       />{' '}
-      <Highligths />{' '}      <Specifications
+      <OverviewAdvantage
+        overviewData={{ ...OverviewData, category: 'portableEVCharging' }}
+      />
+      <Specifications
         productImage={portableEvChargingProductImages.specifications}
         category='portableEVCharging'
       />

@@ -15,6 +15,8 @@ import dcMidHalf from '../../assets/Images/DCchargingStation/DC-Mid-half.png'
 import dcMidSpec from '../../assets/Images/DCchargingStation/DC-Mid-Spec.png'
 import dcThumb1 from '../../assets/Images/DCchargingStation/Thumb-1.png'
 import dcThumb2 from '../../assets/Images/DCchargingStation/Thumb-2.png'
+import dccharoverbg from '../../assets/Images/DCchargingStation/dcstaionoverbg.png'
+import dccharspecbg from '../../assets/Images/DCchargingStation/dcstaionsepcbg.png'
 
 // Main DC charging station images
 export const dcChargingStationImages = {
@@ -26,6 +28,8 @@ export const dcChargingStationImages = {
   dcPd2: dcPd2,
   thumb1: dcThumb1,
   thumb2: dcThumb2,
+  dccharoverbg: dccharoverbg,
+  dccharspecbg: dccharspecbg
 }
 
 // Background images for overview sections
@@ -33,7 +37,9 @@ export const dcChargingStationBgImages = {
   overview: dcChargingStationUrl,
   hero: dcMid,
   features: dcMidHalf,
-  ideal: dcMidSpec
+  ideal: dcMidSpec,
+  dccharoverbg: dccharoverbg,
+  dccharspecbg: dccharspecbg
 }
 
 // Product images for different views
