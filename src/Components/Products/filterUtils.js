@@ -7,11 +7,11 @@ export const filterProducts = (
 ) => {
   return products.filter(product => {
     const matchesSearch =
-      product.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      product.specifications
+      (product.title && product.title.toLowerCase().includes(searchQuery.toLowerCase())) ||
+      (product.specifications && product.specifications
         .toLowerCase()
-        .includes(searchQuery.toLowerCase()) ||
-      product.productCode.toLowerCase().includes(searchQuery.toLowerCase())
+        .includes(searchQuery.toLowerCase())) ||
+      (product.productCode && product.productCode.toLowerCase().includes(searchQuery.toLowerCase()))
 
     const matchesType = productType === 'All' || product.type === productType
     const matchesSpeed =

@@ -24,18 +24,18 @@ const DesktopFilters = ({
   setPhaseType
 }) => (
   <div className='hidden lg:block'>
-    <div className='flex flex-col lg:flex-row lg:items-center lg:justify-end gap-4 lg:gap-6'>
-      <div className='grid grid-cols-1 sm:grid-cols-2 lg:flex lg:flex-wrap gap-4 lg:gap-6'>
+    <div className='flex items-center justify-center'>
+      <div className='flex flex-nowrap items-center gap-4'>
         {/* Sort By Filter */}
-        <div className='flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 min-w-0'>
-          <span className='text-blaupunkt-primary-dark font-myriad text-sm sm:text-base font-light whitespace-nowrap'>
+        <div className='flex items-center gap-2 flex-shrink-0'>
+          <span className='text-blaupunkt-primary-dark font-myriad text-sm font-light whitespace-nowrap'>
             Sort By:
           </span>
-          <div className='relative min-w-0 flex-1 sm:flex-initial'>
+          <div className='relative'>
             <select
               value={sortBy}
               onChange={e => setSortBy(e.target.value)}
-              className='w-full appearance-none bg-blaupunkt-secondary text-white px-3 sm:px-4 py-2 pr-8 rounded-lg font-myriad text-xs sm:text-sm font-normal cursor-pointer hover:bg-blaupunkt-secondary/90 transition-colors'
+              className='appearance-none bg-blaupunkt-secondary text-white px-3 py-2 pr-8 rounded-lg font-myriad text-sm font-normal cursor-pointer hover:bg-blaupunkt-secondary/90 transition-colors w-[150px]'
             >
               {SORT_OPTIONS.map((option, index) => (
                 <option key={index} value={option}>
@@ -50,15 +50,15 @@ const DesktopFilters = ({
         </div>
 
         {/* Product Type Filter */}
-        <div className='flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 min-w-0'>
-          <span className='text-blaupunkt-primary-dark font-myriad text-sm sm:text-base font-light whitespace-nowrap'>
-            Product Type:
+        <div className='flex items-center gap-2 flex-shrink-0'>
+          <span className='text-blaupunkt-primary-dark font-myriad text-sm font-light whitespace-nowrap'>
+            Type:
           </span>
-          <div className='relative min-w-0 flex-1 sm:flex-initial'>
+          <div className='relative'>
             <select
               value={productType}
               onChange={e => setProductType(e.target.value)}
-              className='w-full appearance-none bg-blaupunkt-secondary text-white px-3 sm:px-4 py-2 pr-8 rounded-lg font-myriad text-xs sm:text-sm font-normal cursor-pointer hover:bg-blaupunkt-secondary/90 transition-colors'
+              className='appearance-none bg-blaupunkt-secondary text-white px-3 py-2 pr-8 rounded-lg font-myriad text-sm font-normal cursor-pointer hover:bg-blaupunkt-secondary/90 transition-colors w-[130px]'
             >
               {PRODUCT_TYPE_OPTIONS.map((option, index) => (
                 <option key={index} value={option}>
@@ -73,15 +73,15 @@ const DesktopFilters = ({
         </div>
 
         {/* Charging Speed Filter */}
-        <div className='flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 min-w-0'>
-          <span className='text-blaupunkt-primary-dark font-myriad text-sm sm:text-base font-light whitespace-nowrap'>
-            Charging Speed:
+        <div className='flex items-center gap-2 flex-shrink-0'>
+          <span className='text-blaupunkt-primary-dark font-myriad text-sm font-light whitespace-nowrap'>
+            Speed:
           </span>
-          <div className='relative min-w-0 flex-1 sm:flex-initial'>
+          <div className='relative'>
             <select
               value={chargingSpeed}
               onChange={e => setChargingSpeed(e.target.value)}
-              className='w-full appearance-none bg-blaupunkt-secondary text-white px-3 sm:px-4 py-2 pr-8 rounded-lg font-myriad text-xs sm:text-sm font-normal cursor-pointer hover:bg-blaupunkt-secondary/90 transition-colors'
+              className='appearance-none bg-blaupunkt-secondary text-white px-3 py-2 pr-8 rounded-lg font-myriad text-sm font-normal cursor-pointer hover:bg-blaupunkt-secondary/90 transition-colors w-[100px]'
             >
               {CHARGING_SPEED_OPTIONS.map((option, index) => (
                 <option key={index} value={option}>
@@ -96,15 +96,15 @@ const DesktopFilters = ({
         </div>
 
         {/* Connector Type Filter */}
-        <div className='flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 min-w-0'>
-          <span className='text-blaupunkt-primary-dark font-myriad text-sm sm:text-base font-light whitespace-nowrap'>
-            Connector Type:
+        <div className='flex items-center gap-2 flex-shrink-0'>
+          <span className='text-blaupunkt-primary-dark font-myriad text-sm font-light whitespace-nowrap'>
+            Connector:
           </span>
-          <div className='relative min-w-0 flex-1 sm:flex-initial'>
+          <div className='relative'>
             <select
               value={connectorType}
               onChange={e => setConnectorType(e.target.value)}
-              className='w-full appearance-none bg-blaupunkt-secondary text-white px-3 sm:px-4 py-2 pr-8 rounded-lg font-myriad text-xs sm:text-sm font-normal cursor-pointer hover:bg-blaupunkt-secondary/90 transition-colors'
+              className='appearance-none bg-blaupunkt-secondary text-white px-3 py-2 pr-8 rounded-lg font-myriad text-sm font-normal cursor-pointer hover:bg-blaupunkt-secondary/90 transition-colors w-[110px]'
             >
               {CONNECTOR_TYPE_OPTIONS.map((option, index) => (
                 <option key={index} value={option}>
@@ -119,15 +119,15 @@ const DesktopFilters = ({
         </div>
 
         {/* Phase Type Filter */}
-        <div className='flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 min-w-0'>
-          <span className='text-blaupunkt-primary-dark font-myriad text-sm sm:text-base font-light whitespace-nowrap'>
-            Phase Type:
+        <div className='flex items-center gap-2 flex-shrink-0'>
+          <span className='text-blaupunkt-primary-dark font-myriad text-sm font-light whitespace-nowrap'>
+            Phase:
           </span>
-          <div className='relative min-w-0 flex-1 sm:flex-initial'>
+          <div className='relative'>
             <select
               value={phaseType}
               onChange={e => setPhaseType(e.target.value)}
-              className='w-full appearance-none bg-blaupunkt-secondary text-white px-3 sm:px-4 py-2 pr-8 rounded-lg font-myriad text-xs sm:text-sm font-normal cursor-pointer hover:bg-blaupunkt-secondary/90 transition-colors'
+              className='appearance-none bg-blaupunkt-secondary text-white px-3 py-2 pr-8 rounded-lg font-myriad text-sm font-normal cursor-pointer hover:bg-blaupunkt-secondary/90 transition-colors w-[130px]'
             >
               {PHASE_TYPE_OPTIONS.map((option, index) => (
                 <option key={index} value={option}>
