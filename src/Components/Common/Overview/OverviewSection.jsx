@@ -5,15 +5,16 @@ const OverviewSection = ({ overviewData }) => {
     return (
       <div className='w-full py-4'>
         <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
-          <p className='text-center text-gray-500'>No overview data available.</p>
+          <p className='text-center text-gray-500'>
+            No overview data available.
+          </p>
         </div>
       </div>
     )
   }
-  return (
-    <div className='w-full py-4'>
+  return (    <div className='w-full py-4'>
       {/* Mobile View - Original Layout */}
-      <div className='md:hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+      <div className='md:hidden max-w-7xl mx-auto px-8'>
         {/* Render paragraphs if para is active */}
         {overviewData?.para?.active && overviewData.para.data.length > 0 && (
           <div className='mb-8'>
@@ -39,7 +40,7 @@ const OverviewSection = ({ overviewData }) => {
             <ul className='space-y-3'>
               {overviewData.list.data.map((item, index) => (
                 <li key={index} className='flex items-start'>
-                  <span className='text-blue-600 mr-3 mt-1 text-xl'>•</span>
+                  <span className='text-black mr-3 mt-1 text-xl'>•</span>
                   <span className='text-lg text-gray-700 leading-relaxed'>
                     {item}
                   </span>
@@ -59,18 +60,19 @@ const OverviewSection = ({ overviewData }) => {
             />
           </div>
         )}
-      </div>      {/* Desktop View - Flex Row Layout */}
+      </div>{' '}
+      {/* Desktop View - Flex Row Layout */}
       <div className='hidden md:flex md:items-stretch max-w-7xl mx-auto px-8 py-4 gap-12'>
         {/* Image - Left Side (60% width) */}
-        <div className='flex-[4] flex items-start justify-center'>
+        <div className='flex-[4] flex items-start justify-center object-contain'>
           {overviewData?.image && (
             <img
               src={overviewData.image}
               alt='Product Overview'
               className='w-full h-full rounded-lg object-cover'
               style={{
-                maxHeight: overviewData.imageHeight?.desktop || '500px',
-                minHeight: overviewData.imageMinHeight?.desktop || '400px'
+                maxHeight: overviewData.imageHeight?.overview?.desktop || '500px',
+                minHeight: overviewData.imageMinHeight?.overview?.desktop || '400px'
               }}
             />
           )}

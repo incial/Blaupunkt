@@ -5,10 +5,14 @@ const ProductCard = ({
   title,
   specifications,
   productCode,
-  addBorder = false
+  addBorder = false,
+  onClick
 }) => {
   return (
-    <div className='relative rounded-3xl w-full max-w-[280px] sm:max-w-[320px] h-[380px] sm:h-[450px] cursor-pointer transition-all duration-300 hover:scale-105 group mx-auto sm:shadow-[0px_12px_27px_0px_rgba(34,34,34,0.1),0px_49px_49px_0px_rgba(34,34,34,0.09),0px_111px_67px_0px_rgba(34,34,34,0.05),0px_198px_79px_0px_rgba(34,34,34,0.01),0px_309px_86px_0px_rgba(34,34,34,0)]'>
+    <div
+      className='relative rounded-3xl w-full max-w-[280px] sm:max-w-[320px] h-[380px] sm:h-[450px] cursor-pointer transition-all duration-300 hover:scale-105 group mx-auto sm:shadow-[0px_12px_27px_0px_rgba(34,34,34,0.1),0px_49px_49px_0px_rgba(34,34,34,0.09),0px_111px_67px_0px_rgba(34,34,34,0.05),0px_198px_79px_0px_rgba(34,34,34,0.01),0px_309px_86px_0px_rgba(34,34,34,0)]'
+      onClick={onClick}
+    >
       {/* Rectangle 74 - White Background Container */}
       <div
         className={`absolute inset-0 bg-white ${
@@ -18,16 +22,22 @@ const ProductCard = ({
         }`}
         style={{ borderRadius: '15px' }}
       >
-        {' '}
-        {/* Rectangle 73 - Product Image Container */}
+        {' '}        {/* Rectangle 73 - Product Image Container */}
         <div
-          className='absolute top-2 left-2 right-2 h-[260px] sm:h-[320px] bg-cover bg-center bg-no-repeat border-1 border-white'
+          className='absolute top-2 left-2 right-2 h-[260px] sm:h-[320px] border-1 border-white overflow-hidden'
           style={{
-            backgroundImage: image ? `url(${image})` : 'none',
             backgroundColor: '#D9D9D9',
             borderRadius: '13px'
           }}
-        />{' '}
+        >
+          {image && (
+            <img
+              src={image}
+              alt={title || 'Product'}
+              className='w-full h-full object-cover'
+            />
+          )}
+        </div>{' '}
         {/* Text Content Container */}
         <div className='absolute bottom-4 sm:bottom-6 left-4 sm:left-6 right-4 sm:right-6'>
           {/* Product Title and Code - Same Line */}

@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Navbar from './Components/Common/Navbar'
 import Footer from './Components/Common/Footer'
 import HomePage from './Pages/HomePage'
-import Products from './Pages/Products'
+import Product from './Pages/Product'
 import ChargingCables from './Pages/ChargingCables'
 import ChargingStations from './Pages/ChargingStations'
 import DCChargingStation from './Pages/DCChargingStation'
@@ -20,7 +20,7 @@ const App = () => {
           {' '}
           <Routes>
             <Route path='/' element={<HomePage />} />
-            <Route path='/products' element={<Products />} />
+            <Route path='/products' element={<Product />} />
             <Route path='/charging-cables' element={<ChargingCables />} />
             <Route path='/charging-stations' element={<ChargingStations />} />
             <Route
@@ -30,8 +30,7 @@ const App = () => {
             <Route
               path='/dc-fast-charging-station'
               element={<DCFastChargingStation />}
-            />
-            <Route
+            />            <Route
               path='/portable-ev-charging'
               element={<PortableEVCharging />}
             />

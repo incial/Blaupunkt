@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import Card from './Common/Card'
-import { chargingImgs } from '../Utils/assets'
+import { chargingImgs } from '../Data/assets.js'
 
 const Category = () => {
   const categoryData = [

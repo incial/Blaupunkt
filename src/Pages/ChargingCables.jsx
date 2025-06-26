@@ -1,7 +1,7 @@
 import React from 'react'
 import HeroSection from '../Components/CommonPages/HeroSection'
-import { Entirepagedata } from '../Utils/data.js'
-import productImage from '../assets/Images/Product_image.png'
+import { Entirepagedata, chargingCableProductImages } from '../Data/index.js'
+import { chargingCablesConfig } from '../Data/ChargingCables/index.js'
 import Specifications from '../Components/CommonPages/Specifications.jsx'
 import ImageHeader from '../Components/Common/ImageHeader'
 import OverviewSection from '../Components/Common/Overview/OverviewSection'
@@ -17,11 +17,10 @@ const ChargingCables = () => {
     buttonText,
     imageAlt,
     OverviewData
-  } = Entirepagedata.chargingCables
-  // Process thumbnails with actual images
+  } = Entirepagedata.chargingCables // Process thumbnails with actual images
   const thumbnails = Entirepagedata.chargingCables.thumbnails.map(thumb => ({
     ...thumb,
-    image: productImage,
+    image: thumb.image, // Use the actual thumbnail image instead of productImage
     alt: thumb.alt
   }))
   return (
@@ -31,7 +30,6 @@ const ChargingCables = () => {
         description={description}
         breadcrumbs={breadcrumbs}
         buttonText={buttonText}
-        mainImage={productImage}
         imageAlt={imageAlt}
         thumbnails={thumbnails}
       />
@@ -47,12 +45,18 @@ const ChargingCables = () => {
           overviewData={{
             ...OverviewData,
             category: 'chargingCables',
-            image: productImage
+            image: OverviewData?.image || ''
           }}
-        />      </div>
-      <Specifications productImage={productImage} category='chargingCables' />
-      <Models productImage={productImage} category='chargingCables' />
-      <DownloadButton productCategory='chargingCables' />
+        />{' '}
+      </div>
+      <Specifications
+        productImage={chargingCableProductImages.specifications}
+        category='chargingCables'
+      />      <Models category='chargingCables' />
+      <DownloadButton 
+        productCategory='chargingCables' 
+        downloadData={chargingCablesConfig.downloads}
+      />
     </div>
   )
 }

@@ -6,8 +6,9 @@ import OverviewSection from '../Components/Common/Overview/OverviewSection'
 import OverviewAdvantage from '../Components/Common/Overview/OverviewAdvantage'
 import OverviewFeatureasandideal from '../Components/Common/Overview/OverviewFeatureasandideal'
 import DownloadButton from '../Components/CommonPages/DownlaodButton'
-import { Entirepagedata } from '../Utils/data.js'
-import chargingStationsImage from '../assets/Images/Charging_Stations.png'
+import ChargingStationModels from '../Components/CommonPages/ChargingStationModels.jsx'
+import { Entirepagedata, chargingStationProductImages } from '../Data/index.js'
+import { chargingStationsConfig } from '../Data/ChargingStations/index.js'
 
 const ChargingStations = () => {
   // Get data from Entirepagedata
@@ -18,12 +19,10 @@ const ChargingStations = () => {
     buttonText,
     imageAlt,
     OverviewData
-  } = Entirepagedata.chargingStations
-
-  // Process thumbnails with actual images
+  } = Entirepagedata.chargingStations  // Process thumbnails with actual images
   const thumbnails = Entirepagedata.chargingStations.thumbnails.map(thumb => ({
     ...thumb,
-    image: chargingStationsImage,
+    image: thumb.image, // Use the actual thumbnail image instead of productImage
     alt: thumb.alt
   }))
   return (
@@ -33,40 +32,45 @@ const ChargingStations = () => {
         description={description}
         breadcrumbs={breadcrumbs}
         buttonText={buttonText}
-        mainImage={chargingStationsImage}
         imageAlt={imageAlt}
         thumbnails={thumbnails}
       />
       {/* Overview Header */}
-      <div className='gap-y-'>
-      <ImageHeader
-        title='Overview'
-        backgroundImage={OverviewData?.BgImage}
-        showBackgroundImage={!!OverviewData?.BgImage}
-      />{' '}
-      {/* All three overview components for Charging Stations */}
-      <OverviewSection
-        overviewData={{
-          ...OverviewData,
-          category: 'chargingStations',
-          image: chargingStationsImage
-        }}
-      />
-      <OverviewAdvantage
-        overviewData={{ ...OverviewData, category: 'chargingStations' }}
-      />
-      <OverviewFeatureasandideal
-        overviewData={{
-          ...OverviewData,
-          category: 'chargingStations',
-          IdealandFeaturesImage: chargingStationsImage
-        }}
-      />
-      </div>      <Specifications
-        productImage={chargingStationsImage}
+      <div className='gap-y-8'>
+        <ImageHeader
+          title='Overview'
+          backgroundImage={OverviewData?.BgImage}
+          showBackgroundImage={!!OverviewData?.BgImage}
+        />
+        {/* All three overview components for Charging Stations */}
+        <OverviewSection
+          overviewData={{
+            ...OverviewData,
+            category: 'chargingStations',
+            image: OverviewData?.image || ""
+          }}
+        />
+        <OverviewAdvantage
+          overviewData={{ ...OverviewData, category: 'chargingStations' }}
+        />
+        <OverviewFeatureasandideal
+          overviewData={{
+            ...OverviewData,
+            category: 'chargingStations',
+            IdealandFeaturesImage: OverviewData?.IdealandFeaturesImage || ""
+          }}
+        />
+      </div>
+      <Specifications
+        productImage={chargingStationProductImages.spec}
         category='chargingStations'
+        imageHeight={{ mobile: '400px', desktop: '600px' }}
       />
-      <DownloadButton productCategory='chargingStations' />
+      <ChargingStationModels category='chargingStations' />
+      <DownloadButton 
+        productCategory='chargingStations' 
+        downloadData={chargingStationsConfig.downloads}
+      />
     </div>
   )
 }

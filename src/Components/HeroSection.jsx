@@ -46,6 +46,7 @@ const HeroSection = () => {
               loop
               muted
               playsInline
+              disablePictureInPicture
               className={`w-full h-full object-cover absolute top-0 left-0 transition-opacity duration-1000 ease-in-out ${
                 showVideo ? 'opacity-100' : 'opacity-0'
               }`}
