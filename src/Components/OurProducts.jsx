@@ -1,31 +1,59 @@
 import React from 'react'
 import ProductCard from './Common/ProductCard'
-import { chargingImgs } from '../Data/assets.js'
 import { useNavigate } from 'react-router-dom'
+import { chargingCablesData } from '../Data/ChargingCables/data.js'
+import { chargingStationsData } from '../Data/ChargingStations/data.js'
+import { dcChargingStationData } from '../Data/DCChargingStation/data.js'
 
 const OurProducts = () => {
   const navigate = useNavigate()
+    // Get the first product model from each category
+  const getFirstProduct = (categoryData, categoryLink) => {
+    let firstModel = null;
+    
+    // For charging cables
+    if (categoryData.modelsData?.models?.length > 0) {
+      firstModel = categoryData.modelsData.models[0];
+    }
+    // For charging stations
+    else if (categoryData.modelsData?.sections?.length > 0) {
+      const firstSection = categoryData.modelsData.sections[0];
+      if (firstSection.categories?.length > 0 && firstSection.categories[0].models?.length > 0) {
+        firstModel = firstSection.categories[0].models[0];
+      }
+    }
+    
+    if (firstModel) {
+      return {
+        title: categoryData.title,
+        specifications: `${firstModel.current || firstModel.maximumPower || ''} | ${firstModel.cableLength || ''} | ${firstModel.phaseType || ''} | ${firstModel.connectorType || ''}`.replace(/^\s*\|\s*|\s*\|\s*$/g, '').replace(/\s*\|\s*\|\s*/g, ' | '),
+        productCode: firstModel.modelCode || '',
+        image: firstModel.image || categoryData.mainImage,
+        link: categoryLink
+      };
+    }
+    
+    return {
+      title: categoryData.title,
+      specifications: 'See details',
+      productCode: '',
+      image: categoryData.mainImage,
+      link: categoryLink
+    };
+  };
+
   const productData = [
     {
       id: 1,
-      title: 'EV Charging Cables',
-      specifications: '22 kWh | 8 Meter | 3 Phase | Type 2',
-      productCode: 'A3P32AT2',
-      image: chargingImgs.productImage
+      ...getFirstProduct(chargingCablesData, '/charging-cables')
     },
     {
       id: 2,
-      title: 'Charging Stations',
-      specifications: '7.4 kWh | Wall Mount | AC Charging',
-      productCode: 'CS7400AC',
-      image: chargingImgs.productImage
+      ...getFirstProduct(chargingStationsData, '/charging-stations')
     },
     {
       id: 3,
-      title: 'DC Charging Station',
-      specifications: '50 kWh | Fast Charging | CCS2',
-      productCode: 'DC50CCS2',
-      image: chargingImgs.productImage
+      ...getFirstProduct(dcChargingStationData, '/dc-charging-station')
     }
   ]
   return (
@@ -49,6 +77,7 @@ const OurProducts = () => {
                   specifications={product.specifications}
                   productCode={product.productCode}
                   image={product.image}
+                  onClick={() => navigate(product.link)}
                 />
               </div>
             ))}
@@ -57,13 +86,15 @@ const OurProducts = () => {
         {/* Desktop: Grid Layout */}
         <div className='hidden sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10 justify-items-center max-w-6xl mx-auto'>
           {productData.map(product => (
-            <ProductCard
-              key={product.id}
-              title={product.title}
-              specifications={product.specifications}
-              productCode={product.productCode}
-              image={product.image}
-            />
+            <div key={product.id} className='w-full flex justify-center'>
+              <ProductCard
+                title={product.title}
+                specifications={product.specifications}
+                productCode={product.productCode}
+                image={product.image}
+                onClick={() => navigate(product.link)}
+              />
+            </div>
           ))}
         </div>
         {/* View All Products Button */}
