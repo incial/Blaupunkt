@@ -6,7 +6,6 @@
 
 import {
   createBreadcrumbs,
-  createStandardFeatures,
   createHighlightsData,
   createSpecificationsData,
   BUTTON_TEXTS
@@ -291,25 +290,29 @@ export const dcFastChargingStationData = {
           'Detailed product specifications and technical documentation',
         files: [
           {
-            name: 'DC Fast Charging Station Technical Specifications',
+            name: 'BPDC60EU & BPDC160EU - Technical Specifications',
             description:
-              'Complete technical specifications for all DC fast charging station models',
-            url: '/src/assets/pdf/Stations/datasheet/DC_Fast_Charging_Station_Specs.pdf',
+              'Complete technical specifications for BPDC60EU and BPDC160EU models',
+            url: '/src/assets/pdf/FastStation/datasheet/BPDC60EU_BPDC160EU.pdf',
             size: '2.8 MB',
             type: 'PDF',
-            modelCodes: ['All Models']
+            modelCodes: ['BPDC60EU', 'BPDC160EU']
           }
         ]
       },
       {
-        name: 'Installation Guides',
-        description: 'Installation and setup instructions',
-        files: []
-      },
-      {
         name: 'Certification Documents',
-        description: 'Safety certifications and compliance documentation',
-        files: []
+        description: 'CE certification and compliance documentation',
+        files: [
+          {
+            name: 'Declaration of Conformity - BPDC40KEU',
+            description: 'CE certification document for BPDC40KEU model',
+            url: '/src/assets/pdf/FastStation/Delecration/Declaration of conformity BPDC40KEU.pdf',
+            size: '850 KB',
+            type: 'PDF',
+            modelCodes: ['BPDC40KEU']
+          }
+        ]
       }
     ]
   }

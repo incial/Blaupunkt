@@ -237,6 +237,74 @@ export const dcChargingStationData = {
         specialization: 'DC fast charging solutions'
       }
     ]
+  },
+
+  // =============================================================================
+  // DOWNLOAD DATA SECTION
+  // =============================================================================
+  downloadData: {
+    title: 'Downloads & Documentation',
+    description:
+      'Access technical specifications, installation guides, and certification documents',
+    categories: [
+      {
+        name: 'Technical Specifications',
+        description:
+          'Detailed product specifications and technical documentation',
+        files: [
+          {
+            name: 'BPDC30KEU White - Technical Specifications',
+            description:
+              'Technical specifications for BPDC30KEU white model',
+            url: '/src/assets/pdf/DCStation/datasheet/BPDC30KEU_W.pdf',
+            size: '2.5 MB',
+            type: 'PDF',
+            modelCodes: ['BPDC30KEU_W']
+          },
+          {
+            name: 'BPDC30KEU Grey - Technical Specifications',
+            description:
+              'Technical specifications for BPDC30KEU grey model',
+            url: '/src/assets/pdf/DCStation/datasheet/BPDC30KEU_G.pdf',
+            size: '2.8 MB',
+            type: 'PDF',
+            modelCodes: ['BPDC30KEU_G']
+          },
+          {
+            name: 'BPDC40KEU White - Technical Specifications',
+            description:
+              'Technical specifications for BPDC40KEU white model',
+            url: '/src/assets/pdf/DCStation/datasheet/BPDC40KEU_W.pdf',
+            size: '3.1 MB',
+            type: 'PDF',
+            modelCodes: ['BPDC40KEU_W']
+          },
+          {
+            name: 'BPDC40KEU Grey - Technical Specifications',
+            description:
+              'Technical specifications for BPDC40KEU grey model',
+            url: '/src/assets/pdf/DCStation/datasheet/BPDC40KEU_G.pdf',
+            size: '3.1 MB',
+            type: 'PDF',
+            modelCodes: ['BPDC40KEU_G']
+          }
+        ]
+      },
+      {
+        name: 'Certification Documents',
+        description: 'CE certification and compliance documentation',
+        files: [
+          {
+            name: 'Declaration of Conformity - BPDC40KEU',
+            description: 'CE certification document for BPDC40KEU models',
+            url: '/src/assets/pdf/DCStation/Delecration/Declaration of conformity BPDC40KEU.pdf',
+            size: '850 KB',
+            type: 'PDF',
+            modelCodes: ['BPDC40KEU']
+          }
+        ]
+      }
+    ]
   }
 }
 
@@ -258,6 +326,7 @@ export const dcChargingStationConfig = {
   highlights: dcChargingStationData.highlightsData,
   specifications: dcChargingStationData.specificationsData,
   models: dcChargingStationData.modelsData,
+  downloads: dcChargingStationData.downloadData,
   supplier: dcChargingStationData.supplierData
 }
 
