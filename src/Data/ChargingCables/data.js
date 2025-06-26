@@ -237,35 +237,35 @@ export const chargingCablesData = {
           'Detailed product specifications and technical documentation',
         files: [
           {
-            name: 'Type 1 Cable Specifications (16A)',
+            name: 'Type 1 Cable Specifications (B1P16AT1)',
             description:
-              'Technical specifications for B1P16AT1 and B1P16AT2 models',
-            url: '/src/assets/pdf/Cables/B1P16AT1 - en_web.pdf',
+              'Technical specifications for B1P16AT1 model',
+            url: '/src/assets/pdf/Cables/datasheet/B1P16AT1 - en_web.pdf',
             size: '2.1 MB',
             type: 'PDF',
-            modelCodes: ['B1P16AT1', 'B1P16AT2']
+            modelCodes: ['B1P16AT1']
           },
           {
-            name: 'Type 1 Cable Specifications (Multi-Model)',
+            name: 'Type 1 Cable Specifications (B1P16AT2)',
             description: 'Technical specifications for B1P16AT2 model',
-            url: '/src/assets/pdf/Cables/B1P16AT2 - en_web.pdf',
+            url: '/src/assets/pdf/Cables/datasheet/B1P16AT2 - en_web.pdf',
             size: '1.9 MB',
             type: 'PDF',
             modelCodes: ['B1P16AT2']
           },
           {
-            name: 'Type 1 Cable Specifications (16A-32A)',
+            name: 'Type 1 Cable Specifications (A1P Series)',
             description:
               'Technical specifications for A1P16AT1 and A1P32AT1 models',
-            url: '/src/assets/pdf/Cables/A1P16AT1- A1P32AT1.pdf',
+            url: '/src/assets/pdf/Cables/datasheet/A1P16AT1- A1P32AT1.pdf',
             size: '1.8 MB',
             type: 'PDF',
             modelCodes: ['A1P16AT1', 'A1P32AT1']
           },
           {
-            name: 'Type 2 Cable Specifications (Multi-Models)',
-            description: 'Comprehensive specifications for Type 2 cables',
-            url: '/src/assets/pdf/Cables/Type2 to Type2 A1P16AT2,A1P32AT2,A3P16AT2,A3P32AT2.pdf',
+            name: 'Type 2 to Type 2 Cable Specifications',
+            description: 'Comprehensive specifications for Type 2 to Type 2 cables',
+            url: '/src/assets/pdf/Cables/datasheet/Type2 to Type2 A1P16AT2,A1P32AT2,A3P16AT2,A3P32AT2.pdf',
             size: '2.5 MB',
             type: 'PDF',
             modelCodes: ['A1P16AT2', 'A1P32AT2', 'A3P16AT2', 'A3P32AT2']
@@ -274,17 +274,12 @@ export const chargingCablesData = {
             name: 'C3P Series Cable Specifications',
             description:
               'Technical specifications for C3P16AT2 and C3P32AT2 models',
-            url: '/src/assets/pdf/Cables/C3P16AT2_ C3P32AT2_web.pdf',
+            url: '/src/assets/pdf/Cables/datasheet/C3P16AT2_ C3P32AT2_web.pdf',
             size: '1.9 MB',
             type: 'PDF',
             modelCodes: ['C3P16AT2', 'C3P32AT2']
           }
         ]
-      },
-      {
-        name: 'Installation Guides',
-        description: 'Installation and setup instructions',
-        files: []
       },
       {
         name: 'Certification Documents',
@@ -293,7 +288,7 @@ export const chargingCablesData = {
           {
             name: 'Declaration of Conformity - C3P Series',
             description: 'CE certification document for C3P16AT2 cable model',
-            url: '/src/assets/pdf/Cables/Declaration of conformity C3P16AT2.pdf',
+            url: '/src/assets/pdf/Cables/Delecration/Declaration of conformity C3P16AT2.pdf',
             size: '850 KB',
             type: 'PDF',
             modelCodes: ['C3P16AT2']

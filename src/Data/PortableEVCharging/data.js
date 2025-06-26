@@ -235,6 +235,110 @@ export const portableEvChargingData = {
         specialization: 'Compact charging solutions'
       }
     ]
+  },
+
+  // =============================================================================
+  // DOWNLOAD DATA SECTION
+  // =============================================================================
+  downloadData: {
+    title: 'Downloads & Documentation',
+    description:
+      'Access technical specifications, user manuals, and certification documents',
+    categories: [
+      {
+        name: 'Technical Specifications',
+        description:
+          'Detailed product specifications and technical documentation',
+        files: [
+          {
+            name: 'P1PM2T2 - Technical Specifications (English)',
+            description:
+              'Technical specifications for P1PM2T2 model',
+            url: '/src/assets/pdf/PortStation/datasheet/P1PM2T2 - Datasheet_web.pdf',
+            size: '2.1 MB',
+            type: 'PDF',
+            modelCodes: ['P1PM2T2']
+          },
+          {
+            name: 'P1PM2T2 - Technical Specifications (German)',
+            description:
+              'Technical specifications for P1PM2T2 model in German',
+            url: '/src/assets/pdf/PortStation/datasheet/P1PM2T2 - Datasheet_ger_web.pdf',
+            size: '1.8 MB',
+            type: 'PDF',
+            modelCodes: ['P1PM2T2']
+          },
+          {
+            name: 'P1P6MT2L - Technical Specifications (English)',
+            description:
+              'Technical specifications for P1P6MT2L model',
+            url: '/src/assets/pdf/PortStation/datasheet/P1P6MT2L.pdf',
+            size: '1.9 MB',
+            type: 'PDF',
+            modelCodes: ['P1P6MT2L']
+          },
+          {
+            name: 'P1P6MT2L - Technical Specifications (German)',
+            description:
+              'Technical specifications for P1P6MT2L model in German',
+            url: '/src/assets/pdf/PortStation/datasheet/P1P6MT2L_DE.pdf',
+            size: '1.9 MB',
+            type: 'PDF',
+            modelCodes: ['P1P6MT2L']
+          },
+          {
+            name: 'P3PM2T2 - Technical Specifications (English)',
+            description:
+              'Technical specifications for P3PM2T2 model',
+            url: '/src/assets/pdf/PortStation/datasheet/P3PM2T2.pdf',
+            size: '2.0 MB',
+            type: 'PDF',
+            modelCodes: ['P3PM2T2']
+          },
+          {
+            name: 'P3PM2T2 - Technical Specifications (German)',
+            description:
+              'Technical specifications for P3PM2T2 model in German',
+            url: '/src/assets/pdf/PortStation/datasheet/P3PM2T2_DE.pdf',
+            size: '2.0 MB',
+            type: 'PDF',
+            modelCodes: ['P3PM2T2']
+          },
+          {
+            name: 'P3P6MT2 - Technical Specifications (English)',
+            description:
+              'Technical specifications for P3P6MT2 model',
+            url: '/src/assets/pdf/PortStation/datasheet/P3P6MT2.pdf',
+            size: '2.1 MB',
+            type: 'PDF',
+            modelCodes: ['P3P6MT2']
+          },
+          {
+            name: 'P3P6MT2 - Technical Specifications (German)',
+            description:
+              'Technical specifications for P3P6MT2 model in German',
+            url: '/src/assets/pdf/PortStation/datasheet/P3P6MT2_DE.pdf',
+            size: '2.1 MB',
+            type: 'PDF',
+            modelCodes: ['P3P6MT2']
+          }
+        ]
+      },
+      {
+        name: 'Certification Documents',
+        description: 'CE certification and compliance documentation',
+        files: [
+          {
+            name: 'Declaration of Conformity - P1PM2T2',
+            description: 'CE certification document for P1PM2T2 model',
+            url: '/src/assets/pdf/PortStation/Delecration/Declaration of conformity P1PM2T2.pdf',
+            size: '850 KB',
+            type: 'PDF',
+            modelCodes: ['P1PM2T2']
+          }
+        ]
+      }
+    ]
   }
 }
 
@@ -256,6 +360,7 @@ export const portableEvChargingConfig = {
   highlights: portableEvChargingData.highlightsData,
   specifications: portableEvChargingData.specificationsData,
   models: portableEvChargingData.modelsData,
+  downloads: portableEvChargingData.downloadData,
   supplier: portableEvChargingData.supplierData
 }
 

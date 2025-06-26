@@ -388,20 +388,33 @@ export const chargingStationsData = {
           'Detailed product specifications and technical documentation',
         files: [
           {
-            name: 'AC Charging Station Technical Specifications',
+            name: 'Wallbox with Screen - Technical Specifications',
             description:
-              'Complete technical specifications for all AC charging station models (Combined)',
+              'Complete technical specifications for screen-equipped charging stations',
             url: '/src/assets/pdf/Stations/datasheet/Wallbox with Screen BW1P32ACS_BW3P16ACS_BW3P32ACS.pdf',
             size: '2.3 MB',
             type: 'PDF',
-            modelCodes: ['All Models']
+            modelCodes: ['BW1P32ACS', 'BW3P16ACS', 'BW3P32ACS']
+          },
+          {
+            name: 'Wallbox with Cable - Technical Specifications',
+            description:
+              'Technical specifications for cable-integrated charging stations',
+            url: '/src/assets/pdf/Stations/datasheet/Wallbox_with_Cable_BW1P32ACS_BW3P16ACS_BW3P32ACS.pdf',
+            size: '2.1 MB',
+            type: 'PDF',
+            modelCodes: ['BW1P32ACS', 'BW3P16ACS', 'BW3P32ACS']
+          },
+          {
+            name: 'Wallbox with Socket - Technical Specifications',
+            description:
+              'Technical specifications for socket-type charging stations',
+            url: '/src/assets/pdf/Stations/datasheet/Wallbox with Socket_BW1P32ASS_BW3P16ASS_BW3P32ASS.pdf',
+            size: '2.5 MB',
+            type: 'PDF',
+            modelCodes: ['BW1P32ASS', 'BW3P16ASS', 'BW3P32ASS']
           }
         ]
-      },
-      {
-        name: 'Installation Guides',
-        description: 'Installation and setup instructions',
-        files: []
       },
       {
         name: 'Certification Documents',
