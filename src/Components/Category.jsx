@@ -36,7 +36,7 @@ const Category = () => {
     }
   ]
   return (
-    <div className='py-8 sm:py-12 lg:py-16 px-4 sm:px-6 lg:px-8 bg-gray-50'>
+    <div className='py-8 sm:py-12 lg:py-16 px-8 sm:px-6 lg:px-8 bg-gray-50'>
       <div className='max-w-7xl mx-auto'>
         {/* Section Title */}
         <h2 className='text-2xl sm:text-3xl lg:text-4xl font-semibold text-center text-gray-900 mb-8 sm:mb-12 lg:mb-16'>
