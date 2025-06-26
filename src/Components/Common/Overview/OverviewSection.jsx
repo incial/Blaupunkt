@@ -12,10 +12,9 @@ const OverviewSection = ({ overviewData }) => {
       </div>
     )
   }
-  return (
-    <div className='w-full py-4'>
+  return (    <div className='w-full py-4'>
       {/* Mobile View - Original Layout */}
-      <div className='md:hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+      <div className='md:hidden max-w-7xl mx-auto px-8'>
         {/* Render paragraphs if para is active */}
         {overviewData?.para?.active && overviewData.para.data.length > 0 && (
           <div className='mb-8'>

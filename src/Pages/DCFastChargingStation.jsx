@@ -72,7 +72,7 @@ const DCFastChargingStation = () => {
         }}
       />{' '}
       <Specifications
-        productImage={dcFastChargingStationImages.fastMid}
+        productImage={dcFastChargingStationImages.fastSpec}
         category='dcFastChargingStation'
       />
       <Models

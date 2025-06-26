@@ -6,7 +6,6 @@
 
 import { 
   createBreadcrumbs, 
-  createStandardFeatures,
   createHighlightsData,
   createSpecificationsData,
   BUTTON_TEXTS
@@ -29,18 +28,6 @@ import {
  * @param {boolean} isActive - Whether the integration is active
  * @returns {Object} Monta integration configuration
  */
-const createMontaIntegrationData = (isActive = true) => ({
-  subheading: 'Monta Backend Integration Advantages',
-  active: isActive,
-  text: `What sets this portable charger apart is its pre-configuration with the Monta backend. This advanced feature allows for a quick and hassle-free setup, enabling you to start charging immediately with minimal effort.`,
-  listItems: [
-    'Effortless Setup: With pre-configuration, your portable charger is ready to use right out of the box.',
-    'Enhanced Control and Monitoring: Through the Monta platform, gain full control over your charging sessions.',
-    'Optimized Charging Efficiency: The pre-configuration ensures optimal power delivery for portable charging.',
-    'Integrated Safety Features: Highest level of protection for mobile charging scenarios.',
-    'Future-Ready Technology: Automatic updates and continuous feature enhancements via the Monta backend.'
-  ]
-})
 
 // =============================================================================
 // PORTABLE EV CHARGING SPECIFIC UTILITIES
@@ -52,7 +39,7 @@ const createMontaIntegrationData = (isActive = true) => ({
 
 export const portableEvChargingData = {
   title: 'Portable EV Charging',
-  description: 'Compact and convenient portable charging solution for electric vehicles.',
+  description: 'Charge Anywhere, Anytime.',
   active: true,
   breadcrumbs: createBreadcrumbs('Portable EV Charging', '/portable-ev-charging'),
   buttonText: BUTTON_TEXTS.discover,
@@ -61,100 +48,99 @@ export const portableEvChargingData = {
   thumbnails: createPortableEvChargingThumbnails(),
   
   OverviewData: {
-    BgImage: portableEvChargingBgImages.overview,
-    
-    para: {
+    BgImage: portableEvChargingImages.cable2,
+      para: {
       active: true,
-      data: [
-        {
-          subheading: 'Portable Charging Freedom',
-          text: "Blaupunkt's portable EV charger offers the ultimate flexibility for electric vehicle owners. Whether you're at home, work, or on the road, this compact charging solution ensures you're never stranded without power."
+      data: [        {
+          subheading: 'Portable, powerful, and ready for every journey',
+          text: [
+            "Blaupunkt's Portable EV Chargers (Mode 2) offer maximum flexibility, allowing you to charge your electric vehicle wherever a 230V or 400V outlet is available."
+          ]
         },
         {
-          subheading: 'Intelligent Safety Features',
-          text: "Equipped with advanced safety systems including ground fault protection, over-voltage protection, and temperature monitoring, our portable charger provides peace of mind during every charging session."
+          text: [
+            "Designed for both single-phase and three-phase setups, these chargers adapt to your environment, delivering up to 3.7 kW (Single Phase) or 11 kW (Three Phase) of charging power. Adjustable amperage settings (8–16A) ensure optimal performance based on the available power source."
+          ]
         },
         {
-          subheading: 'Universal Compatibility',
-          text: "Compatible with all Type 2 electric vehicles and designed to work with standard household outlets, making it the perfect backup charging solution for any EV owner.",
-          active: true
+          text: [
+            "Safety is prioritized with an integrated RCD sensor and 6mA DC fault protection (Type B)."
+          ]
         },
-        createMontaIntegrationData(false)
       ]
     },
-    
-    list: {
+      list: {
       active: false,
       title: 'Key Features',
       data: [
-        'Compact and lightweight design for easy portability',
-        'Compatible with standard household outlets (230V)',
-        'Built-in safety features and automatic fault detection',
-        'LED status indicators for charging progress',
-        'Weather-resistant construction (IP65 rated)',
+        'Mode 2 portable charging capability',
+        'Compatible with 230V and 400V outlets',
+        'Single-phase (3.7kW) and three-phase (11kW) options',
+        'Adjustable amperage settings (8A-16A)',
+        'Integrated RCD sensor and DC fault protection',
         'Type 2 connector for universal EV compatibility',
-        'Adjustable charging current (6A, 8A, 10A, 13A, 16A)',
-        'Includes protective carrying case'
+        '8-meter cable for maximum reach',
+        'Protective carrying case included',
+        'IP54/IP65 weather protection rating'
       ]
     },
-      IdealandFeaturesImage: portableEvChargingProductImages.feature,
-    features: createStandardFeatures([
-      'Compact portable design for travel convenience',
-      'Multiple current settings for different power sources',
-      'Advanced safety monitoring and protection',
-      'Weather-resistant IP65 construction',
-      'LED charging status indicators'
-    ]),
-    
-    ideal: {
+      IdealandFeaturesImage: portableEvChargingImages.cable2,    features: {
       active: true,
-      title: 'Ideal For',
+      title: '',
+      isListFormat: false, // true for list, false for paragraph
       data: [
-        'Emergency charging situations',
-        'Travel and vacation charging needs',
-        'Apartment dwellers without dedicated charging',
-        'Backup charging solution for home use',
-        'Workplace charging where infrastructure is limited'
+        'Built to withstand real-world conditions, the chargers feature an IP54/IP65 rating for water and dust resistance.',
+        'With an 8-meter cable for maximum reach and a protective carry case included for easy transport and storage, Blaupunkt\'s Portable Chargers are the perfect companions for EV drivers needing reliable, on-the-go charging.',
+        'Compatible with all electric vehicles using a Type 2 connector.'
+      ]
+    },    ideal: {
+      active: false,
+      title: 'Ideal For',
+      isListFormat: true, // true for list, false for paragraph
+      data: [
+        'Home charging for daily EV use',
+        'Emergency charging when on the road',
+        'Workplace charging solutions',
+        'Holiday homes and temporary locations'
       ]
     },
+
 
       imageHeight: {
       spec: {
         mobile: '400px',
-        desktop: '500px'
+        desktop: '600px'
       },
       overview: {
         mobile: '400px',
-        desktop: '1000px'
+        desktop: '500px'
       }
     },
     
-    image: portableEvChargingProductImages.specifications
+    image: portableEvChargingProductImages.cable1
   },
-  
-  highlightsData: createHighlightsData('Key Benefits', [
+    highlightsData: createHighlightsData('Key Benefits', [
     { 
-      title: 'Ultra Portable', 
-      description: 'Lightweight design fits easily in your vehicle', 
+      title: 'Flexible Power', 
+      description: '3.7kW single-phase or 11kW three-phase charging', 
       icon: 'portable' 
     },
     { 
-      title: 'Plug & Play', 
-      description: 'Works with any standard household outlet', 
+      title: 'Adjustable Current', 
+      description: 'Amperage settings from 8A to 16A for optimal performance', 
       icon: 'easy' 
     },
     { 
-      title: 'Smart Safety', 
-      description: 'Automatic fault detection and protection', 
+      title: 'Advanced Safety', 
+      description: 'Integrated RCD sensor and 6mA DC fault protection', 
       icon: 'safety' 
     },
     { 
-      title: 'Weather Proof', 
-      description: 'IP65 rated for outdoor use in all conditions', 
+      title: 'Weather Resistant', 
+      description: 'IP54/IP65 rated for water and dust protection', 
       icon: 'weather' 
     }
-  ]),
-    specificationsData: createSpecificationsData('Specifications', [
+  ]),specificationsData: createSpecificationsData('Technical Specifications', [
     { label: 'Rated Current', value: '8–10–13–16A' },
     { label: 'Insulation Resistance', value: '>1000MΩ' },
     { label: 'Resistance Voltage', value: '2000V' },
@@ -165,74 +151,48 @@ export const portableEvChargingData = {
     { label: 'Fire Rating', value: 'UL94 V-0' },
     { label: 'Operating Temperature', value: '-30°C to +50°C' },
     { label: 'Net Weight', value: '2.8 kg' }
-  ]),  modelsData: (() => {
+  ]),
+  modelsData: (() => {
     // Create sections for portable EV charging models
     const sections = [
       {
-        name: 'Standard Series',
-        description: 'Essential portable charging for everyday use',
+        name: 'Mode 2 Portable Chargers',
+        description: 'Flexible charging solutions for all environments',
         models: [
           {
-            modelCode: 'BP-PORT-16A',
+            modelCode: 'P1PM2T2',
             maximumPower: '3.7kW',
             connectorType: 'Type 2',
-            outputVoltage: '230V AC',
+            chargingPower: '3.7 kW',
+            powerPhase: 'Single-Phase',
+            ipClass: 'IP54',
+            workingVoltage: '110V~250V',
+            cable: '3 x 2.5mm² + 2 x 0.5mm²',
             dimensions: '300 x 200 x 100mm',
             weight: '2.5kg',
             current: '16A',
-            cableLength: '5 Meters',
+            cableLength: '8 Meters',
             phaseType: 'Single - Phase',
-            protectionRating: 'IP65',
+            protectionRating: 'IP54',
             popular: true,
-            image: portableEvChargingProductImages.cable1
+            image: portableEvChargingImages.portEvPd1
           },
           {
-            modelCode: 'BP-PORT-10A',
-            maximumPower: '2.3kW',
+            modelCode: 'P3PM2T2',
+            maximumPower: '11kW',
             connectorType: 'Type 2',
-            outputVoltage: '230V AC',
-            dimensions: '280 x 180 x 90mm',
-            weight: '2.0kg',
-            current: '10A',
-            cableLength: '5 Meters',
-            phaseType: 'Single - Phase',
-            protectionRating: 'IP65',
-            image: portableEvChargingProductImages.cable2
-          }
-        ]
-      },
-      {
-        name: 'Premium Series',
-        description: 'Advanced portable charging with smart features',
-        models: [
-          {
-            modelCode: 'BP-PORT-16A-SMART',
-            maximumPower: '3.7kW',
-            connectorType: 'Type 2',
-            outputVoltage: '230V AC',
-            dimensions: '320 x 210 x 110mm',
-            weight: '3.0kg',
+            chargingPower: '11 kW',
+            powerPhase: 'Three-Phase',
+            ipClass: 'IP65',
+            workingVoltage: '380~400V',
+            cable: '5 x 2.5mm² + 2 x 0.5mm²',
+            dimensions: '320 x 220 x 110mm',
+            weight: '3.2kg',
             current: '16A',
-            cableLength: '5 Meters',
-            phaseType: 'Single - Phase',
+            cableLength: '8 Meters',
+            phaseType: 'Three - Phase',
             protectionRating: 'IP65',
-            smartFeatures: 'WiFi, App Control',
-            popular: true,
-            image: portableEvChargingProductImages.cable3
-          },
-          {
-            modelCode: 'BP-PORT-10A-SMART',
-            maximumPower: '2.3kW',
-            connectorType: 'Type 2',
-            outputVoltage: '230V AC',
-            dimensions: '300 x 190 x 100mm',
-            weight: '2.7kg',
-            current: '10A',
-            cableLength: '5 Meters',
-            phaseType: 'Single - Phase',
-            protectionRating: 'IP65',
-            smartFeatures: 'WiFi, App Control',
-            image: portableEvChargingProductImages.pd1
+            image: portableEvChargingImages.portEvPd1
           }
         ]
       }

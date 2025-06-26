@@ -110,7 +110,7 @@ export const dcChargingStationData = {
       imageHeight: {
       spec: {
         mobile: '400px',
-        desktop: '500px'
+        desktop: '1000px'
       },
       overview: {
         mobile: '400px',

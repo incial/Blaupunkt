@@ -58,9 +58,8 @@ const OverviewAdvantage = ({ overviewData }) => {
                 ))}
             </div>
           )}
-      </div>{' '}
-      {/* Monta Backend Integration Section - Mobile */}
-      <div className='md:hidden max-w-7xl mx-auto px-4 py-4'>
+      </div>{' '}      {/* Monta Backend Integration Section - Mobile */}
+      <div className='md:hidden max-w-7xl mx-auto px-8 py-4'>
         {/* Enhanced way to show Monta Integration from para data */}
         {overviewData?.para?.active &&
           overviewData?.para?.data?.some(

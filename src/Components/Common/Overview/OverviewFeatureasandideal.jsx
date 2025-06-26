@@ -6,11 +6,9 @@ const OverviewFeatureasandideal = ({ overviewData }) => {
       {/* Features and Ideal Use Cases Section */}
       {(overviewData?.features?.active ||
         overviewData?.ideal?.active ||
-        overviewData?.IdealandFeaturesImage) && (
-        <div className='max-w-7xl mx-auto px-8'>
-          {' '}
-          {/* Desktop Layout - Flex Row */}
-          <div className='hidden md:flex md:items-start md:gap-12 py-4'>
+        overviewData?.IdealandFeaturesImage) && (        <div className='max-w-7xl mx-auto px-8 flex justify-center items-center'>
+          {' '}          {/* Desktop Layout - Flex Row */}
+          <div className='hidden md:flex md:items-center md:justify-center md:gap-12 py-4'>
             {/* Content Section - Left Side */}
             <div className='flex-[2] space-y-8'>
               {' '}
@@ -22,7 +20,8 @@ const OverviewFeatureasandideal = ({ overviewData }) => {
                       <h4 className='text-xl font-semibold text-black mb-6'>
                         {overviewData.features.title}
                       </h4>
-                    )}                    {overviewData.features.isListFormat ? (
+                    )}{' '}
+                    {overviewData.features.isListFormat ? (
                       <ul className='space-y-3 pl-6'>
                         {overviewData.features.data.map((item, index) => (
                           <li
@@ -56,7 +55,8 @@ const OverviewFeatureasandideal = ({ overviewData }) => {
                       <h4 className='text-xl font-semibold text-black mb-6'>
                         {overviewData.ideal.title}
                       </h4>
-                    )}                    {overviewData.ideal.isListFormat ? (
+                    )}{' '}
+                    {overviewData.ideal.isListFormat ? (
                       <ul className='space-y-3 pl-6'>
                         {overviewData.ideal.data.map((item, index) => (
                           <li
@@ -82,11 +82,9 @@ const OverviewFeatureasandideal = ({ overviewData }) => {
                     )}
                   </div>
                 )}
-            </div>
-
-            {/* Image Section - Right Side */}
+            </div>            {/* Image Section - Right Side */}
             {overviewData?.IdealandFeaturesImage && (
-              <div className='flex-[1] flex justify-center'>
+              <div className='flex-[2] flex justify-center items-center'>
                 <img
                   src={overviewData.IdealandFeaturesImage}
                   alt='Features and Ideal Use Cases'
@@ -98,9 +96,8 @@ const OverviewFeatureasandideal = ({ overviewData }) => {
                 />
               </div>
             )}
-          </div>{' '}
-          {/* Mobile Layout - Stacked */}
-          <div className='md:hidden space-y-6 py-4'>
+          </div>{' '}          {/* Mobile Layout - Stacked */}
+          <div className='md:hidden space-y-6 py-4 flex flex-col items-center justify-center'>
             {' '}
             {/* Features Section */}
             {overviewData?.features?.active &&
@@ -110,7 +107,8 @@ const OverviewFeatureasandideal = ({ overviewData }) => {
                     <h4 className='text-xl font-medium text-black mb-6'>
                       {overviewData.features.title}
                     </h4>
-                  )}                  {overviewData.features.isListFormat ? (
+                  )}{' '}
+                  {overviewData.features.isListFormat ? (
                     <ul className='space-y-3 pl-6'>
                       {overviewData.features.data.map((item, index) => (
                         <li
@@ -144,7 +142,8 @@ const OverviewFeatureasandideal = ({ overviewData }) => {
                     <h4 className='text-xl font-medium text-black mb-6'>
                       {overviewData.ideal.title}
                     </h4>
-                  )}                  {overviewData.ideal.isListFormat ? (
+                  )}{' '}
+                  {overviewData.ideal.isListFormat ? (
                     <ul className='space-y-3 pl-6'>
                       {overviewData.ideal.data.map((item, index) => (
                         <li
