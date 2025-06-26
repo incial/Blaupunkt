@@ -40,7 +40,7 @@ const OverviewSection = ({ overviewData }) => {
             <ul className='space-y-3'>
               {overviewData.list.data.map((item, index) => (
                 <li key={index} className='flex items-start'>
-                  <span className='text-blue-600 mr-3 mt-1 text-xl'>•</span>
+                  <span className='text-black mr-3 mt-1 text-xl'>•</span>
                   <span className='text-lg text-gray-700 leading-relaxed'>
                     {item}
                   </span>

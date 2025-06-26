@@ -26,10 +26,10 @@ const OverviewAdvantage = ({ overviewData }) => {
                 )
                 .map((item, index) => (
                   <div key={`monta-desktop-${index}`}>
-                    <h3 className='text-3xl font-semibold text-black mb-6'>
+                    <h3 className='text-2xl font-semibold text-black mb-6'>
                       {item.subheading}
                     </h3>
-                    <p className='text-lg text-black leading-relaxed mb-6'>
+                    <p className='text-lg text-gray-700 leading-relaxed mb-6'>
                       {item.text}
                     </p>
                     {/* Display list items if available in the data */}
@@ -40,7 +40,7 @@ const OverviewAdvantage = ({ overviewData }) => {
                             key={`monta-list-${i}`}
                             className='flex items-start'
                           >
-                            <span className='text-lg  text-gray-700 leading-relaxed'>
+                            <span className='text-lg text-gray-700 leading-relaxed'>
                               {listItem.includes(':') ? (
                                 <>
                                   <span className='font-semibold'>{listItem.split(':')[0]}</span>:
@@ -58,7 +58,8 @@ const OverviewAdvantage = ({ overviewData }) => {
                 ))}
             </div>
           )}
-      </div>{' '}      {/* Monta Backend Integration Section - Mobile */}
+      </div>
+      {/* Monta Backend Integration Section - Mobile */}
       <div className='md:hidden max-w-7xl mx-auto px-8 py-4'>
         {/* Enhanced way to show Monta Integration from para data */}
         {overviewData?.para?.active &&
@@ -81,7 +82,7 @@ const OverviewAdvantage = ({ overviewData }) => {
                     <h3 className='text-2xl font-semibold text-black mb-6'>
                       {item.subheading}
                     </h3>
-                    <p className='text-base text-black leading-relaxed mb-6'>
+                    <p className='text-lg text-gray-700 leading-relaxed mb-6'>
                       {item.text}
                     </p>
                     {/* Display list items if available in the data */}
@@ -92,7 +93,7 @@ const OverviewAdvantage = ({ overviewData }) => {
                             key={`monta-mobile-list-${i}`}
                             className='flex items-start'
                           >
-                            <span className='text-base text-gray-700 leading-relaxed'>
+                            <span className='text-lg text-gray-700 leading-relaxed'>
                               {listItem.includes(':') ? (
                                 <>
                                   <span className='font-semibold'>{listItem.split(':')[0]}</span>:

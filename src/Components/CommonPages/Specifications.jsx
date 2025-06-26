@@ -109,7 +109,14 @@ const Specifications = ({ productImage, category }) => {
             <div className='overflow-x-auto'>
               <table className='w-full'>
                 <thead className='bg-gray-50'>
-                  <tr></tr>
+                  <tr>
+                    <th className='px-6 py-4 text-base text-gray-700 font-semibold text-left'>
+                      Specification
+                    </th>
+                    <th className='px-6 py-4 text-base text-gray-900 font-semibold text-left'>
+                      Value
+                    </th>
+                  </tr>
                 </thead>
                 <tbody className='divide-y divide-gray-200'>
                   {specsToDisplay.map((spec, index) => (
@@ -117,7 +124,7 @@ const Specifications = ({ productImage, category }) => {
                       <td className='px-6 py-4 text-base text-gray-700 font-normal'>
                         {spec.label}
                       </td>
-                      <td className='px-6 py-4 text-base text-gray-900 font-medium'>
+                      <td className='px-6 py-4 text-base text-gray-900 font-normal'>
                         {spec.value}
                       </td>
                     </tr>

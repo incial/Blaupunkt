@@ -247,10 +247,11 @@ const ChargingStationModels = ({ category }) => {
         />
         {modelsData.additionalText && (
           <div className='px-4 py-2'>
-            <span className='text-sm text-gray-600'>{modelsData.additionalText}</span>
+            <span className='text-base text-gray-700'>{modelsData.additionalText}</span>
           </div>
         )}
-      </div>      <div className='max-w-7xl mx-auto py-8 sm:py-12 lg:py-16'>
+      </div>
+      <div className='max-w-7xl mx-auto py-8 sm:py-12 lg:py-16'>
         {/* Sections */}
         <div className='space-y-16 sm:space-y-20 lg:space-y-24'>
           {processedSections?.map((section, sectionIndex) => (
@@ -268,10 +269,10 @@ const ChargingStationModels = ({ category }) => {
                     {/* Category Header */}
                     <div className='mb-6 sm:mb-8 lg:mb-9 px-4 sm:px-6 lg:px-8'>
                       <div className='flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2'>
-                        <h3 className='text-blaupunkt-primary-darker font-medium text-lg sm:text-xl lg:text-2xl'>
+                        <h3 className='text-blaupunkt-primary-darker font-semibold text-lg sm:text-xl lg:text-2xl'>
                           {category.name}
                         </h3>
-                        <p className='text-blaupunkt-gray sm:ml-2 text-sm sm:text-base lg:text-lg font-light'>
+                        <p className='text-gray-700 sm:ml-2 text-base sm:text-lg lg:text-xl font-normal'>
                           {category.description}
                         </p>
                       </div>

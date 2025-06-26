@@ -53,18 +53,18 @@ const ModelCard = ({
           </div>
           
           {/* Product Details */}
-          <div className=' pt-10 pb-6'>
+          <div className='pt-10 pb-6'>
             {/* Model Code - Primary heading */}
-            <h3 className='text-lg font-bold text-[#1E3A8A] mb-4 text-left'>
+            <h3 className='text-xl font-semibold text-blaupunkt-primary-darker mb-4 text-left'>
               {modelCode}
             </h3>
-              {/* Specifications List */}
-            <div className='space-y-1 text-md'>
+            {/* Specifications List */}
+            <div className='space-y-1 text-base'>
               {customFields ? (
                 // Use custom fields if provided
                 customFields.map((field, index) => (
                   <div key={index} className='flex items-center'>
-                    <span className='font-normal text-gray-700'>{field.label}:</span>
+                    <span className='font-normal text-gray-700 mr-1'>{field.label}:</span>
                     <span className='text-gray-900 font-normal'>{field.value}</span>
                   </div>
                 ))
@@ -72,27 +72,23 @@ const ModelCard = ({
                 // Use default fields for charging cables
                 <>
                   <div className='flex items-center'>
-                    <span className='font-normal text-gray-700'>Connector:</span>
+                    <span className='font-normal text-gray-700 mr-1'>Connector:</span>
                     <span className='text-gray-900 font-normal'>{connectorType}</span>
                   </div>
-                  
                   <div className='flex items-center'>
-                    <span className='font-normal text-gray-700'>Current:</span>
+                    <span className='font-normal text-gray-700 mr-1'>Current:</span>
                     <span className='text-gray-900 font-normal'>{current}</span>
                   </div>
-                  
                   <div className='flex items-center'>
-                    <span className='font-normal text-gray-700'>Cable Length:</span>
+                    <span className='font-normal text-gray-700 mr-1'>Cable Length:</span>
                     <span className='text-gray-900 font-normal'>{cableLength}</span>
                   </div>
-                  
                   <div className='flex items-center'>
-                    <span className='font-normal text-gray-700'>IP Class:</span>
+                    <span className='font-normal text-gray-700 mr-1'>IP Class:</span>
                     <span className='text-gray-900 font-normal'>{ipClass}</span>
                   </div>
-                  
                   <div className='flex items-center'>
-                    <span className='font-normal text-gray-700'>Phase Type:</span>
+                    <span className='font-normal text-gray-700 mr-1'>Phase Type:</span>
                     <span className='text-gray-900 font-normal'>{phaseType}</span>
                   </div>
                 </>

@@ -528,7 +528,7 @@ const Models = ({ productImage, category, modelsData: propModelsData }) => {
             />
             {modelsData.additionalText && (
               <div className='px-4 py-2'>
-                <span className='text-sm text-gray-600'>
+                <span className='text-base text-gray-700'>
                   {modelsData.additionalText}
                 </span>
               </div>
@@ -867,7 +867,7 @@ const Models = ({ productImage, category, modelsData: propModelsData }) => {
                             </h2>
                             {category === 'chargingStations' &&
                               modelsData.categoryDescriptions && (
-                                <span className='text-sm text-gray-500 font-normal'>
+                                <span className='text-base text-gray-700 font-normal'>
                                   {modelsData.categoryDescriptions[groupKey]}
                                 </span>
                               )}
