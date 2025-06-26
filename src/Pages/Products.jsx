@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import Navbar from '../Components/Common/Navbar'
 import { SAMPLE_PRODUCTS } from '../Components/Products/productsData'
 import SearchBar from '../Components/Products/SearchBar'
@@ -11,6 +12,8 @@ import { filterProducts, sortProducts } from '../Components/Products/filterUtils
  * Products Page - Main product listing page with filtering and sorting
  */
 const Products = () => {  
+  const [searchParams, setSearchParams] = useSearchParams()
+  
   // Filter and sorting state
   const [searchQuery, setSearchQuery] = useState('')
   const [sortBy, setSortBy] = useState('Popularity')
@@ -24,6 +27,25 @@ const Products = () => {
   const [currentPage, setCurrentPage] = useState(1)
   const [productsPerPage] = useState(12) // Desktop: 12 products (3 rows × 4 columns)
   const [isMobile, setIsMobile] = useState(false)
+
+  // Initialize search query from URL parameters
+  useEffect(() => {
+    const searchFromUrl = searchParams.get('search')
+    if (searchFromUrl) {
+      setSearchQuery(searchFromUrl)
+      // Reset to first page when search is performed
+      setCurrentPage(1)
+    }
+  }, [searchParams])
+
+  // Update URL when search query changes
+  useEffect(() => {
+    if (searchQuery) {
+      setSearchParams({ search: searchQuery })
+    } else {
+      setSearchParams({})
+    }
+  }, [searchQuery, setSearchParams])
 
   // Check if mobile view
   useEffect(() => {

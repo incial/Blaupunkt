@@ -1,11 +1,34 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { logos } from '../../Data/assets.js'
 import { useState, useEffect } from 'react'
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
+  const navigate = useNavigate()
+
+  // Handle search submission
+  const handleSearch = (e) => {
+    e.preventDefault()
+    if (searchQuery.trim()) {
+      // Navigate to products page with search query
+      navigate(`/products?search=${encodeURIComponent(searchQuery.trim())}`)
+      // Close mobile menu if open
+      setIsMenuOpen(false)
+      // Clear search input after a brief delay to show the search was performed
+      setTimeout(() => {
+        setSearchQuery('')
+      }, 100)
+    }
+  }
+
+  // Handle search input keydown
+  const handleSearchKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      handleSearch(e)
+    }
+  }
 
   // Prevent body scroll when mobile menu is open
   useEffect(() => {
@@ -55,29 +78,32 @@ const Navbar = () => {
         </div>
         {/* Search Bar - Right */}
         <div className='flex-1 flex justify-end'>
-          <div className='flex items-center bg-blaupunkt-secondary-light rounded-2xl px-4 py-2 w-64'>
+          <form onSubmit={handleSearch} className='flex items-center bg-blaupunkt-secondary-light rounded-2xl px-4 py-2 w-64'>
             {' '}
-            <svg
-              className='w-4 h-4 text-blaupunkt-primary-darker mr-3'
-              fill='none'
-              stroke='currentColor'
-              viewBox='0 0 24 24'
-            >
-              <path
-                strokeLinecap='round'
-                strokeLinejoin='round'
-                strokeWidth={1.5}
-                d='M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z'
-              />
-            </svg>
+            <button type="submit" className="mr-3">
+              <svg
+                className='w-4 h-4 text-blaupunkt-primary-darker hover:text-blaupunkt-primary transition-colors cursor-pointer'
+                fill='none'
+                stroke='currentColor'
+                viewBox='0 0 24 24'
+              >
+                <path
+                  strokeLinecap='round'
+                  strokeLinejoin='round'
+                  strokeWidth={1.5}
+                  d='M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z'
+                />
+              </svg>
+            </button>
             <input
               type='text'
-              placeholder='Search'
+              placeholder='Search products...'
               value={searchQuery}
               onChange={e => setSearchQuery(e.target.value)}
+              onKeyDown={handleSearchKeyDown}
               className='bg-transparent text-blaupunkt-primary-darker placeholder-blaupunkt-primary-darker focus:outline-none flex-1 text-base'
             />
-          </div>
+          </form>
         </div>
       </nav>
       {/* Mobile Navigation */}
@@ -144,26 +170,31 @@ const Navbar = () => {
           </nav>
           {/* Search bar */}
           <div className='absolute bottom-8 left-1/2 transform -translate-x-1/2'>
-            <div className='flex items-center bg-blaupunkt-secondary-light rounded-full px-4 py-2 w-64'>
-              <svg
-                className='w-4 h-4 text-blaupunkt-primary-darker mr-3'
-                fill='none'
-                stroke='currentColor'
-                viewBox='0 0 24 24'
-              >
-                <path
-                  strokeLinecap='round'
-                  strokeLinejoin='round'
-                  strokeWidth={1.5}
-                  d='M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z'
-                />
-              </svg>
+            <form onSubmit={handleSearch} className='flex items-center bg-blaupunkt-secondary-light rounded-full px-4 py-2 w-64'>
+              <button type="submit" className="mr-3">
+                <svg
+                  className='w-4 h-4 text-blaupunkt-primary-darker hover:text-blaupunkt-primary transition-colors cursor-pointer'
+                  fill='none'
+                  stroke='currentColor'
+                  viewBox='0 0 24 24'
+                >
+                  <path
+                    strokeLinecap='round'
+                    strokeLinejoin='round'
+                    strokeWidth={1.5}
+                    d='M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z'
+                  />
+                </svg>
+              </button>
               <input
                 type='text'
-                placeholder='Search'
+                placeholder='Search products...'
+                value={searchQuery}
+                onChange={e => setSearchQuery(e.target.value)}
+                onKeyDown={handleSearchKeyDown}
                 className='bg-transparent text-blaupunkt-primary-darker placeholder-blaupunkt-primary-darker focus:outline-none flex-1'
               />
-            </div>
+            </form>
           </div>
         </div>
       </div>
