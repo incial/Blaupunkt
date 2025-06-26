@@ -22,22 +22,16 @@ const ProductCard = ({
         }`}
         style={{ borderRadius: '15px' }}
       >
-        {' '}        {/* Rectangle 73 - Product Image Container */}
+        {' '}
+        {/* Rectangle 73 - Product Image Container */}
         <div
-          className='absolute top-2 left-2 right-2 h-[260px] sm:h-[320px] border-1 border-white overflow-hidden'
+          className='absolute top-2 left-2 right-2 h-[260px] sm:h-[320px] bg-cover bg-center bg-no-repeat border-1 border-white'
           style={{
+            backgroundImage: image ? `url(${image})` : 'none',
             backgroundColor: '#D9D9D9',
             borderRadius: '13px'
           }}
-        >
-          {image && (
-            <img
-              src={image}
-              alt={title || 'Product'}
-              className='w-full h-full object-cover'
-            />
-          )}
-        </div>{' '}
+        />{' '}
         {/* Text Content Container */}
         <div className='absolute bottom-4 sm:bottom-6 left-4 sm:left-6 right-4 sm:right-6'>
           {/* Product Title and Code - Same Line */}
