@@ -5,6 +5,24 @@
 // This file imports and re-exports all product assets in a structured way
 // =============================================================================
 
+
+// Service Page
+//================================================================================
+import ServicesPageImg from '../assets/Images/ServicesPage/ServicesPage.png'
+import Mainbg from '../assets/Images/ServicesPage/Mainbg.png'
+import Installbg from '../assets/Images/ServicesPage/Installbg.png'
+import Chargbg from '../assets/Images/ServicesPage/Chargbg.png'
+
+
+export const Servicepage = {
+  ServicesPageImg,
+  Mainbg,
+  Installbg,
+  Chargbg
+}
+
+//================================================================================
+
 // Import all product assets
 import { chargingCableImages, chargingCableBgImages, chargingCableProductImages } from './ChargingCables/assets.js'
 import { chargingStationImages, chargingStationBgImages, chargingStationProductImages } from './ChargingStations/assets.js'
