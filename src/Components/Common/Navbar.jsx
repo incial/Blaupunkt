@@ -42,13 +42,9 @@ const Navbar = () => {
     }
   }, [isMenuOpen])
   const navigationLinks = [
-    { href: '/products', label: 'Products', },
-    { href: '/services', label: 'Services', target: '_blank' },
-    {
-      href: 'https://blaupunkt.com/company',
-      label: 'Company',
-      target: '_blank'
-    }
+    { href: '/products', label: 'Products' },
+    { href: '/services', label: 'Services' },
+    { href: '/company', label: 'Company' }
   ]
 
   return (
