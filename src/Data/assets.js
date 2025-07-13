@@ -9,9 +9,16 @@
 // Service Page
 //================================================================================
 import ServicesPageImg from '../assets/Images/ServicesPage/ServicesPage.png'
+import Mainbg from '../assets/Images/ServicesPage/Mainbg.png'
+import Installbg from '../assets/Images/ServicesPage/Installbg.png'
+import Chargbg from '../assets/Images/ServicesPage/Chargbg.png'
+
 
 export const Servicepage = {
-  ServicesPageImg
+  ServicesPageImg,
+  Mainbg,
+  Installbg,
+  Chargbg
 }
 
 //================================================================================
