@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Servicepage } from '../Data/assets.js'
 
 const Services = () => {
   return (
@@ -38,10 +39,10 @@ const Services = () => {
                   Blaupunkt offers a wide range of high-performance EV charging products tailored for homes, businesses, and public spaces. From portable chargers to DC fast charging stations, our solutions are built for efficiency, safety, and seamless user experience.
                 </p>
                 <div className="flex gap-4">
-                  <button className="border-2 border-blaupunkt-secondary rounded-xl px-5 py-2 text-blaupunkt-secondary font-medium text-sm">
+                  <button className="border-2 border-blaupunkt-secondary rounded-xl px-5 py-2 text-blaupunkt-secondary font-medium text-sm cursor-pointer hover:bg-blaupunkt-secondary hover:text-white transition-colors">
                     Contact
                   </button>
-                  <button className="border-2 border-blaupunkt-secondary rounded-xl px-5 py-2 text-blaupunkt-secondary font-medium text-sm">
+                  <button className="border-2 border-blaupunkt-secondary rounded-xl px-5 py-2 text-blaupunkt-secondary font-medium text-sm cursor-pointer hover:bg-blaupunkt-secondary hover:text-white transition-colors">
                     Learn More
                   </button>
                 </div>
@@ -54,7 +55,7 @@ const Services = () => {
                   Our certified partners provide professional installation services to ensure your EV charging setup is safe, compliant, and optimized for performance. We handle everything from site inspection to final setup—whether it's a home garage or a commercial lot.
                 </p>
                 <div className="flex gap-4">
-                  <button className="border-2 border-blaupunkt-secondary rounded-xl px-5 py-2 text-blaupunkt-secondary font-medium text-sm">
+                  <button className="border-2 border-blaupunkt-secondary rounded-xl px-5 py-2 text-blaupunkt-secondary font-medium text-sm cursor-pointer hover:bg-blaupunkt-secondary hover:text-white transition-colors">
                     Contact
                   </button>
                 </div>
@@ -67,7 +68,7 @@ const Services = () => {
                   Blaupunkt stands by your side even after installation. Our maintenance services include regular inspections, system updates, and on-call support to ensure uninterrupted performance and peace of mind.
                 </p>
                 <div className="flex gap-4">
-                  <button className="border-2 border-blaupunkt-secondary rounded-xl px-5 py-2 text-blaupunkt-secondary font-medium text-sm">
+                  <button className="border-2 border-blaupunkt-secondary rounded-xl px-5 py-2 text-blaupunkt-secondary font-medium text-sm cursor-pointer hover:bg-blaupunkt-secondary hover:text-white transition-colors">
                     Contact
                   </button>
                 </div>
@@ -78,7 +79,7 @@ const Services = () => {
             <div className="lg:w-[397px]">
               <div className="rounded-2xl h-full w-full overflow-hidden bg-gray-200">
                 <img
-                  src="/src/assets/Images/ChargIngStations/stationoverbg.png"
+                  src={Servicepage.ServicesPageImg}
                   alt="Blaupunkt EV Charging Station"
                   className="w-full h-full object-cover"
                 />
