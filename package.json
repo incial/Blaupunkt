@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "full": "concurrently \"npm run dev\" \"node mailserver.js\"",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"
