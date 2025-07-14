@@ -5,6 +5,7 @@ import Footer from './Components/Common/Footer'
 import HomePage from './Pages/HomePage'
 import ChargingCables from './Pages/ChargingCables'
 import ChargingStations from './Pages/ChargingStations'
+import ContactPage from './Pages/Contact'
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
             <Route path="/" element={<HomePage />} />
             <Route path="/charging-cables" element={<ChargingCables />} />
             <Route path="/charging-stations" element={<ChargingStations />} />
+            <Route path="/contact" element={<ContactPage />} />
           </Routes>
         </main>
         <Footer />
