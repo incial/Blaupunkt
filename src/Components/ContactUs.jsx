@@ -1,0 +1,160 @@
+import React, { useState } from 'react';
+
+const ContactUs = () => {
+    const [formData, setFormData] = useState({
+        fullName: '',
+        email: '',
+        phone: '',
+        message: ''
+    });
+
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setFormData(prev => ({
+            ...prev,
+            [name]: value
+        }));
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        try {
+            const response = await fetch('/api/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData)
+            });
+
+            const data = await response.json();
+            if (data.success) {
+                alert('Message sent successfully!');
+                setFormData({ fullName: '', email: '', phone: '', message: '' });
+            } else {
+                alert('Failed to send message. Please try again.');
+            }
+        } catch (err) {
+            console.error(err);
+            alert('An error occurred. Please try again.');
+        }
+    };
+
+
+    return (
+        <div className="min-h-screen bg-gray-50 py-16 px-4 sm:px-6 lg:px-8">
+            <div className="max-w-2xl mx-auto">
+                <div className="mb-24 hidden md:flex items-center justify-center">
+                    <div className='flex items-center gap-2 text-sm font-myriad'>
+                        <span className='text-blaupunkt-secondary-light hover:text-blaupunkt-secondary transition-colors cursor-pointer'>
+                            Home
+                        </span>
+                        <span className='text-blaupunkt-secondary-light'>/</span>
+                        <span className='text-blaupunkt-secondary font-medium'>
+                            Electric Vehicle Charging Equipment
+                        </span>
+                    </div>
+                </div>
+                {/* Header */}
+                <div className="text-center mb-12">
+                    <h1 className="text-3xl font-bold text-gray-900 mb-3 tracking-tight font-inter">Contact Us</h1>
+                    <p className="text-blaupunkt-secondary font-medium text-md">
+                        Have questions or need assistance? We're here to help.
+                    </p>
+                </div>
+
+                {/* Contact Form */}
+                <div className="rounded-2xl p-4 mb-12">
+                    <form onSubmit={handleSubmit} className="space-y-2">
+                        <div>
+                            <input
+                                type="text"
+                                name="fullName"
+                                placeholder="Full Name"
+                                value={formData.fullName}
+                                onChange={handleInputChange}
+                                className="w-full px-5 py-2 border-2 border-blue-300 rounded-2xl focus:ring-0 focus:border-blue-400 placeholder-gray-400 text-gray-700 text-base font-normal transition-colors bg-blue-50/30"
+                                required
+                            />
+                        </div>
+
+                        <div>
+                            <input
+                                type="email"
+                                name="email"
+                                placeholder="Email"
+                                value={formData.email}
+                                onChange={handleInputChange}
+                                className="w-full px-5 py-2 border-2 border-blue-300 rounded-2xl focus:ring-0 focus:border-blue-400 placeholder-gray-400 text-gray-700 text-base font-normal transition-colors bg-blue-50/30"
+                                required
+                            />
+                        </div>
+
+                        <div>
+                            <input
+                                type="tel"
+                                name="phone"
+                                placeholder="Phone"
+                                value={formData.phone}
+                                onChange={handleInputChange}
+                                className="placeholder-blue-800 w-full px-5 py-2 border-2 border-blue-300 rounded-2xl focus:ring-0 focus:border-blue-400 placeholder-gray-400 text-gray-700 text-base font-normal transition-colors bg-blue-50/30"
+                                required
+                            />
+                        </div>
+
+                        <div>
+                            <textarea
+                                name="message"
+                                placeholder="Message"
+                                value={formData.message}
+                                onChange={handleInputChange}
+                                rows={8}
+                                className=" placeholder-500 w-full px-5 py-2 border-2 border-blue-300 rounded-2xl focus:ring-0 focus:border-blue-400 placeholder-gray-400 text-gray-700 text-base font-normal resize-none transition-colors bg-blue-50/30"
+                                required
+                            />
+                        </div>
+
+                        <div className="flex justify-end pt-0">
+                            <button
+                                type="submit"
+                                className="px-8 py-2 bg-blue-900 text-white rounded-xl hover:bg-blue-700 focus:ring-0 focus:outline-none transition-colors font-medium text-base shadow-sm"
+                            >
+                                Submit
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                {/* Office Information */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    {/* Head Office */}
+                    <div className="md:py-8 px-8 flex flex-col items-center md:items-start">
+                        <h3 className="text-xl font-semibold text-blaupunkt-primary-darker mb-3 font-myriad">Head Office</h3>
+                        <div className="space-y-3 text-blaupunkt-secondary text-sm text-center md:text-left">
+                            <p>221B Baker St<br />
+                                London NW1 6XE, Germany</p>
+                        </div>
+                        <div className="space-y-3 text-blaupunkt-secondary text-sm text-center md:text-left mt-2 font-myriad">
+                            <p>contact@loaunknt.com<br />
+                                +91 (Phone Number)</p>
+                        </div>
+                    </div>
+
+                    {/* UAE Office */}
+                    <div className="md:py-8 px-8 flex flex-col items-center md:items-end">
+                        <h3 className="text-xl font-semibold text-blaupunkt-primary-darker mb-3 font-myriad">UAE Office</h3>
+                        <div className="space-y-3 text-blaupunkt-secondary text-sm text-center md:text-right">
+                            <p>221B Baker St<br />
+                                London NW1 6XE, Germany</p>
+                        </div>
+                        <div className="space-y-3 text-blaupunkt-secondary text-sm text-center md:text-right mt-2 font-myriad">
+                            <p>sale@loaunknt.com<br />
+                                +971 (Phone Number)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default ContactUs;

@@ -22,5 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+*.env
 DATA_STRUCTURE_README.md
 SPECIFICATIONS_OPTIMIZATION_REPORT.md
+
