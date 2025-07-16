@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { logos } from '../../Data/assets.js'
 import { FiSearch } from 'react-icons/fi'
-import { HiOutlineMenuAlt2 } from 'react-icons/hi'
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -102,7 +101,7 @@ const Navbar = () => {
 
           {/* Menu Button */}
           <div
-            className='cursor-pointer'
+            className='cursor-pointer lg:hidden flex items-center justify-center w-8 h-8'
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             <div className='relative w-6 h-6'>
