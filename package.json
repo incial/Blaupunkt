@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "full": "concurrently \"npm run dev\" \"node mailserver.js\"",
+    "full": "concurrently \"npm run dev\" \"node backend/mailserver.js\"",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
@@ -14,18 +14,17 @@
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.8",
-
     "cors": "^2.8.5",
     "dotenv": "^17.2.0",
     "express": "^5.1.0",
-    "nodemailer": "^7.0.5",
     "file-saver": "^2.0.5",
     "framer-motion": "^12.16.0",
+    "nodemailer": "^7.0.5",
     "pdf-lib": "^1.17.1",
     "prop-types": "^15.8.1",
-
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
+    "react-hot-toast": "^2.5.2",
     "react-icons": "^5.5.0",
     "react-router-dom": "^7.6.1",
     "tailwindcss": "^4.1.8"

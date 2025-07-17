@@ -1,7 +1,8 @@
 import express from 'express';
-import nodemailer from 'nodemailer';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import { transporter, destinationEmail } from './config.js';
+import { generateEmailTemplate } from './template.js';
 
 dotenv.config();
 
@@ -19,26 +20,11 @@ app.post('/api/contact', async (req, res) => {
     }
 
     try {
-        const transporter = nodemailer.createTransport({
-            host: "sandbox.smtp.mailtrap.io",
-            port: 2525,
-            auth: {
-                user: "9fad843cc7d5d1", // TEST USERNAME
-                pass: "f732117fc8e42f" // TEST PASSWORD
-            }
-        });
-
         const mailOptions = {
             from: `"${fullName}" <${email}>`,
-            to: 'destination@domain.com', // Replace
+            to: destinationEmail,
             subject: `Contact Form Submission from ${fullName}`,
-            html: `
-                <h3>New Contact Form Submission</h3>
-                <p><strong>Name:</strong> ${fullName}</p>
-                <p><strong>Email:</strong> ${email}</p>
-                <p><strong>Phone:</strong> ${phone}</p>
-                <p><strong>Message:</strong><br/>${message}</p>
-            `
+            html: generateEmailTemplate({ fullName, email, phone, message })
         };
 
         await transporter.sendMail(mailOptions);
@@ -50,5 +36,5 @@ app.post('/api/contact', async (req, res) => {
 });
 
 app.listen(PORT, () => {
-    console.log(`Server running at http://localhost:${PORT}`);
+    console.log(`🚀 Server running at http://localhost:${PORT}`);
 });
