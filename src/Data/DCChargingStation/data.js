@@ -158,62 +158,67 @@ export const dcChargingStationData = {
     { label: 'Voltage Range', value: '150–1000V DC' },
     { label: 'Rated Current', value: '5–100A' },
     { label: 'Safety Features', value: 'Short Circuit Protection, Overload Protection, Over Temperature Protection, Leakage Protection, Over and Under Input Voltage Protection, Over and Under Output Voltage Protection, Over-current Protection' }
-  ]),modelsData: (() => {
-    // Create flat models array from sections for Models component compatibility
-    const sections = [
-      {
-        name: '50kW Series',
-        description: 'Entry-level DC fast charging for moderate-traffic locations',
-        models: [
-          {
-            modelCode: 'BP-DC50-CCS',
-            maximumPower: '50kW',
-            current: '125A',
-            cableLength: '5 Meters',
-            connectorType: 'CCS',
-            outputVoltage: '150V - 500V DC',
-            dimensions: '1600 x 700 x 350mm',
-            weight: '650kg',
-            protectionRating: 'IP54',
-            coolingSystem: 'Liquid cooling',
-            phaseType: 'Three - Phase',
-            image: dcChargingStationImages.dcPd1
-          },
-          {
-            modelCode: 'BP-DC50-CHD',
-            maximumPower: '50kW',
-            current: '125A',
-            cableLength: '5 Meters',
-            connectorType: 'CHAdeMO',
-            outputVoltage: '150V - 500V DC',
-            dimensions: '1600 x 700 x 350mm',
-            weight: '650kg',
-            protectionRating: 'IP54',
-            coolingSystem: 'Liquid cooling',
-            phaseType: 'Three - Phase',
-            image: dcChargingStationImages.dcPd2
-          }
-        ]
-      }
-    ];
-
-    // Flatten all models from all sections into a single array
-    const flatModels = [];
-    sections.forEach(section => {
-      section.models.forEach(model => {
-        flatModels.push({
-          ...model,
-          section: section.name
+  ]),
+    modelsData: (() => {
+      // Create sections for portable EV charging models
+      const sections = [
+        {
+          name: 'Mode 2 Portable Chargers',
+          description: 'Flexible charging solutions for all environments',
+          models: [
+            {
+              modelCode: 'P1PM2T2',
+              maximumPower: '3.7kW',
+              connectorType: 'Type 2',
+              chargingPower: '3.7 kW',
+              powerPhase: 'Single-Phase',
+              ipClass: 'IP54',
+              workingVoltage: '110V~250V',
+              cable: '3 x 2.5mm² + 2 x 0.5mm²',
+              dimensions: '300 x 200 x 100mm',
+              weight: '2.5kg',
+              current: '16A',
+              cableLength: '8 Meters',
+              phaseType: 'Single - Phase',
+              protectionRating: 'IP54',
+              popular: true,
+              image: dcChargingStationImages.dcPd1
+            },
+            {
+              modelCode: 'P3PM2T2',
+              maximumPower: '11kW',
+              connectorType: 'Type 2',
+              chargingPower: '11 kW',
+              powerPhase: 'Three-Phase',
+              ipClass: 'IP65',
+              workingVoltage: '380~400V',
+              cable: '5 x 2.5mm² + 2 x 0.5mm²',
+              dimensions: '320 x 220 x 110mm',
+              weight: '3.2kg',
+              current: '16A',
+              cableLength: '8 Meters',
+              phaseType: 'Three - Phase',
+              protectionRating: 'IP65',
+              image: dcChargingStationImages.dcPd2
+            }
+          ]
+        }
+      ];
+  
+      // Flatten all models from all sections into a single array for Models component
+      const flatModels = [];
+      sections.forEach(section => {
+        section.models.forEach(model => {
+          flatModels.push({
+            ...model,
+            section: section.name,
+            sectionDescription: section.description
+          });
         });
       });
-    });
-
-    return {
-      title: 'Models',
-      groupingMethod: 'section',
-      models: flatModels,
-    };
-  })(),
+  
+      return flatModels;
+    })(),
   
   supplierData: {
     manufacturer: 'Blaupunkt Technologies',
