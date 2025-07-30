@@ -24,7 +24,7 @@ const Category = () => {
       path: '/dc-charging-station'
     },    {
       id: 4,
-      title: 'DC Fast Charging Station',
+      title: 'DC Super fast Charger',
       image: chargingImgs.dcFast,
       path: '/dc-fast-charging-station'
     },
