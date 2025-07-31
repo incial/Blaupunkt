@@ -1,7 +1,7 @@
 // =============================================================================
-// DC FAST CHARGING STATION DATA
+// DC SUPER FAST CHARGING STATION DATA
 // =============================================================================
-// Complete data configuration for DC Fast Charging Station section
+// Complete data configuration for DC Super Fast Charging Station section
 // =============================================================================
 
 import {
@@ -12,19 +12,19 @@ import {
 } from '../Common/utilities.js'
 
 import {
-  dcFastChargingStationImages,
-  dcFastChargingStationBgImages,
-  dcFastChargingStationProductImages,
-  createDCFastChargingStationThumbnails,
-  DC_FAST_CHARGING_STATION_IMAGES
+  dcSuperFastChargingStationImages,
+  dcSuperFastChargingStationBgImages,
+  dcSuperFastChargingStationProductImages,
+  createDCSuperFastChargingStationThumbnails,
+  DC_SUPER_FAST_CHARGING_STATION_IMAGES
 } from './assets.js'
 
 // =============================================================================
-// DC FAST CHARGING STATION SPECIFIC UTILITIES
+// DC SUPER FAST CHARGING STATION SPECIFIC UTILITIES
 // =============================================================================
 
 /**
- * Creates Monta backend integration data specific to DC fast charging stations
+ * Creates Monta backend integration data specific to DC super fast charging stations
  * @param {boolean} isActive - Whether the integration is active
  * @returns {Object} Monta integration configuration
  */
@@ -39,36 +39,36 @@ const createMontaIntegrationData = (isActive = true) => ({
 })
 
 // =============================================================================
-// DC FAST CHARGING STATION MAIN DATA
+// DC SUPER FAST CHARGING STATION MAIN DATA
 // =============================================================================
 
-export const dcFastChargingStationData = {
+export const dcSuperFastChargingStationData = {
   title: 'DC Super Fast Charging Station',
   description:
     'Ultra-high power DC charging for the fastest charging experience.',
   active: true,
   breadcrumbs: createBreadcrumbs(
-    'DC Fast Charging Station',
-    '/dc-fast-charging-station'
+    'DC Super Fast Charging Station',
+    '/dc-super-fast-charging-station'
   ),
   buttonText: BUTTON_TEXTS.explore,
-  mainImage: DC_FAST_CHARGING_STATION_IMAGES.MAIN,
-  imageAlt: 'DC Fast Charging Station',
-  thumbnails: createDCFastChargingStationThumbnails(),
+  mainImage: DC_SUPER_FAST_CHARGING_STATION_IMAGES.MAIN,
+  imageAlt: 'DC Super Fast Charging Station',
+  thumbnails: createDCSuperFastChargingStationThumbnails(),
 
   OverviewData: {
-    BgImage: dcFastChargingStationBgImages.hero,
+    BgImage: dcSuperFastChargingStationBgImages.hero,
 
     para: {
       active: true,
       data: [
         {
           subheading: 'Maximum Power for High-Intensity Environments',
-          text: 'The Blaupunkt 60-160 kW DC Charger is designed to meet the demands of high-traffic locations where charging speed and capacity are paramount. With ultra-fast charging capabilities, this charger is perfect for service stations, highway rest stops, and fleet depots.'
+          text: 'The Blaupunkt 60-160 kW DC Super Fast Charger is designed to meet the demands of high-traffic locations where charging speed and capacity are paramount. With ultra-fast charging capabilities, this charger is perfect for service stations, highway rest stops, and fleet depots.'
         },
         {
           subheading: 'Power, Durability, and Safety Combined',
-          text: "For high-demand environments, Blaupunkt's 60-160 kW DC Charger delivers the perfect blend of power and durability. Its IP54-rated enclosure ensures that it can handle any outdoor condition while maintaining peak performance. Built for heavy daily use, this charger is ideal for locations where fast and efficient charging is essential."
+          text: "For high-demand environments, Blaupunkt's 60-160 kW DC Super Fast Charger delivers the perfect blend of power and durability. Its IP54-rated enclosure ensures that it can handle any outdoor condition while maintaining peak performance. Built for heavy daily use, this charger is ideal for locations where fast and efficient charging is essential."
         },
         {
           subheading: 'Efficient Maintenance with Plug-In Control Module',
@@ -94,14 +94,14 @@ export const dcFastChargingStationData = {
       ]
     },
 
-    IdealandFeaturesImage: dcFastChargingStationProductImages.mid2,
+    IdealandFeaturesImage: dcSuperFastChargingStationProductImages.mid2,
 
     features: {
       active: true,
       title: 'User-Friendly and Intuitive Operation',
       isListFormat: false, // true for list, false for paragraph
       data: [
-        'This DC charger is equipped with an easy-to-use interface, ensuring smooth operation for both new and experienced users. With RFID authorization, access to the charger is secure, allowing only authorized users to charge their vehicles. Additionally, the OCPP 1.6 compatibility ensures seamless integration into existing charging networks for remote monitoring and control.'
+        'This DC Super Fast charger is equipped with an easy-to-use interface, ensuring smooth operation for both new and experienced users. With RFID authorization, access to the charger is secure, allowing only authorized users to charge their vehicles. Additionally, the OCPP 1.6 compatibility ensures seamless integration into existing charging networks for remote monitoring and control.'
       ]
     },
 
@@ -110,9 +110,9 @@ export const dcFastChargingStationData = {
       title: 'Ideal For',
       isListFormat: true, // true for list, false for paragraph
       data: [
-        'Commercial sites that require reliable, mid-speed EV charging solutions.',
-        'Office buildings or small fleets that need faster charging than typical AC units.',
-        'Locations seeking a balance of speed, affordability, and durability'
+        'Commercial sites that require reliable, ultra-fast EV charging solutions.',
+        'Office buildings or small fleets that need the fastest charging available.',
+        'Locations seeking maximum speed, affordability, and durability'
       ]
     },
 
@@ -127,7 +127,7 @@ export const dcFastChargingStationData = {
       }
     },
 
-    image: dcFastChargingStationProductImages.hero
+    image: dcSuperFastChargingStationProductImages.hero
   },
 
   highlightsData: createHighlightsData('Advanced Features', [
@@ -180,7 +180,7 @@ export const dcFastChargingStationData = {
         description: 'High-performance charging for premium locations',
         models: [
           {
-            modelCode: 'BP-DCFAST-150-CCS',
+            modelCode: 'BP-DCSUPERFAST-150-CCS',
             maximumPower: '150kW',
             connectorType: 'CCS',
             outputVoltage: '200V - 800V DC',
@@ -189,10 +189,10 @@ export const dcFastChargingStationData = {
             protectionRating: 'IP54',
             coolingSystem: 'Advanced liquid cooling',
             chargingPorts: '1',
-            image: dcFastChargingStationImages.fastPd1
+            image: dcSuperFastChargingStationImages.fastPd1
           },
           {
-            modelCode: 'BP-DCFAST-150-CHD-A',
+            modelCode: 'BP-DCSUPERFAST-150-CHD-A',
             maximumPower: '150kW',
             connectorType: 'CHAdeMO',
             outputVoltage: '200V - 800V DC',
@@ -202,10 +202,10 @@ export const dcFastChargingStationData = {
             coolingSystem: 'Advanced liquid cooling',
             chargingPorts: '1',
             popular: true,
-            image: dcFastChargingStationImages.fastPd1
+            image: dcSuperFastChargingStationImages.fastPd1
           },
           {
-            modelCode: 'BP-DCFAST-150-CHD-B',
+            modelCode: 'BP-DCSUPERFAST-150-CHD-B',
             maximumPower: '150kW',
             connectorType: 'CHAdeMO',
             outputVoltage: '200V - 800V DC',
@@ -215,10 +215,10 @@ export const dcFastChargingStationData = {
             coolingSystem: 'Advanced liquid cooling',
             chargingPorts: '1',
             popular: true,
-            image: dcFastChargingStationImages.fastPd1
+            image: dcSuperFastChargingStationImages.fastPd1
           },
           {
-            modelCode: 'BP-DCFAST-150-CHD-C',
+            modelCode: 'BP-DCSUPERFAST-150-CHD-C',
             maximumPower: '150kW',
             connectorType: 'CHAdeMO',
             outputVoltage: '200V - 800V DC',
@@ -228,7 +228,7 @@ export const dcFastChargingStationData = {
             coolingSystem: 'Advanced liquid cooling',
             chargingPorts: '1',
             popular: true,
-            image: dcFastChargingStationImages.fastPd1
+            image: dcSuperFastChargingStationImages.fastPd1
           }
         ]
       }
@@ -322,23 +322,23 @@ export const dcFastChargingStationData = {
 // EASY ACCESS EXPORTS
 // =============================================================================
 
-export const dcFastChargingStationConfig = {
+export const dcSuperFastChargingStationConfig = {
   // Main data
-  data: dcFastChargingStationData,
+  data: dcSuperFastChargingStationData,
 
   // Quick access to images
-  images: dcFastChargingStationImages,
-  backgroundImages: dcFastChargingStationBgImages,
-  productImages: dcFastChargingStationProductImages,
+  images: dcSuperFastChargingStationImages,
+  backgroundImages: dcSuperFastChargingStationBgImages,
+  productImages: dcSuperFastChargingStationProductImages,
 
   // Quick access to key sections
-  overview: dcFastChargingStationData.OverviewData,
-  highlights: dcFastChargingStationData.highlightsData,
-  specifications: dcFastChargingStationData.specificationsData,
-  models: dcFastChargingStationData.modelsData,
-  supplier: dcFastChargingStationData.supplierData,
-  downloads: dcFastChargingStationData.downloadData
+  overview: dcSuperFastChargingStationData.OverviewData,
+  highlights: dcSuperFastChargingStationData.highlightsData,
+  specifications: dcSuperFastChargingStationData.specificationsData,
+  models: dcSuperFastChargingStationData.modelsData,
+  supplier: dcSuperFastChargingStationData.supplierData,
+  downloads: dcSuperFastChargingStationData.downloadData
 }
 
 // Default export
-export default dcFastChargingStationData
+export default dcSuperFastChargingStationData

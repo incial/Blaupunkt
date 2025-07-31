@@ -24,39 +24,24 @@ const ProductCard = ({
       >
         {/* Rectangle 73 - Product Image Container */}
         <div
-          className="absolute top-1 left-1 right-1 h-[300px] sm:h-[320px] bg-cover object-cover bg-center bg-no-repeat border border-white"
+          className="absolute top-1 left-1 right-1 h-[280px] sm:h-[300px] bg-cover object-cover bg-center bg-no-repeat border border-white "
           style={{
             backgroundImage: image ? `url(${image})` : "none",
             backgroundColor: "#D9D9D9",
             borderRadius: "13px",
             objectFit: "cover",
           }}
-        />{" "}
+        />
         {/* Text Content Container */}
-        <div className="absolute bottom-2 sm:bottom-6 left-2 sm:left-6 right-2 sm:right-6">
-          {/* Product Title and Code - Same Line */}
-          <div className="flex justify-between items-start mb-2 sm:mb-3">
-            <h3
-              className="flex-1 mr-3"
-              style={{
-                fontFamily: '"Myriad Pro", Arial, sans-serif',
-                fontWeight: 400,
-                fontSize: "clamp(14px, 2.5vw, 16px)",
-                lineHeight: "1.6em",
-                color: "#18161A",
-                textAlign: "left",
-                margin: 0,
-              }}
-            >
-              {title || "EV Charging Cables"}
-            </h3>
+        <div className="absolute bottom-2 sm:bottom-6 left-2 sm:left-6 right-2 sm:right-6 bg-white bg-opacity-95 rounded-lg p-2 sm:p-3">
+          {/* Product Code - Top Right Corner of Text Area */}
+          <div className="absolute -top-4 right-2">
             <span
-              className="flex-shrink-0"
               style={{
                 fontFamily: '"Myriad Pro", Arial, sans-serif',
-                fontWeight: 300,
-                fontSize: "clamp(9px, 1.8vw, 10px)",
-                lineHeight: "1.3em",
+                fontWeight: 500,
+                fontSize: "clamp(10px, 1.8vw, 12px)",
+                lineHeight: "1.2em",
                 color: "#18161A",
                 textAlign: "right",
                 margin: 0,
@@ -65,9 +50,24 @@ const ProductCard = ({
               {productCode || "A3P32AT2"}
             </span>
           </div>
+          {/* Full Product Title */}
+          <h3
+            className="mb-2 sm:mb-3"
+            style={{
+              fontFamily: '"Myriad Pro", Arial, sans-serif',
+              fontWeight: 400,
+              fontSize: "clamp(14px, 2.5vw, 16px)",
+              lineHeight: "1.6em",
+              color: "#18161A",
+              textAlign: "left",
+              margin: 0,
+            }}
+          >
+            {title || "EV Charging Cables"}
+          </h3>
           {/* Product Specifications */}
           <p
-            className="mb-0 mt-1"
+            className="mb-0"
             style={{
               fontFamily: '"Myriad Pro", Arial, sans-serif',
               fontWeight: 300,
