@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import { useSearchParams } from 'react-router-dom'
 import Navbar from '../Components/Common/Navbar'
 import { SAMPLE_PRODUCTS } from '../Components/Products/productsData'
@@ -11,9 +12,9 @@ import { filterProducts, sortProducts } from '../Components/Products/filterUtils
 /**
  * Products Page - Main product listing page with filtering and sorting
  */
-const Products = () => {  
+const Products = () => {
   const [searchParams, setSearchParams] = useSearchParams()
-  
+
   // Filter and sorting state
   const [searchQuery, setSearchQuery] = useState('')
   const [sortBy, setSortBy] = useState('Popularity')
@@ -22,7 +23,7 @@ const Products = () => {
   const [connectorType, setConnectorType] = useState('All')
   const [phaseType, setPhaseType] = useState('All')
   const [showMobileFilters, setShowMobileFilters] = useState(false)
-  
+
   // Pagination state
   const [currentPage, setCurrentPage] = useState(1)
   const [productsPerPage] = useState(12) // Desktop: 12 products (3 rows × 4 columns)
@@ -52,10 +53,10 @@ const Products = () => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 1024) // lg breakpoint
     }
-    
+
     checkMobile()
     window.addEventListener('resize', checkMobile)
-    
+
     return () => window.removeEventListener('resize', checkMobile)
   }, [])
 
@@ -67,9 +68,9 @@ const Products = () => {
     connectorType,
     phaseType
   })
-  
+
   const sortedProducts = sortProducts(filteredProducts, sortBy)
-  
+
   // Pagination logic
   const currentProductsPerPage = isMobile ? 6 : productsPerPage // Mobile: 6, Desktop: 12
   const indexOfLastProduct = currentPage * currentProductsPerPage
@@ -83,13 +84,13 @@ const Products = () => {
       setCurrentPage(currentPage - 1)
     }
   }
-  
+
   const handleNextPage = () => {
     if (currentPage < totalPages) {
       setCurrentPage(currentPage + 1)
-    }  
+    }
   }
-  
+
   // Reset to page 1 when filters change
   useEffect(() => {
     setCurrentPage(1)
@@ -114,33 +115,41 @@ const Products = () => {
   return (
     <div className="min-h-screen bg-white">
       <Navbar />
-      
+
       {/* Main Content */}
       <main className="pt-24 lg:pt-28">
         {/* Breadcrumb */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6">
           <div className="flex items-center justify-center gap-2 text-xs sm:text-sm overflow-x-auto">
-            <span className="text-blaupunkt-secondary-light font-myriad whitespace-nowrap">Home</span>
+            <span className="text-blaupunkt-secondary-light font-myriad whitespace-nowrap">
+              <Link
+                to="/"
+                className="text-blaupunkt-secondary-light hover:text-blaupunkt-secondary transition-colors whitespace-nowrap font-myriad"
+              >
+                Home
+              </Link>
+            </span>
             <span className="text-blaupunkt-secondary-light font-myriad">/</span>
-            <span className="text-blaupunkt-secondary font-myriad whitespace-nowrap">Electric Vehicle Charging Equipment</span>
+            <span className="text-blaupunkt-secondary font-myriad whitespace-nowrap">Products</span>
           </div>
         </div>
-        
+
+
         {/* Page Header */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
           <h1 className="text-3xl sm:text-4xl font-semibold text-blaupunkt-dark font-myriad mb-6 text-center">
             All Products
           </h1>
-          
+
           {/* Search Bar */}
-          <SearchBar 
-            searchQuery={searchQuery} 
-            setSearchQuery={setSearchQuery} 
+          <SearchBar
+            searchQuery={searchQuery}
+            setSearchQuery={setSearchQuery}
           />
         </div>
-        
+
         {/* Filters */}
-        <FiltersContainer 
+        <FiltersContainer
           showMobileFilters={showMobileFilters}
           setShowMobileFilters={setShowMobileFilters}
           sortBy={sortBy}
@@ -154,10 +163,10 @@ const Products = () => {
           phaseType={phaseType}
           setPhaseType={setPhaseType}
         />
-        
+
         {/* Products Grid */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
-          <ProductGrid 
+          <ProductGrid
             products={currentProducts}
             handleClearFilters={handleClearFilters}
             searchQuery={searchQuery}
@@ -165,9 +174,9 @@ const Products = () => {
             indexOfLastProduct={indexOfLastProduct}
             sortedProducts={sortedProducts}
           />
-          
+
           {/* Pagination Navigation */}
-          <Pagination 
+          <Pagination
             currentPage={currentPage}
             totalPages={totalPages}
             handlePreviousPage={handlePreviousPage}

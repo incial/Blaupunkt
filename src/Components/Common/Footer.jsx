@@ -28,10 +28,10 @@ const REGIONS = [
 ]
 
 const FOOTER_LINKS = [
-  { to: '/international', text: 'International' },
-  { to: '/imprint', text: 'Imprint' },
-  { to: '/search', text: 'Search' },
-  { to: '/privacy', text: 'Privacy Statement' }
+  { to: '/', text: 'International', external: false },
+  { to: '/products?search=', text: 'Search', external: false },
+  { to: 'https://blaupunkt.com/privacy-statement/?ls=1', text: 'Privacy Statement', external: true },
+  { to: 'https://blaupunkt.com/imprint/', text: 'Imprint', external: true }
 ]
 
 const Footer = () => {
@@ -115,13 +115,25 @@ const Footer = () => {
             <div className='flex justify-end'>
               <div className='flex flex-col space-y-3'>
                 {FOOTER_LINKS.map((link, index) => (
-                  <Link
-                    key={index}
-                    to={link.to}
-                    className='text-sm text-blaupunkt-secondary-light hover:text-blaupunkt-white transition-colors duration-200 font-myriad text-right'
-                  >
-                    {link.text}
-                  </Link>
+                  link.external ? (
+                    <a
+                      key={index}
+                      href={link.to}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className='text-sm text-blaupunkt-secondary-light hover:text-blaupunkt-white transition-colors duration-200 font-myriad text-right'
+                    >
+                      {link.text}
+                    </a>
+                  ) : (
+                    <Link
+                      key={index}
+                      to={link.to}
+                      className='text-sm text-blaupunkt-secondary-light hover:text-blaupunkt-white transition-colors duration-200 font-myriad text-right'
+                    >
+                      {link.text}
+                    </Link>
+                  )
                 ))}
               </div>
             </div>
@@ -148,13 +160,25 @@ const Footer = () => {
             {' '}
             <div className='grid grid-cols-2 gap-x-5 gap-y-2 md:gap-x-6 md:gap-y-3'>
               {FOOTER_LINKS.map((link, index) => (
-                <Link
-                  key={index}
-                  to={link.to}
-                  className='text-base text-blaupunkt-secondary-light hover:text-blaupunkt-white transition-colors duration-200 font-myriad'
-                >
-                  {link.text}
-                </Link>
+                link.external ? (
+                  <a
+                    key={index}
+                    href={link.to}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className='text-base text-blaupunkt-secondary-light hover:text-blaupunkt-white transition-colors duration-200 font-myriad'
+                  >
+                    {link.text}
+                  </a>
+                ) : (
+                  <Link
+                    key={index}
+                    to={link.to}
+                    className='text-base text-blaupunkt-secondary-light hover:text-blaupunkt-white transition-colors duration-200 font-myriad'
+                  >
+                    {link.text}
+                  </Link>
+                )
               ))}
             </div>
           </div>

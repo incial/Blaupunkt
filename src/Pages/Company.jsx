@@ -411,7 +411,7 @@ const Company = () => {
           <div className="absolute top-[2542px] lg:top-[2550px] left-1/2 transform -translate-x-1/2 pb-16">
             <Link
               to="/contact"
-              className="inline-flex flex-col items-center justify-center gap-2.5 px-[27px] py-[11px] rounded-[15px] border-2 border-solid border-blaupunkt-primary text-blaupunkt-primary font-semibold hover:bg-blaupunkt-primary hover:text-white transition-colors duration-200"
+              className="inline-flex flex-col items-center justify-center gap-2.5 px-[27px] py-[11px] rounded-[15px] border-2 border-solid border-blaupunkt-primary  font-semibold hover:bg-blaupunkt-primary hover:text-white transition-colors duration-200"
             >
               Contact Us
             </Link>
