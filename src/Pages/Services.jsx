@@ -84,13 +84,13 @@ const Services = () => {
                 {service.description}
               </p>
               <div className='flex gap-2 py-4'>
-                <button className='border-2 border-blaupunkt-secondary rounded-xl px-4 py-2 text-blaupunkt-secondary font-medium text-md cursor-pointer hover:bg-blaupunkt-secondary hover:text-white transition-colors'>
+                <Link to='/contact' className='border-2 border-blaupunkt-secondary rounded-xl px-4 py-2 text-blaupunkt-secondary font-medium text-md cursor-pointer hover:bg-blaupunkt-secondary hover:text-white transition-colors'>
                   Contact
-                </button>
+                </Link>
                 {service.showLearnMore && (
-                  <button className='border-2 border-blaupunkt-secondary rounded-xl px-4 py-2 text-blaupunkt-secondary font-medium text-md cursor-pointer hover:bg-blaupunkt-secondary hover:text-white transition-colors'>
+                  <Link to='/' className='border-2 border-blaupunkt-secondary rounded-xl px-4 py-2 text-blaupunkt-secondary font-medium text-md cursor-pointer hover:bg-blaupunkt-secondary hover:text-white transition-colors'>
                     Learn More
-                  </button>
+                  </Link>
                 )}
               </div>
             </div>
@@ -112,13 +112,13 @@ const Services = () => {
                 {serviceItems[0].description}
               </p>
               <div className='flex gap-3 py-4'>
-                <button className='border-2 items-center justify-center border-blaupunkt-secondary rounded-xl px-5 py-2 text-blaupunkt-secondary font-medium text-md cursor-pointer hover:bg-blaupunkt-secondary hover:text-white transition-colors'>
+                <Link to='/contact' className='border-2 items-center justify-center border-blaupunkt-secondary rounded-xl px-5 py-2 text-blaupunkt-secondary font-medium text-md cursor-pointer hover:bg-blaupunkt-secondary hover:text-white transition-colors'>
                   Contact
-                </button>
+                </Link>
                 {serviceItems[0].showLearnMore && (
-                  <button className='border-2 border-blaupunkt-secondary rounded-xl px-4 py-1.5 text-blaupunkt-secondary font-medium text-md cursor-pointer hover:bg-blaupunkt-secondary hover:text-white transition-colors'>
+                  <Link to='/' className='border-2 border-blaupunkt-secondary rounded-xl px-4 py-1.5 text-blaupunkt-secondary font-medium text-md cursor-pointer hover:bg-blaupunkt-secondary hover:text-white transition-colors'>
                     Learn More
-                  </button>
+                  </Link>
                 )}
               </div>
             </div>
@@ -132,9 +132,9 @@ const Services = () => {
                 {serviceItems[0].description}
               </p>
               <div className='flex gap-3'>
-                <button className='border-2 items-center justify-center border-blaupunkt-secondary rounded-xl px-5 py-2 text-blaupunkt-secondary font-medium text-md cursor-pointer hover:bg-blaupunkt-secondary hover:text-white transition-colors'>
+                <Link to='/contact' className='border-2 items-center justify-center border-blaupunkt-secondary rounded-xl px-5 py-2 text-blaupunkt-secondary font-medium text-md cursor-pointer hover:bg-blaupunkt-secondary hover:text-white transition-colors'>
                   Contact
-                </button>
+                </Link>
               </div>
             </div>
 
@@ -147,9 +147,9 @@ const Services = () => {
                 {serviceItems[2].description}
               </p>
               <div className='flex gap-3'>
-                <button className='border-2 items-center justify-center border-blaupunkt-secondary rounded-xl px-5 py-2 text-blaupunkt-secondary font-medium text-md cursor-pointer hover:bg-blaupunkt-secondary hover:text-white transition-colors'>
+                <Link to='/contact' className='border-2 items-center justify-center border-blaupunkt-secondary rounded-xl px-5 py-2 text-blaupunkt-secondary font-medium text-md cursor-pointer hover:bg-blaupunkt-secondary hover:text-white transition-colors'>
                   Contact
-                </button>
+                </Link>
               </div>
             </div>
           </div>

@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { Toaster, toast } from 'react-hot-toast';
+import { Link, useNavigate } from 'react-router-dom';
 
 const ContactUs = () => {
+    const navigate = useNavigate();
     const [formData, setFormData] = useState({
         fullName: '',
         email: '',
@@ -34,6 +36,11 @@ const ContactUs = () => {
             if (data.success) {
                 toast.success('Message sent successfully!', { duration: 6000 });
                 setFormData({ fullName: '', email: '', phone: '', message: '' });
+                
+                // Redirect to contact page after successful submission
+                setTimeout(() => {
+                    navigate('/contact');
+                }, 2000);
             } else {
                 toast.error('Failed to send message. Please try again.', { duration: 6000 });
             }
@@ -55,11 +62,16 @@ const ContactUs = () => {
                 <div className="mb-24 hidden md:flex items-center justify-center">
                     <div className='flex items-center gap-2 text-sm font-myriad'>
                         <span className='text-blaupunkt-secondary-light hover:text-blaupunkt-secondary transition-colors cursor-pointer'>
-                            Home
+                            <Link
+                                to="/"
+                                className="text-blaupunkt-secondary-light hover:text-blaupunkt-secondary transition-colors whitespace-nowrap font-myriad"
+                            >
+                                Home
+                            </Link>
                         </span>
                         <span className='text-blaupunkt-secondary-light'>/</span>
                         <span className='text-blaupunkt-secondary font-medium'>
-                            Electric Vehicle Charging Equipment
+                            Contact
                         </span>
                     </div>
                 </div>
@@ -101,7 +113,7 @@ const ContactUs = () => {
                             placeholder="Phone"
                             value={formData.phone}
                             onChange={handleInputChange}
-                            className="placeholder-blue-800 w-full px-5 py-2 border-2 border-blue-300 rounded-2xl focus:ring-0 focus:border-blue-400 placeholder-gray-400 text-gray-700 text-base font-normal transition-colors bg-blue-50/30"
+                            className="placeholder-blue-800 w-full px-5 py-2 border-2 border-blue-300 rounded-2xl focus:ring-0 focus:border-blue-400 text-gray-700 text-base font-normal transition-colors bg-blue-50/30"
                             required
                         />
 
