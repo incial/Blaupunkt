@@ -159,66 +159,28 @@ export const dcChargingStationData = {
     { label: 'Rated Current', value: '5–100A' },
     { label: 'Safety Features', value: 'Short Circuit Protection, Overload Protection, Over Temperature Protection, Leakage Protection, Over and Under Input Voltage Protection, Over and Under Output Voltage Protection, Over-current Protection' }
   ]),
-    modelsData: (() => {
-      // Create sections for portable EV charging models
-      const sections = [
-        {
-          name: 'Mode 2 Portable Chargers',
-          description: 'Flexible charging solutions for all environments',
-          models: [
-            {
-              modelCode: 'P1PM2T2',
-              maximumPower: '3.7kW',
-              connectorType: 'Type 2',
-              chargingPower: '3.7 kW',
-              powerPhase: 'Single-Phase',
-              ipClass: 'IP54',
-              workingVoltage: '110V~250V',
-              cable: '3 x 2.5mm² + 2 x 0.5mm²',
-              dimensions: '300 x 200 x 100mm',
-              weight: '2.5kg',
-              current: '16A',
-              cableLength: '8 Meters',
-              phaseType: 'Single - Phase',
-              protectionRating: 'IP54',
-              popular: true,
-              image: dcChargingStationImages.dcPd1
-            },
-            {
-              modelCode: 'P3PM2T2',
-              maximumPower: '11kW',
-              connectorType: 'Type 2',
-              chargingPower: '11 kW',
-              powerPhase: 'Three-Phase',
-              ipClass: 'IP65',
-              workingVoltage: '380~400V',
-              cable: '5 x 2.5mm² + 2 x 0.5mm²',
-              dimensions: '320 x 220 x 110mm',
-              weight: '3.2kg',
-              current: '16A',
-              cableLength: '8 Meters',
-              phaseType: 'Three - Phase',
-              protectionRating: 'IP65',
-              image: dcChargingStationImages.dcPd2
-            }
-          ]
-        }
-      ];
-  
-      // Flatten all models from all sections into a single array for Models component
-      const flatModels = [];
-      sections.forEach(section => {
-        section.models.forEach(model => {
-          flatModels.push({
-            ...model,
-            section: section.name,
-            sectionDescription: section.description
-          });
-        });
-      });
-  
-      return flatModels;
-    })(),
+  modelsData: {
+    title: 'Models',
+    groupingMethod: 'none',
+    models: [
+      {
+        modelCode: 'BPDC30KEU',
+        ratedPower: '30 kW',
+        ratedCurrent: '5-100 A',
+        connectorPin: 'CCS2',
+        popular: true,
+        image: dcChargingStationImages.dcPd1
+      },
+      {
+        modelCode: 'BPDC40KEU',
+        ratedPower: '40 kW',
+        ratedCurrent: '5-100 A',
+        connectorPin: 'CCS2',
+        popular: false,
+        image: dcChargingStationImages.dcPd2
+      }
+    ]
+  },
   
   supplierData: {
     manufacturer: 'Blaupunkt Technologies',

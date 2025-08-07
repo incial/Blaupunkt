@@ -7,11 +7,11 @@ import OverviewAdvantage from '../Components/Common/Overview/OverviewAdvantage'
 import OverviewFeatureasandideal from '../Components/Common/Overview/OverviewFeatureasandideal'
 import DownloadButton from '../Components/CommonPages/DownlaodButton'
 import Models from '../Components/CommonPages/Models.jsx'
-import { Entirepagedata, dcSuperFastChargingStationImages } from '../Data/index.js'
+import { Entirepagedata, ProductImages } from '../Data/index.js'
 import { dcSuperFastChargingStationData, dcSuperFastChargingStationConfig } from '../Data/DCSuperFastChargingStation/index.js'
 
 const DCSuperFastChargingStation = () => {
-  // Get data from Entirepagedata
+  // Get data from Entirepagedata for DC Super Fast Charging Station
   const {
     title,
     description,
@@ -20,6 +20,9 @@ const DCSuperFastChargingStation = () => {
     imageAlt,
     OverviewData
   } = Entirepagedata.dcSuperFastChargingStation
+
+  // Get images for DC Super Fast Charging Station
+  const dcSuperFastChargingStationImages = ProductImages.dcSuperFastChargingStation
 
   // Process thumbnails with actual images
   const thumbnails = Entirepagedata.dcSuperFastChargingStation.thumbnails.map(

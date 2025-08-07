@@ -52,9 +52,10 @@ const ChargingCables = () => {
       <Specifications
         productImage={chargingCableProductImages.specifications}
         category='chargingCables'
-      />      <Models category='chargingCables' />
-      <DownloadButton 
-        productCategory='chargingCables' 
+      />{' '}
+      <Models category='chargingCables' />
+      <DownloadButton
+        productCategory='chargingCables'
         downloadData={chargingCablesConfig.downloads}
       />
     </div>

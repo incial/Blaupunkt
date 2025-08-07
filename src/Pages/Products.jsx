@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useSearchParams } from 'react-router-dom'
 import Navbar from '../Components/Common/Navbar'
+import Breadcrumb from '../Components/Common/Breadcrumb'
+import { createSimpleBreadcrumbs } from '../Data/Common/utilities'
 import { SAMPLE_PRODUCTS } from '../Components/Products/productsData'
 import SearchBar from '../Components/Products/SearchBar'
 import FiltersContainer from '../Components/Products/FiltersContainer'
@@ -111,6 +113,8 @@ const Products = () => {
     setSortBy('Popularity')
     setCurrentPage(1)
   }
+  
+  const breadcrumbItems = createSimpleBreadcrumbs('Products')
 
   return (
     <div className="min-h-screen bg-white">
@@ -119,21 +123,9 @@ const Products = () => {
       {/* Main Content */}
       <main className="pt-24 lg:pt-28">
         {/* Breadcrumb */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6">
-          <div className="flex items-center justify-center gap-2 text-xs sm:text-sm overflow-x-auto">
-            <span className="text-blaupunkt-secondary-light font-myriad whitespace-nowrap">
-              <Link
-                to="/"
-                className="text-blaupunkt-secondary-light hover:text-blaupunkt-secondary transition-colors whitespace-nowrap font-myriad"
-              >
-                Home
-              </Link>
-            </span>
-            <span className="text-blaupunkt-secondary-light font-myriad">/</span>
-            <span className="text-blaupunkt-secondary font-myriad whitespace-nowrap">Products</span>
-          </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Breadcrumb items={breadcrumbItems} />
         </div>
-
 
         {/* Page Header */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">

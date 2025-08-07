@@ -106,17 +106,17 @@ const Navbar = () => {
           >
             <div className='relative w-6 h-6'>
               <span
-                className={`absolute h-0.5 w-full bg-blaupunkt-primary-dark transition-all duration-300 ${
+                className={`absolute h-0.5 w-full bg-blaupunkt-primary transition-all duration-300 ${
                   isMenuOpen ? 'top-2 rotate-45' : 'top-1'
                 }`}
               ></span>
               <span
-                className={`absolute h-0.5 w-full bg-blaupunkt-primary-dark transition-all duration-300 ${
+                className={`absolute h-0.5 w-full bg-blaupunkt-primary transition-all duration-300 ${
                   isMenuOpen ? 'opacity-0' : 'top-2'
                 }`}
               ></span>
               <span
-                className={`absolute h-0.5 w-full bg-blaupunkt-primary-dark transition-all duration-300 ${
+                className={`absolute h-0.5 w-full bg-blaupunkt-primary transition-all duration-300 ${
                   isMenuOpen ? 'top-2 -rotate-45' : 'top-3'
                 }`}
               ></span>
@@ -143,12 +143,12 @@ const Navbar = () => {
         >
           <div className='relative w-6 h-4'>
             <span
-              className={`absolute h-0.5 w-full bg-blaupunkt-primary-dark transition-all duration-300 ${
+              className={`absolute h-0.5 w-full bg-blaupunkt-primary transition-all duration-300 ${
                 isMenuOpen ? 'top-2 rotate-45' : 'top-1'
               }`}
             ></span>
             <span
-              className={`absolute h-0.5 w-full bg-blaupunkt-primary-dark transition-all duration-300 ${
+              className={`absolute h-0.5 w-full bg-blaupunkt-primary transition-all duration-300 ${
                 isMenuOpen ? 'top-2 -rotate-45' : 'top-3'
               }`}
             ></span>
@@ -169,8 +169,8 @@ const Navbar = () => {
             onClick={() => setIsMenuOpen(false)}
           >
             <div className='relative w-6 h-6'>
-              <span className='absolute top-2.5 h-0.5 w-full bg-blaupunkt-primary-dark rotate-45 transition-all duration-300'></span>
-              <span className='absolute top-2.5 h-0.5 w-full bg-blaupunkt-primary-dark -rotate-45 transition-all duration-300'></span>
+              <span className='absolute top-2.5 h-0.5 w-full bg-blaupunkt-primary rotate-45 transition-all duration-300'></span>
+              <span className='absolute top-2.5 h-0.5 w-full bg-blaupunkt-primary -rotate-45 transition-all duration-300'></span>
             </div>
           </div>
 

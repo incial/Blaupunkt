@@ -11,13 +11,13 @@ const ModelCard = ({
   customFields = null // New prop for custom field configurations
 }) => {
   return (
-    <div className='relative w-full max-w-[300px] transition-all duration-300 mx-auto'>
+    <div className='relative w-full max-w-[320px] transition-all duration-300 mx-auto h-full overflow-hidden'>
       {/* Outer container with light blue border */}
-      <div className='rounded-xl'>
+      <div className='rounded-xl h-full overflow-hidden'>
         {/* White inner container */}
-        <div className='bg-white rounded-lg overflow-hidden'>
+        <div className='bg-white rounded-lg overflow-hidden h-full flex flex-col'>
           {/* Product Image Container */}
-          <div className='w-full   flex items-center justify-center border-2 border-blaupunkt-primary rounded-2xl'>
+          <div className='w-full flex items-center justify-center border-2 border-blaupunkt-primary rounded-2xl flex-shrink-0 overflow-hidden'>
             {image ? (
               <img
                 src={image}
@@ -53,43 +53,67 @@ const ModelCard = ({
           </div>
           
           {/* Product Details */}
-          <div className='pt-10 pb-6'>
+          <div className='pt-6 pb-6 px-4 flex-1 flex flex-col overflow-hidden'>
             {/* Model Code - Primary heading */}
-            <h3 className='text-xl font-semibold text-blaupunkt-primary-darker mb-4 text-left'>
+            <h3 className='text-lg font-semibold text-blaupunkt-primary-darker mb-4 text-left leading-tight truncate'>
               {modelCode}
             </h3>
             {/* Specifications List */}
-            <div className='space-y-1 text-base'>
+            <div className='space-y-2 text-sm flex-1 overflow-hidden'>
               {customFields ? (
                 // Use custom fields if provided
                 customFields.map((field, index) => (
-                  <div key={index} className='flex items-center'>
-                    <span className='font-normal text-gray-700 mr-1'>{field.label}:</span>
-                    <span className='text-gray-900 font-normal'>{field.value}</span>
+                  <div key={index} className='flex flex-col sm:flex-row sm:items-start gap-1 sm:gap-2'>
+                    <span className='font-medium text-gray-700 min-w-0 flex-shrink-0 sm:w-1/3'>
+                      {field.label}:
+                    </span>
+                    <span className='text-gray-900 font-normal min-w-0 flex-1 break-words'>
+                      {field.value}
+                    </span>
                   </div>
                 ))
               ) : (
                 // Use default fields for charging cables
                 <>
-                  <div className='flex items-center'>
-                    <span className='font-normal text-gray-700 mr-1'>Connector:</span>
-                    <span className='text-gray-900 font-normal'>{connectorType}</span>
+                  <div className='flex flex-col sm:flex-row sm:items-start gap-1 sm:gap-2'>
+                    <span className='font-medium text-gray-700 min-w-0 flex-shrink-0 sm:w-1/3'>
+                      Connector:
+                    </span>
+                    <span className='text-gray-900 font-normal min-w-0 flex-1 break-words'>
+                      {connectorType}
+                    </span>
                   </div>
-                  <div className='flex items-center'>
-                    <span className='font-normal text-gray-700 mr-1'>Current:</span>
-                    <span className='text-gray-900 font-normal'>{current}</span>
+                  <div className='flex flex-col sm:flex-row sm:items-start gap-1 sm:gap-2'>
+                    <span className='font-medium text-gray-700 min-w-0 flex-shrink-0 sm:w-1/3'>
+                      Current:
+                    </span>
+                    <span className='text-gray-900 font-normal min-w-0 flex-1 break-words'>
+                      {current}
+                    </span>
                   </div>
-                  <div className='flex items-center'>
-                    <span className='font-normal text-gray-700 mr-1'>Cable Length:</span>
-                    <span className='text-gray-900 font-normal'>{cableLength}</span>
+                  <div className='flex flex-col sm:flex-row sm:items-start gap-1 sm:gap-2'>
+                    <span className='font-medium text-gray-700 min-w-0 flex-shrink-0 sm:w-1/3'>
+                      Cable Length:
+                    </span>
+                    <span className='text-gray-900 font-normal min-w-0 flex-1 break-words'>
+                      {cableLength}
+                    </span>
                   </div>
-                  <div className='flex items-center'>
-                    <span className='font-normal text-gray-700 mr-1'>IP Class:</span>
-                    <span className='text-gray-900 font-normal'>{ipClass}</span>
+                  <div className='flex flex-col sm:flex-row sm:items-start gap-1 sm:gap-2'>
+                    <span className='font-medium text-gray-700 min-w-0 flex-shrink-0 sm:w-1/3'>
+                      IP Class:
+                    </span>
+                    <span className='text-gray-900 font-normal min-w-0 flex-1 break-words'>
+                      {ipClass}
+                    </span>
                   </div>
-                  <div className='flex items-center'>
-                    <span className='font-normal text-gray-700 mr-1'>Phase Type:</span>
-                    <span className='text-gray-900 font-normal'>{phaseType}</span>
+                  <div className='flex flex-col sm:flex-row sm:items-start gap-1 sm:gap-2'>
+                    <span className='font-medium text-gray-700 min-w-0 flex-shrink-0 sm:w-1/3'>
+                      Phase Type:
+                    </span>
+                    <span className='text-gray-900 font-normal min-w-0 flex-1 break-words'>
+                      {phaseType}
+                    </span>
                   </div>
                 </>
               )}

@@ -125,7 +125,7 @@ const ChargingStationModels = ({ category }) => {
               {/* Sort By Filter */}
               <div className='relative' ref={sortByRef}>
                 <button
-                  className='flex items-center gap-1.5 bg-blaupunkt-primary-darker hover:bg-blaupunkt-primary-dark text-white py-2 px-3 rounded text-sm transition-colors duration-200'
+                  className='flex items-center gap-1.5 bg-blaupunkt-primary-darker hover:bg-blaupunkt-primary text-white py-2 px-3 rounded text-sm transition-colors duration-200'
                   onClick={() => setSortByOpen(!sortByOpen)}
                 >
                   <span>Sort: {sortBy}</span>
@@ -159,7 +159,7 @@ const ChargingStationModels = ({ category }) => {
               {/* Charging Speed Filter */}
               <div className='relative' ref={chargingSpeedRef}>
                 <button
-                  className='flex items-center gap-1.5 bg-blaupunkt-primary-darker hover:bg-blaupunkt-primary-dark text-white py-2 px-3 rounded text-sm transition-colors duration-200'
+                  className='flex items-center gap-1.5 bg-blaupunkt-primary-darker hover:bg-blaupunkt-primary text-white py-2 px-3 rounded text-sm transition-colors duration-200'
                   onClick={() => setChargingSpeedOpen(!chargingSpeedOpen)}
                 >
                   <span>Speed: {chargingSpeed}</span>
@@ -193,7 +193,7 @@ const ChargingStationModels = ({ category }) => {
               {/* Phase Type Filter */}
               <div className='relative' ref={phaseTypeRef}>
                 <button
-                  className='flex items-center gap-1.5 bg-blaupunkt-primary-darker hover:bg-blaupunkt-primary-dark text-white py-2 px-3 rounded text-sm transition-colors duration-200'
+                  className='flex items-center gap-1.5 bg-blaupunkt-primary-darker hover:bg-blaupunkt-primary text-white py-2 px-3 rounded text-sm transition-colors duration-200'
                   onClick={() => setPhaseTypeOpen(!phaseTypeOpen)}
                 >
                   <span>Phase: {phaseType}</span>
@@ -287,7 +287,9 @@ const ChargingStationModels = ({ category }) => {
                             customFields={[
                               { label: 'Maximum Power', value: model.maximumPower },
                               { label: 'Current', value: model.current },
-                              { label: 'Cable Length', value: model.cableLength },
+                              section.name === 'Stations With Socket' 
+                                ? { label: 'Socket Type', value: model.socketType }
+                                : { label: 'Cable Length', value: model.cableLength },
                               { label: 'Phase Type', value: model.phaseType }
                             ]}
                           />

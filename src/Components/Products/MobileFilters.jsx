@@ -147,7 +147,7 @@ const MobileFilters = ({
               <div className='space-y-3'>
                 <motion.button
                   onClick={() => setShowMobileFilters(false)}
-                  className='w-full bg-blaupunkt-primary text-white px-6 py-4 rounded-xl font-myriad text-base font-semibold hover:bg-blaupunkt-primary-dark transition-all duration-200 shadow-lg'
+                  className='w-full bg-blaupunkt-primary text-white px-6 py-4 rounded-xl font-myriad text-base font-semibold hover:bg-blaupunkt-primary transition-all duration-200 shadow-lg'
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >

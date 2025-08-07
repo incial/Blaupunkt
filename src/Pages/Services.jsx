@@ -2,8 +2,12 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { Servicepage } from '../Data/assets.js'
 import ImageHeader from '../Components/Common/ImageHeader'
+import Breadcrumb from '../Components/Common/Breadcrumb'
+import { createSimpleBreadcrumbs } from '../Data/Common/utilities'
 
 const Services = () => {
+  const breadcrumbItems = createSimpleBreadcrumbs('Services')
+
   // Service sections data
   const serviceItems = [
     {
@@ -35,16 +39,8 @@ const Services = () => {
   return (
     <div className='bg-white relative w-full py-8'>
       {/* Breadcrumb */}
-      <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-1 md:mb-4'>
-        <div className='flex items-center justify-center gap-2 text-xs sm:text-sm overflow-x-auto'>
-          <span className='text-blaupunkt-secondary-light font-myriad whitespace-nowrap'>
-            Home
-          </span>
-          <span className='text-blaupunkt-secondary-light font-myriad'>/</span>
-          <span className='text-blaupunkt-secondary font-myriad whitespace-nowrap'>
-            Services
-          </span>
-        </div>
+      <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+        <Breadcrumb items={breadcrumbItems} />
       </div>
 
       {/* Services Header */}
