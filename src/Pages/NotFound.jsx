@@ -1,8 +1,14 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import Navbar from '../Components/Common/Navbar'
+import Breadcrumb from '../Components/Common/Breadcrumb'
 
 const NotFound = () => {
+  const breadcrumbItems = [
+    { text: 'Home', path: '/' },
+    { text: 'Page Not Found', active: true }
+  ]
+
   return (
     <div className='min-h-screen bg-white'>
       <Navbar />
@@ -10,31 +16,10 @@ const NotFound = () => {
       {/* Main Content */}
       <main className='pt-24 lg:pt-28'>
         {/* Breadcrumb */}
-        <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6'>
-          <div className='flex items-center justify-center gap-2 text-sm sm:text-base overflow-x-auto'>
-            <Link
-              to='/'
-              className='text-blaupunkt-secondary-light font-myriad whitespace-nowrap hover:text-blaupunkt-secondary transition-colors duration-200'
-            >
-              Home
-            </Link>
-            <span className='text-blaupunkt-secondary-light font-myriad'>
-              /
-            </span>
-            <span className='hidden sm:inline text-blaupunkt-secondary-light font-myriad whitespace-nowrap'>
-              Electric Vehicle Charging Equipment
-            </span>
-            <span className='sm:hidden text-blaupunkt-secondary-light font-myriad whitespace-nowrap'>
-              EV Equipment
-            </span>
-            <span className='text-blaupunkt-secondary-light font-myriad'>
-              /
-            </span>
-            <span className='text-blaupunkt-secondary font-medium font-myriad whitespace-nowrap'>
-              Error
-            </span>
-          </div>
-        </div>{' '}
+        <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+          <Breadcrumb items={breadcrumbItems} />
+        </div>
+
         {/* Error Content */}
         <div className='flex flex-col items-center justify-center px-4 sm:px-6 py-6 sm:py-8 max-w-6xl mx-auto min-h-[60vh]'>
           {/* Error message container */}
@@ -67,7 +52,7 @@ const NotFound = () => {
             <div className=''>
               <Link
                 to='/'
-                className='inline-flex items-center justify-center bg-blaupunkt-primary-dark text-white px-[30px] py-[11px] sm:px-6 sm:py-3 rounded-[11px] sm:rounded-xl text-[15px] sm:text-base md:text-lg font-normal hover:bg-blaupunkt-primary-darker transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1'
+                className='inline-flex items-center justify-center bg-blaupunkt-primary text-white px-[30px] py-[11px] sm:px-6 sm:py-3 rounded-[11px] sm:rounded-xl text-[15px] sm:text-base md:text-lg font-normal hover:bg-blaupunkt-primary-darker transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1'
               >
                 Go Back Home
               </Link>

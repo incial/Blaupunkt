@@ -9,7 +9,7 @@
 export * from './ChargingCables/index.js'
 export * from './ChargingStations/index.js'
 export * from './DCChargingStation/index.js'
-export * from './DCFastChargingStation/index.js'
+export * from './DCSuperFastChargingStation/index.js'
 export * from './PortableEVCharging/index.js'
 
 // Import common utilities
@@ -19,7 +19,7 @@ export * from './Common/utilities.js'
 import { chargingCablesConfig } from './ChargingCables/index.js'
 import { chargingStationsConfig } from './ChargingStations/index.js'
 import { dcChargingStationConfig } from './DCChargingStation/index.js'
-import { dcFastChargingStationConfig } from './DCFastChargingStation/index.js'
+import { dcSuperFastChargingStationConfig } from './DCSuperFastChargingStation/index.js'
 import { portableEvChargingConfig } from './PortableEVCharging/index.js'
 
 // =============================================================================
@@ -30,7 +30,7 @@ export const Entirepagedata = {
   chargingCables: chargingCablesConfig.data,
   chargingStations: chargingStationsConfig.data,
   dcChargingStation: dcChargingStationConfig.data,
-  dcFastChargingStation: dcFastChargingStationConfig.data,
+  dcSuperFastChargingStation: dcSuperFastChargingStationConfig.data,
   portableEVCharging: portableEvChargingConfig.data,  downloadData: {
     categories: [
       ...chargingCablesConfig.data.downloadData.categories,
@@ -48,7 +48,7 @@ export const ProductConfigs = {
   chargingCables: chargingCablesConfig,
   chargingStations: chargingStationsConfig,
   dcChargingStation: dcChargingStationConfig,
-  dcFastChargingStation: dcFastChargingStationConfig,
+  dcSuperFastChargingStation: dcSuperFastChargingStationConfig,
   portableEVCharging: portableEvChargingConfig
 }
 
@@ -60,7 +60,7 @@ export const ProductImages = {
   chargingCables: chargingCablesConfig.images,
   chargingStations: chargingStationsConfig.images,
   dcChargingStation: dcChargingStationConfig.images,
-  dcFastChargingStation: dcFastChargingStationConfig.images,
+  dcSuperFastChargingStation: dcSuperFastChargingStationConfig.images,
   portableEVCharging: portableEvChargingConfig.images
 }
 
@@ -72,7 +72,7 @@ export const BackgroundImages = {
   chargingCables: chargingCablesConfig.backgroundImages,
   chargingStations: chargingStationsConfig.backgroundImages,
   dcChargingStation: dcChargingStationConfig.backgroundImages,
-  dcFastChargingStation: dcFastChargingStationConfig.backgroundImages,
+  dcSuperFastChargingStation: dcSuperFastChargingStationConfig.backgroundImages,
   portableEVCharging: portableEvChargingConfig.backgroundImages
 }
 
@@ -120,8 +120,8 @@ export const AllSpecifications = {
       { label: 'Weight', value: '850kg' }
     ]
   },
-  dcFastChargingStation: {
-    title: 'DC Fast Charging Specifications',
+  dcSuperFastChargingStation: {
+    title: 'DC Super Fast Charging Specifications',
     specs: [
       { label: 'Power Output', value: '150kW / 250kW / 350kW' },
       { label: 'Input Voltage', value: '400V AC 3-phase' },
@@ -156,7 +156,7 @@ export const AllDownloads = {
   chargingCables: chargingCablesConfig.downloads,
   chargingStations: chargingStationsConfig.downloads || null,
   dcChargingStation: dcChargingStationConfig.downloads || null,
-  dcFastChargingStation: dcFastChargingStationConfig.downloads || null,
+  dcSuperFastChargingStation: dcSuperFastChargingStationConfig.downloads || null,
   portableEVCharging: portableEvChargingConfig.downloads || null
 }
 

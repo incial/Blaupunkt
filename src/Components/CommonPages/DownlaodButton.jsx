@@ -58,7 +58,7 @@ const DownloadButton = ({ productCategory, className = '', downloadData }) => {
           break
         }
         case 'dcChargingStation':
-        case 'dcFastChargingStation': {
+        case 'dcSuperFastChargingStation': {
           // For DC stations, use technical specs and any available installation guides
           dataSheetFiles = [
             ...(techSpecsCategory?.files || []),

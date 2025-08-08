@@ -61,10 +61,10 @@ import {
   dcChargingStationProductImages,
 } from "./DCChargingStation/assets.js";
 import {
-  dcFastChargingStationImages,
-  dcFastChargingStationBgImages,
-  dcFastChargingStationProductImages,
-} from "./DCFastChargingStation/assets.js";
+  dcSuperFastChargingStationImages,
+  dcSuperFastChargingStationBgImages,
+  dcSuperFastChargingStationProductImages,
+} from "./DCSuperFastChargingStation/assets.js";
 import {
   portableEvChargingImages,
   portableEvChargingBgImages,
@@ -108,7 +108,7 @@ export const homeImgs = {
 export const chargingImgs = {
   stations: chargingStationImages.main,
   dcStation: dcChargingStationImages.main,
-  dcFast: dcFastChargingStationImages.main,
+  dcSuperFast: dcSuperFastChargingStationImages.main,
   portable: portableEvChargingImages.main,
   evGeneral: chargingCableImages.main,
   productImage: chargingCableImages.main,
@@ -139,7 +139,7 @@ export const productImgs = {
   chargingCables: chargingCableImages.main,
   chargingStations: chargingStationImages.main,
   dcCharging: dcChargingStationImages.main,
-  dcFastCharging: dcFastChargingStationImages.main,
+  dcSuperFastCharging: dcSuperFastChargingStationImages.main,
   portableCharging: portableEvChargingImages.main,
   evCharging: chargingCableImages.main,
   charger: chargingStationImages.main,
@@ -158,8 +158,8 @@ export const productImgs = {
   dcPd1: dcChargingStationImages.dcPd1,
   dcPd2: dcChargingStationImages.dcPd2,
 
-  // Fast Charging Product Images
-  fastPd1: dcFastChargingStationImages.fastPd1,
+  // Super Fast Charging Product Images
+  superFastPd1: dcSuperFastChargingStationImages.fastPd1,
 
   // Portable EV Charging Product Images
   portEvPd1: portableEvChargingImages.portEvPd1,
@@ -177,7 +177,7 @@ export const bgImgs = {
   evChargingCables: chargingCableBgImages.overview,
   chargingStations: chargingStationBgImages.overview,
   dcChargingStation: dcChargingStationBgImages.overview,
-  dcFastChargingStation: dcFastChargingStationBgImages.overview,
+  dcSuperFastChargingStation: dcSuperFastChargingStationBgImages.overview,
   portableEVCharging: portableEvChargingBgImages.overview,
   evCharging: chargingCableImages.main,
 };
@@ -205,11 +205,11 @@ export const overviewImgs = {
     ideal: dcChargingStationProductImages.ideal,
     background: dcChargingStationProductImages.background,
   },
-  dcFastChargingStation: {
-    main: dcFastChargingStationProductImages.main,
-    feature: dcFastChargingStationProductImages.feature,
-    ideal: dcFastChargingStationProductImages.ideal,
-    background: dcFastChargingStationProductImages.background,
+  dcSuperFastChargingStation: {
+    main: dcSuperFastChargingStationProductImages.main,
+    feature: dcSuperFastChargingStationProductImages.feature,
+    ideal: dcSuperFastChargingStationProductImages.ideal,
+    background: dcSuperFastChargingStationProductImages.background,
   },
   portableEVCharging: {
     main: portableEvChargingProductImages.main,
@@ -332,10 +332,10 @@ export const ProductAssets = {
     backgrounds: dcChargingStationBgImages,
     products: dcChargingStationProductImages,
   },
-  dcFastChargingStation: {
-    images: dcFastChargingStationImages,
-    backgrounds: dcFastChargingStationBgImages,
-    products: dcFastChargingStationProductImages,
+  dcSuperFastChargingStation: {
+    images: dcSuperFastChargingStationImages,
+    backgrounds: dcSuperFastChargingStationBgImages,
+    products: dcSuperFastChargingStationProductImages,
   },
   portableEVCharging: {
     images: portableEvChargingImages,
@@ -367,9 +367,9 @@ export {
   dcChargingStationImages,
   dcChargingStationBgImages,
   dcChargingStationProductImages,
-  dcFastChargingStationImages,
-  dcFastChargingStationBgImages,
-  dcFastChargingStationProductImages,
+  dcSuperFastChargingStationImages,
+  dcSuperFastChargingStationBgImages,
+  dcSuperFastChargingStationProductImages,
   portableEvChargingImages,
   portableEvChargingBgImages,
   portableEvChargingProductImages,

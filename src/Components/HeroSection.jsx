@@ -106,7 +106,7 @@ const HeroSection = () => {
             </div>
             {/* Navigation bar */}
             <div className='flex gap-1.5'>
-              <div className='w-16 lg:w-24 h-1 lg:h-1.25 bg-blaupunkt-primary-dark rounded-2xl cursor-pointer hover:scale-110 transition-transform'></div>
+              <div className='w-16 lg:w-24 h-1 lg:h-1.25 bg-blaupunkt-primary rounded-2xl cursor-pointer hover:scale-110 transition-transform'></div>
               <div className='w-8 lg:w-10 h-1 lg:h-1.25 bg-blaupunkt-secondary-light rounded-2xl cursor-pointer hover:scale-110 transition-transform hover:bg-blaupunkt-secondary'></div>
               <div className='w-8 lg:w-10 h-1 lg:h-1.25 bg-blaupunkt-secondary-light rounded-2xl cursor-pointer hover:scale-110 transition-transform hover:bg-blaupunkt-secondary'></div>
             </div>

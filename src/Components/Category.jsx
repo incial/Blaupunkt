@@ -25,8 +25,8 @@ const Category = () => {
     },    {
       id: 4,
       title: 'DC Super fast Charger',
-      image: chargingImgs.dcFast,
-      path: '/dc-fast-charging-station'
+      image: chargingImgs.dcSuperFast,
+      path: '/dc-super-fast-charging-station'
     },
     {
       id: 5,

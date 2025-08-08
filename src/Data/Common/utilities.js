@@ -12,8 +12,25 @@
  */
 export const createBreadcrumbs = (pageName, path) => [
   { text: 'Home', path: '/' },
-  { text: 'Electric Vehicle Charging Equipment', path: '/ev-charging' },
+  { text: 'Products', path: '/products' },
   { text: pageName, path, active: true }
+]
+
+/**
+ * Creates breadcrumb navigation with custom structure
+ * @param {Array} breadcrumbs - Array of breadcrumb objects
+ * @returns {Array} Array of breadcrumb objects
+ */
+export const createCustomBreadcrumbs = (breadcrumbs) => breadcrumbs
+
+/**
+ * Creates simple breadcrumbs for basic pages
+ * @param {string} pageName - Display name for the page
+ * @returns {Array} Array of breadcrumb objects
+ */
+export const createSimpleBreadcrumbs = (pageName) => [
+  { text: 'Home', path: '/' },
+  { text: pageName, active: true }
 ]
 
 /**

@@ -2,7 +2,7 @@ import { chargingCablesData } from "../../Data/ChargingCables/data.js";
 import { chargingStationsData } from "../../Data/ChargingStations/data.js";
 import { dcChargingStationData } from "../../Data/DCChargingStation/data.js";
 import { portableEvChargingData } from "../../Data/PortableEVCharging/data.js";
-import { dcFastChargingStationData } from "../../Data/DCFastChargingStation/data.js";
+import { dcSuperFastChargingStationData } from "../../Data/DCSuperFastChargingStation/data.js";
 
 /**
  * Filter options constants for product filtering and sorting
@@ -151,17 +151,17 @@ export const PRODUCTS = [
     phaseType: model.phaseType || model.powerPhase || "",
     price: undefined, // Add price if available in data
   })) || []),
-  // DC Fast Charging Station
-  ...((dcFastChargingStationData.modelsData?.models || []).map(
+  // DC Super Fast Charging Station
+  ...((dcSuperFastChargingStationData.modelsData?.models || []).map(
     (model, index) => ({
-      id: createUniqueId("dc-fast", model.modelCode, index),
-      title: dcFastChargingStationData.title || "DC Fast Charging Station",
+      id: createUniqueId("dc-super-fast", model.modelCode, index),
+      title: dcSuperFastChargingStationData.title || "DC Super Fast Charging Station",
       specifications: `${model.maximumPower || ""} | ${
         model.connectorType || ""
       } | ${model.outputVoltage || ""}`,
-      productCode: model.modelCode || `DC-FAST-${index + 1}`,
-      image: model.image || dcFastChargingStationData.mainImage,
-      type: "DC Fast Charging",
+      productCode: model.modelCode || `DC-SUPER-FAST-${index + 1}`,
+      image: model.image || dcSuperFastChargingStationData.mainImage,
+      type: "DC Super Fast Charging",
       chargingSpeed: model.maximumPower || "",
       connectorType: model.connectorType || "",
       phaseType: model.phaseType || "DC",

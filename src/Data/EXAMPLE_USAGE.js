@@ -221,10 +221,10 @@ const MixedUsageExample = () => {
 // 7. ACCESSING NESTED DATA
 // =============================================================================
 
-import { dcFastChargingStationData } from '../Data/DCFastChargingStation/index.js'
+import { dcSuperFastChargingStationData } from '../Data/DCSuperFastChargingStation/index.js'
 
 const DetailedProductView = () => {
-  const data = dcFastChargingStationData
+  const data = dcSuperFastChargingStationData
   
   return (
     <div>

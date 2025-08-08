@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
 import { Toaster, toast } from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
+import Breadcrumb from './Common/Breadcrumb';
+import { createSimpleBreadcrumbs } from '../Data/Common/utilities';
 
 const ContactUs = () => {
     const navigate = useNavigate();
+    const breadcrumbItems = createSimpleBreadcrumbs('Contact');
+    
     const [formData, setFormData] = useState({
         fullName: '',
         email: '',
@@ -59,21 +63,8 @@ const ContactUs = () => {
 
             <div className="max-w-2xl mx-auto">
                 {/* Breadcrumb */}
-                <div className="mb-24 hidden md:flex items-center justify-center">
-                    <div className='flex items-center gap-2 text-sm font-myriad'>
-                        <span className='text-blaupunkt-secondary-light hover:text-blaupunkt-secondary transition-colors cursor-pointer'>
-                            <Link
-                                to="/"
-                                className="text-blaupunkt-secondary-light hover:text-blaupunkt-secondary transition-colors whitespace-nowrap font-myriad"
-                            >
-                                Home
-                            </Link>
-                        </span>
-                        <span className='text-blaupunkt-secondary-light'>/</span>
-                        <span className='text-blaupunkt-secondary font-medium'>
-                            Contact
-                        </span>
-                    </div>
+                <div className="mb-24 hidden md:block">
+                    <Breadcrumb items={breadcrumbItems} />
                 </div>
 
                 {/* Header */}

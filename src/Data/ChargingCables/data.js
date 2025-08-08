@@ -9,7 +9,6 @@ import {
   createStandardFeatures,
   createHighlightsData,
   createSpecificationsData,
-  createFlatCableModels,
   BUTTON_TEXTS,
   DEFAULT_SUPPLIER_DATA
 } from '../Common/utilities.js'
@@ -73,7 +72,7 @@ export const chargingCablesData = {
       active: true,
       title: 'Product Specifications',
       data: [
-        'Compatible with Type 1 & Type 2 connectors supports up to 3-phase charging',
+        'Compatible with Type 1, Type 2, NACS cable and GBT cable connectors supports up to 3-phase charging',
         'Rated for up to 32A safely delivers a charging power of up to 22 kW',
         'Cable length up to 8 meters offers maximum flexibility and reach',
         'IP54 rated – weather-resistant and safe for outdoor use',
@@ -130,7 +129,7 @@ export const chargingCablesData = {
     }
   ]),
   specificationsData: createSpecificationsData('Specifications', [
-    { label: 'Working Voltage', value: '110V – 250V' },
+    { label: 'Working Voltage', value: '110V – 440V' },
     { label: 'Rated Current', value: 'Up to 32A' },
     { label: 'Insulation Resistance', value: '>1000 MΩ' },
     { label: 'Dielectric Strength', value: '2000V' },
@@ -146,82 +145,92 @@ export const chargingCablesData = {
     { label: 'Operating Temperature', value: '-30°C to +50°C' },
     { label: 'Net Weight', value: '1.8 kg' }
   ]),
-  modelsData: createFlatCableModels([
-    {
-      name: '2 Meter Cable Length',
-      models: [
-        {
-          modelCode: 'B1P16AT1',
-          connectorType: 'Type 1',
-          current: '16A',
-          cableLength: '2 Meters',
-          phaseType: 'Single - Phase',
-          image: chargingCableImages.cablePd1
-        },
-        {
-          modelCode: 'B2P16AT1',
-          connectorType: 'Type 2',
-          current: '16A',
-          cableLength: '2 Meters',
-          phaseType: 'Single - Phase',
-          image: chargingCableImages.cablePd1
-        }
-      ]
-    },
-    {
-      name: '8 Meter Cable Length',
-      models: [
-        {
-          modelCode: 'A1P16AT1',
-          connectorType: 'Type 1',
-          current: '16A',
-          cableLength: '8 Meters',
-          phaseType: 'Single - Phase',
-          image: chargingCableImages.cablePd2
-        },
-        {
-          modelCode: 'A1P16AT2',
-          connectorType: 'Type 1',
-          current: '16A',
-          cableLength: '8 Meters',
-          phaseType: 'Single - Phase',
-          image: chargingCableImages.cablePd2
-        },
-        {
-          modelCode: 'A1P32AT1',
-          connectorType: 'Type 1',
-          current: '32A',
-          cableLength: '8 Meters',
-          phaseType: 'Three - Phase',
-          image: chargingCableImages.cablePd2
-        },
-        {
-          modelCode: 'A1P32AT2',
-          connectorType: 'Type 2',
-          current: '32A',
-          cableLength: '8 Meters',
-          phaseType: 'Three - Phase',
-          image: chargingCableImages.cablePd2
-        },
-        {
-          modelCode: 'A3P16AT2',
-          connectorType: 'Type 2',
-          current: '16A',
-          cableLength: '8 Meters',
-          phaseType: 'Three - Phase',
-          image: chargingCableImages.cablePd2
-        },
-        {
-          modelCode: 'A3P32AT2',
-          connectorType: 'Type 2',
-          current: '32A',
-          cableLength: '8 Meters',
-          phaseType: 'Three - Phase',
-          image: chargingCableImages.cablePd2
-        }
-      ]
-    }
-  ]),
+  modelsData: {
+    title: 'Models',
+    groupingMethod: 'none',
+    models: [
+      {
+        modelCode: 'A1P16AT2',
+        connectorType: 'Type 2 to Type 2',
+        current: '16A',
+        cableLength: '8 Meters',
+        phaseType: 'Single - Phase',
+        ipClass: '54',
+        popular: false,
+        image: chargingCableImages.cablePd2
+      },
+      {
+        modelCode: 'A1P32AT2',
+        connectorType: 'Type 2 to Type 2',
+        current: '32A',
+        cableLength: '8 Meters',
+        phaseType: 'Single - Phase',
+        ipClass: '54',
+        popular: false,
+        image: chargingCableImages.cablePd2
+      },
+      {
+        modelCode: 'A3P16AT2',
+        connectorType: 'Type 2 to Type 2',
+        current: '16A',
+        cableLength: '8 Meters',
+        phaseType: 'Three - Phase',
+        ipClass: '54',
+        popular: false,
+        image: chargingCableImages.cablePd2
+      },
+      {
+        modelCode: 'A3P32AT2',
+        connectorType: 'Type 2 to Type 2',
+        current: '32A',
+        cableLength: '8 Meters',
+        phaseType: 'Three - Phase',
+        ipClass: '54',
+        popular: false,
+        image: chargingCableImages.cablePd2
+      },
+      {
+        modelCode: 'A1P16AT1',
+        connectorType: 'Type 1 to Type 2',
+        current: '16A',
+        cableLength: '5 Meters',
+        phaseType: 'Single - Phase',
+        ipClass: '54',
+        popular: false,
+        image: chargingCableImages.cablePd2
+      },
+      {
+        modelCode: 'A1P32AT1',
+        connectorType: 'Type 1 to Type 2',
+        current: '32A',
+        cableLength: '5 Meters',
+        phaseType: 'Single - Phase',
+        ipClass: '54',
+        popular: false,
+        image: chargingCableImages.cablePd2
+      },
+      {
+        modelCode: 'B1P16AT1',
+        connectorType: 'Type 1 to Type 2',
+        current: '16A',
+        cableLength: '2 Meters',
+        phaseType: 'Single - Phase',
+        ipClass: '65',
+        popular: false,
+        image: chargingCableImages.cablePd1
+      },
+      {
+        modelCode: 'B1P16AT2',
+        connectorType: 'Type 1 to Type 2',
+        current: '16A',
+        cableLength: '2 Meters',
+        phaseType: 'Single - Phase',
+        ipClass: '65',
+        popular: false,
+        image: chargingCableImages.cablePd1
+      }
+    ]
+  },
 
   // =============================================================================
   // DOWNLOAD DATA SECTION

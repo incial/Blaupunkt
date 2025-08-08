@@ -10,7 +10,7 @@ import ChargingStations from './Pages/ChargingStations'
 import ContactPage from './Pages/Contact'
 
 import DCChargingStation from './Pages/DCChargingStation'
-import DCFastChargingStation from './Pages/DCFastChargingStation'
+import DCSuperFastChargingStation from './Pages/DCSuperFastChargingStation'
 import PortableEVCharging from './Pages/PortableEVCharging'
 import NotFound from './Pages/NotFound'
 import Services from './Pages/Services'
@@ -23,40 +23,18 @@ const App = () => {
       <div className='min-h-screen flex flex-col'>
         <Navbar />
         <main className='flex-grow pt-20 lg:pt-24'>
-          {' '}
           <Routes>
-
-            <Route path="/" element={<HomePage />} />
-            <Route path="/charging-cables" element={<ChargingCables />} />
-            <Route path="/charging-stations" element={<ChargingStations />} />
-            <Route path="/contact" element={<ContactPage />} />
-
             <Route path='/' element={<HomePage />} />
             <Route path='/products' element={<Products />} />
             <Route path='/charging-cables' element={<ChargingCables />} />
             <Route path='/charging-stations' element={<ChargingStations />} />
-            <Route
-              path='/dc-charging-station'
-              element={<DCChargingStation />}
-            />
-            <Route
-              path='/dc-fast-charging-station'
-              element={<DCFastChargingStation />}
-            />{' '}
-            <Route
-              path='/portable-ev-charging'
-              element={<PortableEVCharging />}
-            />
-            <Route
-              path='/Services'
-              element={<Services />}
-            />
-            <Route
-              path='/Company'
-              element={<Company/>}
-            />
+            <Route path='/dc-charging-station' element={<DCChargingStation />} />
+            <Route path='/dc-super-fast-charging-station' element={<DCSuperFastChargingStation />} />
+            <Route path='/portable-ev-charging' element={<PortableEVCharging />} />
+            <Route path='/services' element={<Services />} />
+            <Route path='/company' element={<Company />} />
+            <Route path='/contact' element={<ContactPage />} />
             <Route path='*' element={<NotFound />} />
-
           </Routes>
         </main>
         <Footer />

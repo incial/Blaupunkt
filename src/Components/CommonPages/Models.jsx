@@ -6,7 +6,7 @@ import { Entirepagedata } from '../../Data/index.js'
 import { chargingStationsConfig } from '../../Data/ChargingStations/index.js'
 import { chargingCablesConfig } from '../../Data/ChargingCables/index.js'
 import { dcChargingStationConfig } from '../../Data/DCChargingStation/index.js'
-import { dcFastChargingStationConfig } from '../../Data/DCFastChargingStation/index.js'
+import { dcSuperFastChargingStationConfig } from '../../Data/DCSuperFastChargingStation/index.js'
 import { portableEvChargingConfig } from '../../Data/PortableEVCharging/index.js'
 
 // Simple icon components
@@ -171,8 +171,8 @@ const Models = ({ productImage, category, modelsData: propModelsData }) => {
           return chargingStationsConfig.backgroundImages?.overview
         case 'dcChargingStation':
           return dcChargingStationConfig.backgroundImages?.dccharoverbg
-        case 'dcFastChargingStation':
-          return dcFastChargingStationConfig.backgroundImages?.overview
+        case 'dcSuperFastChargingStation':
+          return dcSuperFastChargingStationConfig.backgroundImages?.overview
         case 'portableEVCharging':
           return portableEvChargingConfig.backgroundImages?.overview
         default:
@@ -187,11 +187,18 @@ const Models = ({ productImage, category, modelsData: propModelsData }) => {
   // Get models data from the page data based on the current category
   const modelsData = useMemo(() => {
     // If modelsData is provided as prop, use it directly
-    if (propModelsData && Array.isArray(propModelsData)) {
-      return {
-        models: propModelsData,
-        groupingMethod: 'category',
-        additionalText: ''
+    if (propModelsData) {
+      // If it's an object with models property, use it as-is (preserves groupingMethod, sections, etc.)
+      if (propModelsData.models && Array.isArray(propModelsData.models)) {
+        return propModelsData
+      }
+      // If it's just an array, wrap it with default properties
+      if (Array.isArray(propModelsData)) {
+        return {
+          models: propModelsData,
+          groupingMethod: 'category',
+          additionalText: ''
+        }
       }
     }
 
@@ -220,8 +227,8 @@ const Models = ({ productImage, category, modelsData: propModelsData }) => {
             groupingMethod: pageData?.modelsData?.groupingMethod || 'category',
             additionalText: pageData?.modelsData?.additionalText || ''
           }
-        case 'dcFastChargingStation':
-          pageData = Entirepagedata.dcFastChargingStation
+        case 'dcSuperFastChargingStation':
+          pageData = Entirepagedata.dcSuperFastChargingStation
           return {
             ...(pageData?.modelsData || { models: [] }),
             groupingMethod: pageData?.modelsData?.groupingMethod || 'category',
@@ -266,7 +273,6 @@ const Models = ({ productImage, category, modelsData: propModelsData }) => {
     if (
       modelsData.groupingMethod === 'none' ||
       category === 'dcChargingStation' ||
-      category === 'dcFastChargingStation' ||
       category === 'portableEVCharging'
     ) {
       // For 'none' grouping or specific categories, put all models under a single key to avoid categories
@@ -326,7 +332,7 @@ const Models = ({ productImage, category, modelsData: propModelsData }) => {
               ![
                 'chargingStations',
                 'dcChargingStation',
-                'dcFastChargingStation',
+                'dcSuperFastChargingStation',
                 'portableEVCharging'
               ].includes(category)
             ) {
@@ -507,9 +513,9 @@ const Models = ({ productImage, category, modelsData: propModelsData }) => {
   ])
 
   return (
-    <div className='w-full py-6'>
+    <div className='w-full py-6 overflow-hidden'>
       {/* Header and Filters Container */}
-      <div className='w-full'>
+      <div className='w-full overflow-hidden'>
         {/* Mobile Layout - Stacked */}
         <div className='block lg:hidden'>
           <div>
@@ -571,7 +577,7 @@ const Models = ({ productImage, category, modelsData: propModelsData }) => {
                 {/* Sort By Filter */}
                 <div className='relative' ref={dropdownRefs.sortBy}>
                   <button
-                    className='flex items-center gap-1.5 bg-blaupunkt-primary-darker hover:bg-blaupunkt-primary-dark text-white py-2 px-3 rounded text-sm transition-colors duration-200'
+                    className='flex items-center gap-1.5 bg-blaupunkt-primary-darker hover:bg-blaupunkt-primary-primary text-white py-2 px-3 rounded text-sm transition-colors duration-200'
                     onClick={() => setSortByOpen(!sortByOpen)}
                   >
                     <span>Sort: {sortBy}</span>
@@ -614,7 +620,7 @@ const Models = ({ productImage, category, modelsData: propModelsData }) => {
                 {/* Product Type Filter */}
                 <div className='relative' ref={dropdownRefs.productType}>
                   <button
-                    className='flex items-center gap-1.5 bg-blaupunkt-primary-darker hover:bg-blaupunkt-primary-dark text-white py-2 px-3 rounded text-sm transition-colors duration-200'
+                    className='flex items-center gap-1.5 bg-blaupunkt-primary-darker hover:bg-blaupunkt-primary-primary text-white py-2 px-3 rounded text-sm transition-colors duration-200'
                     onClick={() => setProductTypeOpen(!productTypeOpen)}
                   >
                     <span>Type: {productType}</span>
@@ -657,7 +663,7 @@ const Models = ({ productImage, category, modelsData: propModelsData }) => {
                 {/* Charging Speed Filter */}
                 <div className='relative' ref={dropdownRefs.chargingSpeed}>
                   <button
-                    className='flex items-center gap-1.5 bg-blaupunkt-primary-darker hover:bg-blaupunkt-primary-dark text-white py-2 px-3 rounded text-sm transition-colors duration-200'
+                    className='flex items-center gap-1.5 bg-blaupunkt-primary-darker hover:bg-blaupunkt-primary-primary text-white py-2 px-3 rounded text-sm transition-colors duration-200'
                     onClick={() => setChargingSpeedOpen(!chargingSpeedOpen)}
                   >
                     <span>Speed: {chargingSpeed}</span>
@@ -695,7 +701,7 @@ const Models = ({ productImage, category, modelsData: propModelsData }) => {
                 {/* Connector Type Filter */}
                 <div className='relative' ref={dropdownRefs.connectorType}>
                   <button
-                    className='flex items-center gap-1.5 bg-blaupunkt-primary-darker hover:bg-blaupunkt-primary-dark text-white py-2 px-3 rounded text-sm transition-colors duration-200'
+                    className='flex items-center gap-1.5 bg-blaupunkt-primary-darker hover:bg-blaupunkt-primary-primary text-white py-2 px-3 rounded text-sm transition-colors duration-200'
                     onClick={() => setConnectorTypeOpen(!connectorTypeOpen)}
                   >
                     <span>Connector: {connectorType}</span>
@@ -733,7 +739,7 @@ const Models = ({ productImage, category, modelsData: propModelsData }) => {
                 {/* Phase Type Filter */}
                 <div className='relative' ref={dropdownRefs.phaseType}>
                   <button
-                    className='flex items-center gap-1.5 bg-blaupunkt-primary-darker hover:bg-blaupunkt-primary-dark text-white py-2 px-3 rounded text-sm transition-colors duration-200'
+                    className='flex items-center gap-1.5 bg-blaupunkt-primary-darker hover:bg-blaupunkt-primary text-white py-2 px-3 rounded text-sm transition-colors duration-200'
                     onClick={() => setPhaseTypeOpen(!phaseTypeOpen)}
                   >
                     <span>Phase: {phaseType}</span>
@@ -801,14 +807,19 @@ const Models = ({ productImage, category, modelsData: propModelsData }) => {
           </div>
         </div>
       </div>      {/* Product Grid */}
-      <div className='container mx-auto py-8'>
+      <div className='container mx-auto py-8 overflow-hidden'>
         {' '}
         {isLoading ? (
-          <div className='flex overflow-x-auto scrollbar-hide gap-4 pb-4 pl-8 pr-8 md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 md:gap-6 md:px-8'>
+          <div className={`grid gap-6 px-8 ${
+            // Use custom grid layout for dcSuperFastChargingStation if configured
+            category === 'dcSuperFastChargingStation' && modelsData.sectionConfig?.gridLayout 
+              ? `${modelsData.sectionConfig.gridLayout.mobile || 'grid-cols-1'} md:${modelsData.sectionConfig.gridLayout.tablet || 'grid-cols-2'} lg:${modelsData.sectionConfig.gridLayout.desktop || 'grid-cols-3'}`
+              : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'
+          } overflow-hidden`}>
             {[...Array(8)].map((_, index) => (
               <div
                 key={`skeleton-${index}`}
-                className='animate-pulse flex-shrink-0 w-72 md:w-auto'
+                className='animate-pulse w-full overflow-hidden'
               >
                 <div className='bg-gray-200 rounded-xl aspect-square mb-4'></div>
                 <div className='space-y-2'>
@@ -848,17 +859,16 @@ const Models = ({ productImage, category, modelsData: propModelsData }) => {
                       key={groupKey}
                       className={`${
                         category === 'dcChargingStation' ||
-                        category === 'dcFastChargingStation' ||
+                        category === 'dcSuperFastChargingStation' ||
                         category === 'portableEVCharging'
                           ? ''
                           : 'mb-8'
                       }`}
                     >
-                      {/* Category or Cable Length/Section Heading - Hidden for DC charging stations and portable chargers */}
+                      {/* Category or Cable Length/Section Heading - Show for sectioned dcSuperFastChargingStation */}
                       {groupKey !== '' &&
                         !(
                           category === 'dcChargingStation' ||
-                          category === 'dcFastChargingStation' ||
                           category === 'portableEVCharging'
                         ) && (
                           <div className='flex items-baseline gap-3 mb-6 border-b border-gray-200 pb-2 px-8'>
@@ -871,10 +881,21 @@ const Models = ({ productImage, category, modelsData: propModelsData }) => {
                                   {modelsData.categoryDescriptions[groupKey]}
                                 </span>
                               )}
+                            {category === 'dcSuperFastChargingStation' &&
+                              modelsData.sections && (
+                                <span className='text-base text-gray-700 font-normal'>
+                                  {modelsData.sections.find(s => s.name === groupKey)?.description}
+                                </span>
+                              )}
                           </div>
                         )}
                       {/* Products Grid for this category */}
-                      <div className='flex overflow-x-auto scrollbar-hide gap-4 pb-4 pl-8 pr-8 md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 md:gap-6 md:px-8'>
+                      <div className={`grid gap-6 px-8 ${
+                        // Use custom grid layout for dcSuperFastChargingStation if configured
+                        category === 'dcSuperFastChargingStation' && modelsData.sectionConfig?.gridLayout 
+                          ? `${modelsData.sectionConfig.gridLayout.mobile || 'grid-cols-1'} md:${modelsData.sectionConfig.gridLayout.tablet || 'grid-cols-2'} lg:${modelsData.sectionConfig.gridLayout.desktop || 'grid-cols-3'}`
+                          : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'
+                      } auto-rows-fr overflow-hidden`}>
                         {models.map((model, index) => (
                           <div
                             key={
@@ -882,7 +903,7 @@ const Models = ({ productImage, category, modelsData: propModelsData }) => {
                               model.name ||
                               `model-${groupKey}-${index}`
                             }
-                            className='flex-shrink-0 w-72 md:w-auto'
+                            className='w-full overflow-hidden'
                           >
                             <ModelCard
                               image={model.image || productImage}
@@ -918,6 +939,31 @@ const Models = ({ productImage, category, modelsData: propModelsData }) => {
                                 model.phases ||
                                 'N/A'
                               }
+                              customFields={
+                                category === 'dcSuperFastChargingStation' ? [
+                                  { label: 'Maximum Power', value: model.maximumPower || 'N/A' },
+                                  { label: 'Connector Type', value: model.connectorType || 'N/A' },
+                                  { label: 'Output Voltage', value: model.outputVoltage || 'N/A' },
+                                  { label: 'Output Current', value: model.outputCurrent || 'N/A' },
+                                  { label: 'Dimensions', value: model.dimensions || 'N/A' },
+                                  { label: 'Weight', value: model.weight || 'N/A' },
+                                  { label: 'Operating Temp', value: model.operatingTemp || 'N/A' },
+                                  { label: 'Storage Temp', value: model.storageTemp || 'N/A' },
+                                  { label: 'Protection Rating', value: model.protectionRating || 'N/A' },
+                                  { label: 'Installation', value: model.installation || 'N/A' },
+                                  { label: 'Start Mode', value: model.startMode || 'N/A' },
+                                  { label: 'Communication', value: model.communication || 'N/A' },
+                                  { label: 'Input Voltage', value: model.inputVoltage || 'N/A' },
+                                  { label: 'Input Frequency', value: model.inputFrequency || 'N/A' },
+                                  { label: 'Work Altitude', value: model.workAltitude || 'N/A' },
+                                  { label: 'Charging Ports', value: model.chargingPorts || 'N/A' }
+                                ] : category === 'dcChargingStation' ? [
+                                  { label: 'Model Code', value: model.modelCode || 'N/A' },
+                                  { label: 'Rated Power', value: model.ratedPower || 'N/A' },
+                                  { label: 'Rated Current', value: model.ratedCurrent || 'N/A' },
+                                  { label: 'Connector Pin', value: model.connectorPin || 'N/A' }
+                                ] : null
+                              }
                             />
                           </div>
                         ))}
@@ -927,11 +973,16 @@ const Models = ({ productImage, category, modelsData: propModelsData }) => {
               </div>
             ) : (
               /* Fallback to standard view if grouping doesn't work */
-              <div className='flex overflow-x-auto scrollbar-hide gap-4 pb-4 pl-8 pr-8 md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 md:gap-6 md:px-8'>
+              <div className={`grid gap-6 px-8 ${
+                // Use custom grid layout for dcSuperFastChargingStation if configured
+                category === 'dcSuperFastChargingStation' && modelsData.sectionConfig?.gridLayout 
+                  ? `${modelsData.sectionConfig.gridLayout.mobile || 'grid-cols-1'} md:${modelsData.sectionConfig.gridLayout.tablet || 'grid-cols-2'} lg:${modelsData.sectionConfig.gridLayout.desktop || 'grid-cols-3'}`
+                  : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'
+              } auto-rows-fr overflow-hidden`}>
                 {filteredModels.map((model, index) => (
                   <div
                     key={model.modelCode || model.name || `model-${index}`}
-                    className='flex-shrink-0 w-72 md:w-auto'
+                    className='w-full overflow-hidden'
                   >
                     <ModelCard
                       image={model.image || productImage}
@@ -961,6 +1012,31 @@ const Models = ({ productImage, category, modelsData: propModelsData }) => {
                       }
                       phaseType={
                         model.phaseType || model.phase || model.phases || 'N/A'
+                      }
+                      customFields={
+                        category === 'dcSuperFastChargingStation' ? [
+                          { label: 'Maximum Power', value: model.maximumPower || 'N/A' },
+                          { label: 'Connector Type', value: model.connectorType || 'N/A' },
+                          { label: 'Output Voltage', value: model.outputVoltage || 'N/A' },
+                          { label: 'Output Current', value: model.outputCurrent || 'N/A' },
+                          { label: 'Dimensions', value: model.dimensions || 'N/A' },
+                          { label: 'Weight', value: model.weight || 'N/A' },
+                          { label: 'Operating Temp', value: model.operatingTemp || 'N/A' },
+                          { label: 'Storage Temp', value: model.storageTemp || 'N/A' },
+                          { label: 'Protection Rating', value: model.protectionRating || 'N/A' },
+                          { label: 'Installation', value: model.installation || 'N/A' },
+                          { label: 'Start Mode', value: model.startMode || 'N/A' },
+                          { label: 'Communication', value: model.communication || 'N/A' },
+                          { label: 'Input Voltage', value: model.inputVoltage || 'N/A' },
+                          { label: 'Input Frequency', value: model.inputFrequency || 'N/A' },
+                          { label: 'Work Altitude', value: model.workAltitude || 'N/A' },
+                          { label: 'Charging Ports', value: model.chargingPorts || 'N/A' }
+                        ] : category === 'dcChargingStation' ? [
+                          { label: 'Model Code', value: model.modelCode || 'N/A' },
+                          { label: 'Rated Power', value: model.ratedPower || 'N/A' },
+                          { label: 'Rated Current', value: model.ratedCurrent || 'N/A' },
+                          { label: 'Connector Pin', value: model.connectorPin || 'N/A' }
+                        ] : null
                       }
                     />
                   </div>
