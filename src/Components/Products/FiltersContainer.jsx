@@ -23,12 +23,12 @@ const FiltersContainer = ({
   setPhaseType
 }) => {
   return (
-    <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8'>
+    <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8 relative z-30'>
       {/* Mobile Filter Button */}
       <div className='lg:hidden mb-4 flex justify-end'>
         <motion.button
           onClick={() => setShowMobileFilters(true)}
-          className='border-2 border-blaupunkt-secondary text-blaupunkt-secondary bg-transparent px-4 py-2 rounded-lg font-myriad text-sm font-normal flex items-center gap-2 hover:bg-blaupunkt-secondary hover:text-white transition-colors'
+          className='border-2 border-blaupunkt-secondary text-blaupunkt-secondary bg-transparent px-4 py-2 rounded-lg font-myriad text-sm font-normal flex items-center gap-2  hover:text-white transition-colors'
           whileHover={{ scale: 1.03 }}
           whileTap={{ scale: 0.97 }}
         >

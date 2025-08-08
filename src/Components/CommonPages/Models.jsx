@@ -513,9 +513,9 @@ const Models = ({ productImage, category, modelsData: propModelsData }) => {
   ])
 
   return (
-    <div className='w-full py-6 overflow-hidden'>
+    <div className='w-full py-6'>
       {/* Header and Filters Container */}
-      <div className='w-full overflow-hidden'>
+      <div className='w-full'>
         {/* Mobile Layout - Stacked */}
         <div className='block lg:hidden'>
           <div>
@@ -559,9 +559,9 @@ const Models = ({ productImage, category, modelsData: propModelsData }) => {
         </div>
 
         {/* Desktop Layout - Single line with heading and filters */}
-        <div className='hidden lg:block'>
+        <div className='hidden lg:block relative z-40'>
           <div className='container mx-auto px-8'>
-            <div className='flex flex-row items-center justify-between py-4'>
+            <div className='flex flex-row items-center justify-between py-4 relative'>
               {/* Models Title with optional additional text */}
               <div className='flex items-center gap-3'>
                 <h1 className='text-4xl font-semibold text-gray-800'>Models</h1>
@@ -573,11 +573,11 @@ const Models = ({ productImage, category, modelsData: propModelsData }) => {
               </div>
 
               {/* All filters as dropdown buttons in a single row */}
-              <div className='flex items-center gap-4'>
+              <div className='flex items-center gap-4 relative z-50'>
                 {/* Sort By Filter */}
                 <div className='relative' ref={dropdownRefs.sortBy}>
                   <button
-                    className='flex items-center gap-1.5 bg-blaupunkt-primary-darker hover:bg-blaupunkt-primary-primary text-white py-2 px-3 rounded text-sm transition-colors duration-200'
+                    className='flex items-center gap-1.5 bg-blaupunkt-primary-darker hover:bg-blaupunkt-primary text-white py-2 px-3 rounded text-sm transition-colors duration-200'
                     onClick={() => setSortByOpen(!sortByOpen)}
                   >
                     <span>Sort: {sortBy}</span>
@@ -585,7 +585,7 @@ const Models = ({ productImage, category, modelsData: propModelsData }) => {
                   </button>
                   {/* Dropdown Menu */}
                   {sortByOpen && (
-                    <div className='absolute z-10 mt-1 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5'>
+                    <div className='absolute z-50 mt-1 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5'>
                       <div
                         className='py-1'
                         role='menu'
@@ -620,7 +620,7 @@ const Models = ({ productImage, category, modelsData: propModelsData }) => {
                 {/* Product Type Filter */}
                 <div className='relative' ref={dropdownRefs.productType}>
                   <button
-                    className='flex items-center gap-1.5 bg-blaupunkt-primary-darker hover:bg-blaupunkt-primary-primary text-white py-2 px-3 rounded text-sm transition-colors duration-200'
+                    className='flex items-center gap-1.5 bg-blaupunkt-primary-darker hover:bg-blaupunkt-primary text-white py-2 px-3 rounded text-sm transition-colors duration-200'
                     onClick={() => setProductTypeOpen(!productTypeOpen)}
                   >
                     <span>Type: {productType}</span>
@@ -628,7 +628,7 @@ const Models = ({ productImage, category, modelsData: propModelsData }) => {
                   </button>
                   {/* Dropdown Menu */}
                   {productTypeOpen && (
-                    <div className='absolute z-10 mt-1 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5'>
+                    <div className='absolute z-50 mt-1 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5'>
                       <div
                         className='py-1'
                         role='menu'
@@ -663,7 +663,7 @@ const Models = ({ productImage, category, modelsData: propModelsData }) => {
                 {/* Charging Speed Filter */}
                 <div className='relative' ref={dropdownRefs.chargingSpeed}>
                   <button
-                    className='flex items-center gap-1.5 bg-blaupunkt-primary-darker hover:bg-blaupunkt-primary-primary text-white py-2 px-3 rounded text-sm transition-colors duration-200'
+                    className='flex items-center gap-1.5 bg-blaupunkt-primary-darker hover:bg-blaupunkt-primary text-white py-2 px-3 rounded text-sm transition-colors duration-200'
                     onClick={() => setChargingSpeedOpen(!chargingSpeedOpen)}
                   >
                     <span>Speed: {chargingSpeed}</span>
@@ -671,7 +671,7 @@ const Models = ({ productImage, category, modelsData: propModelsData }) => {
                   </button>
                   {/* Dropdown Menu */}
                   {chargingSpeedOpen && (
-                    <div className='absolute z-10 mt-1 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5'>
+                    <div className='absolute z-50 mt-1 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5'>
                       <div
                         className='py-1'
                         role='menu'
@@ -701,7 +701,7 @@ const Models = ({ productImage, category, modelsData: propModelsData }) => {
                 {/* Connector Type Filter */}
                 <div className='relative' ref={dropdownRefs.connectorType}>
                   <button
-                    className='flex items-center gap-1.5 bg-blaupunkt-primary-darker hover:bg-blaupunkt-primary-primary text-white py-2 px-3 rounded text-sm transition-colors duration-200'
+                    className='flex items-center gap-1.5 bg-blaupunkt-primary-darker hover:bg-blaupunkt-primary text-white py-2 px-3 rounded text-sm transition-colors duration-200'
                     onClick={() => setConnectorTypeOpen(!connectorTypeOpen)}
                   >
                     <span>Connector: {connectorType}</span>
@@ -709,7 +709,7 @@ const Models = ({ productImage, category, modelsData: propModelsData }) => {
                   </button>
                   {/* Dropdown Menu */}
                   {connectorTypeOpen && (
-                    <div className='absolute z-10 mt-1 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5'>
+                    <div className='absolute z-50 mt-1 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5'>
                       <div
                         className='py-1'
                         role='menu'
@@ -747,7 +747,7 @@ const Models = ({ productImage, category, modelsData: propModelsData }) => {
                   </button>
                   {/* Dropdown Menu */}
                   {phaseTypeOpen && (
-                    <div className='absolute z-10 mt-1 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5'>
+                    <div className='absolute z-50 mt-1 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5'>
                       <div
                         className='py-1'
                         role='menu'
@@ -807,7 +807,7 @@ const Models = ({ productImage, category, modelsData: propModelsData }) => {
           </div>
         </div>
       </div>      {/* Product Grid */}
-      <div className='container mx-auto py-8 overflow-hidden'>
+      <div className='container mx-auto py-8'>
         {' '}
         {isLoading ? (
           <div className={`grid gap-6 px-8 ${
