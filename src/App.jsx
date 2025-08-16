@@ -15,6 +15,7 @@ import PortableEVCharging from './Pages/PortableEVCharging'
 import NotFound from './Pages/NotFound'
 import Services from './Pages/Services'
 import Company from './Pages/Company'
+import WhatsAppButton from './Components/Common/WhatsAppButton'
 
 
 const App = () => {
@@ -37,6 +38,8 @@ const App = () => {
             <Route path='*' element={<NotFound />} />
           </Routes>
         </main>
+  {/* Global floating WhatsApp button */}
+  <WhatsAppButton />
         <Footer />
       </div>
     </Router>
