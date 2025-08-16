@@ -20,7 +20,9 @@ const FiltersContainer = ({
   connectorType,
   setConnectorType,
   phaseType,
-  setPhaseType
+  setPhaseType,
+  productsPerPage,
+  setProductsPerPage
 }) => {
   return (
     <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8 relative z-30'>
@@ -50,7 +52,9 @@ const FiltersContainer = ({
         connectorType={connectorType}
         setConnectorType={setConnectorType}
         phaseType={phaseType}
-        setPhaseType={setPhaseType}
+  setPhaseType={setPhaseType}
+  productsPerPage={productsPerPage}
+  setProductsPerPage={setProductsPerPage}
       />
 
       {/* Desktop Filters */}

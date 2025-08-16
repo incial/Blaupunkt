@@ -24,6 +24,13 @@ const HeroSection = ({
       ? thumbnails[activeThumbIndex].alt || imageAlt || 'Product Image'
       : imageAlt || 'Product Image'
 
+  // Build WhatsApp contact link for the Connect button
+  const waNumber = (import.meta.env?.VITE_WHATSAPP_NUMBER || '971558882595').replace(/[^\d]/g, '')
+  const waMessage = import.meta.env?.VITE_WHATSAPP_MESSAGE || `Hello! I would like to know more about ${title}.`
+  const waHref = waNumber
+    ? `https://wa.me/${waNumber}?text=${encodeURIComponent(waMessage)}`
+    : '/contact'
+
   return (
     <div className='w-full bg-white py-16 px-6 lg:py-0'>
       {/* Container */}
@@ -52,9 +59,15 @@ const HeroSection = ({
               </div>
               {/* Connect Button */}
               <div className='flex justify-start mt-auto'>
-                <button className='bg-blaupunkt-primary-darker text-white px-6 py-3 lg:px-8 lg:py-4 rounded-2xl font-semibold font-myriad text-[14px] lg:text-base xl:text-lg leading-[1.2] hover:bg-blaupunkt-primary transition-all duration-500 ease-out hover:scale-105 hover:shadow-lg transform'>
+                <a
+                  href={waHref}
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  className='bg-blaupunkt-primary-darker text-white px-6 py-3 lg:px-8 lg:py-4 rounded-2xl font-semibold font-myriad text-[14px] lg:text-base xl:text-lg leading-[1.2] hover:bg-blaupunkt-primary transition-all duration-500 ease-out hover:scale-105 hover:shadow-lg transform'
+                  aria-label='Connect via WhatsApp'
+                >
                   {buttonText || 'Connect'}
-                </button>
+                </a>
               </div>
             </div>
           </div>

@@ -25,14 +25,14 @@ const FilterDropdown = ({
     >
       {label}:
     </span>
-    <div className='relative min-w-0 flex-1 max-w-full'>
+  <div className='relative min-w-0 flex-1 max-w-full'>
       <select
         value={value}
         onChange={e => setValue(e.target.value)}
-        className={`w-full max-w-full appearance-none ${
+    className={`w-full max-w-full appearance-none ${
           isMobile
-            ? 'bg-white border-2 border-blaupunkt-secondary text-blaupunkt-dark px-4 py-3 hover:border-blaupunkt-primary focus:border-blaupunkt-primary focus:outline-none shadow-sm'
-            : 'bg-blaupunkt-secondary text-white px-3 sm:px-4 py-2 hover:bg-blaupunkt-secondary/90'
+      ? 'bg-white border-2 border-blaupunkt-secondary text-blaupunkt-dark px-3 py-2 hover:border-blaupunkt-primary focus:border-blaupunkt-primary focus:outline-none shadow-sm'
+      : 'bg-blaupunkt-secondary text-white px-3 sm:px-3 py-2 hover:bg-blaupunkt-secondary/90'
         } pr-10 rounded-lg font-myriad text-sm font-normal cursor-pointer transition-all duration-200 overflow-hidden truncate`}
         style={{
           maxWidth: '100%',

@@ -13,7 +13,7 @@ const Pagination = ({
   handleNextPage,
 }) =>
   totalPages > 1 && (
-    <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 mt-6 sm:mt-8 w-full px-2">
+    <div className="flex flex-row flex-wrap items-center justify-center gap-2 sm:gap-4 mt-6 sm:mt-8 w-full px-2">
       {/* Previous Button */}
       <motion.button
         onClick={handlePreviousPage}

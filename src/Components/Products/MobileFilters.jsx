@@ -26,7 +26,9 @@ const MobileFilters = ({
   connectorType,
   setConnectorType,
   phaseType,
-  setPhaseType
+  setPhaseType,
+  productsPerPage,
+  setProductsPerPage
 }) => (
   <AnimatePresence>
     {showMobileFilters && (
@@ -145,13 +147,23 @@ const MobileFilters = ({
             {/* Enhanced Apply Button */}
             <div className='sticky bottom-0 px-6 py-5 bg-white border-t-2 border-gray-100 shadow-lg'>
               <div className='space-y-3'>
+                {/* Items per page - compact */}
+                <div className='border-t border-gray-200 pt-6'>
+                  <FilterDropdown
+                    label='Items'
+                    value={String(productsPerPage)}
+                    setValue={(v) => setProductsPerPage(parseInt(v, 10))}
+                    options={['12','24','48','96']}
+                    isMobile={true}
+                  />
+                </div>
                 <motion.button
                   onClick={() => setShowMobileFilters(false)}
                   className='w-full bg-blaupunkt-primary text-white px-6 py-4 rounded-xl font-myriad text-base font-semibold hover:bg-blaupunkt-primary transition-all duration-200 shadow-lg'
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  Apply Filters
+                  Apply
                 </motion.button>
               </div>
             </div>
