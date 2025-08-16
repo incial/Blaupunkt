@@ -294,7 +294,14 @@ const Models = ({ productImage, category, modelsData: propModelsData }) => {
       'All',
       ...new Set(
         models
-          .map(model => model.connectorType || model.connector)
+          .map(model => {
+            // Prefer explicit connector type; for DC stations, fall back to connectorPin
+            return (
+              model.connectorType ||
+              model.connector ||
+              (category === 'dcChargingStation' ? model.connectorPin : undefined)
+            )
+          })
           .filter(Boolean)
       )
     ]
@@ -307,7 +314,7 @@ const Models = ({ productImage, category, modelsData: propModelsData }) => {
     ]
 
     return { connectorTypes, phaseTypes }
-  }, [modelsData.models])
+  }, [modelsData.models, category])
 
   // Filter models based on current filters
   useEffect(() => {
@@ -352,7 +359,10 @@ const Models = ({ productImage, category, modelsData: propModelsData }) => {
       if (connectorType !== 'All') {
         filtered = filtered.filter(model => {
           const modelConnectorType =
-            model.connectorType || model.connector || ''
+            model.connectorType ||
+            model.connector ||
+            (category === 'dcChargingStation' ? model.connectorPin : '') ||
+            ''
           return modelConnectorType
             .toLowerCase()
             .includes(connectorType.toLowerCase().replace('type ', ''))
@@ -378,8 +388,16 @@ const Models = ({ productImage, category, modelsData: propModelsData }) => {
       // Apply charging speed filter
       if (chargingSpeed !== 'All') {
         filtered = filtered.filter(model => {
-          const current = parseInt(model.current || model.ratedCurrent || '0')
-          const power = parseInt(model.power || model.maxPower || '0')
+          // Use ratedCurrent/current; for DC stations also consider ratedPower
+          const current = parseInt(
+            (model.current || model.ratedCurrent || '').toString()
+              .replace(/[^\d]/g, '') || '0'
+          )
+          const power = parseInt(
+            (model.power || model.maxPower || model.ratedPower || '')
+              .toString()
+              .replace(/[^\d]/g, '') || '0'
+          )
 
           switch (chargingSpeed) {
             case 'Slow':

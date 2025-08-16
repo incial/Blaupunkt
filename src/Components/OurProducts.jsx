@@ -9,38 +9,58 @@ const OurProducts = () => {
   const navigate = useNavigate()
     // Get the first product model from each category
   const getFirstProduct = (categoryData, categoryLink) => {
-    let firstModel = null;
-    
-    // For charging cables
+    let firstModel = null
+
+    // For data structures that expose a flat models array
     if (categoryData.modelsData?.models?.length > 0) {
-      firstModel = categoryData.modelsData.models[0];
+      firstModel = categoryData.modelsData.models[0]
     }
-    // For charging stations
+    // For sectioned data structures (e.g., AC Charging Stations)
     else if (categoryData.modelsData?.sections?.length > 0) {
-      const firstSection = categoryData.modelsData.sections[0];
-      if (firstSection.categories?.length > 0 && firstSection.categories[0].models?.length > 0) {
-        firstModel = firstSection.categories[0].models[0];
+      const firstSection = categoryData.modelsData.sections[0]
+      if (
+        firstSection.categories?.length > 0 &&
+        firstSection.categories[0].models?.length > 0
+      ) {
+        firstModel = firstSection.categories[0].models[0]
       }
     }
-    
+
+    const buildSpecs = model => {
+      if (!model) return ''
+      const tokens = []
+      const power = model.maximumPower || model.ratedPower || model.power
+      const current = model.current || model.ratedCurrent
+      const lengthOrDim = model.cableLength || model.dimensions
+      const phase = model.phaseType || model.phase
+      const connector = model.connectorType || model.connectorPin || model.connector
+
+      if (power) tokens.push(power)
+      if (current) tokens.push(current)
+      if (lengthOrDim) tokens.push(lengthOrDim)
+      if (phase) tokens.push(phase)
+      if (connector) tokens.push(connector)
+      return tokens.join(' | ')
+    }
+
     if (firstModel) {
       return {
         title: categoryData.title,
-        specifications: `${firstModel.current || firstModel.maximumPower || ''} | ${firstModel.cableLength || ''} | ${firstModel.phaseType || ''} | ${firstModel.connectorType || ''}`.replace(/^\s*\|\s*|\s*\|\s*$/g, '').replace(/\s*\|\s*\|\s*/g, ' | '),
+        specifications: buildSpecs(firstModel) || 'See details',
         productCode: firstModel.modelCode || '',
         image: firstModel.image || categoryData.mainImage,
         link: categoryLink
-      };
+      }
     }
-    
+
     return {
       title: categoryData.title,
       specifications: 'See details',
       productCode: '',
       image: categoryData.mainImage,
       link: categoryLink
-    };
-  };
+    }
+  }
 
   const productData = [
     {
