@@ -165,20 +165,24 @@ const ContactUs = () => {
                     <div className="md:py-8 px-8 flex flex-col items-center md:items-start">
                         <h3 className="text-xl font-semibold text-blaupunkt-primary-darker mb-3 font-myriad">Head Office</h3>
                         <div className="space-y-3 text-blaupunkt-secondary text-sm text-center md:text-left">
-                            <p>221B Baker St<br />London NW1 6XE, Germany</p>
-                        </div>
-                        <div className="space-y-3 text-blaupunkt-secondary text-sm text-center md:text-left mt-2 font-myriad">
-                            <p>contact@loaunknt.com<br />+91 (Phone Number)</p>
+                            <p>BLP EV Systems ApS<br />Ediths Allé 8<br />5250 Odense SV<br />Denmark</p>
                         </div>
                     </div>
 
                     <div className="md:py-8 px-8 flex flex-col items-center md:items-end">
                         <h3 className="text-xl font-semibold text-blaupunkt-primary-darker mb-3 font-myriad">UAE Office</h3>
                         <div className="space-y-3 text-blaupunkt-secondary text-sm text-center md:text-right">
-                            <p>221B Baker St<br />London NW1 6XE, Germany</p>
+                            <p>
+                                BLP EV Systems – FZCO<br />
+                                Building A1, Dubai Digital Park<br />
+                                Dubai Silicon Oasis, Dubai<br />
+                                United Arab Emirates
+                            </p>
                         </div>
                         <div className="space-y-3 text-blaupunkt-secondary text-sm text-center md:text-right mt-2 font-myriad">
-                            <p>sale@loaunknt.com<br />+971 (Phone Number)</p>
+                            <p>
+                                TEL: <a href="tel:+971558882595" className="text-blue-600 hover:underline">+971 55 888 2595</a>
+                            </p>
                         </div>
                     </div>
                 </div>
