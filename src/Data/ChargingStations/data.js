@@ -50,7 +50,7 @@ const createMontaIntegrationData = (isActive = true) => ({
 // =============================================================================
 
 export const chargingStationsData = {
-  title: 'Charging Stations',
+  title: 'AC Charging Stations',
   description:
     'Reliable and efficient charging solutions for your electric vehicle.',
   active: true,

@@ -1,7 +1,10 @@
 import React, { useState } from 'react'
 import { IoChevronDown } from 'react-icons/io5'
 import heroVideoSrc from '../assets/Videos/HeoIntro.mp4'
+import { createLogger } from '../utils/logger'
 // import heroImageSrc from '../assets/Images/HeroImage.png' // File doesn't exist - commented out
+
+const logger = createLogger('HeroSection')
 
 const HeroSection = () => {
   const [isVideoLoaded, setIsVideoLoaded] = useState(false)
@@ -52,11 +55,11 @@ const HeroSection = () => {
               }`}
               style={{ zIndex: 1 }}
               onError={e => {
-                console.error('Video failed to load:', e)
+                logger.error('Video failed to load:', e)
                 // Keep showing the image if video fails
                 setShowVideo(false)
               }}
-              onLoadStart={() => console.log('Video loading started')}
+              onLoadStart={() => logger.debug('Video loading started')}
               onCanPlay={handleVideoLoaded}
               onLoadedData={handleVideoLoaded}
             >

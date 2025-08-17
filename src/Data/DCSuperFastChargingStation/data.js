@@ -43,7 +43,7 @@ const createMontaIntegrationData = (isActive = true) => ({
 // =============================================================================
 
 export const dcSuperFastChargingStationData = {
-  title: 'DC Super Fast Charging Station',
+  title: 'DC Dual Fast Charging Station',
   description:
     'Ultra-high power DC charging for the fastest charging experience.',
   active: true,
@@ -180,13 +180,13 @@ export const dcSuperFastChargingStationData = {
         description: '',
         models: [
           {
-            modelCode: 'BPDC40EU2G',
+            modelCode: 'BPDC40KW2G',
             maximumPower: '40kW',
             connectorType: 'CCS2',
             outputVoltage: '150V - 1000V DC',
             outputCurrent: '5A - 125A',
             dimensions: '780 × 580 × 205.5 mm (H × W × D)',
-            weight: '368 kg',
+            weight: '327 kg',
             operatingTemp: '-20°C to +55°C',
             storageTemp: '-40°C to +85°C',
             protectionRating: 'IP54',
