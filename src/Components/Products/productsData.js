@@ -3,6 +3,7 @@ import { chargingStationsData } from "../../Data/ChargingStations/data.js";
 import { dcChargingStationData } from "../../Data/DCChargingStation/data.js";
 import { portableEvChargingData } from "../../Data/PortableEVCharging/data.js";
 import { dcSuperFastChargingStationData } from "../../Data/DCSuperFastChargingStation/data.js";
+// import { filterProducts } from "../../utils/productExclusions.js"; // TODO: Fix import issue
 
 /**
  * Filter options constants for product filtering and sorting
@@ -256,5 +257,5 @@ const buildProducts = () => {
   return deduped;
 };
 
-export const PRODUCTS = buildProducts();
+export const PRODUCTS = buildProducts(); // TODO: Apply filterProducts when import is fixed
 export const SAMPLE_PRODUCTS = PRODUCTS;

@@ -3,6 +3,9 @@ import { Toaster, toast } from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
 import Breadcrumb from './Common/Breadcrumb';
 import { createSimpleBreadcrumbs } from '../Data/Common/utilities';
+import { createLogger } from '../utils/logger';
+
+const logger = createLogger('ContactUs');
 
 const ContactUs = () => {
     const navigate = useNavigate();
@@ -49,7 +52,7 @@ const ContactUs = () => {
                 toast.error('Failed to send message. Please try again.', { duration: 6000 });
             }
         } catch (err) {
-            console.error(err);
+            logger.error('Contact form submission error:', err);
             toast.error('⚠️ An error occurred. Please try again.', { duration: 6000 });
         } finally {
             setLoading(false);

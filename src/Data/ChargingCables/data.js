@@ -155,7 +155,7 @@ export const chargingCablesData = {
         current: '16A',
         cableLength: '8 Meters',
         phaseType: 'Single - Phase',
-        ipClass: '54',
+        ipClass: '65',
         popular: false,
         image: chargingCableImages.cablePd2
       },
@@ -165,7 +165,7 @@ export const chargingCablesData = {
         current: '32A',
         cableLength: '8 Meters',
         phaseType: 'Single - Phase',
-        ipClass: '54',
+        ipClass: '65',
         popular: false,
         image: chargingCableImages.cablePd2
       },
@@ -175,7 +175,7 @@ export const chargingCablesData = {
         current: '16A',
         cableLength: '8 Meters',
         phaseType: 'Three - Phase',
-        ipClass: '54',
+        ipClass: '65',
         popular: false,
         image: chargingCableImages.cablePd2
       },
@@ -185,7 +185,7 @@ export const chargingCablesData = {
         current: '32A',
         cableLength: '8 Meters',
         phaseType: 'Three - Phase',
-        ipClass: '54',
+        ipClass: '65',
         popular: false,
         image: chargingCableImages.cablePd2
       },
@@ -195,7 +195,7 @@ export const chargingCablesData = {
         current: '16A',
         cableLength: '5 Meters',
         phaseType: 'Single - Phase',
-        ipClass: '54',
+        ipClass: '65',
         popular: false,
         image: chargingCableImages.cablePd2
       },
@@ -205,7 +205,7 @@ export const chargingCablesData = {
         current: '32A',
         cableLength: '5 Meters',
         phaseType: 'Single - Phase',
-        ipClass: '54',
+        ipClass: '65',
         popular: false,
         image: chargingCableImages.cablePd2
       },

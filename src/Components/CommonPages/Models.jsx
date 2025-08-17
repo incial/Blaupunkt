@@ -8,6 +8,10 @@ import { chargingCablesConfig } from '../../Data/ChargingCables/index.js'
 import { dcChargingStationConfig } from '../../Data/DCChargingStation/index.js'
 import { dcSuperFastChargingStationConfig } from '../../Data/DCSuperFastChargingStation/index.js'
 import { portableEvChargingConfig } from '../../Data/PortableEVCharging/index.js'
+// import { filterProducts } from '../../utils/productExclusions.js' // TODO: Fix import issue
+import { createLogger } from '../../utils/logger'
+
+const logger = createLogger('Models')
 
 // Simple icon components
 const ChevronDownIcon = ({ className }) => (
@@ -179,7 +183,7 @@ const Models = ({ productImage, category, modelsData: propModelsData }) => {
           return '/src/assets/Images/charger.jpg' // Fallback image
       }
     } catch (error) {
-      console.error('Error getting models background image:', error)
+      logger.error('Error getting models background image:', error)
       return '/src/assets/Images/charger.jpg' // Fallback image
     }
   }
@@ -249,7 +253,7 @@ const Models = ({ productImage, category, modelsData: propModelsData }) => {
           }
       }
     } catch (error) {
-      console.error('Error getting models data:', error)
+      logger.error('Error getting models data:', error)
       return {
         models: [],
         groupingMethod: 'length',
@@ -258,37 +262,49 @@ const Models = ({ productImage, category, modelsData: propModelsData }) => {
     }
   }, [category, propModelsData])
 
-  const [filteredModels, setFilteredModels] = useState(modelsData.models || [])
+  // Apply product exclusions to models data
+  const filteredModelsData = useMemo(() => {
+    if (!modelsData.models || !Array.isArray(modelsData.models)) {
+      return modelsData
+    }
+
+    return {
+      ...modelsData,
+      models: modelsData.models // TODO: Apply filterProducts when import is fixed
+    }
+  }, [modelsData])
+
+  const [filteredModels, setFilteredModels] = useState(filteredModelsData.models || [])
   const [groupedModels, setGroupedModels] = useState({})
 
   // Update filtered models when modelsData changes
   useEffect(() => {
-    setFilteredModels(modelsData.models || [])
-  }, [modelsData])
+    setFilteredModels(filteredModelsData.models || [])
+  }, [filteredModelsData])
 
   // The grouping method is taken directly from modelsData
 
   // Update grouped models when filtered models change or grouping method changes
   useEffect(() => {
     if (
-      modelsData.groupingMethod === 'none' ||
+      filteredModelsData.groupingMethod === 'none' ||
       category === 'dcChargingStation' ||
       category === 'portableEVCharging'
     ) {
       // For 'none' grouping or specific categories, put all models under a single key to avoid categories
       setGroupedModels({ '': filteredModels })
-    } else if (modelsData.groupingMethod === 'category') {
+    } else if (filteredModelsData.groupingMethod === 'category') {
       setGroupedModels(groupModelsByCategory(filteredModels))
-    } else if (modelsData.groupingMethod === 'section') {
+    } else if (filteredModelsData.groupingMethod === 'section') {
       setGroupedModels(groupModelsByCableLength(filteredModels))
     } else {
       setGroupedModels(groupModelsByCableLength(filteredModels))
     }
-  }, [filteredModels, modelsData.groupingMethod, category])
+  }, [filteredModels, filteredModelsData.groupingMethod, category])
 
   // Get unique filter options from current models data using useMemo
   const { connectorTypes, phaseTypes } = useMemo(() => {
-    const models = modelsData.models || []
+    const models = filteredModelsData.models || []
 
     const connectorTypes = [
       'All',
@@ -314,7 +330,7 @@ const Models = ({ productImage, category, modelsData: propModelsData }) => {
     ]
 
     return { connectorTypes, phaseTypes }
-  }, [modelsData.models, category])
+  }, [filteredModelsData.models, category])
 
   // Filter models based on current filters
   useEffect(() => {
@@ -862,8 +878,8 @@ const Models = ({ productImage, category, modelsData: propModelsData }) => {
                   .sort(([keyA], [keyB]) => {
                     // For cable length or section, sort numerically
                     if (
-                      modelsData.groupingMethod === 'length' ||
-                      modelsData.groupingMethod === 'section'
+                      filteredModelsData.groupingMethod === 'length' ||
+                      filteredModelsData.groupingMethod === 'section'
                     ) {
                       const numA = parseInt(keyA.match(/^\d+/) || '999')
                       const numB = parseInt(keyB.match(/^\d+/) || '999')
