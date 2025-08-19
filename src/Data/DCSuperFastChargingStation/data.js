@@ -501,6 +501,14 @@ export const dcSuperFastChargingStationData = {
             size: '2.8 MB',
             type: 'PDF',
             modelCodes: ['BPDC60EU', 'BPDC160EU']
+          },
+          {
+            name: 'BPDC40KEU - Technical Specifications',
+            description: 'Complete technical specifications for BPDC40KW model',
+            url: '/src/assets/pdf/FastStation/datasheet/BPDC40KW.pdf',
+            size: '2.5 MB',
+            type: 'PDF',
+            modelCodes: ['BPDC40KW']
           }
         ]
       },
