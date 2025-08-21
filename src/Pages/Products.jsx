@@ -2,8 +2,11 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useSearchParams } from 'react-router-dom'
 import Navbar from '../Components/Common/Navbar'
+import Breadcrumb from '../Components/Common/Breadcrumb'
+import { createSimpleBreadcrumbs } from '../Data/Common/utilities'
 import { SAMPLE_PRODUCTS } from '../Components/Products/productsData'
 import SearchBar from '../Components/Products/SearchBar'
+import FilterDropdown from '../Components/Products/FilterDropdown'
 import FiltersContainer from '../Components/Products/FiltersContainer'
 import ProductGrid from '../Components/Products/ProductGrid'
 import Pagination from '../Components/Products/Pagination'
@@ -26,7 +29,7 @@ const Products = () => {
 
   // Pagination state
   const [currentPage, setCurrentPage] = useState(1)
-  const [productsPerPage] = useState(12) // Desktop: 12 products (3 rows × 4 columns)
+  const [productsPerPage, setProductsPerPage] = useState(12) // Desktop default
   const [isMobile, setIsMobile] = useState(false)
 
   // Initialize search query from URL parameters
@@ -69,10 +72,20 @@ const Products = () => {
     phaseType
   })
 
-  const sortedProducts = sortProducts(filteredProducts, sortBy)
+  // Group by product type for a more logical default ordering (no extra buttons)
+  const typeOrder = ['Charging Stations', 'DC Charging Station', 'DC Fast Charging', 'Cables', 'Portable Charging']
+  const grouped = [...filteredProducts].sort((a, b) => {
+    const ai = typeOrder.indexOf(a.type)
+    const bi = typeOrder.indexOf(b.type)
+    const aRank = ai === -1 ? Number.MAX_SAFE_INTEGER : ai
+    const bRank = bi === -1 ? Number.MAX_SAFE_INTEGER : bi
+    if (aRank !== bRank) return aRank - bRank
+    return 0
+  })
+  const sortedProducts = sortProducts(grouped, sortBy)
 
   // Pagination logic
-  const currentProductsPerPage = isMobile ? 6 : productsPerPage // Mobile: 6, Desktop: 12
+  const currentProductsPerPage = productsPerPage
   const indexOfLastProduct = currentPage * currentProductsPerPage
   const indexOfFirstProduct = indexOfLastProduct - currentProductsPerPage
   const currentProducts = sortedProducts.slice(indexOfFirstProduct, indexOfLastProduct)
@@ -111,6 +124,8 @@ const Products = () => {
     setSortBy('Popularity')
     setCurrentPage(1)
   }
+  
+  const breadcrumbItems = createSimpleBreadcrumbs('Products')
 
   return (
     <div className="min-h-screen bg-white">
@@ -119,21 +134,9 @@ const Products = () => {
       {/* Main Content */}
       <main className="pt-24 lg:pt-28">
         {/* Breadcrumb */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6">
-          <div className="flex items-center justify-center gap-2 text-xs sm:text-sm overflow-x-auto">
-            <span className="text-blaupunkt-secondary-light font-myriad whitespace-nowrap">
-              <Link
-                to="/"
-                className="text-blaupunkt-secondary-light hover:text-blaupunkt-secondary transition-colors whitespace-nowrap font-myriad"
-              >
-                Home
-              </Link>
-            </span>
-            <span className="text-blaupunkt-secondary-light font-myriad">/</span>
-            <span className="text-blaupunkt-secondary font-myriad whitespace-nowrap">Products</span>
-          </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Breadcrumb items={breadcrumbItems} />
         </div>
-
 
         {/* Page Header */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
@@ -162,7 +165,21 @@ const Products = () => {
           setConnectorType={setConnectorType}
           phaseType={phaseType}
           setPhaseType={setPhaseType}
+          productsPerPage={productsPerPage}
+          setProductsPerPage={setProductsPerPage}
         />
+
+        {/* Items per page selector (desktop only) */}
+        <div className="hidden lg:flex max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-4 justify-end">
+          <div className="w-36">
+            <FilterDropdown
+              label="Items"
+              value={String(productsPerPage)}
+              setValue={(v) => { setProductsPerPage(parseInt(v, 10)); setCurrentPage(1) }}
+              options={["12","24","48","96"]}
+            />
+          </div>
+        </div>
 
         {/* Products Grid */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">

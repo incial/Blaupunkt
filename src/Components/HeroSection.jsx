@@ -1,7 +1,10 @@
 import React, { useState } from 'react'
 import { IoChevronDown } from 'react-icons/io5'
 import heroVideoSrc from '../assets/Videos/HeoIntro.mp4'
+import { createLogger } from '../utils/logger'
 // import heroImageSrc from '../assets/Images/HeroImage.png' // File doesn't exist - commented out
+
+const logger = createLogger('HeroSection')
 
 const HeroSection = () => {
   const [isVideoLoaded, setIsVideoLoaded] = useState(false)
@@ -52,11 +55,11 @@ const HeroSection = () => {
               }`}
               style={{ zIndex: 1 }}
               onError={e => {
-                console.error('Video failed to load:', e)
+                logger.error('Video failed to load:', e)
                 // Keep showing the image if video fails
                 setShowVideo(false)
               }}
-              onLoadStart={() => console.log('Video loading started')}
+              onLoadStart={() => logger.debug('Video loading started')}
               onCanPlay={handleVideoLoaded}
               onLoadedData={handleVideoLoaded}
             >
@@ -106,7 +109,7 @@ const HeroSection = () => {
             </div>
             {/* Navigation bar */}
             <div className='flex gap-1.5'>
-              <div className='w-16 lg:w-24 h-1 lg:h-1.25 bg-blaupunkt-primary-dark rounded-2xl cursor-pointer hover:scale-110 transition-transform'></div>
+              <div className='w-16 lg:w-24 h-1 lg:h-1.25 bg-blaupunkt-primary rounded-2xl cursor-pointer hover:scale-110 transition-transform'></div>
               <div className='w-8 lg:w-10 h-1 lg:h-1.25 bg-blaupunkt-secondary-light rounded-2xl cursor-pointer hover:scale-110 transition-transform hover:bg-blaupunkt-secondary'></div>
               <div className='w-8 lg:w-10 h-1 lg:h-1.25 bg-blaupunkt-secondary-light rounded-2xl cursor-pointer hover:scale-110 transition-transform hover:bg-blaupunkt-secondary'></div>
             </div>

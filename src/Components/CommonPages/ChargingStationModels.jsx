@@ -109,9 +109,9 @@ const ChargingStationModels = ({ category }) => {
   return (
     <div className='w-full'>
       {/* Desktop Layout - Single line with heading and filters */}
-      <div className='hidden lg:block'>
+      <div className='hidden lg:block relative z-40'>
         <div className='container mx-auto px-8'>
-          <div className='flex flex-row items-center justify-between py-4'>
+          <div className='flex flex-row items-center justify-between py-4 relative'>
             {/* Models Title with optional additional text */}
             <div className="flex items-center gap-3">
               <h1 className='text-4xl font-semibold text-gray-800'>{modelsData.title || 'Models'}</h1>
@@ -121,11 +121,11 @@ const ChargingStationModels = ({ category }) => {
             </div>
 
             {/* All filters as dropdown buttons in a single row */}
-            <div className='flex items-center gap-4'>
+            <div className='flex items-center gap-4 relative z-50'>
               {/* Sort By Filter */}
               <div className='relative' ref={sortByRef}>
                 <button
-                  className='flex items-center gap-1.5 bg-blaupunkt-primary-darker hover:bg-blaupunkt-primary-dark text-white py-2 px-3 rounded text-sm transition-colors duration-200'
+                  className='flex items-center gap-1.5 bg-blaupunkt-primary-darker hover:bg-blaupunkt-primary text-white py-2 px-3 rounded text-sm transition-colors duration-200'
                   onClick={() => setSortByOpen(!sortByOpen)}
                 >
                   <span>Sort: {sortBy}</span>
@@ -133,7 +133,7 @@ const ChargingStationModels = ({ category }) => {
                 </button>
                 {/* Dropdown Menu */}
                 {sortByOpen && (
-                  <div className='absolute z-10 mt-1 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5'>
+                  <div className='absolute z-50 mt-1 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5'>
                     <div className='py-1' role='menu' aria-orientation='vertical'>
                       {['Popularity', 'Price: Low to High', 'Price: High to Low', 'Newest'].map(option => (
                         <button
@@ -159,7 +159,7 @@ const ChargingStationModels = ({ category }) => {
               {/* Charging Speed Filter */}
               <div className='relative' ref={chargingSpeedRef}>
                 <button
-                  className='flex items-center gap-1.5 bg-blaupunkt-primary-darker hover:bg-blaupunkt-primary-dark text-white py-2 px-3 rounded text-sm transition-colors duration-200'
+                  className='flex items-center gap-1.5 bg-blaupunkt-primary-darker hover:bg-blaupunkt-primary text-white py-2 px-3 rounded text-sm transition-colors duration-200'
                   onClick={() => setChargingSpeedOpen(!chargingSpeedOpen)}
                 >
                   <span>Speed: {chargingSpeed}</span>
@@ -167,7 +167,7 @@ const ChargingStationModels = ({ category }) => {
                 </button>
                 {/* Dropdown Menu */}
                 {chargingSpeedOpen && (
-                  <div className='absolute z-10 mt-1 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5'>
+                  <div className='absolute z-50 mt-1 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5'>
                     <div className='py-1' role='menu' aria-orientation='vertical'>
                       {['All', 'Slow', 'Fast', 'Rapid'].map(option => (
                         <button
@@ -193,7 +193,7 @@ const ChargingStationModels = ({ category }) => {
               {/* Phase Type Filter */}
               <div className='relative' ref={phaseTypeRef}>
                 <button
-                  className='flex items-center gap-1.5 bg-blaupunkt-primary-darker hover:bg-blaupunkt-primary-dark text-white py-2 px-3 rounded text-sm transition-colors duration-200'
+                  className='flex items-center gap-1.5 bg-blaupunkt-primary-darker hover:bg-blaupunkt-primary text-white py-2 px-3 rounded text-sm transition-colors duration-200'
                   onClick={() => setPhaseTypeOpen(!phaseTypeOpen)}
                 >
                   <span>Phase: {phaseType}</span>
@@ -201,7 +201,7 @@ const ChargingStationModels = ({ category }) => {
                 </button>
                 {/* Dropdown Menu */}
                 {phaseTypeOpen && (
-                  <div className='absolute z-10 mt-1 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5'>
+                  <div className='absolute z-50 mt-1 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5'>
                     <div className='py-1' role='menu' aria-orientation='vertical'>
                       {['All', 'Single Phase', 'Three Phase'].map(option => (
                         <button
@@ -287,7 +287,9 @@ const ChargingStationModels = ({ category }) => {
                             customFields={[
                               { label: 'Maximum Power', value: model.maximumPower },
                               { label: 'Current', value: model.current },
-                              { label: 'Cable Length', value: model.cableLength },
+                              section.name === 'Stations With Socket' 
+                                ? { label: 'Socket Type', value: model.socketType }
+                                : { label: 'Cable Length', value: model.cableLength },
                               { label: 'Phase Type', value: model.phaseType }
                             ]}
                           />

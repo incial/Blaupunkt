@@ -3,7 +3,7 @@ import ImageHeader from '../Common/ImageHeader'
 import { chargingStationsConfig } from '../../Data/ChargingStations/index.js'
 import { chargingCablesConfig } from '../../Data/ChargingCables/index.js'
 import { dcChargingStationConfig } from '../../Data/DCChargingStation/index.js'
-import { dcFastChargingStationConfig } from '../../Data/DCFastChargingStation/index.js'
+import { dcSuperFastChargingStationConfig } from '../../Data/DCSuperFastChargingStation/index.js'
 import { portableEvChargingConfig } from '../../Data/PortableEVCharging/index.js'
 
 const Specifications = ({ productImage, category }) => {
@@ -40,13 +40,13 @@ const Specifications = ({ productImage, category }) => {
       }
     }
 
-    // Use DCFastChargingStation specific data when category is dcFastChargingStation
-    if (category === 'dcFastChargingStation') {
+    // Use DCSuperFastChargingStation specific data when category is dcSuperFastChargingStation
+    if (category === 'dcSuperFastChargingStation') {
       return {
-        title: dcFastChargingStationConfig.specifications.title,
-        specs: dcFastChargingStationConfig.specifications.specs,
-        backgroundImage: dcFastChargingStationConfig.backgroundImages.overview,
-        imageHeight: dcFastChargingStationConfig.overview?.imageHeight
+        title: dcSuperFastChargingStationConfig.specifications.title,
+        specs: dcSuperFastChargingStationConfig.specifications.specs,
+        backgroundImage: dcSuperFastChargingStationConfig.backgroundImages.overview,
+        imageHeight: dcSuperFastChargingStationConfig.overview?.imageHeight
       }
     }
 

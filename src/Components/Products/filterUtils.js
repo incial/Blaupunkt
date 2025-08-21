@@ -97,15 +97,16 @@ export const filterProducts = (
   products,
   { searchQuery, productType, chargingSpeed, connectorType, phaseType }
 ) => {
+  const norm = (s) => (s || '').toString().toLowerCase().replace(/[^a-z0-9]+/g, '')
   return products.filter(product => {
     const matchesSearch = fuzzyMatch(product, searchQuery);
 
     const matchesType = productType === 'All' || product.type === productType
     const matchesSpeed =
-      chargingSpeed === 'All' || product.chargingSpeed === chargingSpeed
+      chargingSpeed === 'All' || norm(product.chargingSpeed).includes(norm(chargingSpeed))
     const matchesConnector =
-      connectorType === 'All' || product.connectorType === connectorType
-    const matchesPhase = phaseType === 'All' || product.phaseType === phaseType
+      connectorType === 'All' || norm(product.connectorType).includes(norm(connectorType))
+    const matchesPhase = phaseType === 'All' || norm(product.phaseType).includes(norm(phaseType))
 
     return (
       matchesSearch &&
@@ -121,17 +122,30 @@ export const filterProducts = (
  * Sort products based on sort option
  */
 export const sortProducts = (products, sortBy) => {
+  const safeNum = (v, fallback = Number.MIN_SAFE_INTEGER) =>
+    typeof v === 'number' && !Number.isNaN(v) ? v : fallback
+
   return [...products].sort((a, b) => {
     switch (sortBy) {
-      case 'Price Low to High':
-        return a.price - b.price
-      case 'Price High to Low':
-        return b.price - a.price
-      case 'Newest First':
-        return b.id - a.id
+      case 'Price Low to High': {
+        return safeNum(a.price, Number.MAX_SAFE_INTEGER) - safeNum(b.price, Number.MAX_SAFE_INTEGER)
+      }
+      case 'Price High to Low': {
+        return safeNum(b.price, Number.MIN_SAFE_INTEGER) - safeNum(a.price, Number.MIN_SAFE_INTEGER)
+      }
+      case 'Newest First': {
+        // try to sort by code freshness if it contains numbers, else by creation order
+        const aNum = parseInt((a.productCode || '').replace(/\D+/g, ''), 10)
+        const bNum = parseInt((b.productCode || '').replace(/\D+/g, ''), 10)
+        if (!Number.isNaN(aNum) && !Number.isNaN(bNum) && aNum !== bNum) {
+          return bNum - aNum
+        }
+        return ('' + b.id).localeCompare('' + a.id)
+      }
       case 'Popularity':
-      default:
-        return a.id - b.id
+      default: {
+        return ('' + a.id).localeCompare('' + b.id)
+      }
     }
   })
 }

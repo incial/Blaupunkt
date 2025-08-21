@@ -1,6 +1,15 @@
 import React from 'react'
 import { FiDownload } from 'react-icons/fi'
 import { PDFDocument } from 'pdf-lib'
+import { createLogger } from '../../utils/logger'
+
+const logger = createLogger('DownloadButton')
+
+// Map all PDF assets under src so Vite bundles them and exposes their URLs in production
+// Keys will be absolute like '/src/assets/pdf/...'
+// Values will be the resolved URLs in the built app (e.g., '/assets/xyz.hash.pdf')
+// Note: as: 'url' ensures we get the public URL string
+const pdfUrlMap = import.meta.glob('/src/assets/pdf/**/*', { eager: true, as: 'url' })
 
 /**
  * DownloadButton component for displaying downloadable resources
@@ -11,9 +20,37 @@ import { PDFDocument } from 'pdf-lib'
  * @param {Object} props.downloadData - Download data specific to the product category (optional)
  */
 const DownloadButton = ({ productCategory, className = '', downloadData }) => {
+  // Normalize file URLs so they work in production builds
+  // Many data entries reference '/src/assets/pdf/...', which does not exist after Vite build.
+  // Files under /public/pdf are served at '/pdf/...'.
+  const resolveFileUrl = (url) => {
+    if (!url || typeof url !== 'string') return url
+    // Replace common dev paths with production-served public paths
+    let resolved = url
+    // First try to resolve via pre-bundled URL map from Vite
+    if (pdfUrlMap && pdfUrlMap[resolved]) {
+      return pdfUrlMap[resolved]
+    }
+    if (resolved.startsWith('/src/assets/pdf')) {
+      resolved = resolved.replace('/src/assets/pdf', '/pdf')
+    } else if (resolved.includes('/src/assets/pdf/')) {
+      resolved = resolved.replace('/src/assets/pdf/', '/pdf/')
+    } else if (resolved.startsWith('/assets/pdf')) {
+      // In case some entries omit the leading 'src'
+      resolved = resolved.replace('/assets/pdf', '/pdf')
+    } else if (resolved.startsWith('/public/')) {
+      // Public files are served from root
+      resolved = resolved.replace('/public', '')
+    }
+    // If still not resolved via map and still pointing to src, attempt a secondary lookup after normalization
+    if (pdfUrlMap && pdfUrlMap[resolved]) {
+      return pdfUrlMap[resolved]
+    }
+    return resolved
+  }
   // Check if downloadData is provided
   if (!downloadData) {
-    console.warn(
+    logger.warn(
       `DownloadButton: No download data available for ${productCategory}`
     )
     return null
@@ -58,7 +95,7 @@ const DownloadButton = ({ productCategory, className = '', downloadData }) => {
           break
         }
         case 'dcChargingStation':
-        case 'dcFastChargingStation': {
+        case 'dcSuperFastChargingStation': {
           // For DC stations, use technical specs and any available installation guides
           dataSheetFiles = [
             ...(techSpecsCategory?.files || []),
@@ -84,15 +121,15 @@ const DownloadButton = ({ productCategory, className = '', downloadData }) => {
   } // Function to create and download combined PDF file
   const createCombinedPDF = async (files, fileName) => {
     if (files.length === 0) {
-      console.warn('No files available for download')
+      logger.warn('No files available for download')
       return
     }
 
     if (files.length === 1) {
       // Single file - direct download
-      console.log('Downloading single file:', files[0].name)
+      logger.info('Downloading single file:', files[0].name)
       const link = document.createElement('a')
-      link.href = files[0].url
+  link.href = resolveFileUrl(files[0].url)
       link.download = files[0].name || 'download.pdf'
       link.target = '_blank'
       document.body.appendChild(link)
@@ -102,18 +139,19 @@ const DownloadButton = ({ productCategory, className = '', downloadData }) => {
     }
 
     // Multiple files - combine into single PDF
-    console.log(
+    logger.info(
       `Combining ${files.length} PDF files:`,
       files.map(f => f.name)
     )
     try {
       const mergedPdf = await PDFDocument.create()
+      let pagesAdded = 0
 
       // Fetch and merge each PDF file
       for (const file of files) {
         try {
-          console.log(`Fetching file: ${file.name}`)
-          const response = await fetch(file.url)
+          logger.debug(`Fetching file: ${file.name}`)
+          const response = await fetch(resolveFileUrl(file.url))
           if (!response.ok) {
             throw new Error(`HTTP ${response.status}: ${response.statusText}`)
           }
@@ -124,15 +162,25 @@ const DownloadButton = ({ productCategory, className = '', downloadData }) => {
             pdf.getPageIndices()
           )
           copiedPages.forEach(page => mergedPdf.addPage(page))
-          console.log(`Added ${copiedPages.length} pages from: ${file.name}`)
+          pagesAdded += copiedPages.length
+          logger.debug(`Added ${copiedPages.length} pages from: ${file.name}`)
         } catch (error) {
-          console.warn(`Failed to merge file: ${file.name}`, error)
+          logger.warn(`Failed to merge file: ${file.name}`, error)
           // Continue with other files instead of failing completely
         }
       }
 
+      // If no pages were merged, fall back to opening the first file instead of downloading a blank PDF
+      if (pagesAdded === 0) {
+        logger.error('No pages merged. Falling back to opening the first file in a new tab.')
+        if (files.length > 0) {
+          window.open(resolveFileUrl(files[0].url), '_blank')
+        }
+        return
+      }
+
       // Generate and download the combined PDF
-      console.log('Generating combined PDF...')
+      logger.info('Generating combined PDF...')
       const pdfBytes = await mergedPdf.save()
       const blob = new Blob([pdfBytes], { type: 'application/pdf' })
       const link = document.createElement('a')
@@ -142,13 +190,13 @@ const DownloadButton = ({ productCategory, className = '', downloadData }) => {
       link.click()
       document.body.removeChild(link)
       URL.revokeObjectURL(link.href)
-      console.log('Combined PDF download completed:', `${fileName}.pdf`)
+      logger.info('Combined PDF download completed:', `${fileName}.pdf`)
     } catch (error) {
-      console.error('Error creating combined PDF:', error)
+      logger.error('Error creating combined PDF:', error)
       // Fallback: open first file in new tab
       if (files.length > 0) {
-        console.log('Fallback: opening first file in new tab')
-        window.open(files[0].url, '_blank')
+        logger.info('Fallback: opening first file in new tab')
+        window.open(resolveFileUrl(files[0].url), '_blank')
       }
     }
   }

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import Breadcrumb from '../Common/Breadcrumb'
 
 const HeroSection = ({
   title,
@@ -24,33 +24,21 @@ const HeroSection = ({
       ? thumbnails[activeThumbIndex].alt || imageAlt || 'Product Image'
       : imageAlt || 'Product Image'
 
+  // Build WhatsApp contact link for the Connect button
+  const waNumber = (import.meta.env?.VITE_WHATSAPP_NUMBER || '971558882595').replace(/[^\d]/g, '')
+  const waMessage = import.meta.env?.VITE_WHATSAPP_MESSAGE || `Hello! I would like to know more about ${title}.`
+  const waHref = waNumber
+    ? `https://wa.me/${waNumber}?text=${encodeURIComponent(waMessage)}`
+    : '/contact'
+
   return (
     <div className='w-full bg-white py-16 px-6 lg:py-0'>
       {/* Container */}
       <div className='max-w-md mx-auto space-y-6 sm:max-w-2xl lg:max-w-6xl xl:max-w-7xl'>
         {' '}
         {/* Breadcrumb Navigation */}
-        <div className='flex items-center justify-center mb-8 lg:mb-12 lg:mt-16'>
-          <div className='flex items-center gap-1 text-[12px] lg:text-sm font-myriad font-normal'>
-            {breadcrumbs?.map((crumb, index) => (
-              <React.Fragment key={index}>
-                {index > 0 && (
-                  <span className='text-blaupunkt-secondary-light'>/</span>
-                )}
-                {crumb.active ? (
-                  <span className='text-blaupunkt-secondary'>{crumb.text}</span>
-                ) : (
-                  <Link
-                    to={crumb.path}
-                    className='text-blaupunkt-secondary-light hover:text-blaupunkt-secondary cursor-pointer'
-                  >
-                    {crumb.text}
-                  </Link>
-                )}
-              </React.Fragment>
-            ))}
-          </div>
-        </div>
+        <Breadcrumb items={breadcrumbs} className="lg:mt-16" />
+        
         {/* Main Content - Desktop Flex Layout */}
         <div className='flex flex-col lg:flex-row lg:gap-12 lg:items-start space-y-6 lg:space-y-0'>
           {' '}
@@ -71,9 +59,15 @@ const HeroSection = ({
               </div>
               {/* Connect Button */}
               <div className='flex justify-start mt-auto'>
-                <button className='bg-blaupunkt-primary-darker text-white px-6 py-3 lg:px-8 lg:py-4 rounded-2xl font-semibold font-myriad text-[14px] lg:text-base xl:text-lg leading-[1.2] hover:bg-blaupunkt-primary-dark transition-colors duration-300 hover:scale-105 transform'>
+                <a
+                  href={waHref}
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  className='bg-blaupunkt-primary-darker text-white px-6 py-3 lg:px-8 lg:py-4 rounded-2xl font-semibold font-myriad text-[14px] lg:text-base xl:text-lg leading-[1.2] hover:bg-blaupunkt-primary transition-all duration-500 ease-out hover:scale-105 hover:shadow-lg transform'
+                  aria-label='Connect via WhatsApp'
+                >
                   {buttonText || 'Connect'}
-                </button>
+                </a>
               </div>
             </div>
           </div>
@@ -86,14 +80,14 @@ const HeroSection = ({
                 {' '}                <img
                   src={currentDisplayImage}
                   alt={currentAltText}
-                  className={`w-full h-full ${mainImageObjectFit} transition-transform duration-500 ease-in-out hover:scale-105`}
-                  style={{ animation: 'fadeIn 0.5s ease-in-out' }}
+                  className={`w-full h-full ${mainImageObjectFit} transition-all duration-700 ease-out hover:scale-105`}
+                  style={{ animation: 'fadeIn 0.8s ease-out' }}
                 />
                 <style jsx='true'>{`
                   @keyframes fadeIn {
                     0% {
-                      opacity: 0.7;
-                      transform: scale(0.98);
+                      opacity: 0.6;
+                      transform: scale(0.95);
                     }
                     100% {
                       opacity: 1;
@@ -118,11 +112,11 @@ const HeroSection = ({
                       >                        <img
                           src={thumb.image || mainImage}
                           alt={thumb.alt || `Thumbnail ${index + 1}`}
-                          className={`w-[60px] h-[60px] lg:w-[60px] lg:h-[60px] xl:w-[60px] xl:h-[60px] ${thumbnailObjectFit} rounded-lg shadow-md hover:scale-110 transition-all duration-300 cursor-pointer 
+                          className={`w-[60px] h-[60px] lg:w-[60px] lg:h-[60px] xl:w-[60px] xl:h-[60px] ${thumbnailObjectFit} rounded-lg shadow-md hover:scale-110 transition-all duration-400 ease-out cursor-pointer 
                           ${
                             activeThumbIndex === index
                               ? 'border-2 border-blaupunkt-primary-darker shadow-lg'
-                              : 'opacity-80 hover:opacity-100'
+                              : 'opacity-80 hover:opacity-100 hover:shadow-lg'
                           }`}
                           onClick={() => setActiveThumbIndex(index)}
                           onKeyDown={e =>
@@ -153,11 +147,11 @@ const HeroSection = ({
                         >                          <img
                             src={mainImage}
                             alt={`Thumbnail ${index + 1}`}
-                            className={`w-[60px] h-[60px] lg:w-[60px] lg:h-[60px] xl:w-[60px] xl:h-[60px] ${thumbnailObjectFit} rounded-lg shadow-md hover:scale-110 transition-all duration-300 cursor-pointer
+                            className={`w-[60px] h-[60px] lg:w-[60px] lg:h-[60px] xl:w-[60px] xl:h-[60px] ${thumbnailObjectFit} rounded-lg shadow-md hover:scale-110 transition-all duration-400 ease-out cursor-pointer
                           ${
                             activeThumbIndex === index
                               ? 'border-2 border-blaupunkt-primary-darker shadow-lg'
-                              : 'opacity-80 hover:opacity-100'
+                              : 'opacity-80 hover:opacity-100 hover:shadow-lg'
                           }`}
                             onClick={() => setActiveThumbIndex(index)}
                             onKeyDown={e =>

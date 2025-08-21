@@ -1,9 +1,16 @@
 import React, { useState } from 'react';
 import { Toaster, toast } from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
+import Breadcrumb from './Common/Breadcrumb';
+import { createSimpleBreadcrumbs } from '../Data/Common/utilities';
+import { createLogger } from '../utils/logger';
+
+const logger = createLogger('ContactUs');
 
 const ContactUs = () => {
     const navigate = useNavigate();
+    const breadcrumbItems = createSimpleBreadcrumbs('Contact');
+    
     const [formData, setFormData] = useState({
         fullName: '',
         email: '',
@@ -45,7 +52,7 @@ const ContactUs = () => {
                 toast.error('Failed to send message. Please try again.', { duration: 6000 });
             }
         } catch (err) {
-            console.error(err);
+            logger.error('Contact form submission error:', err);
             toast.error('⚠️ An error occurred. Please try again.', { duration: 6000 });
         } finally {
             setLoading(false);
@@ -59,21 +66,8 @@ const ContactUs = () => {
 
             <div className="max-w-2xl mx-auto">
                 {/* Breadcrumb */}
-                <div className="mb-24 hidden md:flex items-center justify-center">
-                    <div className='flex items-center gap-2 text-sm font-myriad'>
-                        <span className='text-blaupunkt-secondary-light hover:text-blaupunkt-secondary transition-colors cursor-pointer'>
-                            <Link
-                                to="/"
-                                className="text-blaupunkt-secondary-light hover:text-blaupunkt-secondary transition-colors whitespace-nowrap font-myriad"
-                            >
-                                Home
-                            </Link>
-                        </span>
-                        <span className='text-blaupunkt-secondary-light'>/</span>
-                        <span className='text-blaupunkt-secondary font-medium'>
-                            Contact
-                        </span>
-                    </div>
+                <div className="mb-24 hidden md:block">
+                    <Breadcrumb items={breadcrumbItems} />
                 </div>
 
                 {/* Header */}
@@ -174,20 +168,24 @@ const ContactUs = () => {
                     <div className="md:py-8 px-8 flex flex-col items-center md:items-start">
                         <h3 className="text-xl font-semibold text-blaupunkt-primary-darker mb-3 font-myriad">Head Office</h3>
                         <div className="space-y-3 text-blaupunkt-secondary text-sm text-center md:text-left">
-                            <p>221B Baker St<br />London NW1 6XE, Germany</p>
-                        </div>
-                        <div className="space-y-3 text-blaupunkt-secondary text-sm text-center md:text-left mt-2 font-myriad">
-                            <p>contact@loaunknt.com<br />+91 (Phone Number)</p>
+                            <p>BLP EV Systems ApS<br />Ediths Allé 8<br />5250 Odense SV<br />Denmark</p>
                         </div>
                     </div>
 
                     <div className="md:py-8 px-8 flex flex-col items-center md:items-end">
                         <h3 className="text-xl font-semibold text-blaupunkt-primary-darker mb-3 font-myriad">UAE Office</h3>
                         <div className="space-y-3 text-blaupunkt-secondary text-sm text-center md:text-right">
-                            <p>221B Baker St<br />London NW1 6XE, Germany</p>
+                            <p>
+                                BLP EV Systems – FZCO<br />
+                                Building A1, Dubai Digital Park<br />
+                                Dubai Silicon Oasis, Dubai<br />
+                                United Arab Emirates
+                            </p>
                         </div>
                         <div className="space-y-3 text-blaupunkt-secondary text-sm text-center md:text-right mt-2 font-myriad">
-                            <p>sale@loaunknt.com<br />+971 (Phone Number)</p>
+                            <p>
+                                TEL: <a href="tel:+971558882595" className="text-blue-600 hover:underline">+971 55 888 2595</a>
+                            </p>
                         </div>
                     </div>
                 </div>

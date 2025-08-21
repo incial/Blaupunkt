@@ -50,7 +50,7 @@ const createMontaIntegrationData = (isActive = true) => ({
 // =============================================================================
 
 export const chargingStationsData = {
-  title: 'Charging Stations',
+  title: 'AC Charging Stations',
   description:
     'Reliable and efficient charging solutions for your electric vehicle.',
   active: true,
@@ -159,7 +159,7 @@ export const chargingStationsData = {
   specificationsData: createSpecificationsData('Specifications', [
     { label: 'Phases:', value: 'Single-Phase & Three-Phase' },
     { label: 'Ampere:', value: '32A & 16A' },
-    { label: 'Maximum Power:', value: '22KW, 11KW, 4KW' },
+    { label: 'Maximum Power:', value: '7KW,11KW,22KW' },
     { label: 'RFID Authorization:', value: 'Yes' },
     { label: 'Wi-Fi / LAN:', value: 'Yes' },
     { label: 'OCPP 1.6:', value: 'Yes' },
@@ -285,7 +285,7 @@ export const chargingStationsData = {
                 modelCode: 'BW3P32ACB',
                 maximumPower: '22 kWh',
                 current: '32A',
-                cableLength: '5 Meters',
+                socketType: 'Type 2',
                 phaseType: 'Three - Phase',
                 image: chargingStationImages.stationPd2
               },
@@ -293,7 +293,7 @@ export const chargingStationsData = {
                 modelCode: 'BW3P16ACB',
                 maximumPower: '11 kWh',
                 current: '16A',
-                cableLength: '5 Meters',
+                socketType: 'Type 2',
                 phaseType: 'Three - Phase',
                 image: chargingStationImages.stationPd2
               },
@@ -301,7 +301,7 @@ export const chargingStationsData = {
                 modelCode: 'BW1P32ACB',
                 maximumPower: '7.4 kWh',
                 current: '32A',
-                cableLength: '5 Meters',
+                socketType: 'Type 2',
                 phaseType: 'Single - Phase',
                 image: chargingStationImages.stationPd2
               }
@@ -316,7 +316,7 @@ export const chargingStationsData = {
                 modelCode: 'BW3P32ACS',
                 maximumPower: '22 kWh',
                 current: '32A',
-                cableLength: '5 Meters',
+                socketType: 'Type 2',
                 phaseType: 'Three - Phase',
                 image: chargingStationImages.stationPd2
               },
@@ -324,7 +324,7 @@ export const chargingStationsData = {
                 modelCode: 'BW3P16ACS',
                 maximumPower: '11 kWh',
                 current: '16A',
-                cableLength: '5 Meters',
+                socketType: 'Type 2',
                 phaseType: 'Three - Phase',
                 image: chargingStationImages.stationPd2
               },
@@ -332,7 +332,7 @@ export const chargingStationsData = {
                 modelCode: 'BW1P32ACS',
                 maximumPower: '7.4 kWh',
                 current: '32A',
-                cableLength: '5 Meters',
+                socketType: 'Type 2',
                 phaseType: 'Single - Phase',
                 image: chargingStationImages.stationPd2
               }
@@ -347,7 +347,7 @@ export const chargingStationsData = {
                 modelCode: 'BW3P32ACF',
                 maximumPower: '22 kWh',
                 current: '32A',
-                cableLength: '5 Meters',
+                socketType: 'Type 2',
                 phaseType: 'Three - Phase',
                 image: chargingStationImages.stationPd2
               },
@@ -355,7 +355,7 @@ export const chargingStationsData = {
                 modelCode: 'BW3P16ACF',
                 maximumPower: '11 kWh',
                 current: '16A',
-                cableLength: '5 Meters',
+                socketType: 'Type 2',
                 phaseType: 'Three - Phase',
                 image: chargingStationImages.stationPd2
               },
@@ -363,7 +363,7 @@ export const chargingStationsData = {
                 modelCode: 'BW1P16ACF',
                 maximumPower: '11 kWh',
                 current: '16A',
-                cableLength: '5 Meters',
+                socketType: 'Type 2',
                 phaseType: 'Single - Phase',
                 image: chargingStationImages.stationPd2
               }

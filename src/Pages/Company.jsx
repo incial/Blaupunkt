@@ -1,8 +1,11 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { companyPageImgs } from "../Data/assets.js";
+import React from 'react'
+import { Link } from 'react-router-dom'
+import { companyPageImgs } from '../Data/assets.js'
+import Breadcrumb from '../Components/Common/Breadcrumb'
+import { createSimpleBreadcrumbs } from '../Data/Common/utilities'
 
 const Company = () => {
+  const breadcrumbItems = createSimpleBreadcrumbs('Company')
   const timelineData = [
     {
       year: "1923",
@@ -60,22 +63,7 @@ const Company = () => {
       {/* Mobile Layout */}
       <div className="block lg:hidden bg-white w-full relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
-          <nav className="mb-6" aria-label="Breadcrumb">
-            <div className="flex items-center justify-center gap-2 text-xs sm:text-sm">
-              <Link
-                to="/"
-                className="text-blaupunkt-secondary-light hover:text-blaupunkt-secondary transition-colors whitespace-nowrap font-myriad"
-              >
-                Home
-              </Link>
-              <span className="text-blaupunkt-secondary-light font-myriad">
-                /
-              </span>
-              <span className="text-blaupunkt-secondary font-myriad whitespace-nowrap">
-                Company
-              </span>
-            </div>
-          </nav>
+          <Breadcrumb items={breadcrumbItems} />
 
           {/* Main Header Section */}
           <header className="mb-8">
@@ -216,19 +204,7 @@ const Company = () => {
       <div className="hidden lg:block bg-white w-full">
         <div className="bg-white max-w-[1440px] w-full h-[2700px] relative mx-auto px-4 lg:px-8 xl:px-0 pt-24 lg:pt-28 pb-8">
           <div className="absolute w-full top-[32px] lg:top-[40px] left-0 flex justify-center">
-            <nav
-              className="flex items-center gap-2 text-xs"
-              aria-label="Breadcrumb"
-            >
-              <Link
-                to="/"
-                className="text-blaupunkt-secondary hover:text-blaupunkt-primary transition-colors"
-              >
-                Home
-              </Link>
-              <div className="text-blaupunkt-secondary">/</div>
-              <div className="text-blaupunkt-primary">Company</div>
-            </nav>
+            <Breadcrumb items={breadcrumbItems} />
           </div>
 
           {/* Main Heading */}

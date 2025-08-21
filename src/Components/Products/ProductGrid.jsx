@@ -70,7 +70,7 @@ const ProductGrid = ({
           </p>
           <motion.button
             onClick={handleClearFilters}
-            className='bg-blaupunkt-primary text-white px-6 py-2 rounded-lg font-myriad hover:bg-blaupunkt-primary-dark transition-colors'
+            className='bg-blaupunkt-primary text-white px-6 py-2 rounded-lg font-myriad hover:bg-blaupunkt-primary transition-colors'
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
