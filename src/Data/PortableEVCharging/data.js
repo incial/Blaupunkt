@@ -183,7 +183,7 @@ export const portableEvChargingData = {
             connectorType: 'Type 2',
             chargingPower: '11 kW',
             powerPhase: 'Three-Phase',
-            ipClass: 'IP65',
+            ipClass: 'IP54',
             workingVoltage: '380~400V',
             cable: '5 x 2.5mm² + 2 x 0.5mm²',
             dimensions: '320 x 220 x 110mm',
