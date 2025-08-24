@@ -3,6 +3,23 @@ import ImageHeader from '../Common/ImageHeader'
 import ModelCard from './ModelCard'
 import { Entirepagedata } from '../../Data/index.js'
 
+// Helper function to build WhatsApp link with product inquiry
+const buildWhatsAppLink = (model, categoryName = '') => {
+  const WHATSAPP_NUMBER = '971558882595' // Your WhatsApp number
+  const productName = model.modelCode || 'Product'
+  const specs = []
+  
+  if (model.maximumPower) specs.push(`Power: ${model.maximumPower}`)
+  if (model.current) specs.push(`Current: ${model.current}`)
+  if (model.phaseType) specs.push(`Phase: ${model.phaseType}`)
+  
+  const specText = specs.length > 0 ? `\nSpecifications: ${specs.join(', ')}` : ''
+  const message = `Hello! I'm interested in the ${productName}${categoryName ? ` from ${categoryName}` : ''}.${specText}\n\nCould you please provide more information and pricing?`
+  
+  const encodedMessage = encodeURIComponent(message)
+  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`
+}
+
 // Simple icon components
 const ChevronDownIcon = ({ className }) => (
   <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -37,6 +54,14 @@ const ChargingStationModels = ({ category }) => {
     setSortBy('Popularity')
     setChargingSpeed('All')
     setPhaseType('All')
+  }
+
+  // Handle model card click - redirect to WhatsApp
+  const handleModelClick = (model) => {
+    const categoryData = Entirepagedata[category] || {}
+    const categoryName = categoryData.title || category
+    const whatsappLink = buildWhatsAppLink(model, categoryName)
+    window.open(whatsappLink, '_blank')
   }
 
   // Get models data from the page data based on the current category
@@ -284,6 +309,8 @@ const ChargingStationModels = ({ category }) => {
                           <ModelCard
                             image={model.image}
                             modelCode={model.modelCode}
+                            model={model}
+                            onClick={handleModelClick}
                             customFields={[
                               { label: 'Maximum Power', value: model.maximumPower },
                               { label: 'Current', value: model.current },

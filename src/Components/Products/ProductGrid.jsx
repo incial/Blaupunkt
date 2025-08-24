@@ -12,7 +12,8 @@ const ProductGrid = ({
   searchQuery,
   indexOfFirstProduct,
   indexOfLastProduct,
-  sortedProducts
+  sortedProducts,
+  onProductCardClick
 }) => {
   // State to track if device is mobile
   const [isMobile, setIsMobile] = useState(false)
@@ -60,6 +61,8 @@ const ProductGrid = ({
               specifications={product.specifications}
               productCode={product.productCode}
               addBorder={isMobile}
+              product={product}
+              onClick={onProductCardClick ? () => onProductCardClick(product) : undefined}
             />
           ))}
         </div>

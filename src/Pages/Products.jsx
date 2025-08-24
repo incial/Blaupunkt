@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useSearchParams } from 'react-router-dom'
 import Navbar from '../Components/Common/Navbar'
 import Breadcrumb from '../Components/Common/Breadcrumb'
@@ -16,6 +16,7 @@ import { filterProducts, sortProducts } from '../Components/Products/filterUtils
  * Products Page - Main product listing page with filtering and sorting
  */
 const Products = () => {
+  const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams()
 
   // Filter and sorting state
@@ -124,6 +125,36 @@ const Products = () => {
     setSortBy('Popularity')
     setCurrentPage(1)
   }
+
+  // Handler to navigate to the corresponding category page
+  const handleProductCardClick = (product) => {
+    // Map product type/category to route path
+    // Adjust these mappings as per your route structure
+    let path = '/products';
+    if (product.type) {
+      switch (product.type) {
+        case 'Charging Stations':
+          path = '/charging-stations';
+          break;
+        case 'DC Charging Station':
+          path = '/dc-charging-station';
+          break;
+        case 'DC Fast Charging':
+          path = '/dc-super-fast-charging-station';
+          break;
+        case 'Cables':
+          path = '/charging-cables';
+          break;
+        case 'Portable Charging':
+          path = '/portable-ev-charging';
+          break;
+        default:
+          path = '/products';
+      }
+    }
+    // Optionally, pass product id or code as state or param
+    navigate(path);
+  }
   
   const breadcrumbItems = createSimpleBreadcrumbs('Products')
 
@@ -190,6 +221,7 @@ const Products = () => {
             indexOfFirstProduct={indexOfFirstProduct}
             indexOfLastProduct={indexOfLastProduct}
             sortedProducts={sortedProducts}
+            onProductCardClick={handleProductCardClick}
           />
 
           {/* Pagination Navigation */}
