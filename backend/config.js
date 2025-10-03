@@ -1,26 +1,58 @@
 import nodemailer from 'nodemailer';
+import dotenv from 'dotenv';
 
-// DNS parameters for website hosting only (separate from email domain)
-export const DNS_A_RECORDS = [
-    '75.2.60.5',        // Netlify primary
-    '99.83.190.102',    // Netlify secondary
-];
-export const DNS_CNAME_RECORD = 'your-site-name.netlify.app'; // Your Netlify subdomain
+// Load environment variables
+dotenv.config();
 
-// Email configuration - uses Blaupunkt-ev.com (which has MX records)
-const transporter = nodemailer.createTransport({
-    host: 'smtp.blaupunkt-ev.com',        // SMTP server for your domain
-    port: 587,                            // Standard SMTP port
-    secure: false,                        // false for 587, true for 465
+const isDevelopment = process.env.NODE_ENV !== 'production';
+
+// DNS parameters for website hosting (Hostinger configuration)
+export const DNS_CONFIG = {
+    // These will be provided by Hostinger when you connect your domain
+    // Check hPanel -> Domains -> DNS Zone Editor for actual values
+    A_RECORDS: [
+        // Hostinger will provide these IPs
+        // Example: '123.456.789.0'
+    ],
+    CNAME_RECORD: 'your-hostinger-subdomain.hostingersite.com'
+};
+
+// Email configuration - production vs development
+const emailConfig = {
+    host: isDevelopment ? 'localhost' : (process.env.SMTP_HOST || 'smtp.blaupunkt-ev.com'),
+    port: isDevelopment ? 1025 : parseInt(process.env.SMTP_PORT || '587'),
+    secure: isDevelopment ? false : (process.env.SMTP_PORT === '465'),
     auth: {
-        user: 'noreply@blaupunkt-ev.com', // Sender email from your domain
-        pass: 'your-smtp-password'        // SMTP password for this email
+        user: process.env.SMTP_USER || 'noreply@blaupunkt-ev.com',
+        pass: process.env.SMTP_PASS || 'your-smtp-password'
     },
     tls: {
-        rejectUnauthorized: false         
+        rejectUnauthorized: false
     }
-});
+};
 
-const destinationEmail = 'info@blaupunkt-ev.com'; 
+// Create transporter with environment-specific configuration
+const transporter = nodemailer.createTransporter(emailConfig);
+
+const destinationEmail = process.env.DESTINATION_EMAIL || 'info@blaupunkt-ev.com';
+
+// App configuration
+export const appConfig = {
+    environment: process.env.NODE_ENV || 'development',
+    isDevelopment,
+    frontend: {
+        url: isDevelopment 
+            ? 'http://localhost:3000' 
+            : (process.env.VITE_DOMAIN || 'https://your-domain.com')
+    },
+    api: {
+        port: process.env.PORT || 5000,
+        cors: {
+            origin: isDevelopment 
+                ? 'http://localhost:3000' 
+                : (process.env.VITE_DOMAIN || 'https://your-domain.com')
+        }
+    }
+};
 
 export { transporter, destinationEmail };
