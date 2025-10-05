@@ -13,6 +13,24 @@ import { createLogger } from '../../utils/logger'
 
 const logger = createLogger('Models')
 
+// Helper function to build WhatsApp link with product inquiry
+const buildWhatsAppLink = (model, categoryName = '') => {
+  const WHATSAPP_NUMBER = '971558882595' // Your WhatsApp number
+  const productName = model.modelCode || model.name || 'Product'
+  const specs = []
+  
+  if (model.maximumPower) specs.push(`Power: ${model.maximumPower}`)
+  if (model.current || model.ratedCurrent) specs.push(`Current: ${model.current || model.ratedCurrent}`)
+  if (model.phaseType || model.phase) specs.push(`Phase: ${model.phaseType || model.phase}`)
+  if (model.cableLength) specs.push(`Cable Length: ${model.cableLength}`)
+  
+  const specText = specs.length > 0 ? `\nSpecifications: ${specs.join(', ')}` : ''
+  const message = `Hello! I'm interested in the ${productName}${categoryName ? ` from ${categoryName}` : ''}.${specText}\n\nCould you please provide more information and pricing?`
+  
+  const encodedMessage = encodeURIComponent(message)
+  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`
+}
+
 // Simple icon components
 const ChevronDownIcon = ({ className }) => (
   <svg
@@ -63,6 +81,14 @@ const Models = ({ productImage, category, modelsData: propModelsData }) => {
     setChargingSpeed('All')
     setConnectorType('All')
     setPhaseType('All')
+  }
+
+  // Handle model card click - redirect to WhatsApp
+  const handleModelClick = (model) => {
+    const categoryData = Entirepagedata[category] || {}
+    const categoryName = categoryData.title || category
+    const whatsappLink = buildWhatsAppLink(model, categoryName)
+    window.open(whatsappLink, '_blank')
   }
 
   // Dropdown menus open/close state
@@ -946,6 +972,8 @@ const Models = ({ productImage, category, modelsData: propModelsData }) => {
                                 model.name ||
                                 `Model ${index + 1}`
                               }
+                              model={model}
+                              onClick={handleModelClick}
                               connectorType={
                                 model.connectorType || model.connector || 'N/A'
                               }
@@ -1023,6 +1051,8 @@ const Models = ({ productImage, category, modelsData: propModelsData }) => {
                       modelCode={
                         model.modelCode || model.name || `Model ${index + 1}`
                       }
+                      model={model}
+                      onClick={handleModelClick}
                       connectorType={
                         model.connectorType || model.connector || 'N/A'
                       }

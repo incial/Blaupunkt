@@ -8,10 +8,15 @@ const ModelCard = ({
   cableLength = '2 Meters',
   ipClass = '65',
   phaseType = 'Single - Phase',
-  customFields = null // New prop for custom field configurations
+  customFields = null, // New prop for custom field configurations
+  onClick,
+  model // Pass the full model object for WhatsApp message
 }) => {
   return (
-    <div className='relative w-full max-w-[320px] transition-all duration-300 mx-auto h-full overflow-hidden'>
+    <div 
+      className='relative w-full max-w-[320px] transition-all duration-300 mx-auto h-full overflow-hidden cursor-pointer hover:scale-105'
+      onClick={() => onClick && onClick(model || { modelCode })}
+    >
       {/* Outer container with light blue border */}
       <div className='rounded-xl h-full overflow-hidden'>
         {/* White inner container */}

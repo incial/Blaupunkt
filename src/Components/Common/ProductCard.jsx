@@ -7,11 +7,12 @@ const ProductCard = ({
   productCode,
   addBorder = false,
   onClick,
+  product,
 }) => {
   return (
     <div
       className="relative rounded-3xl w-full max-w-[320px] sm:max-w-[320px] h-[420px] sm:h-[450px] cursor-pointer transition-all duration-300 hover:scale-105 group mx-auto sm:shadow-[0px_12px_27px_0px_rgba(34,34,34,0.1),0px_49px_49px_0px_rgba(34,34,34,0.09),0px_111px_67px_0px_rgba(34,34,34,0.05),0px_198px_79px_0px_rgba(34,34,34,0.01),0px_309px_86px_0px_rgba(34,34,34,0)]"
-      onClick={onClick}
+      onClick={() => onClick && onClick(product)}
     >
       {/* Rectangle 74 - White Background Container */}
       <div
