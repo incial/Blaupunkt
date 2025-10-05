@@ -1,34 +1,52 @@
-name: Deploy React App to Hostinger
+name: 🚀 Deploy to Hostinger
 
 on:
   push:
     branches:
-      - master  # or main, depending on your repo
+      - master
+      - main
+  workflow_dispatch:  # Allows manual deployment from GitHub Actions tab
 
 jobs:
-  build-deploy:
+  build-and-deploy:
+    name: 🏗️ Build and Deploy
     runs-on: ubuntu-latest
-
+    
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+      - name: � Checkout code
+        uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
+      - name: 🟢 Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '20'
+          cache: 'npm'
 
-      - name: Install dependencies
+      - name: 📦 Install dependencies
         run: npm ci
 
-      - name: Build project
+      - name: 🏗️ Build Vite project
         run: npm run build
+        env:
+          VITE_WHATSAPP_NUMBER: ${{ secrets.VITE_WHATSAPP_NUMBER }}
+          VITE_WHATSAPP_MESSAGE: ${{ secrets.VITE_WHATSAPP_MESSAGE }}
 
-      - name: Deploy via FTP
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+      - name: 📤 Deploy to Hostinger via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: build
-          server-dir: public_html
+          port: 21
+          local-dir: ./dist/
+          server-dir: ./public_html/
+          dangerous-clean-slate: false
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            **/.vscode/**
+            **/.env*
+
+      - name: ✅ Deployment successful
+        run: echo "🎉 Deployment to Hostinger completed successfully!"
