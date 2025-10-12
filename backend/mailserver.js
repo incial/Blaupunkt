@@ -21,6 +21,26 @@ app.get('/api/health', (req, res) => {
     });
 });
 
+// Debug endpoint to check environment variables (REMOVE IN PRODUCTION)
+app.get('/api/debug-env', (req, res) => {
+    const envStatus = {
+        SMTP_HOST: process.env.SMTP_HOST ? '✅ Set' : '❌ Missing',
+        SMTP_PORT: process.env.SMTP_PORT ? '✅ Set' : '❌ Missing',
+        SMTP_USER: process.env.SMTP_USER ? '✅ Set' : '❌ Missing',
+        SMTP_PASS: process.env.SMTP_PASS ? '✅ Set (hidden)' : '❌ Missing',
+        DESTINATION_EMAIL: process.env.DESTINATION_EMAIL ? '✅ Set' : '❌ Missing',
+        NODE_ENV: process.env.NODE_ENV || 'development',
+        VITE_DOMAIN: process.env.VITE_DOMAIN ? '✅ Set' : '❌ Missing',
+        totalEnvVars: Object.keys(process.env).length
+    };
+    
+    res.status(200).json({
+        message: 'Environment Variables Status',
+        status: envStatus,
+        note: 'If any are missing, add them in Render Dashboard → Environment tab'
+    });
+});
+
 app.post('/api/contact', async (req, res) => {
     const { fullName, email, phone, message } = req.body;
 
