@@ -32,7 +32,7 @@ const emailConfig = {
 };
 
 // Create transporter with environment-specific configuration
-const transporter = nodemailer.createTransporter(emailConfig);
+const transporter = nodemailer.createTransport(emailConfig);
 
 const destinationEmail = process.env.DESTINATION_EMAIL || 'info@blaupunkt-ev.com';
 

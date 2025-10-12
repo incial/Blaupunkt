@@ -7,7 +7,7 @@ import { generateEmailTemplate } from './template.js';
 dotenv.config();
 
 const app = express();
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
 app.use(cors());
 app.use(express.json());
@@ -21,12 +21,12 @@ app.post('/api/contact', async (req, res) => {
 
     try {
         const mailOptions = {
-            from: `"${fullName}" <${email}>`,
+            from: `"Blaupunkt EV Contact Form" <${process.env.SMTP_USER || 'info@blaupunkt-ev.com'}>`,
+            replyTo: `"${fullName}" <${email}>`,
             to: destinationEmail,
             subject: `Contact Form Submission from ${fullName}`,
             html: generateEmailTemplate({ fullName, email, phone, message })
         };
-
         await transporter.sendMail(mailOptions);
         res.status(200).send({ success: true, message: 'Message sent successfully.' });
     } catch (err) {
@@ -35,6 +35,14 @@ app.post('/api/contact', async (req, res) => {
     }
 });
 
-app.listen(PORT, () => {
-    console.log(`🚀 Server running at http://localhost:${PORT}`);
+// Verify transporter before starting server
+transporter.verify().then(() => {
+    console.log('SMTP transporter verified successfully.');
+    app.listen(PORT, () => {
+        console.log(`\uD83D\uDE80 Server running at http://localhost:${PORT}`);
+    });
+}).catch(err => {
+    console.error('Failed to verify SMTP transporter. Server will not start.');
+    console.error(err);
+    process.exit(1);
 });
