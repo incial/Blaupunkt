@@ -44,14 +44,22 @@ app.post('/api/contact', async (req, res) => {
     }
 });
 
-// Verify transporter before starting server
-transporter.verify().then(() => {
-    console.log('SMTP transporter verified successfully.');
+// Verify transporter before starting server (non-blocking)
+const startServer = () => {
     app.listen(PORT, () => {
-        console.log(`\uD83D\uDE80 Server running at http://localhost:${PORT}`);
+        console.log(`🚀 Server running at http://localhost:${PORT}`);
     });
-}).catch(err => {
-    console.error('Failed to verify SMTP transporter. Server will not start.');
-    console.error(err);
-    process.exit(1);
-});
+};
+
+// Try to verify SMTP, but start server anyway
+transporter.verify()
+    .then(() => {
+        console.log('✅ SMTP transporter verified successfully.');
+        startServer();
+    })
+    .catch(err => {
+        console.warn('⚠️ SMTP transporter verification failed. Server will start anyway.');
+        console.warn('Error:', err.message);
+        console.warn('Please check your SMTP environment variables in Render dashboard.');
+        startServer();
+    });
