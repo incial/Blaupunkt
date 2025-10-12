@@ -28,7 +28,15 @@ const emailConfig = {
     },
     tls: {
         rejectUnauthorized: false
-    }
+    },
+    // Add connection timeout settings
+    connectionTimeout: 30000,  // 30 seconds
+    greetingTimeout: 30000,
+    socketTimeout: 30000,
+    // Add retry settings
+    pool: true,
+    maxConnections: 5,
+    maxMessages: 10
 };
 
 // Create transporter with environment-specific configuration
