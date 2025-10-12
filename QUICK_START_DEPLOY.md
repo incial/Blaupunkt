@@ -94,6 +94,23 @@ RewriteRule . /index.html [L]
 3. Check info@blaupunkt-ev.com inbox
 4. 🎉 You should see the email!
 
+### Step 9: Enable Keep-Alive (1 min)
+Edit `.github/workflows/keep-alive.yml` and update the backend URL:
+```yaml
+# Replace with your actual Render URL
+https://your-actual-render-url.onrender.com/api/health
+```
+
+Commit and push:
+```powershell
+git add .github/workflows/keep-alive.yml
+git commit -m "Update keep-alive URL"
+git push
+```
+
+This keeps your backend awake 24/7 on Render's free tier!
+See `KEEP_ALIVE_GUIDE.md` for details.
+
 ---
 
 ## ⚠️ Common Issues & Quick Fixes

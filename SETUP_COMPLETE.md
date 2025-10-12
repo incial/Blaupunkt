@@ -196,7 +196,8 @@ This way:
 - ✅ Free tier available
 - ⚠️ Server sleeps after 15 minutes of inactivity
 - ⚠️ First request after sleep takes ~30 seconds
-- 💡 Upgrade to $7/month for always-on service (optional)
+- ✅ **GitHub Action created** - Automatically pings backend every 12 minutes to keep it awake!
+- 💡 See `KEEP_ALIVE_GUIDE.md` for setup details
 
 ---
 
