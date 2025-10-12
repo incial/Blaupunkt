@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import Breadcrumb from './Common/Breadcrumb';
 import { createSimpleBreadcrumbs } from '../Data/Common/utilities';
 import { createLogger } from '../utils/logger';
+import { apiConfig } from '../config/api';
 
 const logger = createLogger('ContactUs');
 
@@ -32,7 +33,7 @@ const ContactUs = () => {
         setLoading(true);
 
         try {
-            const response = await fetch('/api/contact', {
+            const response = await fetch(apiConfig.endpoints.contact, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formData)
