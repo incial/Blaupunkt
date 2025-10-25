@@ -1,0 +1,55 @@
+name: Keep Render Backend Alive
+
+# Run every 5 minutes to prevent Render free tier from sleeping
+on:
+  schedule:
+    # Runs every 5 minutes (GitHub Actions minimum is 5 minutes)
+    # Cron format: minute hour day month day-of-week
+    - cron: '*/5 * * * *'
+  
+  # Allow manual trigger from GitHub Actions tab
+  workflow_dispatch:
+
+jobs:
+  ping-backend:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Ping Backend Health Endpoint
+        run: |
+          echo "🏓 Pinging backend to keep it alive..."
+          
+          # Replace with your actual Render backend URL after deployment
+          BACKEND_URL="${{ secrets.BACKEND_URL }}"
+          if [ -z "$BACKEND_URL" ]; then
+            BACKEND_URL="https://blaupunkt-backend.onrender.com"
+          fi
+          
+          # Ping the health endpoint
+          RESPONSE=$(curl -s -o /dev/null -w "%{http_code}" "$BACKEND_URL/api/health")
+          
+          if [ $RESPONSE -eq 200 ]; then
+            echo "✅ Backend is alive! (HTTP $RESPONSE)"
+          else
+            echo "⚠️ Backend responded with HTTP $RESPONSE"
+            exit 1
+          fi
+      
+      - name: Ping Contact Endpoint (Optional)
+        run: |
+          echo "🏓 Testing contact endpoint..."
+          
+          BACKEND_URL="${{ secrets.BACKEND_URL }}"
+          if [ -z "$BACKEND_URL" ]; then
+            BACKEND_URL="https://blaupunkt-backend.onrender.com"
+          fi
+          
+          # Just a HEAD request to wake up the endpoint without sending email
+          RESPONSE=$(curl -s -o /dev/null -w "%{http_code}" -X HEAD "$BACKEND_URL/api/contact")
+          
+          echo "📧 Contact endpoint responded with HTTP $RESPONSE"
+      
+      - name: Log Timestamp
+        run: |
+          echo "⏰ Last ping: $(date -u)"
+          echo "🌍 Keeping backend warm and ready!"
