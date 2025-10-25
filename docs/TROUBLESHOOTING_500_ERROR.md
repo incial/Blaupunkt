@@ -52,17 +52,28 @@ curl https://blaupunkt-backend.onrender.com/api/health
 
 ### Step 3: Test Backend Directly
 
-**Using curl:**
+**Using PowerShell (Windows):**
+```powershell
+$body = @{
+    fullName = "Test User"
+    email = "test@example.com"
+    phone = "+1234567890"
+    message = "Test message"
+} | ConvertTo-Json
+
+Invoke-RestMethod -Uri "https://blaupunkt-backend.onrender.com/api/contact" `
+    -Method POST `
+    -ContentType "application/json" `
+    -Headers @{"Origin"="https://blaupunkt-ev.com"} `
+    -Body $body
+```
+
+**Or using curl (Git Bash/Linux/Mac):**
 ```bash
 curl -X POST https://blaupunkt-backend.onrender.com/api/contact \
   -H "Content-Type: application/json" \
   -H "Origin: https://blaupunkt-ev.com" \
-  -d '{
-    "fullName": "Test User",
-    "email": "test@example.com",
-    "phone": "+1234567890",
-    "message": "Test message"
-  }'
+  -d '{"fullName":"Test User","email":"test@example.com","phone":"+1234567890","message":"Test message"}'
 ```
 
 **Expected Response:**
@@ -73,9 +84,10 @@ curl -X POST https://blaupunkt-backend.onrender.com/api/contact \
 }
 ```
 
-**If you get a 500 error:**
-- Check the response body for error details
-- Check Render logs for stack trace
+**If you get HTML error page or 500 error:**
+- Backend is deployed but has configuration issues
+- Check Render logs for exact error
+- Likely missing environment variables
 
 ### Step 4: Check Environment Variables
 
@@ -206,6 +218,13 @@ If backend is deployed but unreachable:
 ## 🧪 Testing After Fixes
 
 ### 1. Test Health Endpoint
+
+**PowerShell:**
+```powershell
+Invoke-RestMethod -Uri "https://blaupunkt-backend.onrender.com/api/health"
+```
+
+**Or curl:**
 ```bash
 curl https://blaupunkt-backend.onrender.com/api/health
 ```
@@ -216,15 +235,27 @@ Should return:
 ```
 
 ### 2. Test Contact Endpoint Directly
+
+**PowerShell:**
+```powershell
+$body = @{
+    fullName = "Test"
+    email = "test@test.com"
+    phone = "1234567890"
+    message = "Test"
+} | ConvertTo-Json
+
+Invoke-RestMethod -Uri "https://blaupunkt-backend.onrender.com/api/contact" `
+    -Method POST `
+    -ContentType "application/json" `
+    -Body $body
+```
+
+**Or curl:**
 ```bash
 curl -X POST https://blaupunkt-backend.onrender.com/api/contact \
   -H "Content-Type: application/json" \
-  -d '{
-    "fullName": "Test",
-    "email": "test@test.com",
-    "phone": "1234567890",
-    "message": "Test"
-  }'
+  -d '{"fullName":"Test","email":"test@test.com","phone":"1234567890","message":"Test"}'
 ```
 
 Should return:
