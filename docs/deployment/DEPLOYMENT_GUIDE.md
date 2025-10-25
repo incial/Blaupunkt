@@ -24,7 +24,7 @@ This guide will help you set up automatic deployment from GitHub to Hostinger fo
 3. Note down the following:
 
 ```
-FTP Host: ftp://153.92.9.132
+FTP Host: ftp://145.79.209.167
 FTP Username: u966003410
 FTP Port: 21
 Folder: public_html
@@ -84,7 +84,7 @@ git push -u origin master
 #### Secret 1: FTP_SERVER
 ```
 Name: FTP_SERVER
-Value: ftp://153.92.9.132
+Value: ftp://145.79.209.167
 ```
 
 #### Secret 2: FTP_USERNAME
