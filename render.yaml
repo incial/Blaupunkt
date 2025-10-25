@@ -1,23 +1,50 @@
 services:
+  # Backend Email Service
   - type: web
     name: blaupunkt-backend
     runtime: node
     region: oregon
     plan: free
-    buildCommand: cd backend && npm install
-    startCommand: cd backend && npm start
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: node mailserver.js
     envVars:
       - key: NODE_ENV
         value: production
       - key: SMTP_HOST
-        sync: false
+        value: smtp.hostinger.com
       - key: SMTP_PORT
         value: 465
       - key: SMTP_USER
-        sync: false
+        sync: false  # Set this manually in Render dashboard
       - key: SMTP_PASS
-        sync: false
+        sync: false  # Set this manually in Render dashboard
       - key: DESTINATION_EMAIL
         value: info@blaupunkt-ev.com
+      - key: PORT
+        value: 5000
       - key: VITE_DOMAIN
         sync: false
+    healthCheckPath: /api/health
+
+  # Frontend Static Site
+  - type: web
+    name: blaupunkt-frontend
+    runtime: static
+    region: oregon
+    plan: free
+    buildCommand: npm install && npm run build
+    staticPublishPath: dist
+    envVars:
+      - key: VITE_API_URL
+        value: https://blaupunkt-backend.onrender.com
+    headers:
+      - path: /*
+        name: X-Frame-Options
+        value: DENY
+      - path: /*
+        name: X-Content-Type-Options
+        value: nosniff
+      - path: /*
+        name: Referrer-Policy
+        value: strict-origin-when-cross-origin

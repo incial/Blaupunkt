@@ -39,7 +39,7 @@ export function generateEmailTemplate({ fullName, email, phone, message }) {
         <div style="background-color: #f8f9fa; padding: 16px 30px; text-align: center; border-top: 1px solid #e1e1e1;">
             <p style="margin: 0; font-size: 12px; color: #7f8c8d; line-height: 1.5;">
                 This email was generated automatically. Please do not reply directly to this email.<br>
-                <span style="color: #bdc3c7;">© ${new Date().getFullYear()} Your Company Name. All rights reserved.</span>
+                <span style="color: #bdc3c7;">© ${new Date().getFullYear()} Blaupunkt EV Systems. All rights reserved.</span>
             </p>
         </div>
     </div>

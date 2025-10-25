@@ -14,14 +14,14 @@ export const DNS_CONFIG = {
         // Hostinger will provide these IPs
         // Example: '123.456.789.0'
     ],
-    CNAME_RECORD: 'your-hostinger-subdomain.hostingersite.com'
+    CNAME_RECORD: 'blaupunkt-ev.com'
 };
 
 // Email configuration - production vs development
 const emailConfig = {
-    host: isDevelopment ? 'localhost' : (process.env.SMTP_HOST || 'smtp.blaupunkt-ev.com'),
-    port: isDevelopment ? 1025 : parseInt(process.env.SMTP_PORT || '587'),
-    secure: isDevelopment ? false : (process.env.SMTP_PORT === '465'),
+    host: isDevelopment ? 'smtp.hostinger.com' : (process.env.SMTP_HOST || 'smtp.blaupunkt-ev.com'),
+    port: isDevelopment ? parseInt(process.env.SMTP_PORT || '465') : parseInt(process.env.SMTP_PORT || '587'),
+    secure: isDevelopment ? (process.env.SMTP_PORT === '465') : (process.env.SMTP_PORT === '465'),
     auth: {
         user: process.env.SMTP_USER || 'noreply@blaupunkt-ev.com',
         pass: process.env.SMTP_PASS || 'your-smtp-password'
@@ -51,14 +51,14 @@ export const appConfig = {
     frontend: {
         url: isDevelopment 
             ? 'http://localhost:3000' 
-            : (process.env.VITE_DOMAIN || 'https://your-domain.com')
+            : (process.env.VITE_DOMAIN || 'blaupunkt-ev.com')
     },
     api: {
         port: process.env.PORT || 5000,
         cors: {
             origin: isDevelopment 
                 ? 'http://localhost:3000' 
-                : (process.env.VITE_DOMAIN || 'https://your-domain.com')
+                : (process.env.VITE_DOMAIN || 'https://blaupunkt-ev.com')
         }
     }
 };

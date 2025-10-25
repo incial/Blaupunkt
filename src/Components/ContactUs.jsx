@@ -39,6 +39,18 @@ const ContactUs = () => {
                 body: JSON.stringify(formData)
             });
 
+            // Check if response is ok before parsing JSON
+            if (!response.ok) {
+                throw new Error(`Server error: ${response.status} ${response.statusText}`);
+            }
+
+            const contentType = response.headers.get('content-type');
+            if (!contentType || !contentType.includes('application/json')) {
+                const text = await response.text();
+                logger.error('Non-JSON response received:', text);
+                throw new Error('Server returned non-JSON response');
+            }
+
             const data = await response.json();
 
             if (data.success) {
@@ -50,11 +62,14 @@ const ContactUs = () => {
                     navigate('/contact');
                 }, 2000);
             } else {
-                toast.error('Failed to send message. Please try again.', { duration: 6000 });
+                toast.error(data.message || 'Failed to send message. Please try again.', { duration: 6000 });
             }
         } catch (err) {
             logger.error('Contact form submission error:', err);
-            toast.error('⚠️ An error occurred. Please try again.', { duration: 6000 });
+            const errorMessage = err.message.includes('fetch') 
+                ? '⚠️ Cannot connect to server. Please ensure the backend is running.' 
+                : '⚠️ An error occurred. Please try again.';
+            toast.error(errorMessage, { duration: 6000 });
         } finally {
             setLoading(false);
         }

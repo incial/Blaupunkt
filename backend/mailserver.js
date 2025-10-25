@@ -45,7 +45,10 @@ app.post('/api/contact', async (req, res) => {
     const { fullName, email, phone, message } = req.body;
 
     if (!fullName || !email || !message) {
-        return res.status(400).send({ error: 'Please fill in all required fields.' });
+        return res.status(400).json({ 
+            success: false, 
+            error: 'Please fill in all required fields.' 
+        });
     }
 
     try {
@@ -57,10 +60,14 @@ app.post('/api/contact', async (req, res) => {
             html: generateEmailTemplate({ fullName, email, phone, message })
         };
         await transporter.sendMail(mailOptions);
-        res.status(200).send({ success: true, message: 'Message sent successfully.' });
+        res.status(200).json({ success: true, message: 'Message sent successfully.' });
     } catch (err) {
-        console.error(err);
-        res.status(500).send({ success: false, message: 'Failed to send message.' });
+        console.error('Email send error:', err);
+        res.status(500).json({ 
+            success: false, 
+            message: 'Failed to send message. Please try again later.',
+            error: process.env.NODE_ENV === 'development' ? err.message : undefined
+        });
     }
 });
 
@@ -68,18 +75,27 @@ app.post('/api/contact', async (req, res) => {
 const startServer = () => {
     app.listen(PORT, () => {
         console.log(`🚀 Server running at http://localhost:${PORT}`);
+        console.log(`📧 Email destination: ${destinationEmail}`);
+        console.log(`🌍 Environment: ${process.env.NODE_ENV || 'development'}`);
     });
 };
 
-// Try to verify SMTP, but start server anyway
-transporter.verify()
-    .then(() => {
-        console.log('✅ SMTP transporter verified successfully.');
-        startServer();
-    })
-    .catch(err => {
-        console.warn('⚠️ SMTP transporter verification failed. Server will start anyway.');
-        console.warn('Error:', err.message);
-        console.warn('Please check your SMTP environment variables in Render dashboard.');
-        startServer();
-    });
+// Skip SMTP verification in development mode or verify in production
+if (process.env.NODE_ENV === 'development') {
+    console.log('⚡ Development mode: Skipping SMTP verification');
+    console.log('📧 SMTP will be tested when sending actual emails');
+    startServer();
+} else {
+    // Try to verify SMTP, but start server anyway
+    transporter.verify()
+        .then(() => {
+            console.log('✅ SMTP transporter verified successfully.');
+            startServer();
+        })
+        .catch(err => {
+            console.warn('⚠️ SMTP transporter verification failed. Server will start anyway.');
+            console.warn('Error:', err.message);
+            console.warn('Please check your SMTP environment variables.');
+            startServer();
+        });
+}
