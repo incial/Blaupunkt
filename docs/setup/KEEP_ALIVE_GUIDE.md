@@ -10,35 +10,44 @@ We've implemented **two options** to keep your backend alive:
 
 ## Option 1: GitHub Actions (Automated) ✅ RECOMMENDED
 
-**Already Set Up!** A GitHub Action automatically pings your backend every 12 minutes.
+**Already Set Up!** A GitHub Action automatically pings your backend every 5-12 minutes.
 
 ### How It Works
-- Runs every 12 minutes (5 times per hour)
-- Pings the health check endpoint
+- Runs every 5-12 minutes automatically
+- Pings the health check endpoint (`/api/health`)
 - Keeps Render awake 24/7
 - Completely free (uses GitHub's free tier)
+- No external services needed!
 
-### File Location
-`.github/workflows/keep-alive.yml`
+### Quick Start
+1. Workflows are already in `.github/workflows/`
+2. Just commit and push:
+   ```powershell
+   git add .github/workflows/
+   git commit -m "Add keep-alive workflows"
+   git push
+   ```
+3. Go to GitHub → **Actions** tab to verify it's running
+
+### File Locations
+- **Simple:** `.github/workflows/keep-backend-alive.yml`
+- **Advanced:** `.github/workflows/keep-alive-advanced.yml` (with monitoring)
+
+### Configuration
+After deploying to Render, optionally add your backend URL as a secret:
+1. GitHub repo → **Settings** → **Secrets and variables** → **Actions**
+2. Add secret:
+   - Name: `BACKEND_URL`
+   - Value: `https://blaupunkt-backend.onrender.com`
+
+📚 **Detailed Guide:** See `GITHUB_ACTIONS_KEEPALIVE.md` for full documentation!
 
 ### Manual Trigger
-You can manually trigger the workflow:
+Test it anytime:
 1. Go to your GitHub repository
 2. Click **Actions** tab
 3. Select **Keep Render Backend Alive**
 4. Click **Run workflow**
-
-### View Logs
-- Go to GitHub → **Actions** tab
-- Click on any workflow run to see ping logs
-
-### Update Backend URL
-After deploying to Render, update the URL in `.github/workflows/keep-alive.yml`:
-
-```yaml
-# Replace this line with your actual Render URL
-https://blaupunkt-backend.onrender.com/api/health
-```
 
 ---
 

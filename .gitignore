@@ -1,35 +1,82 @@
-# Dependencies
+# ==========================================
+# DEPENDENCIES
+# ==========================================
 node_modules/
 pnpm-lock.yaml
+package-lock.json
+.pnp
+.pnp.js
 
-# Build outputs
+# ==========================================
+# BUILD OUTPUTS
+# ==========================================
 dist/
 build/
+dist-ssr/
+*.local
 
-# Environment files
+# ==========================================
+# ENVIRONMENT FILES (SENSITIVE)
+# ==========================================
 .env
 .env.local
-.env.production
+.env.development.local
+.env.test.local
+.env.production.local
 .env.*.local
 
-# IDE
+# Backend environment
+backend/.env
+backend/.env.local
+
+# ==========================================
+# IDE & EDITORS
+# ==========================================
+# VS Code
 .vscode/*
 !.vscode/extensions.json
+!.vscode/settings.json.example
+
+# JetBrains
 .idea/
+*.iml
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim
 *.swp
 *.swo
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
+*.swn
 
-# OS
+# Emacs
+*~
+\#*\#
+.projectile
+
+# ==========================================
+# OPERATING SYSTEM
+# ==========================================
+# macOS
 .DS_Store
-Thumbs.db
-desktop.ini
+.AppleDouble
+.LSOverride
 
-# Logs
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+.directory
+
+# ==========================================
+# LOGS
+# ==========================================
 logs/
 *.log
 npm-debug.log*
@@ -38,15 +85,37 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-# Testing
+# ==========================================
+# TESTING & COVERAGE
+# ==========================================
 coverage/
 .nyc_output/
+*.lcov
+.jest/
 
-# Temporary files
+# ==========================================
+# TEMPORARY FILES
+# ==========================================
 *.tmp
 *.temp
-dist-ssr/
-*.local
+*.bak
+*.backup
+*.cache
+
+# ==========================================
+# MISC
+# ==========================================
+# Netlify
+.netlify/
+
+# Vercel
+.vercel/
+
+# Render
+.render/
+
+# Sentry
+.sentryclirc
 
 # Build info
 .cache/
