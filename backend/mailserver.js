@@ -9,7 +9,32 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-app.use(cors());
+// CORS configuration for Hostinger frontend
+const corsOptions = {
+    origin: function (origin, callback) {
+        // Allow requests from your Hostinger domain and localhost for development
+        const allowedOrigins = [
+            process.env.VITE_DOMAIN,
+            'https://blaupunkt-ev.com',
+            'http://localhost:3000',
+            'http://localhost:3001',
+            'http://localhost:3002',
+            'http://localhost:5173'
+        ];
+        
+        // Allow requests with no origin (like mobile apps or curl requests)
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
+    credentials: true,
+    methods: ['GET', 'POST', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization']
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 
 // Health check endpoint for keeping Render alive

@@ -1,5 +1,6 @@
 services:
-  # Backend Email Service
+  # Backend Email Service Only
+  # Frontend is hosted on Hostinger
   - type: web
     name: blaupunkt-backend
     runtime: node
@@ -24,27 +25,5 @@ services:
       - key: PORT
         value: 5000
       - key: VITE_DOMAIN
-        sync: false
+        value: https://blaupunkt-ev.com
     healthCheckPath: /api/health
-
-  # Frontend Static Site
-  - type: web
-    name: blaupunkt-frontend
-    runtime: static
-    region: oregon
-    plan: free
-    buildCommand: npm install && npm run build
-    staticPublishPath: dist
-    envVars:
-      - key: VITE_API_URL
-        value: https://blaupunkt-backend.onrender.com
-    headers:
-      - path: /*
-        name: X-Frame-Options
-        value: DENY
-      - path: /*
-        name: X-Content-Type-Options
-        value: nosniff
-      - path: /*
-        name: Referrer-Policy
-        value: strict-origin-when-cross-origin
