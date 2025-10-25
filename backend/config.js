@@ -17,13 +17,13 @@ export const DNS_CONFIG = {
     CNAME_RECORD: 'blaupunkt-ev.com'
 };
 
-// Email configuration - production vs development
+// Email configuration - use environment variables for all settings
 const emailConfig = {
-    host: isDevelopment ? 'smtp.hostinger.com' : (process.env.SMTP_HOST || 'smtp.blaupunkt-ev.com'),
-    port: isDevelopment ? parseInt(process.env.SMTP_PORT || '465') : parseInt(process.env.SMTP_PORT || '587'),
-    secure: isDevelopment ? (process.env.SMTP_PORT === '465') : (process.env.SMTP_PORT === '465'),
+    host: process.env.SMTP_HOST || 'smtp.hostinger.com',
+    port: parseInt(process.env.SMTP_PORT || '465'),
+    secure: (process.env.SMTP_PORT || '465') === '465', // true for 465, false for 587
     auth: {
-        user: process.env.SMTP_USER || 'noreply@blaupunkt-ev.com',
+        user: process.env.SMTP_USER || 'info@blaupunkt-ev.com',
         pass: process.env.SMTP_PASS || 'your-smtp-password'
     },
     tls: {
@@ -36,7 +36,10 @@ const emailConfig = {
     // Add retry settings
     pool: true,
     maxConnections: 5,
-    maxMessages: 10
+    maxMessages: 10,
+    // Debug in development only
+    debug: isDevelopment,
+    logger: isDevelopment
 };
 
 // Create transporter with environment-specific configuration

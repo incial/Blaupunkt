@@ -84,14 +84,43 @@ app.post('/api/contact', async (req, res) => {
             subject: `Contact Form Submission from ${fullName}`,
             html: generateEmailTemplate({ fullName, email, phone, message })
         };
+        
+        console.log('Attempting to send email...');
+        console.log('SMTP Config:', {
+            host: process.env.SMTP_HOST,
+            port: process.env.SMTP_PORT,
+            user: process.env.SMTP_USER,
+            secure: process.env.SMTP_PORT === '465'
+        });
+        
         await transporter.sendMail(mailOptions);
+        console.log('✅ Email sent successfully');
         res.status(200).json({ success: true, message: 'Message sent successfully.' });
     } catch (err) {
-        console.error('Email send error:', err);
+        console.error('❌ Email send error:', err);
+        console.error('Error code:', err.code);
+        console.error('Error command:', err.command);
+        
+        // More detailed error message
+        let errorMessage = 'Failed to send message. Please try again later.';
+        let errorDetails = err.message;
+        
+        if (err.code === 'EAUTH') {
+            errorMessage = 'Email authentication failed. Please check SMTP credentials.';
+            errorDetails = 'Invalid username or password';
+        } else if (err.code === 'ESOCKET') {
+            errorMessage = 'Cannot connect to email server.';
+            errorDetails = 'SMTP connection failed';
+        } else if (err.code === 'ETIMEDOUT') {
+            errorMessage = 'Email server connection timeout.';
+            errorDetails = 'Connection timed out';
+        }
+        
         res.status(500).json({ 
             success: false, 
-            message: 'Failed to send message. Please try again later.',
-            error: process.env.NODE_ENV === 'development' ? err.message : undefined
+            message: errorMessage,
+            error: errorDetails,
+            code: err.code
         });
     }
 });
