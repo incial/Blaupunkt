@@ -8,8 +8,8 @@ const logger = createLogger('DownloadButton')
 // Map all PDF assets under src so Vite bundles them and exposes their URLs in production
 // Keys will be absolute like '/src/assets/pdf/...'
 // Values will be the resolved URLs in the built app (e.g., '/assets/xyz.hash.pdf')
-// Note: as: 'url' ensures we get the public URL string
-const pdfUrlMap = import.meta.glob('/src/assets/pdf/**/*', { eager: true, as: 'url' })
+// Note: query: '?url' with import: 'default' ensures we get the public URL string
+const pdfUrlMap = import.meta.glob('/src/assets/pdf/**/*', { eager: true, query: '?url', import: 'default' })
 
 /**
  * DownloadButton component for displaying downloadable resources

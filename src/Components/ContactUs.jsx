@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import Breadcrumb from './Common/Breadcrumb';
 import { createSimpleBreadcrumbs } from '../Data/Common/utilities';
 import { createLogger } from '../utils/logger';
+import { apiConfig } from '../config/api';
 
 const logger = createLogger('ContactUs');
 
@@ -32,13 +33,47 @@ const ContactUs = () => {
         setLoading(true);
 
         try {
-            const response = await fetch('/api/contact', {
+            logger.info('Submitting form to:', apiConfig.endpoints.contact);
+            logger.info('Form data:', formData);
+
+            const response = await fetch(apiConfig.endpoints.contact, {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
                 body: JSON.stringify(formData)
             });
 
+            logger.info('Response status:', response.status);
+            logger.info('Response headers:', Object.fromEntries(response.headers.entries()));
+
+            // Check if response is ok before parsing JSON
+            if (!response.ok) {
+                // Try to get error details from response
+                let errorDetails = '';
+                try {
+                    const errorData = await response.json();
+                    errorDetails = errorData.error || errorData.message || '';
+                    logger.error('Server error details:', errorData);
+                } catch (parseErr) {
+                    const errorText = await response.text();
+                    errorDetails = errorText.substring(0, 100);
+                    logger.error('Server error (non-JSON):', errorText);
+                }
+                
+                throw new Error(`Server error: ${response.status}${errorDetails ? ' - ' + errorDetails : ''}`);
+            }
+
+            const contentType = response.headers.get('content-type');
+            if (!contentType || !contentType.includes('application/json')) {
+                const text = await response.text();
+                logger.error('Non-JSON response received:', text);
+                throw new Error('Server returned non-JSON response');
+            }
+
             const data = await response.json();
+            logger.info('Response data:', data);
 
             if (data.success) {
                 toast.success('Message sent successfully!', { duration: 6000 });
@@ -49,11 +84,24 @@ const ContactUs = () => {
                     navigate('/contact');
                 }, 2000);
             } else {
-                toast.error('Failed to send message. Please try again.', { duration: 6000 });
+                toast.error(data.message || 'Failed to send message. Please try again.', { duration: 6000 });
             }
         } catch (err) {
             logger.error('Contact form submission error:', err);
-            toast.error('⚠️ An error occurred. Please try again.', { duration: 6000 });
+            
+            let errorMessage = '⚠️ An error occurred. Please try again.';
+            
+            if (err.message.includes('Failed to fetch') || err.message.includes('NetworkError')) {
+                errorMessage = '⚠️ Cannot connect to server. Please check your internet connection.';
+            } else if (err.message.includes('500')) {
+                errorMessage = '⚠️ Server error. The backend may not be properly configured. Please contact support.';
+            } else if (err.message.includes('CORS')) {
+                errorMessage = '⚠️ Access denied. Please ensure the backend allows requests from this domain.';
+            } else if (err.message) {
+                errorMessage = `⚠️ ${err.message}`;
+            }
+            
+            toast.error(errorMessage, { duration: 8000 });
         } finally {
             setLoading(false);
         }
