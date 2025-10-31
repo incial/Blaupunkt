@@ -27,17 +27,20 @@ jobs:
       env:
         NODE_ENV: production
     
-    - name: Deploy to Hostinger via FTP
-      uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+    - name: Deploy to Hostinger via SSH
+      uses: easingthemes/ssh-deploy@main
       with:
-        server: ${{ secrets.FTP_SERVER }}
-        username: ${{ secrets.FTP_USERNAME }}
-        password: ${{ secrets.FTP_PASSWORD }}
-        local-dir: ./dist/
-        server-dir: /public_html/
-        exclude: |
-          **/.git*
-          **/.git*/**
-          **/node_modules/**
-          **/.env*
-          **/README.md
+        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+        REMOTE_HOST: ${{ secrets.SSH_HOST }}
+        REMOTE_USER: ${{ secrets.SSH_USERNAME }}
+        REMOTE_PORT: ${{ secrets.SSH_PORT }}
+        SOURCE: "dist/"
+        TARGET: ${{ secrets.SSH_TARGET_DIR }}
+        EXCLUDE: "/node_modules/, /.git/, /.github/, /.env"
+        SCRIPT_BEFORE: |
+          whoami
+          ls -al
+        SCRIPT_AFTER: |
+          echo "Deployment completed successfully!"
+          cd ${{ secrets.SSH_TARGET_DIR }}
+          ls -al
