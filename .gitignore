@@ -15,6 +15,9 @@ build/
 dist-ssr/
 *.local
 
+# Don't ignore API files in public folder
+!public/api/
+
 # ==========================================
 # ENVIRONMENT FILES (SENSITIVE)
 # ==========================================

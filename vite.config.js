@@ -6,6 +6,7 @@ import tailwindcss from '@tailwindcss/vite'
 export default defineConfig({
   plugins: [react(), tailwindcss()],
   base: '/', // Important for Hostinger deployment
+  publicDir: 'public', // Ensure public folder is copied to dist
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
@@ -24,15 +25,7 @@ export default defineConfig({
   },
   server: {
     port: 3000,
-    proxy: {
-      '/api': {
-        target: process.env.NODE_ENV === 'production' 
-          ? 'https://blaupunkt-backend.onrender.com' 
-          : 'http://localhost:5000',
-        changeOrigin: true,
-        secure: false,
-      },
-    },
+    // No proxy needed - PHP backend is on same domain in production
     cors: true,
     headers: {
       'Cross-Origin-Resource-Policy': 'cross-origin'

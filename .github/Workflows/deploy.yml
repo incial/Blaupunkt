@@ -2,11 +2,11 @@ name: Deploy to Hostinger
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main, hostinger-deployment ]
   workflow_dispatch:
 
 jobs:
-  build-and-deploy:
+  deploy:
     runs-on: ubuntu-latest
     
     steps:
@@ -27,20 +27,7 @@ jobs:
       env:
         NODE_ENV: production
     
-    - name: Create .env file for backend
-      run: |
-        echo "SMTP_HOST=${{ secrets.SMTP_HOST }}" >> .env
-        echo "SMTP_PORT=${{ secrets.SMTP_PORT }}" >> .env
-        echo "SMTP_SECURE=${{ secrets.SMTP_SECURE }}" >> .env
-        echo "SMTP_USER=${{ secrets.SMTP_USER }}" >> .env
-        echo "SMTP_PASS=${{ secrets.SMTP_PASS }}" >> .env
-        echo "FROM_EMAIL=${{ secrets.FROM_EMAIL }}" >> .env
-        echo "TO_EMAIL=${{ secrets.TO_EMAIL }}" >> .env
-        echo "PORT=5000" >> .env
-        echo "NODE_ENV=production" >> .env
-        echo "FRONTEND_URL=https://blaupunkt-ev.com" >> .env
-    
-    - name: Deploy Frontend to Hostinger via FTP
+    - name: Deploy to Hostinger via FTP
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
       with:
         server: ${{ secrets.FTP_SERVER }}
@@ -52,31 +39,5 @@ jobs:
           **/.git*
           **/.git*/**
           **/node_modules/**
-    
-    - name: Deploy Backend to Hostinger via FTP
-      uses: SamKirkland/FTP-Deploy-Action@v4.3.4
-      with:
-        server: ${{ secrets.FTP_SERVER }}
-        username: ${{ secrets.FTP_USERNAME }}
-        password: ${{ secrets.FTP_PASSWORD }}
-        local-dir: ./
-        server-dir: /backend/
-        exclude: |
-          **/.git*
-          **/.git*/**
-          **/node_modules/**
-          **/dist/**
-          **/.github/**
-    
-    - name: Restart Backend via SSH
-      uses: appleboy/ssh-action@v1.0.0
-      with:
-        host: ${{ secrets.SSH_HOST }}
-        username: ${{ secrets.SSH_USERNAME }}
-        password: ${{ secrets.SSH_PASSWORD }}
-        port: ${{ secrets.SSH_PORT }}
-        script: |
-          cd ~/backend
-          npm install --production
-          pm2 restart blaupunkt-backend || pm2 start src/server.js --name blaupunkt-backend
-          pm2 save
+          **/.env*
+          **/README.md
