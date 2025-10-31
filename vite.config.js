@@ -27,7 +27,7 @@ export default defineConfig({
     proxy: {
       '/api': {
         target: process.env.NODE_ENV === 'production' 
-          ? 'https://your-domain.com' 
+          ? 'https://blaupunkt-backend.onrender.com' 
           : 'http://localhost:5000',
         changeOrigin: true,
         secure: false,

@@ -1,4 +1,0 @@
-touch .skip_composer
-git add .skip_composer
-git commit -m "CI: Skip composer install step"
-git push origin Production
