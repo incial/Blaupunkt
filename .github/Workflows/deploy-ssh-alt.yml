@@ -1,0 +1,60 @@
+# Alternative SSH Deployment with Manual rsync
+# Use this if the ssh-deploy action doesn't work for your setup
+
+name: Deploy to Hostinger (SSH - Alternative)
+
+on:
+  push:
+    branches: [ main, hostinger-deployment ]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+        cache: 'npm'
+    
+    - name: Install dependencies
+      run: npm ci
+    
+    - name: Build frontend
+      run: npm run build
+      env:
+        NODE_ENV: production
+    
+    - name: Setup SSH Key
+      run: |
+        mkdir -p ~/.ssh
+        echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/deploy_key
+        chmod 600 ~/.ssh/deploy_key
+        ssh-keyscan -p ${{ secrets.SSH_PORT }} ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
+    
+    - name: Deploy via rsync
+      run: |
+        rsync -avz --delete \
+          -e "ssh -i ~/.ssh/deploy_key -p ${{ secrets.SSH_PORT }} -o StrictHostKeyChecking=no" \
+          --exclude='.git' \
+          --exclude='node_modules' \
+          --exclude='.env' \
+          dist/ \
+          ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:${{ secrets.SSH_TARGET_DIR }}/
+    
+    - name: Verify deployment
+      run: |
+        ssh -i ~/.ssh/deploy_key \
+          -p ${{ secrets.SSH_PORT }} \
+          -o StrictHostKeyChecking=no \
+          ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} \
+          "ls -la ${{ secrets.SSH_TARGET_DIR }}"
+    
+    - name: Cleanup
+      if: always()
+      run: rm -f ~/.ssh/deploy_key

@@ -17,37 +17,81 @@ Hostinger Server
 ## Features
 
 - ✅ **All-in-One Deployment**: Frontend + Backend on same domain
-- ✅ **Automated Deployment**: GitHub Actions with FTP
+- ✅ **Automated Deployment**: GitHub Actions with SSH (Secure & Fast)
 - ✅ **PHP Email Backend**: Uses Hostinger's built-in mail() function
 - ✅ **React Router Support**: Client-side routing with .htaccess
 - ✅ **No External Services**: Everything runs on Hostinger
+- ✅ **Incremental Deployment**: rsync only uploads changed files
 
 ---
 
 ## Setup Instructions
 
-### 1. Get Hostinger FTP Credentials
+### 1. Generate SSH Key for Deployment
+
+On your local machine, generate an SSH key pair:
+
+```bash
+# Generate SSH key (press Enter for all prompts)
+ssh-keygen -t ed25519 -C "github-actions-deploy" -f ~/.ssh/hostinger_deploy
+
+# This creates two files:
+# ~/.ssh/hostinger_deploy (private key - for GitHub)
+# ~/.ssh/hostinger_deploy.pub (public key - for Hostinger)
+```
+
+### 2. Add Public Key to Hostinger
 
 1. Log in to **Hostinger hPanel**
-2. Go to **Files** → **FTP Accounts**
-3. Copy your FTP credentials:
-   - FTP Server
-   - FTP Username
-   - FTP Password
+2. Go to **Advanced** → **SSH Access**
+3. Enable SSH access if not already enabled
+4. Copy your **SSH Port** (usually 65002)
+5. Copy your **SSH Host** (usually ssh.yourdomain.com or IP address)
+6. Click **Manage SSH Keys**
+7. Paste the content of `~/.ssh/hostinger_deploy.pub`
 
-### 2. Add GitHub Secrets
+**Alternative: Manual upload via terminal**
+```bash
+# Copy public key to Hostinger (you'll need to enter your Hostinger password)
+cat ~/.ssh/hostinger_deploy.pub | ssh -p YOUR_SSH_PORT username@ssh.yourdomain.com "mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys"
+```
+
+### 3. Test SSH Connection
+
+```bash
+# Test the connection (replace with your details)
+ssh -p 65002 -i ~/.ssh/hostinger_deploy username@ssh.yourdomain.com
+
+# If successful, you should see a shell prompt
+# Type 'exit' to close the connection
+```
+
+### 4. Add GitHub Secrets
 
 Go to your GitHub repository → **Settings** → **Secrets and variables** → **Actions**
 
 Add these secrets:
 
 ```
-FTP_SERVER = ftp.yourdomain.com
-FTP_USERNAME = your_ftp_username
-FTP_PASSWORD = your_ftp_password
+SSH_PRIVATE_KEY = (paste the ENTIRE content of ~/.ssh/hostinger_deploy file)
+SSH_HOST = ssh.yourdomain.com (or IP address from Hostinger)
+SSH_USERNAME = your_hostinger_username
+SSH_PORT = 65002 (or the port number from Hostinger)
+SSH_TARGET_DIR = /home/username/public_html
 ```
 
-### 3. Configure Email in PHP Backend
+**How to get private key content:**
+
+```bash
+# On Windows (PowerShell)
+Get-Content ~/.ssh/hostinger_deploy | Set-Clipboard
+
+# On Mac/Linux
+cat ~/.ssh/hostinger_deploy | pbcopy  # Mac
+cat ~/.ssh/hostinger_deploy | xclip   # Linux
+```
+
+### 5. Configure Email in PHP Backend
 
 Edit `public/api/contact.php` and update:
 
@@ -56,21 +100,33 @@ $to = 'info@blaupunkt-ev.com';  // Your email address
 ```
 
 The email headers are already configured to use:
+
 - **From**: `noreply@blaupunkt-ev.com`
 - **Reply-To**: User's email from form
 
-### 4. Push to GitHub
+### 6. Push to GitHub
 
 ```bash
 git add .
-git commit -m "Setup PHP backend deployment"
+git commit -m "Setup SSH deployment"
 git push origin main
 ```
 
 GitHub Actions will automatically:
+
 1. Build your React app
-2. Deploy to Hostinger via FTP
+2. Deploy to Hostinger via SSH (secure & fast!)
 3. Deploy complete! 🚀
+
+---
+
+## Advantages of SSH over FTP
+
+✅ **More Secure**: Encrypted connection, no plain-text passwords
+✅ **Faster**: rsync only uploads changed files
+✅ **Reliable**: Better error handling and connection stability
+✅ **Efficient**: Compression during transfer
+✅ **Professional**: Industry standard for deployments
 
 ---
 
