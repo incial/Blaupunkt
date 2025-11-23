@@ -12,6 +12,7 @@ import {
   dcChargingStationImages
 } from '../Data/index.js'
 import { dcChargingStationData, dcChargingStationConfig } from '../Data/DCChargingStation/index.js'
+import SEO from '../Components/Common/SEO'
 
 const DCChargingStation = () => {
   // Get data from Entirepagedata
@@ -32,7 +33,22 @@ const DCChargingStation = () => {
   }))
 
   return (
-    <div>
+    <>
+      <SEO 
+        title="DC Charger UAE | DC Charging Station & Fast Chargers"
+        description="Explore DC chargers for commercial and high-power EV charging in the UAE. Fast DC charging stations with advanced safety and performance."
+        keywords="DC charger UAE, DC charging station UAE, fast DC charger, commercial DC EV charging, high power EV charging UAE"
+        canonical="https://blaupunkt-ev.com/dc-charging-station"
+        ogTitle="DC Charger UAE"
+        ogDescription="Fast and commercial DC charging solutions."
+        twitterTitle="DC Charger UAE"
+        twitterDescription="Fast and commercial DC charging solutions."
+        ogImage={dcChargingStationImages.dcMidSpec}
+      />
+      <div>
+      <h1 className="sr-only">DC Charger UAE — Commercial & Fast Charging</h1>
+      <h2 className="sr-only">DC fast chargers for commercial applications</h2>
+      <h2 className="sr-only">High-power, reliable DC charging solutions</h2>
       {' '}
       <HeroSection
         title={title}
@@ -79,6 +95,7 @@ const DCChargingStation = () => {
         downloadData={dcChargingStationConfig.downloads}
       />
     </div>
+    </>
   )
 }
 

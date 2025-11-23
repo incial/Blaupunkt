@@ -21,11 +21,11 @@ const HeroSection = () => {
         {/* Breadcrumb Navigation */}{' '}
         <div className='flex items-center justify-center mb-12 lg:mb-16'>
           <div className='flex items-center gap-2 text-sm font-myriad'>
-            <span className='text-blaupunkt-secondary-light hover:text-blaupunkt-secondary transition-colors cursor-pointer'>
+            <span className='text-blaupunkt-primary-darker hover:text-blaupunkt-primary transition-colors cursor-pointer'>
               Home
             </span>
-            <span className='text-blaupunkt-secondary-light'>/</span>
-            <span className='text-blaupunkt-secondary font-medium'>
+            <span className='text-blaupunkt-gray'>/</span>
+            <span className='text-blaupunkt-primary-darker font-medium'>
               Electric Vehicle Charging Equipment
             </span>
           </div>
@@ -36,6 +36,8 @@ const HeroSection = () => {
             <img
               src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='525' viewBox='0 0 800 525'%3E%3Crect width='800' height='525' fill='%2396B2D1'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dominant-baseline='middle' fill='%23ffffff' font-size='24' font-family='Arial, sans-serif'%3EEV Charging Equipment%3C/text%3E%3C/svg%3E"
               alt='Electric Vehicle Charging'
+              width='800'
+              height='525'
               className={`w-full h-full object-cover absolute top-0 left-0 transition-opacity duration-1000 ease-in-out ${
                 showVideo ? 'opacity-0' : 'opacity-100'
               }`}
@@ -50,6 +52,7 @@ const HeroSection = () => {
               muted
               playsInline
               disablePictureInPicture
+              preload='metadata'
               className={`w-full h-full object-cover absolute top-0 left-0 transition-opacity duration-1000 ease-in-out ${
                 showVideo ? 'opacity-100' : 'opacity-0'
               }`}
@@ -86,8 +89,7 @@ const HeroSection = () => {
               {/* Description */}
               <p className='text-lg lg:text-xl font-myriad font-light text-blaupunkt-primary-dark leading-relaxed max-w-3xl mx-auto lg:mx-0'>
                 Explore Blaupunkt's range of high-quality EV charging cables
-                <br className='hidden lg:block' />
-                engineered for safety, speed, and seamless compatibility with
+                <br className='hidden lg:block' /> engineered for safety, speed, and seamless compatibility with
                 leading electric vehicles.
               </p>
             </div>

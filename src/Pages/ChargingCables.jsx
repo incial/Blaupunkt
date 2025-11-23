@@ -7,6 +7,7 @@ import ImageHeader from '../Components/Common/ImageHeader'
 import OverviewSection from '../Components/Common/Overview/OverviewSection'
 import Models from '../Components/CommonPages/Models.jsx'
 import DownloadButton from '../Components/CommonPages/DownlaodButton'
+import SEO from '../Components/Common/SEO'
 
 const ChargingCables = () => {
   // Get data from Entirepagedata
@@ -24,7 +25,22 @@ const ChargingCables = () => {
     alt: thumb.alt
   }))
   return (
-    <div>
+    <>
+    <SEO 
+        title="EV Charging Cables UAE | Type 2 & 22kW Cables"
+        description="Buy EV charging cables in the UAE. Type 2 and 22kW charging cables compatible with all major EV brands. High-quality Blaupunkt cables."
+        keywords="EV charging cables UAE, Type 2 EV cables, 22kW charging cables, EV cables for all brands, Blaupunkt charging cables"
+        canonical="https://blaupunkt-ev.com/charging-cables"
+        ogTitle="EV Charging Cables UAE"
+        ogDescription="Premium Type 2 and high-power EV charging cables."
+        twitterTitle="EV Charging Cables UAE"
+        twitterDescription="Premium Type 2 and high-power EV charging cables."
+        ogImage={chargingCableProductImages.specifications}
+      />
+      <div>
+      <h1 className="sr-only">EV Charging Cables in UAE — Type 2 & 22kW</h1>
+      <h2 className="sr-only">Type 2 charging cables compatible with major EV brands</h2>
+      <h2 className="sr-only">High-power 22kW cables for faster AC charging</h2>
       <HeroSection
         title={title}
         description={description}
@@ -58,7 +74,8 @@ const ChargingCables = () => {
         productCategory='chargingCables'
         downloadData={chargingCablesConfig.downloads}
       />
-    </div>
+      </div>
+    </>
   )
 }
 

@@ -210,16 +210,32 @@ $from = 'noreply@blaupunkt-ev.com';  // Sender email
 
 ## 📖 Documentation
 
-### Quick Start
-- **[Setup Complete](docs/SETUP_COMPLETE.md)** - Quick reference guide
-- **[Deployment Guide](docs/DEPLOYMENT.md)** - Detailed deployment instructions
+**📚 [Complete Documentation](docs/README.md)** - Comprehensive guide to all documentation
+
+### Quick Links
+
+#### 🚀 Getting Started
+- **[Setup Complete](docs/setup/SETUP_COMPLETE.md)** - Project setup status
+
+#### 🌐 Deployment
+- **[Deployment Overview](docs/deployment/DEPLOYMENT.md)** - General deployment guide
+- **[SSH Setup](docs/deployment/SSH_DEPLOYMENT_SETUP.md)** - SSH deployment configuration (recommended)
+- **[SSH Quick Start](docs/deployment/SSH_DEPLOYMENT_QUICKSTART.md)** - Quick reference guide
+
+#### 📧 Email Configuration
+- **[Microsoft Graph Setup](docs/email/MICROSOFT_GRAPH_SETUP.md)** - OAuth 2.0 email with Microsoft Graph API (current implementation)
+- **[Azure Permissions Request](docs/email/REQUEST_AZURE_PERMISSIONS.txt)** - Template for IT team
+
+#### 🧪 Testing
+- **[Postman Test Guide](docs/testing/POSTMAN_TEST_GUIDE.md)** - API testing with Postman
+- **[Postman Collection](docs/testing/POSTMAN_CONTACT_API_TEST.json)** - Import-ready test collection
 
 ### Features
 - **Modern UI/UX** - Clean, minimal design
 - **Responsive** - Works on all devices
 - **Fast** - Optimized with Vite
 - **SEO Friendly** - Meta tags & sitemap
-- **Contact Form** - PHP email integration
+- **Contact Form** - Microsoft Graph API email integration with OAuth 2.0
 - **Auto Deploy** - GitHub Actions CI/CD
 
 ---

@@ -9,6 +9,7 @@ import DownloadButton from '../Components/CommonPages/DownlaodButton'
 import Models from '../Components/CommonPages/Models.jsx'
 import { Entirepagedata, ProductImages } from '../Data/index.js'
 import { dcSuperFastChargingStationData, dcSuperFastChargingStationConfig } from '../Data/DCSuperFastChargingStation/index.js'
+import SEO from '../Components/Common/SEO'
 
 const DCSuperFastChargingStation = () => {
   // Get data from Entirepagedata for DC Super Fast Charging Station
@@ -34,7 +35,22 @@ const DCSuperFastChargingStation = () => {
   )
 
   return (
-    <div>
+    <>
+      <SEO 
+        title="DC Super Fast Charger UAE | Ultra Fast EV Charging"
+        description="Install ultra fast DC charging stations in the UAE. High-power solutions for commercial and rapid EV charging applications."
+        keywords="DC super fast charger UAE, ultra fast DC charging UAE, high power EV charging station, rapid DC charger UAE"
+        canonical="https://blaupunkt-ev.com/dc-super-fast-charging-station"
+        ogTitle="DC Super Fast Charger UAE"
+        ogDescription="Ultra fast, high-power EV charging stations."
+        twitterTitle="DC Super Fast Charger UAE"
+        twitterDescription="Ultra fast, high-power EV charging stations."
+        ogImage={dcSuperFastChargingStationImages.fastSpec}
+      />
+      <div>
+      <h1 className="sr-only">DC Super Fast Charger UAE — Ultra Fast EV Charging</h1>
+      <h2 className="sr-only">Ultra fast charging solutions for commercial sites</h2>
+      <h2 className="sr-only">High-power 150kW / 350kW DC charging solutions</h2>
       {' '}
       <HeroSection
         title={title}
@@ -87,6 +103,7 @@ const DCSuperFastChargingStation = () => {
         downloadData={dcSuperFastChargingStationConfig.downloads}
       />
     </div>
+    </>
   )
 }
 

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { companyPageImgs } from '../Data/assets.js'
 import Breadcrumb from '../Components/Common/Breadcrumb'
 import { createSimpleBreadcrumbs } from '../Data/Common/utilities'
+import SEO from '../Components/Common/SEO'
 
 const Company = () => {
   const breadcrumbItems = createSimpleBreadcrumbs('Company')
@@ -59,7 +60,22 @@ const Company = () => {
   ];
 
   return (
-    <div className="bg-white min-h-screen w-full">
+    <>
+      <SEO 
+        title="EV Charging Solutions UAE | About Blaupunkt"
+        description="Learn about Blaupunkt’s EV charging solutions in the UAE. Trusted German technology for home, commercial, and fast-charging applications."
+        keywords="EV charging solutions UAE, Blaupunkt EV charging, DEWA compliant EV chargers, home EV charging UAE, commercial EV charging UAE, fast charging solutions, German EV technology"
+        canonical="https://blaupunkt-ev.com/company"
+        ogTitle="About Blaupunkt EV Charging"
+        ogDescription="Premium EV charging solutions from Blaupunkt."
+        twitterTitle="About Blaupunkt EV Charging"
+        twitterDescription="Premium EV charging solutions from Blaupunkt."
+        ogImage={companyPageImgs.picture3}
+      />
+      <div className="bg-white min-h-screen w-full">
+      <h1 className="sr-only">About Blaupunkt — EV Charging Solutions in the UAE</h1>
+      <h2 className="sr-only">Trusted German technology for home and commercial charging</h2>
+      <h2 className="sr-only">DEWA-compliant solutions and certified installations</h2>
       {/* Mobile Layout */}
       <div className="block lg:hidden bg-white w-full relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
@@ -71,7 +87,7 @@ const Company = () => {
               <h1 className="text-[32px] font-semibold text-blaupunkt-dark mb-4 leading-normal">
                 Quality Is In The Name
               </h1>
-              <p className="text-xs font-light text-blaupunkt-secondary">
+              <p className="text-xs font-light text-blaupunkt-primary-darker">
                 Blaupunkt's History In a Nutshell
               </p>
             </div>
@@ -82,11 +98,17 @@ const Company = () => {
                 className="w-[97px] h-[125px]"
                 alt="T t"
                 src={companyPageImgs.t2T2}
+                loading='lazy'
+                width='97'
+                height='125'
               />
               <img
                 className="w-28 h-[125px]"
                 alt="Picture"
                 src={companyPageImgs.picture2}
+                loading='lazy'
+                width='112'
+                height='125'
               />
             </div>
 
@@ -104,6 +126,9 @@ const Company = () => {
               <img
                 className="w-full max-w-[320px] h-[275px] object-cover"
                 alt="Historical image"
+                loading='lazy'
+                width='320'
+                height='275'
                 src={companyPageImgs.picture3}
               />
             </div>
@@ -128,6 +153,9 @@ const Company = () => {
                     className="w-full h-36 object-cover"
                     alt="Picture"
                     src={companyPageImgs.picture1}
+                    loading='lazy'
+                    width='320'
+                    height='144'
                   />
                 )}
               </section>
@@ -155,10 +183,16 @@ const Company = () => {
                       className="w-[137px] h-[185px] object-cover"
                       alt="Picture"
                       src={companyPageImgs.picture7}
+                      loading='lazy'
+                      width='137'
+                      height='185'
                     />
                     <img
                       className="w-[137px] h-[185px] object-cover"
                       alt="Picture"
+                      loading='lazy'
+                      width='137'
+                      height='185'
                       src={companyPageImgs.picture6}
                     />
                   </div>
@@ -192,7 +226,7 @@ const Company = () => {
             <div className="flex justify-center mb-8 pb-8">
               <Link
                 to="/contact"
-                className="inline-flex flex-col items-center justify-center gap-2.5 px-[27px] py-[11px] rounded-[15px] border-2 border-solid border-blaupunkt-primary text-blaupunkt-primary font-medium hover:bg-blaupunkt-primary hover:text-white transition-colors duration-200"
+                className="inline-flex flex-col items-center justify-center gap-2.5 px-[27px] py-[11px] rounded-[15px] border-2 border-solid border-blaupunkt-primary-darker text-blaupunkt-primary-darker font-medium hover:bg-blaupunkt-primary-darker hover:text-white transition-colors duration-200"
               >
                 Contact Us
               </Link>
@@ -222,12 +256,18 @@ const Company = () => {
             className="absolute w-[397px] h-[507px] top-[241px] lg:top-[249px] left-4 lg:left-8 xl:left-[209px]"
             alt="Historical Blaupunkt image"
             src={companyPageImgs.t2T2}
+            loading='lazy'
+            width='397'
+            height='507'
           />
 
           <img
             className="absolute w-[513px] h-[477px] top-[587px] lg:top-[595px] right-4 lg:right-8 xl:right-[209px]"
             alt="Historical image"
             src={companyPageImgs.picture3}
+            loading='lazy'
+            width='513'
+            height='477'
           />
 
           {/* Timeline Section - 1923 */}
@@ -236,6 +276,9 @@ const Company = () => {
               className="absolute w-[97px] h-[108px] top-0 left-[373px]"
               alt="Picture"
               src={companyPageImgs.picture2}
+              loading='lazy'
+              width='97'
+              height='108'
             />
 
             <div className="absolute w-[519px] h-[202px] top-[97px] left-0">
@@ -327,12 +370,18 @@ const Company = () => {
             className="absolute w-[397px] h-[537px] top-[1181px] lg:top-[1189px] left-4 lg:left-8 xl:left-[209px]"
             alt="Historical Blaupunkt picture"
             src={companyPageImgs.picture6}
+            loading='lazy'
+            width='397'
+            height='537'
           />
 
           <img
             className="absolute w-[395px] h-48 top-[793px] lg:top-[801px] left-4 lg:left-8 xl:left-[211px]"
             alt="Historical picture"
             src={companyPageImgs.picture1}
+            loading='lazy'
+            width='395'
+            height='192'
           />
 
           {/* Since 2009 Section */}
@@ -356,6 +405,9 @@ const Company = () => {
             <img
               className="absolute w-[609px] h-64 top-[42px] right-0 lg:right-8 xl:right-0 xl:left-[421px]"
               alt="Modern Blaupunkt products"
+              loading='lazy'
+              width='609'
+              height='256'
               src={companyPageImgs.picture12}
             />
           </section>
@@ -365,12 +417,18 @@ const Company = () => {
             className="absolute w-[177px] h-[271px] top-[1763px] lg:top-[1771px] left-4 lg:left-8 xl:left-[217px]"
             alt="Product picture"
             src={companyPageImgs.picture13}
+            loading='lazy'
+            width='177'
+            height='271'
           />
 
           <img
             className="absolute w-[149px] h-[216px] top-[1818px] lg:top-[1826px] left-[220px] lg:left-[280px] xl:left-[457px]"
             alt="Product picture"
             src={companyPageImgs.picture7}
+            loading='lazy'
+            width='149'
+            height='216'
           />
 
           {/* Modern Era Description */}
@@ -395,6 +453,7 @@ const Company = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 
