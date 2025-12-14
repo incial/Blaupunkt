@@ -5,22 +5,23 @@
 // =============================================================================
 
 // Import Charging Station Images
-import chargingStationsUrl from '../../assets/Images/CatImages/Charging_Stations.webp'
-import stationPd1 from '../../assets/Images/pdImages/StationPd-1.webp'
-import stationPd2 from '../../assets/Images/pdImages/StationPd-2.webp'
+// Define Charging Station Image Paths
+const chargingStationsUrl = '/assets/Images/CatImages/Charging_Stations.webp'
+const stationPd1 = '/assets/Images/pdImages/StationPd-1.webp'
+const stationPd2 = '/assets/Images/pdImages/StationPd-2.webp'
 
-// Import Station Images
-import station1 from '../../assets/Images/ChargIngStations/Station1.webp'
-import station2 from '../../assets/Images/ChargIngStations/Station2.webp'
-import stationSpec from '../../assets/Images/ChargIngStations/StationSpec.webp'
-import stationThumb1 from '../../assets/Images/ChargIngStations/Thumb-1.webp'
-import stationThumb2 from '../../assets/Images/ChargIngStations/Thumb-2.webp'
-import stationThumb3 from '../../assets/Images/ChargIngStations/Thumb-3.webp'
-import stationThumb4 from '../../assets/Images/ChargIngStations/Thumb-4.webp'
-import stationThumb5 from '../../assets/Images/ChargIngStations/Thumb-5.webp'
-import stationThumb6 from '../../assets/Images/ChargIngStations/Thumb-6.webp'
-import chargingStationoverbg from '../../assets/Images/ChargIngStations/stationoverbg.webp'
-import chargingStationspecbg from '../../assets/Images/ChargIngStations/stationspecbg.webp'
+// Define Station Images
+const station1 = '/assets/Images/ChargIngStations/Station1.webp'
+const station2 = '/assets/Images/ChargIngStations/Station2.webp'
+const stationSpec = '/assets/Images/ChargIngStations/StationSpec.webp'
+const stationThumb1 = '/assets/Images/ChargIngStations/Thumb-1.webp'
+const stationThumb2 = '/assets/Images/ChargIngStations/Thumb-2.webp'
+const stationThumb3 = '/assets/Images/ChargIngStations/Thumb-3.webp'
+const stationThumb4 = '/assets/Images/ChargIngStations/Thumb-4.webp'
+const stationThumb5 = '/assets/Images/ChargIngStations/Thumb-5.webp'
+const stationThumb6 = '/assets/Images/ChargIngStations/Thumb-6.webp'
+const chargingStationoverbg = '/assets/Images/ChargIngStations/stationoverbg.webp'
+const chargingStationspecbg = '/assets/Images/ChargIngStations/stationspecbg.webp'
 
 // Main charging station images
 export const chargingStationImages = {
@@ -104,10 +105,10 @@ export const CHARGING_STATIONS_IMAGES = {
 
 // Image paths for backward compatibility
 export const IMAGE_PATHS = {
-  main: '/src/assets/Images/CatImages/Charging_Stations.webp',
-  station1: '/src/assets/Images/ChargIngStations/Station1.webp',
-  station2: '/src/assets/Images/ChargIngStations/Station2.webp',
-  stationSpec: '/src/assets/Images/ChargIngStations/StationSpec.webp',
-  stationPd1: '/src/assets/Images/pdImages/StationPd-1.webp',
-  stationPd2: '/src/assets/Images/pdImages/StationPd-2.webp'
+  main: '/assets/Images/CatImages/Charging_Stations.webp',
+  station1: '/assets/Images/ChargIngStations/Station1.webp',
+  station2: '/assets/Images/ChargIngStations/Station2.webp',
+  stationSpec: '/assets/Images/ChargIngStations/StationSpec.webp',
+  stationPd1: '/assets/Images/pdImages/StationPd-1.webp',
+  stationPd2: '/assets/Images/pdImages/StationPd-2.webp'
 }

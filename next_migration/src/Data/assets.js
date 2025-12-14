@@ -7,21 +7,21 @@
 
 // Service Page
 //================================================================================
-import ServicesPageImg from "../assets/Images/ServicesPage/ServicesPage.webp";
-import Mainbg from "../assets/Images/ServicesPage/Mainbg.webp";
-import Installbg from "../assets/Images/ServicesPage/Installbg.webp";
-import Chargbg from "../assets/Images/ServicesPage/Chargbg.webp";
+const ServicesPageImg = "/assets/Images/ServicesPage/ServicesPage.webp";
+const Mainbg = "/assets/Images/ServicesPage/Mainbg.webp";
+const Installbg = "/assets/Images/ServicesPage/Installbg.webp";
+const Chargbg = "/assets/Images/ServicesPage/Chargbg.webp";
 
 // Company Page Images
 //================================================================================
-import picture1 from "../assets/Images/companyPage/Picture1.webp";
-import picture2 from "../assets/Images/companyPage/Picture2.webp";
-import picture3 from "../assets/Images/companyPage/Picture3.webp";
-import picture6 from "../assets/Images/companyPage/Picture6.webp";
-import picture7 from "../assets/Images/companyPage/Picture7.webp";
-import picture12 from "../assets/Images/companyPage/Picture12.webp";
-import picture13 from "../assets/Images/companyPage/Picture13.webp";
-import t2T2 from "../assets/Images/companyPage/T2-T2.webp";
+const picture1 = "/assets/Images/companyPage/Picture1.webp";
+const picture2 = "/assets/Images/companyPage/Picture2.webp";
+const picture3 = "/assets/Images/companyPage/Picture3.webp";
+const picture6 = "/assets/Images/companyPage/Picture6.webp";
+const picture7 = "/assets/Images/companyPage/Picture7.webp";
+const picture12 = "/assets/Images/companyPage/Picture12.webp";
+const picture13 = "/assets/Images/companyPage/Picture13.webp";
+const t2T2 = "/assets/Images/companyPage/T2-T2.webp";
 
 export const Servicepage = {
   ServicesPageImg,
@@ -72,7 +72,7 @@ import {
 } from "./PortableEVCharging/assets.js";
 
 // Import common assets
-import logoWhiteUrl from "../assets/Images/Logo_white.svg";
+const logoWhiteUrl = "/assets/Images/Logo_white.svg";
 
 // =============================================================================
 // HERO SECTION VIDEOS

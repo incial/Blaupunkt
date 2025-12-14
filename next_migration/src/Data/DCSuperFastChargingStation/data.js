@@ -116,7 +116,7 @@ export const dcSuperFastChargingStationData = {
       ]
     },
 
-  imageHeight: {
+    imageHeight: {
       spec: {
         mobile: '400px',
         desktop: '1000px'
@@ -497,7 +497,7 @@ export const dcSuperFastChargingStationData = {
             name: 'BPDC60EU & BPDC160EU - Technical Specifications',
             description:
               'Complete technical specifications for BPDC60EU and BPDC160EU models',
-            url: '/src/assets/pdf/FastStation/datasheet/BPDC60EU_BPDC160EU.pdf',
+            url: '/pdf/FastStation/datasheet/BPDC60EU_BPDC160EU.pdf',
             size: '2.8 MB',
             type: 'PDF',
             modelCodes: ['BPDC60EU', 'BPDC160EU']
@@ -505,7 +505,7 @@ export const dcSuperFastChargingStationData = {
           {
             name: 'BPDC40KEU - Technical Specifications',
             description: 'Complete technical specifications for BPDC40KW model',
-            url: '/src/assets/pdf/FastStation/datasheet/BPDC40KW.pdf',
+            url: '/pdf/FastStation/datasheet/BPDC40KW.pdf',
             size: '2.5 MB',
             type: 'PDF',
             modelCodes: ['BPDC40KW']
@@ -519,7 +519,7 @@ export const dcSuperFastChargingStationData = {
           {
             name: 'Declaration of Conformity - BPDC40KEU',
             description: 'CE certification document for BPDC40KEU model',
-            url: '/src/assets/pdf/FastStation/Delecration/Declaration of conformity BPDC40KEU.pdf',
+            url: '/pdf/FastStation/Delecration/Declaration of conformity BPDC40KEU.pdf',
             size: '850 KB',
             type: 'PDF',
             modelCodes: ['BPDC40KEU']

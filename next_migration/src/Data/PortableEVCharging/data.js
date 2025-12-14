@@ -4,14 +4,14 @@
 // Complete data configuration for Portable EV Charging section
 // =============================================================================
 
-import { 
-  createBreadcrumbs, 
+import {
+  createBreadcrumbs,
   createHighlightsData,
   createSpecificationsData,
   BUTTON_TEXTS
 } from '../Common/utilities.js'
 
-import { 
+import {
   portableEvChargingImages,
   portableEvChargingBgImages,
   portableEvChargingProductImages,
@@ -46,30 +46,30 @@ export const portableEvChargingData = {
   mainImage: PORTABLE_EV_CHARGING_IMAGES.MAIN,
   imageAlt: 'Portable EV Charger',
   thumbnails: createPortableEvChargingThumbnails(),
-  
+
   OverviewData: {
     BgImage: portableEvChargingImages.cable2,
-      para: {
+    para: {
       active: true,
-      data: [        {
-          subheading: 'Portable, powerful, and ready for every journey',
-          text: [
-            "Blaupunkt's Portable EV Chargers (Mode 2) offer maximum flexibility, allowing you to charge your electric vehicle wherever a 230V or 400V outlet is available."
-          ]
-        },
-        {
-          text: [
-            "Designed for both single-phase and three-phase setups, these chargers adapt to your environment, delivering up to 3.7 kW (Single Phase) or 11 kW (Three Phase) of charging power. Adjustable amperage settings (8–16A) ensure optimal performance based on the available power source."
-          ]
-        },
-        {
-          text: [
-            "Safety is prioritized with an integrated RCD sensor and 6mA DC fault protection (Type B)."
-          ]
-        },
+      data: [{
+        subheading: 'Portable, powerful, and ready for every journey',
+        text: [
+          "Blaupunkt's Portable EV Chargers (Mode 2) offer maximum flexibility, allowing you to charge your electric vehicle wherever a 230V or 400V outlet is available."
+        ]
+      },
+      {
+        text: [
+          "Designed for both single-phase and three-phase setups, these chargers adapt to your environment, delivering up to 3.7 kW (Single Phase) or 11 kW (Three Phase) of charging power. Adjustable amperage settings (8–16A) ensure optimal performance based on the available power source."
+        ]
+      },
+      {
+        text: [
+          "Safety is prioritized with an integrated RCD sensor and 6mA DC fault protection (Type B)."
+        ]
+      },
       ]
     },
-      list: {
+    list: {
       active: false,
       title: 'Key Features',
       data: [
@@ -84,7 +84,7 @@ export const portableEvChargingData = {
         'IP54/IP65 weather protection rating'
       ]
     },
-      IdealandFeaturesImage: portableEvChargingImages.cable2,    features: {
+    IdealandFeaturesImage: portableEvChargingImages.cable2, features: {
       active: true,
       title: '',
       isListFormat: false, // true for list, false for paragraph
@@ -93,7 +93,7 @@ export const portableEvChargingData = {
         'With an 8-meter cable for maximum reach and a protective carry case included for easy transport and storage, Blaupunkt\'s Portable Chargers are the perfect companions for EV drivers needing reliable, on-the-go charging.',
         'Compatible with all electric vehicles using a Type 2 connector.'
       ]
-    },    ideal: {
+    }, ideal: {
       active: false,
       title: 'Ideal For',
       isListFormat: true, // true for list, false for paragraph
@@ -106,7 +106,7 @@ export const portableEvChargingData = {
     },
 
 
-      imageHeight: {
+    imageHeight: {
       spec: {
         mobile: '400px',
         desktop: '600px'
@@ -116,31 +116,31 @@ export const portableEvChargingData = {
         desktop: '500px'
       }
     },
-    
+
     image: portableEvChargingProductImages.cable1
   },
-    highlightsData: createHighlightsData('Key Benefits', [
-    { 
-      title: 'Flexible Power', 
-      description: '3.7kW single-phase or 11kW three-phase charging', 
-      icon: 'portable' 
+  highlightsData: createHighlightsData('Key Benefits', [
+    {
+      title: 'Flexible Power',
+      description: '3.7kW single-phase or 11kW three-phase charging',
+      icon: 'portable'
     },
-    { 
-      title: 'Adjustable Current', 
-      description: 'Amperage settings from 8A to 16A for optimal performance', 
-      icon: 'easy' 
+    {
+      title: 'Adjustable Current',
+      description: 'Amperage settings from 8A to 16A for optimal performance',
+      icon: 'easy'
     },
-    { 
-      title: 'Advanced Safety', 
-      description: 'Integrated RCD sensor and 6mA DC fault protection', 
-      icon: 'safety' 
+    {
+      title: 'Advanced Safety',
+      description: 'Integrated RCD sensor and 6mA DC fault protection',
+      icon: 'safety'
     },
-    { 
-      title: 'Weather Resistant', 
-      description: 'IP54/IP65 rated for water and dust protection', 
-      icon: 'weather' 
+    {
+      title: 'Weather Resistant',
+      description: 'IP54/IP65 rated for water and dust protection',
+      icon: 'weather'
     }
-  ]),specificationsData: createSpecificationsData('Technical Specifications', [
+  ]), specificationsData: createSpecificationsData('Technical Specifications', [
     { label: 'Rated Current', value: '8–10–13–16A' },
     { label: 'Insulation Resistance', value: '>1000MΩ' },
     { label: 'Resistance Voltage', value: '2000V' },
@@ -212,7 +212,7 @@ export const portableEvChargingData = {
 
     return flatModels;
   })(),
-  
+
   supplierData: {
     manufacturer: 'Blaupunkt Technologies',
     suppliers: [
@@ -254,7 +254,7 @@ export const portableEvChargingData = {
             name: 'P1PM2T2 - Technical Specifications (English)',
             description:
               'Technical specifications for P1PM2T2 model',
-            url: '/src/assets/pdf/PortStation/datasheet/P1PM2T2 - Datasheet_web.pdf',
+            url: '/pdf/PortStation/datasheet/P1PM2T2 - Datasheet_web.pdf',
             size: '2.1 MB',
             type: 'PDF',
             modelCodes: ['P1PM2T2']
@@ -263,7 +263,7 @@ export const portableEvChargingData = {
             name: 'P1PM2T2 - Technical Specifications (German)',
             description:
               'Technical specifications for P1PM2T2 model in German',
-            url: '/src/assets/pdf/PortStation/datasheet/P1PM2T2 - Datasheet_ger_web.pdf',
+            url: '/pdf/PortStation/datasheet/P1PM2T2 - Datasheet_ger_web.pdf',
             size: '1.8 MB',
             type: 'PDF',
             modelCodes: ['P1PM2T2']
@@ -272,7 +272,7 @@ export const portableEvChargingData = {
             name: 'P1P6MT2L - Technical Specifications (English)',
             description:
               'Technical specifications for P1P6MT2L model',
-            url: '/src/assets/pdf/PortStation/datasheet/P1P6MT2L.pdf',
+            url: '/pdf/PortStation/datasheet/P1P6MT2L.pdf',
             size: '1.9 MB',
             type: 'PDF',
             modelCodes: ['P1P6MT2L']
@@ -281,7 +281,7 @@ export const portableEvChargingData = {
             name: 'P1P6MT2L - Technical Specifications (German)',
             description:
               'Technical specifications for P1P6MT2L model in German',
-            url: '/src/assets/pdf/PortStation/datasheet/P1P6MT2L_DE.pdf',
+            url: '/pdf/PortStation/datasheet/P1P6MT2L_DE.pdf',
             size: '1.9 MB',
             type: 'PDF',
             modelCodes: ['P1P6MT2L']
@@ -290,7 +290,7 @@ export const portableEvChargingData = {
             name: 'P3PM2T2 - Technical Specifications (English)',
             description:
               'Technical specifications for P3PM2T2 model',
-            url: '/src/assets/pdf/PortStation/datasheet/P3PM2T2.pdf',
+            url: '/pdf/PortStation/datasheet/P3PM2T2.pdf',
             size: '2.0 MB',
             type: 'PDF',
             modelCodes: ['P3PM2T2']
@@ -299,7 +299,7 @@ export const portableEvChargingData = {
             name: 'P3PM2T2 - Technical Specifications (German)',
             description:
               'Technical specifications for P3PM2T2 model in German',
-            url: '/src/assets/pdf/PortStation/datasheet/P3PM2T2_DE.pdf',
+            url: '/pdf/PortStation/datasheet/P3PM2T2_DE.pdf',
             size: '2.0 MB',
             type: 'PDF',
             modelCodes: ['P3PM2T2']
@@ -308,7 +308,7 @@ export const portableEvChargingData = {
             name: 'P3P6MT2 - Technical Specifications (English)',
             description:
               'Technical specifications for P3P6MT2 model',
-            url: '/src/assets/pdf/PortStation/datasheet/P3P6MT2.pdf',
+            url: '/pdf/PortStation/datasheet/P3P6MT2.pdf',
             size: '2.1 MB',
             type: 'PDF',
             modelCodes: ['P3P6MT2']
@@ -317,7 +317,7 @@ export const portableEvChargingData = {
             name: 'P3P6MT2 - Technical Specifications (German)',
             description:
               'Technical specifications for P3P6MT2 model in German',
-            url: '/src/assets/pdf/PortStation/datasheet/P3P6MT2_DE.pdf',
+            url: '/pdf/PortStation/datasheet/P3P6MT2_DE.pdf',
             size: '2.1 MB',
             type: 'PDF',
             modelCodes: ['P3P6MT2']
@@ -331,7 +331,7 @@ export const portableEvChargingData = {
           {
             name: 'Declaration of Conformity - P1PM2T2',
             description: 'CE certification document for P1PM2T2 model',
-            url: '/src/assets/pdf/PortStation/Delecration/Declaration of conformity P1PM2T2.pdf',
+            url: '/pdf/PortStation/Delecration/Declaration of conformity P1PM2T2.pdf',
             size: '850 KB',
             type: 'PDF',
             modelCodes: ['P1PM2T2']
@@ -349,12 +349,12 @@ export const portableEvChargingData = {
 export const portableEvChargingConfig = {
   // Main data
   data: portableEvChargingData,
-  
+
   // Quick access to images
   images: portableEvChargingImages,
   backgroundImages: portableEvChargingBgImages,
   productImages: portableEvChargingProductImages,
-  
+
   // Quick access to key sections
   overview: portableEvChargingData.OverviewData,
   highlights: portableEvChargingData.highlightsData,

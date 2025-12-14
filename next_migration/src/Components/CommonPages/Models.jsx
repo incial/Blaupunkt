@@ -207,11 +207,11 @@ const Models = ({ productImage, category, modelsData: propModelsData }) => {
         case 'portableEVCharging':
           return portableEvChargingConfig.backgroundImages?.overview
         default:
-          return '/src/assets/Images/charger.jpg' // Fallback image
+          return '/assets/Images/charger.jpg' // Fallback image
       }
     } catch (error) {
       logger.error('Error getting models background image:', error)
-      return '/src/assets/Images/charger.jpg' // Fallback image
+      return '/assets/Images/charger.jpg' // Fallback image
     }
   }
 
@@ -661,8 +661,8 @@ const Models = ({ productImage, category, modelsData: propModelsData }) => {
                           <button
                             key={option}
                             className={`${sortBy === option
-                                ? 'bg-gray-100 text-blaupunkt-primary-darker'
-                                : 'text-gray-700'
+                              ? 'bg-gray-100 text-blaupunkt-primary-darker'
+                              : 'text-gray-700'
                               } block w-full text-left px-4 py-2 text-sm hover:bg-gray-100`}
                             onClick={() => {
                               setSortBy(option)
@@ -703,8 +703,8 @@ const Models = ({ productImage, category, modelsData: propModelsData }) => {
                           <button
                             key={option}
                             className={`${productType === option
-                                ? 'bg-gray-100 text-blaupunkt-primary-darker'
-                                : 'text-gray-700'
+                              ? 'bg-gray-100 text-blaupunkt-primary-darker'
+                              : 'text-gray-700'
                               } block w-full text-left px-4 py-2 text-sm hover:bg-gray-100`}
                             onClick={() => {
                               setProductType(option)
@@ -740,8 +740,8 @@ const Models = ({ productImage, category, modelsData: propModelsData }) => {
                           <button
                             key={option}
                             className={`${chargingSpeed === option
-                                ? 'bg-gray-100 text-blaupunkt-primary-darker'
-                                : 'text-gray-700'
+                              ? 'bg-gray-100 text-blaupunkt-primary-darker'
+                              : 'text-gray-700'
                               } block w-full text-left px-4 py-2 text-sm hover:bg-gray-100`}
                             onClick={() => {
                               setChargingSpeed(option)
@@ -777,8 +777,8 @@ const Models = ({ productImage, category, modelsData: propModelsData }) => {
                           <button
                             key={option}
                             className={`${connectorType === option
-                                ? 'bg-gray-100 text-blaupunkt-primary-darker'
-                                : 'text-gray-700'
+                              ? 'bg-gray-100 text-blaupunkt-primary-darker'
+                              : 'text-gray-700'
                               } block w-full text-left px-4 py-2 text-sm hover:bg-gray-100`}
                             onClick={() => {
                               setConnectorType(option)
@@ -814,8 +814,8 @@ const Models = ({ productImage, category, modelsData: propModelsData }) => {
                           <button
                             key={option}
                             className={`${phaseType === option
-                                ? 'bg-gray-100 text-blaupunkt-primary-darker'
-                                : 'text-gray-700'
+                              ? 'bg-gray-100 text-blaupunkt-primary-darker'
+                              : 'text-gray-700'
                               } block w-full text-left px-4 py-2 text-sm hover:bg-gray-100`}
                             onClick={() => {
                               setPhaseType(option)
@@ -914,10 +914,10 @@ const Models = ({ productImage, category, modelsData: propModelsData }) => {
                       <div
                         key={groupKey}
                         className={`${category === 'dcChargingStation' ||
-                            category === 'dcSuperFastChargingStation' ||
-                            category === 'portableEVCharging'
-                            ? ''
-                            : 'mb-8'
+                          category === 'dcSuperFastChargingStation' ||
+                          category === 'portableEVCharging'
+                          ? ''
+                          : 'mb-8'
                           }`}
                       >
                         {/* Category or Cable Length/Section Heading - Show for sectioned dcSuperFastChargingStation */}

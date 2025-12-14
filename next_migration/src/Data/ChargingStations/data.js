@@ -119,7 +119,7 @@ export const chargingStationsData = {
       ]
     },
 
-   imageHeight: {
+    imageHeight: {
       spec: {
         mobile: '400px',
         desktop: '500px'
@@ -391,7 +391,7 @@ export const chargingStationsData = {
             name: 'Wallbox with Screen - Technical Specifications',
             description:
               'Complete technical specifications for screen-equipped charging stations',
-            url: '/src/assets/pdf/Stations/datasheet/Wallbox with Screen BW1P32ACS_BW3P16ACS_BW3P32ACS.pdf',
+            url: '/pdf/Stations/datasheet/Wallbox with Screen BW1P32ACS_BW3P16ACS_BW3P32ACS.pdf',
             size: '2.3 MB',
             type: 'PDF',
             modelCodes: ['BW1P32ACS', 'BW3P16ACS', 'BW3P32ACS']
@@ -400,7 +400,7 @@ export const chargingStationsData = {
             name: 'Wallbox with Cable - Technical Specifications',
             description:
               'Technical specifications for cable-integrated charging stations',
-            url: '/src/assets/pdf/Stations/datasheet/Wallbox_with_Cable_BW1P32ACS_BW3P16ACS_BW3P32ACS.pdf',
+            url: '/pdf/Stations/datasheet/Wallbox_with_Cable_BW1P32ACS_BW3P16ACS_BW3P32ACS.pdf',
             size: '2.1 MB',
             type: 'PDF',
             modelCodes: ['BW1P32ACS', 'BW3P16ACS', 'BW3P32ACS']
@@ -409,7 +409,7 @@ export const chargingStationsData = {
             name: 'Wallbox with Socket - Technical Specifications',
             description:
               'Technical specifications for socket-type charging stations',
-            url: '/src/assets/pdf/Stations/datasheet/Wallbox with Socket_BW1P32ASS_BW3P16ASS_BW3P32ASS.pdf',
+            url: '/pdf/Stations/datasheet/Wallbox with Socket_BW1P32ASS_BW3P16ASS_BW3P32ASS.pdf',
             size: '2.5 MB',
             type: 'PDF',
             modelCodes: ['BW1P32ASS', 'BW3P16ASS', 'BW3P32ASS']
@@ -424,7 +424,7 @@ export const chargingStationsData = {
             name: 'Declaration of Conformity - AC Charging Stations RFID/WiFi/Bluetooth/4G',
             description:
               'CE certification document for BW3P32ACS AC charging station',
-            url: '/src/assets/pdf/Stations/Delecration/AC charging stations - RFID,wifi,bluetooth,4G(3) BW3P32ACS.pdf',
+            url: '/pdf/Stations/Delecration/AC charging stations - RFID,wifi,bluetooth,4G(3) BW3P32ACS.pdf',
             size: '850 KB',
             type: 'PDF',
             modelCodes: ['BW3P32ACS']
@@ -432,7 +432,7 @@ export const chargingStationsData = {
           {
             name: 'Declaration of Conformity - Socket Model',
             description: 'CE certification document for BW3P32ASS socket model',
-            url: '/src/assets/pdf/Stations/Delecration/Declaration of conformity BW3P32ASS.pdf',
+            url: '/pdf/Stations/Delecration/Declaration of conformity BW3P32ASS.pdf',
             size: '920 KB',
             type: 'PDF',
             modelCodes: ['BW3P32ASS']

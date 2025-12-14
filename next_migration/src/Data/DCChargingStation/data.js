@@ -4,14 +4,14 @@
 // Complete data configuration for DC Charging Station section
 // =============================================================================
 
-import { 
-  createBreadcrumbs, 
+import {
+  createBreadcrumbs,
   createHighlightsData,
   createSpecificationsData,
   BUTTON_TEXTS
 } from '../Common/utilities.js'
 
-import { 
+import {
   dcChargingStationImages,
   dcChargingStationBgImages,
   dcChargingStationProductImages,
@@ -53,10 +53,10 @@ export const dcChargingStationData = {
   mainImage: DC_CHARGING_STATION_IMAGES.MAIN,
   imageAlt: 'DC Charging Station',
   thumbnails: createDCChargingStationThumbnails(),
-  
+
   OverviewData: {
     BgImage: dcChargingStationImages.dccharoverbg,
-    
+
     para: {
       active: true,
       data: [
@@ -66,11 +66,12 @@ export const dcChargingStationData = {
         },
         {
           subheading: 'Durability and Safety You Can Rely On',
-          text: "Engineered for performance and reliability, Blaupunkt’s 30-40 kW DC Charger is built to last in any environment. Its robust design ensures dependable charging whether installed indoors or outdoors, and its IP54-rated enclosure provides superior protection against dust, water, and other elements, guaranteeing long-term performance under a wide range of weather conditions."        },
+          text: "Engineered for performance and reliability, Blaupunkt’s 30-40 kW DC Charger is built to last in any environment. Its robust design ensures dependable charging whether installed indoors or outdoors, and its IP54-rated enclosure provides superior protection against dust, water, and other elements, guaranteeing long-term performance under a wide range of weather conditions."
+        },
         createMontaIntegrationData(true)
       ]
     },
-    
+
     list: {
       active: false,
       title: 'Key Specifications',
@@ -85,7 +86,7 @@ export const dcChargingStationData = {
         'Remote monitoring and diagnostics capabilities'
       ]
     },
-      IdealandFeaturesImage: dcChargingStationProductImages.feature,
+    IdealandFeaturesImage: dcChargingStationProductImages.feature,
     features: {
       active: true,
       title: 'User-Friendly and Intuitive Operation',
@@ -94,7 +95,7 @@ export const dcChargingStationData = {
         'This DC charger is equipped with an easy-to-use interface, ensuring smooth operation for both new and experienced users. With RFID authorization, access to the charger is secure, allowing only authorized users to charge their vehicles. Additionally, the OCPP 1.6 compatibility ensures seamless integration into existing charging networks for remote monitoring and control. Ideal For: Commercial sites that require reliable, mid-speed EV charging solutions. Office buildings or small fleets that need faster charging than typical AC units. Locations seeking a balance of speed, affordability, and durability.'
       ]
     },
-      ideal: {
+    ideal: {
       active: true,
       title: 'Ideal For',
       isListFormat: true, // true for list, false for paragraph
@@ -106,8 +107,8 @@ export const dcChargingStationData = {
         'Destination charging at hotels and businesses'
       ]
     },
-    
-      imageHeight: {
+
+    imageHeight: {
       spec: {
         mobile: '400px',
         desktop: '1000px'
@@ -117,33 +118,33 @@ export const dcChargingStationData = {
         desktop: '1000px'
       }
     },
-    
+
     image: dcChargingStationImages.dcMid
   },
-  
+
   highlightsData: createHighlightsData('Key Features', [
-    { 
-      title: 'Rapid Charging', 
-      description: 'Up to 150kW power output for ultra-fast charging', 
-      icon: 'speed' 
+    {
+      title: 'Rapid Charging',
+      description: 'Up to 150kW power output for ultra-fast charging',
+      icon: 'speed'
     },
-    { 
-      title: 'Universal Compatibility', 
-      description: 'Supports CCS, CHAdeMO, and Type 2 connectors', 
-      icon: 'compatibility' 
+    {
+      title: 'Universal Compatibility',
+      description: 'Supports CCS, CHAdeMO, and Type 2 connectors',
+      icon: 'compatibility'
     },
-    { 
-      title: 'Weather Resistant', 
-      description: 'IP54 rated for reliable outdoor operation', 
-      icon: 'weather' 
+    {
+      title: 'Weather Resistant',
+      description: 'IP54 rated for reliable outdoor operation',
+      icon: 'weather'
     },
-    { 
-      title: 'Smart Monitoring', 
-      description: 'Remote diagnostics and real-time monitoring', 
-      icon: 'smart' 
+    {
+      title: 'Smart Monitoring',
+      description: 'Remote diagnostics and real-time monitoring',
+      icon: 'smart'
     }
   ]),
-    specificationsData: createSpecificationsData('Specifications', [
+  specificationsData: createSpecificationsData('Specifications', [
     { label: 'Product Dimensions', value: '780 × 580 × 205.5 mm (H × W × D)' },
     { label: 'Work Altitude', value: 'Up to 2000m' },
     { label: 'Operating Temperature', value: '-20°C to +55°C' },
@@ -181,7 +182,7 @@ export const dcChargingStationData = {
       }
     ]
   },
-  
+
   supplierData: {
     manufacturer: 'Blaupunkt Technologies',
     suppliers: [
@@ -223,7 +224,7 @@ export const dcChargingStationData = {
             name: 'BPDC30KEU White - Technical Specifications',
             description:
               'Technical specifications for BPDC30KEU white model',
-            url: '/src/assets/pdf/DCStation/datasheet/BPDC30KEU_W.pdf',
+            url: '/pdf/DCStation/datasheet/BPDC30KEU_W.pdf',
             size: '2.5 MB',
             type: 'PDF',
             modelCodes: ['BPDC30KEU_W']
@@ -232,7 +233,7 @@ export const dcChargingStationData = {
             name: 'BPDC30KEU Grey - Technical Specifications',
             description:
               'Technical specifications for BPDC30KEU grey model',
-            url: '/src/assets/pdf/DCStation/datasheet/BPDC30KEU_G.pdf',
+            url: '/pdf/DCStation/datasheet/BPDC30KEU_G.pdf',
             size: '2.8 MB',
             type: 'PDF',
             modelCodes: ['BPDC30KEU_G']
@@ -241,7 +242,7 @@ export const dcChargingStationData = {
             name: 'BPDC40KEU White - Technical Specifications',
             description:
               'Technical specifications for BPDC40KEU white model',
-            url: '/src/assets/pdf/DCStation/datasheet/BPDC40KEU_W.pdf',
+            url: '/pdf/DCStation/datasheet/BPDC40KEU_W.pdf',
             size: '3.1 MB',
             type: 'PDF',
             modelCodes: ['BPDC40KEU_W']
@@ -250,7 +251,7 @@ export const dcChargingStationData = {
             name: 'BPDC40KEU Grey - Technical Specifications',
             description:
               'Technical specifications for BPDC40KEU grey model',
-            url: '/src/assets/pdf/DCStation/datasheet/BPDC40KEU_G.pdf',
+            url: '/pdf/DCStation/datasheet/BPDC40KEU_G.pdf',
             size: '3.1 MB',
             type: 'PDF',
             modelCodes: ['BPDC40KEU_G']
@@ -264,7 +265,7 @@ export const dcChargingStationData = {
           {
             name: 'Declaration of Conformity - BPDC40KEU',
             description: 'CE certification document for BPDC40KEU models',
-            url: '/src/assets/pdf/DCStation/Delecration/Declaration of conformity BPDC40KEU.pdf',
+            url: '/pdf/DCStation/Delecration/Declaration of conformity BPDC40KEU.pdf',
             size: '850 KB',
             type: 'PDF',
             modelCodes: ['BPDC40KEU']
@@ -282,12 +283,12 @@ export const dcChargingStationData = {
 export const dcChargingStationConfig = {
   // Main data
   data: dcChargingStationData,
-  
+
   // Quick access to images
   images: dcChargingStationImages,
   backgroundImages: dcChargingStationBgImages,
   productImages: dcChargingStationProductImages,
-  
+
   // Quick access to key sections
   overview: dcChargingStationData.OverviewData,
   highlights: dcChargingStationData.highlightsData,

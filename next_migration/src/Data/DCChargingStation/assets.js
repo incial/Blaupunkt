@@ -4,19 +4,19 @@
 // Image and asset imports specific to DC Charging Stations
 // =============================================================================
 
-// Import DC Charging Station Images
-import dcChargingStationUrl from '../../assets/Images/CatImages/DC_Charging_Station.webp'
-import dcPd1 from '../../assets/Images/pdImages/Dcpd1.webp'
-import dcPd2 from '../../assets/Images/pdImages/Dcpd2.webp'
+// Define DC Charging Station Image Paths
+const dcChargingStationUrl = '/assets/Images/CatImages/DC_Charging_Station.webp'
+const dcPd1 = '/assets/Images/pdImages/Dcpd1.webp'
+const dcPd2 = '/assets/Images/pdImages/Dcpd2.webp'
 
-// Import DC Station Images
-import dcMid from '../../assets/Images/DCchargingStation/DC-Mid.webp'
-import dcMidHalf from '../../assets/Images/DCchargingStation/DC-Mid-half.webp'
-import dcMidSpec from '../../assets/Images/DCchargingStation/DC-Mid-Spec.webp'
-import dcThumb1 from '../../assets/Images/DCchargingStation/Thumb-1.webp'
-import dcThumb2 from '../../assets/Images/DCchargingStation/Thumb-2.webp'
-import dccharoverbg from '../../assets/Images/DCchargingStation/dcstaionoverbg.webp'
-import dccharspecbg from '../../assets/Images/DCchargingStation/dcstaionsepcbg.webp'
+// Define DC Station Images
+const dcMid = '/assets/Images/DCchargingStation/DC-Mid.webp'
+const dcMidHalf = '/assets/Images/DCchargingStation/DC-Mid-half.webp'
+const dcMidSpec = '/assets/Images/DCchargingStation/DC-Mid-Spec.webp'
+const dcThumb1 = '/assets/Images/DCchargingStation/Thumb-1.webp'
+const dcThumb2 = '/assets/Images/DCchargingStation/Thumb-2.webp'
+const dccharoverbg = '/assets/Images/DCchargingStation/dcstaionoverbg.webp'
+const dccharspecbg = '/assets/Images/DCchargingStation/dcstaionsepcbg.webp'
 
 // Main DC charging station images
 export const dcChargingStationImages = {
@@ -79,10 +79,10 @@ export const DC_CHARGING_STATION_IMAGES = {
 
 // Image paths for backward compatibility
 export const IMAGE_PATHS = {
-  main: '/src/assets/Images/CatImages/DC_Charging_Station.webp',
-  dcMid: '/src/assets/Images/DCchargingStation/DC-Mid.webp',
-  dcMidHalf: '/src/assets/Images/DCchargingStation/DC-Mid-half.webp',
-  dcMidSpec: '/src/assets/Images/DCchargingStation/DC-Mid-Spec.webp',
-  dcPd1: '/src/assets/Images/pdImages/Dcpd1.webp',
-  dcPd2: '/src/assets/Images/pdImages/Dcpd2.webp'
+  main: '/assets/Images/CatImages/DC_Charging_Station.webp',
+  dcMid: '/assets/Images/DCchargingStation/DC-Mid.webp',
+  dcMidHalf: '/assets/Images/DCchargingStation/DC-Mid-half.webp',
+  dcMidSpec: '/assets/Images/DCchargingStation/DC-Mid-Spec.webp',
+  dcPd1: '/assets/Images/pdImages/Dcpd1.webp',
+  dcPd2: '/assets/Images/pdImages/Dcpd2.webp'
 }

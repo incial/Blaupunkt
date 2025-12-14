@@ -5,19 +5,20 @@
 // =============================================================================
 
 // Import EV Charging Cable Images
-import evCab1Url from '../../assets/Images/EvCables/EVCab-1.webp'
-import evCab2Url from '../../assets/Images/EvCables/EVCab-2.webp'
-import evCab3Url from '../../assets/Images/EvCables/EVCab-3.webp'
-import evCab4Url from '../../assets/Images/EvCables/EVCab-4.webp'
-import evCabMidUrl from '../../assets/Images/EvCables/EVCab-Mid.webp'
-import evCabMidRightUrl from '../../assets/Images/EvCables/EVCab-Mid-Right.webp'
-import evmoboverbg from '../../assets/Images/EvCables/EVOverviewBgmob.webp'
-import evmodelbg from '../../assets/Images/EvCables/EVOModelBgmob.webp'
-import evspecmob from '../../assets/Images/EvCables/EVSpecBgmob.webp'
+// Define EV Charging Cable Image Paths
+const evCab1Url = '/assets/Images/EvCables/EVCab-1.webp'
+const evCab2Url = '/assets/Images/EvCables/EVCab-2.webp'
+const evCab3Url = '/assets/Images/EvCables/EVCab-3.webp'
+const evCab4Url = '/assets/Images/EvCables/EVCab-4.webp'
+const evCabMidUrl = '/assets/Images/EvCables/EVCab-Mid.webp'
+const evCabMidRightUrl = '/assets/Images/EvCables/EVCab-Mid-Right.webp'
+const evmoboverbg = '/assets/Images/EvCables/EVOverviewBgmob.webp'
+const evmodelbg = '/assets/Images/EvCables/EVOModelBgmob.webp'
+const evspecmob = '/assets/Images/EvCables/EVSpecBgmob.webp'
 
-// Import Product Images for Charging Cables
-import evCabPd1 from '../../assets/Images/pdImages/EVCab-Pd-1.webp'
-import evCabPd2 from '../../assets/Images/pdImages/EVCab-pd-2.webp'
+// Define Product Images for Charging Cables
+const evCabPd1 = '/assets/Images/pdImages/EVCab-Pd-1.webp'
+const evCabPd2 = '/assets/Images/pdImages/EVCab-pd-2.webp'
 
 // Main charging cable images
 export const chargingCableImages = {
@@ -90,12 +91,12 @@ export const CHARGING_CABLES_IMAGES = {
 
 // Image paths for backward compatibility
 export const IMAGE_PATHS = {
-  main: '/src/assets/Images/EvCables/EVCab-Mid.webp',
-  cable1: '/src/assets/Images/EvCables/EVCab-1.webp',
-  cable2: '/src/assets/Images/EvCables/EVCab-2.webp',
-  cable3: '/src/assets/Images/EvCables/EVCab-3.webp',
-  cable4: '/src/assets/Images/EvCables/EVCab-4.webp',
-  cableMidRight: '/src/assets/Images/EvCables/EVCab-Mid-Right.webp',
-  cablePd1: '/src/assets/Images/pdImages/EVCab-Pd-1.webp',
-  cablePd2: '/src/assets/Images/pdImages/EVCab-pd-2.webp'
+  main: '/assets/Images/EvCables/EVCab-Mid.webp',
+  cable1: '/assets/Images/EvCables/EVCab-1.webp',
+  cable2: '/assets/Images/EvCables/EVCab-2.webp',
+  cable3: '/assets/Images/EvCables/EVCab-3.webp',
+  cable4: '/assets/Images/EvCables/EVCab-4.webp',
+  cableMidRight: '/assets/Images/EvCables/EVCab-Mid-Right.webp',
+  cablePd1: '/assets/Images/pdImages/EVCab-Pd-1.webp',
+  cablePd2: '/assets/Images/pdImages/EVCab-pd-2.webp'
 }
