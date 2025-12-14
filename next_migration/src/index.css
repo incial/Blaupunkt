@@ -1,0 +1,118 @@
+@import "tailwindcss";
+
+/* SEO H1 - Hidden from users but visible to search engines */
+.seo-heading {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* Blaupunkt Custom Color Variables */
+:root {
+  /* Primary Blues */
+  --blaupunkt-primary: #199BD3;
+  --blaupunkt-primary: #199BD3;
+  --blaupunkt-primary-darker: #00417F;
+  
+  /* Secondary Blues */
+  --blaupunkt-secondary: #5E90BC;
+  --blaupunkt-secondary-light: #96B2D1;
+  
+  /* Dark Theme */
+  --blaupunkt-dark: #18161A;
+  
+  /* Accent Colors */
+  --blaupunkt-accent-red: #CE071D;
+  --blaupunkt-accent-pink: #D88196;
+  
+  /* Neutral */
+  --blaupunkt-gray: #909294;
+  --blaupunkt-white: #FFFFFF;
+}
+
+/* Custom Blaupunkt color classes */
+.bg-blaupunkt-primary { background-color: var(--blaupunkt-primary); }
+.bg-blaupunkt-primary-dark { background-color: var(--blaupunkt-primary); }
+.bg-blaupunkt-primary-darker { background-color: var(--blaupunkt-primary-darker); }
+.bg-blaupunkt-secondary { background-color: var(--blaupunkt-secondary); }
+.bg-blaupunkt-secondary-light { background-color: var(--blaupunkt-secondary-light); }
+.bg-blaupunkt-dark { background-color: var(--blaupunkt-dark); }
+.bg-blaupunkt-accent-red { background-color: var(--blaupunkt-accent-red); }
+.bg-blaupunkt-accent-pink { background-color: var(--blaupunkt-accent-pink); }
+.bg-blaupunkt-gray { background-color: var(--blaupunkt-gray); }
+
+.text-blaupunkt-primary { color: var(--blaupunkt-primary); }
+.text-blaupunkt-primary-dark { color: var(--blaupunkt-primary-dark); }
+.text-blaupunkt-primary-darker { color: var(--blaupunkt-primary-darker); }
+.text-blaupunkt-secondary { color: var(--blaupunkt-secondary); }
+.text-blaupunkt-secondary-light { color: var(--blaupunkt-secondary-light); }
+.text-blaupunkt-dark { color: var(--blaupunkt-dark); }
+.text-blaupunkt-accent-red { color: var(--blaupunkt-accent-red); }
+.text-blaupunkt-accent-pink { color: var(--blaupunkt-accent-pink); }
+.text-blaupunkt-gray { color: var(--blaupunkt-gray); }
+.text-blaupunkt-white { color: var(--blaupunkt-white); }
+
+.border-blaupunkt-primary { border-color: var(--blaupunkt-primary); }
+.border-blaupunkt-primary-dark { border-color: var(--blaupunkt-primary-dark); }
+.border-blaupunkt-primary-darker { border-color: var(--blaupunkt-primary-darker); }
+.border-blaupunkt-secondary { border-color: var(--blaupunkt-secondary); }
+.border-blaupunkt-secondary-light { border-color: var(--blaupunkt-secondary-light); }
+.border-blaupunkt-dark { border-color: var(--blaupunkt-dark); }
+.border-blaupunkt-accent-red { border-color: var(--blaupunkt-accent-red); }
+.border-blaupunkt-accent-pink { border-color: var(--blaupunkt-accent-pink); }
+.border-blaupunkt-gray { border-color: var(--blaupunkt-gray); }
+
+/* Hover variants */
+.hover\:bg-blaupunkt-primary:hover { background-color: var(--blaupunkt-primary); }
+.hover\:bg-blaupunkt-primary-dark:hover { background-color: var(--blaupunkt-primary); }
+.hover\:text-blaupunkt-primary:hover { color: var(--blaupunkt-primary); }
+.hover\:text-blaupunkt-white:hover { color: var(--blaupunkt-white); }
+.hover\:border-blaupunkt-primary:hover { border-color: var(--blaupunkt-primary); }
+
+/* Fixed navbar utilities */
+.no-scroll {
+  overflow: hidden;
+}
+
+/* Hide scrollbar while keeping scroll functionality */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;     /* Firefox */
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;             /* Safari and Chrome */
+}
+
+/* Hide scrollbar for all elements */
+*::-webkit-scrollbar {
+  display: none;
+}
+* {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+
+.navbar-fixed-spacing {
+  padding-top: 5rem; /* 80px for mobile */
+}
+
+@media (min-width: 1024px) {
+  .navbar-fixed-spacing {
+    padding-top: 6rem; /* 96px for desktop */
+  }
+}
+
+/* Screen-reader only utility (visually hidden but accessible) */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
