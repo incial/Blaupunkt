@@ -1,0 +1,127 @@
+{
+    "Hero": {
+        "title": "Power Your Journey with Precision",
+        "subtitle": "Explore Blaupunkt's range of high-quality EV charging cables engineered for safety, speed, and seamless compatibility with leading electric vehicles."
+    },
+    "Footer": {
+        "selectRegion": "Select Region",
+        "links": {
+            "international": "International",
+            "search": "Search",
+            "privacy": "Privacy Statement",
+            "imprint": "Imprint"
+        }
+    },
+    "Products": {
+        "title": "All Products",
+        "searchPlaceholder": "Search products...",
+        "seo": {
+            "h1": "Blaupunkt EV Charging Products",
+            "h2_1": "High Quality EV Charging Cables",
+            "h2_2": "Charging Stations and Accessories"
+        },
+        "filters": {
+            "mobileButton": "Filters",
+            "apply": "Apply",
+            "sortBy": "Sort By",
+            "type": "Type",
+            "speed": "Speed",
+            "connector": "Connector",
+            "phase": "Phase",
+            "itemsPerPage": "Items",
+            "clearAll": "Clear All Filters",
+            "options": {
+                "All": "All",
+                "Popularity": "Popularity",
+                "Price Low to High": "Price: Low to High",
+                "Price High to Low": "Price: High to Low",
+                "Newest First": "Newest First",
+                "Cables": "Cables",
+                "Charging Stations": "Charging Stations",
+                "DC Charging Station": "DC Charging Station",
+                "DC Fast Charging": "DC Fast Charging",
+                "Portable Charging": "Portable Charging",
+                "Single-Phase": "Single-Phase",
+                "Three-Phase": "Three-Phase",
+                "Single - Phase": "Single-Phase",
+                "Three - Phase": "Three-Phase",
+                "DC": "DC",
+                "Universal": "Universal",
+                "Multi": "Multi",
+                "Dual": "Dual",
+                "3_0kW": "3.0kW",
+                "3_7kW": "3.7kW",
+                "7_4kW": "7.4kW",
+                "11kW": "11kW",
+                "22kW": "22kW",
+                "43kW": "43kW",
+                "30kW": "30kW",
+                "40kW": "40kW",
+                "50kW": "50kW",
+                "60kW": "60kW",
+                "80kW": "80kW",
+                "120kW": "120kW",
+                "150kW": "150kW",
+                "180kW": "180kW",
+                "160kW": "160kW",
+                "250kW": "250kW",
+                "350kW": "350kW",
+                "Type 1": "Type 1",
+                "Type 2": "Type 2",
+                "CCS": "CCS",
+                "CHAdeMO": "CHAdeMO",
+                "CCS1": "CCS1",
+                "CCS2": "CCS2"
+            }
+        },
+        "grid": {
+            "showing": "Showing",
+            "of": "of",
+            "products": "products",
+            "for": "for",
+            "noProducts": "No products found matching your criteria",
+            "clearFilters": "Clear All Filters"
+        },
+        "pagination": {
+            "previous": "Previous",
+            "next": "Next",
+            "page": "Page",
+            "of": "of"
+        }
+    },
+    "Navbar": {
+        "products": "Products",
+        "services": "Services",
+        "company": "Company",
+        "contact": "Contact",
+        "searchPlaceholder": "Search products...",
+        "searchLabel": "Search products",
+        "mobileMenuOpen": "Open navigation menu",
+        "mobileMenuClose": "Close navigation menu"
+    },
+    "ContactUs": {
+        "title": "Contact Us",
+        "subtitle": "Have questions or need assistance? We're here to help.",
+        "form": {
+            "namePlaceholder": "Full Name",
+            "emailPlaceholder": "Email",
+            "phonePlaceholder": "Phone",
+            "messagePlaceholder": "Message",
+            "submitButton": "Submit",
+            "sendingButton": "Sending..."
+        },
+        "offices": {
+            "headOfficeTitle": "Head Office",
+            "uaeOfficeTitle": "UAE Office",
+            "denmark": "Denmark",
+            "uae": "United Arab Emirates"
+        },
+        "messages": {
+            "enterName": "Please enter your name",
+            "enterEmail": "Please enter your email",
+            "enterMessage": "Please enter a message",
+            "success": "Message sent successfully!",
+            "failure": "Failed to send message. Please try again."
+        }
+    }
+}

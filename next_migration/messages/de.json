@@ -1,0 +1,127 @@
+{
+    "Hero": {
+        "title": "Treiben Sie Ihre Reise mit Präzision an",
+        "subtitle": "Entdecken Sie die hochwertigen EV-Ladekabel von Blaupunkt, entwickelt für Sicherheit, Geschwindigkeit und nahtlose Kompatibilität mit führenden Elektrofahrzeugen."
+    },
+    "Footer": {
+        "selectRegion": "Region wählen",
+        "links": {
+            "international": "International",
+            "search": "Suche",
+            "privacy": "Datenschutzerklärung",
+            "imprint": "Impressum"
+        }
+    },
+    "Products": {
+        "title": "Alle Produkte",
+        "searchPlaceholder": "Produkte suchen...",
+        "seo": {
+            "h1": "Blaupunkt EV-Ladeprodukte",
+            "h2_1": "Hochwertige EV-Ladekabel",
+            "h2_2": "Ladestationen und Zubehör"
+        },
+        "filters": {
+            "mobileButton": "Filter",
+            "apply": "Anwenden",
+            "sortBy": "Sortieren nach",
+            "type": "Typ",
+            "speed": "Geschwi.",
+            "connector": "Anschluss",
+            "phase": "Phase",
+            "itemsPerPage": "Artikel",
+            "clearAll": "Alle Filter löschen",
+            "options": {
+                "All": "Alle",
+                "Popularity": "Beliebtheit",
+                "Price Low to High": "Preis: Aufsteigend",
+                "Price High to Low": "Preis: Absteigend",
+                "Newest First": "Neueste zuerst",
+                "Cables": "Kabel",
+                "Charging Stations": "Ladestationen",
+                "DC Charging Station": "DC-Ladestation",
+                "DC Fast Charging": "DC-Schnellladung",
+                "Portable Charging": "Tragbares Laden",
+                "Single-Phase": "Einphasig",
+                "Three-Phase": "Dreiphasig",
+                "Single - Phase": "Einphasig",
+                "Three - Phase": "Dreiphasig",
+                "DC": "DC",
+                "Universal": "Universal",
+                "Multi": "Multi",
+                "Dual": "Dual",
+                "3_0kW": "3.0kW",
+                "3_7kW": "3.7kW",
+                "7_4kW": "7.4kW",
+                "11kW": "11kW",
+                "22kW": "22kW",
+                "43kW": "43kW",
+                "30kW": "30kW",
+                "40kW": "40kW",
+                "50kW": "50kW",
+                "60kW": "60kW",
+                "80kW": "80kW",
+                "120kW": "120kW",
+                "150kW": "150kW",
+                "180kW": "180kW",
+                "160kW": "160kW",
+                "250kW": "250kW",
+                "350kW": "350kW",
+                "Type 1": "Typ 1",
+                "Type 2": "Typ 2",
+                "CCS": "CCS",
+                "CHAdeMO": "CHAdeMO",
+                "CCS1": "CCS1",
+                "CCS2": "CCS2"
+            }
+        },
+        "grid": {
+            "showing": "Zeige",
+            "of": "von",
+            "products": "Produkte",
+            "for": "für",
+            "noProducts": "Keine Produkte gefunden, die Ihren Kriterien entsprechen",
+            "clearFilters": "Alle Filter löschen"
+        },
+        "pagination": {
+            "previous": "Zurück",
+            "next": "Weiter",
+            "page": "Seite",
+            "of": "von"
+        }
+    },
+    "Navbar": {
+        "products": "Produkte",
+        "services": "Dienstleistungen",
+        "company": "Unternehmen",
+        "contact": "Kontakt",
+        "searchPlaceholder": "Produkte suchen...",
+        "searchLabel": "Produkte suchen",
+        "mobileMenuOpen": "Navigationsmenü öffnen",
+        "mobileMenuClose": "Navigationsmenü schließen"
+    },
+    "ContactUs": {
+        "title": "Kontaktieren Sie uns",
+        "subtitle": "Haben Sie Fragen oder benötigen Sie Unterstützung? Wir sind hier, um zu helfen.",
+        "form": {
+            "namePlaceholder": "Vollständiger Name",
+            "emailPlaceholder": "E-Mail",
+            "phonePlaceholder": "Telefon",
+            "messagePlaceholder": "Nachricht",
+            "submitButton": "Absenden",
+            "sendingButton": "Senden..."
+        },
+        "offices": {
+            "headOfficeTitle": "Hauptsitz",
+            "uaeOfficeTitle": "VAE Büro",
+            "denmark": "Dänemark",
+            "uae": "Vereinigte Arabische Emirate"
+        },
+        "messages": {
+            "enterName": "Bitte geben Sie Ihren Namen ein",
+            "enterEmail": "Bitte geben Sie Ihre E-Mail ein",
+            "enterMessage": "Bitte geben Sie eine Nachricht ein",
+            "success": "Nachricht erfolgreich gesendet!",
+            "failure": "Nachricht konnte nicht gesendet werden. Bitte versuchen Sie es erneut."
+        }
+    }
+}

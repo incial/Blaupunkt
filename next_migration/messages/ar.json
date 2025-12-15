@@ -1,0 +1,127 @@
+{
+    "Hero": {
+        "title": "قم بتشغيل رحلتك بدقة",
+        "subtitle": "استكشف مجموعة كابلات شحن السيارات الكهربائية عالية الجودة من Blaupunkt، المصممة للسلامة والسرعة والتوافق السلس مع السيارات الكهربائية الرائدة."
+    },
+    "Footer": {
+        "selectRegion": "اختر المنطقة",
+        "links": {
+            "international": "دولي",
+            "search": "بحث",
+            "privacy": "بيان الخصوصية",
+            "imprint": "بصمة"
+        }
+    },
+    "Products": {
+        "title": "جميع المنتجات",
+        "searchPlaceholder": "البحث عن المنتجات...",
+        "seo": {
+            "h1": "منتجات شحن السيارات الكهربائية من Blaupunkt",
+            "h2_1": "كابلات شحن السيارات الكهربائية عالية الجودة",
+            "h2_2": "محطات الشحن والملحقات"
+        },
+        "filters": {
+            "mobileButton": "مرشحات",
+            "apply": "تطبيق",
+            "sortBy": "ترتيب حسب",
+            "type": "النوع",
+            "speed": "السرعة",
+            "connector": "الموصل",
+            "phase": "المرحلة",
+            "itemsPerPage": "أدوات",
+            "clearAll": "مسح جميع الفلاتر",
+            "options": {
+                "All": "الكل",
+                "Popularity": "الشعبية",
+                "Price Low to High": "السعر: من الأقل إلى الأعلى",
+                "Price High to Low": "السعر: من الأعلى إلى الأقل",
+                "Newest First": "الأحدث أولاً",
+                "Cables": "الكابلات",
+                "Charging Stations": "محطات الشحن",
+                "DC Charging Station": "محطة شحن DC",
+                "DC Fast Charging": "شحن سريع DC",
+                "Portable Charging": "شحن محمول",
+                "Single-Phase": "أحادي الطور",
+                "Three-Phase": "ثلاثي الطور",
+                "Single - Phase": "أحادي الطور",
+                "Three - Phase": "ثلاثي الطور",
+                "DC": "DC",
+                "Universal": "عالمي",
+                "Multi": "متعدد",
+                "Dual": "مزدوج",
+                "3_0kW": "3.0kW",
+                "3_7kW": "3.7kW",
+                "7_4kW": "7.4kW",
+                "11kW": "11kW",
+                "22kW": "22kW",
+                "43kW": "43kW",
+                "30kW": "30kW",
+                "40kW": "40kW",
+                "50kW": "50kW",
+                "60kW": "60kW",
+                "80kW": "80kW",
+                "120kW": "120kW",
+                "150kW": "150kW",
+                "180kW": "180kW",
+                "160kW": "160kW",
+                "250kW": "250kW",
+                "350kW": "350kW",
+                "Type 1": "Type 1",
+                "Type 2": "Type 2",
+                "CCS": "CCS",
+                "CHAdeMO": "CHAdeMO",
+                "CCS1": "CCS1",
+                "CCS2": "CCS2"
+            }
+        },
+        "grid": {
+            "showing": "عرض",
+            "of": "من",
+            "products": "منتجات",
+            "for": "لـ",
+            "noProducts": "لا توجد منتجات تطابق معاييرك",
+            "clearFilters": "مسح جميع الفلاتر"
+        },
+        "pagination": {
+            "previous": "السابق",
+            "next": "التالي",
+            "page": "صفحة",
+            "of": "من"
+        }
+    },
+    "Navbar": {
+        "products": "منتجات",
+        "services": "خدمات",
+        "company": "شركة",
+        "contact": "اتصل بنا",
+        "searchPlaceholder": "البحث عن المنتجات...",
+        "searchLabel": "البحث عن المنتجات",
+        "mobileMenuOpen": "فتح قائمة التنقل",
+        "mobileMenuClose": "أغلق قائمة التنقل"
+    },
+    "ContactUs": {
+        "title": "اتصل بنا",
+        "subtitle": "هل لديك أسئلة أو تحتاج إلى مساعدة؟ نحن هنا للمساعدة.",
+        "form": {
+            "namePlaceholder": "الاسم الكامل",
+            "emailPlaceholder": "البريد الإلكتروني",
+            "phonePlaceholder": "الهاتف",
+            "messagePlaceholder": "الرسالة",
+            "submitButton": "إرسال",
+            "sendingButton": "جاري الإرسال..."
+        },
+        "offices": {
+            "headOfficeTitle": "المكتب الرئيسي",
+            "uaeOfficeTitle": "مكتب الإمارات",
+            "denmark": "الدنمارك",
+            "uae": "الإمارات العربية المتحدة"
+        },
+        "messages": {
+            "enterName": "يرجى إدخال اسمك",
+            "enterEmail": "يرجى إدخال بريدك الإلكتروني",
+            "enterMessage": "يرجى إدخال رسالة",
+            "success": "تم إرسال الرسالة بنجاح!",
+            "failure": "فشل إرسال الرسالة. يرجى المحاولة مرة أخرى."
+        }
+    }
+}

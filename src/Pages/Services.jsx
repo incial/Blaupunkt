@@ -49,6 +49,7 @@ const Services = () => {
         twitterTitle="EV Charger Installation Services"
         twitterDescription="Certified home and commercial EV charger installation."
         ogImage={Servicepage.ServicesPageImg}
+        ogType="website"
       />
       <div className='bg-white relative w-full py-8'>
       <h1 className="sr-only">EV Charger Installation UAE — Blaupunkt Services</h1>
@@ -61,7 +62,7 @@ const Services = () => {
 
       {/* Services Header */}
       <div className=' text-3xl md:text-5xl font-semibold items-center justify-center flex py-6 md:py-14'>
-        <h1>Our Services</h1>
+        <div>Our Services</div>
       </div>
 
       {/* Subtitle */}

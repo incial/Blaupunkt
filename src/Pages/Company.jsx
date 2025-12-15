@@ -63,7 +63,7 @@ const Company = () => {
     <>
       <SEO 
         title="EV Charging Solutions UAE | About Blaupunkt"
-        description="Learn about Blaupunkt’s EV charging solutions in the UAE. Trusted German technology for home, commercial, and fast-charging applications."
+        description="Learn about Blaupunkt's EV charging solutions in the UAE. Trusted German technology for home, commercial, and fast-charging applications."
         keywords="EV charging solutions UAE, Blaupunkt EV charging, DEWA compliant EV chargers, home EV charging UAE, commercial EV charging UAE, fast charging solutions, German EV technology"
         canonical="https://blaupunkt-ev.com/company"
         ogTitle="About Blaupunkt EV Charging"
@@ -71,6 +71,7 @@ const Company = () => {
         twitterTitle="About Blaupunkt EV Charging"
         twitterDescription="Premium EV charging solutions from Blaupunkt."
         ogImage={companyPageImgs.picture3}
+        ogType="website"
       />
       <div className="bg-white min-h-screen w-full">
       <h1 className="sr-only">About Blaupunkt — EV Charging Solutions in the UAE</h1>
@@ -84,9 +85,9 @@ const Company = () => {
           {/* Main Header Section */}
           <header className="mb-8">
             <div className="text-center mb-8">
-              <h1 className="text-[32px] font-semibold text-blaupunkt-dark mb-4 leading-normal">
+              <h2 className="text-[32px] font-semibold text-blaupunkt-dark mb-4 leading-normal">
                 Quality Is In The Name
-              </h1>
+              </h2>
               <p className="text-xs font-light text-blaupunkt-primary-darker">
                 Blaupunkt's History In a Nutshell
               </p>
@@ -242,9 +243,9 @@ const Company = () => {
           </div>
 
           {/* Main Heading */}
-          <h1 className="absolute w-full max-w-[1023px] h-12 top-[82px] lg:top-[90px] left-1/2 transform -translate-x-1/2 text-blaupunkt-dark text-5xl font-semibold text-center">
+          <h2 className="absolute w-full max-w-[1023px] h-12 top-[82px] lg:top-[90px] left-1/2 transform -translate-x-1/2 text-blaupunkt-dark text-5xl font-semibold text-center">
             Quality Is In The Name
-          </h1>
+          </h2>
 
           {/* Subtitle */}
           <p className="absolute w-full max-w-[1023px] h-[19px] top-[140px] lg:top-[148px] left-1/2 transform -translate-x-1/2 text-blaupunkt-secondary text-lg text-center">
