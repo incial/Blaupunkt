@@ -3,12 +3,14 @@
 import React, { useState } from 'react'
 import { IoChevronDown } from 'react-icons/io5'
 import { createLogger } from '../utils/logger'
+import { useTranslations } from 'next-intl'
 // Fixed video import for Next.js (referencing public folder)
 const heroVideoSrc = '/Videos/HeroIntro.mp4'
 
 const logger = createLogger('HeroSection')
 
 const HeroSection = () => {
+    const t = useTranslations('Hero')
     const [isVideoLoaded, setIsVideoLoaded] = useState(false)
     const [showVideo, setShowVideo] = useState(false)
     const handleVideoLoaded = () => {
@@ -84,13 +86,11 @@ const HeroSection = () => {
                         <div className='space-y-8'>
                             {/* Main Heading */}
                             <h1 className='text-4xl lg:text-4xl xl:text-5xl font-myriad font-semibold text-blaupunkt-dark leading-tight'>
-                                Power Your Journey with Precision
+                                {t('title')}
                             </h1>{' '}
                             {/* Description */}
                             <p className='text-lg lg:text-xl font-myriad font-light text-blaupunkt-primary-dark leading-relaxed max-w-3xl mx-auto lg:mx-0'>
-                                Explore Blaupunkt's range of high-quality EV charging cables
-                                <br className='hidden lg:block' /> engineered for safety, speed, and seamless compatibility with
-                                leading electric vehicles.
+                                {t('subtitle')}
                             </p>
                         </div>
                     </div>

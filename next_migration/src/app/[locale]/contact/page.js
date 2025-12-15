@@ -1,4 +1,4 @@
-import ContactPage from '../../LegacyPages/Contact'
+import ContactPage from '../../../LegacyPages/Contact'
 
 export const metadata = {
     title: "Contact Blaupunkt UAE | EV Charger Support",

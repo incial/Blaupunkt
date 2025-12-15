@@ -1,5 +1,5 @@
-import DCChargingStation from '../../LegacyPages/DCChargingStation'
-import { dcChargingStationImages } from '../../Data/index.js'
+import DCChargingStation from '../../../LegacyPages/DCChargingStation'
+import { dcChargingStationImages } from '../../../Data/index.js'
 
 export const metadata = {
     title: "DC Charger UAE | DC Charging Station & Fast Chargers",

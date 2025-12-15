@@ -1,5 +1,5 @@
 import { Suspense } from 'react'
-import Products from '../../LegacyPages/Products'
+import Products from '../../../LegacyPages/Products'
 
 export const metadata = {
     title: "EV Charging Products UAE | Blaupunkt Complete Range",

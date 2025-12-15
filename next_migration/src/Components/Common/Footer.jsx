@@ -1,32 +1,17 @@
 'use client'
 
 import React, { useState } from 'react'
-import Link from 'next/link'
+// import Link from 'next/link' // Replaced by next-intl Link
 import { whiteLogo } from '../../Data/assets.js'
 import { FiChevronDown } from 'react-icons/fi'
+import { useTranslations } from 'next-intl'
+import { Link, usePathname, useRouter } from '../../i18n/routing'
 
 const REGIONS = [
-  'International',
-  'العربية (Arabic)',
-  'Asia',
-  'Australia',
-  'Belgium',
-  'China',
-  'Eastern Europe',
-  'France',
-  'Germany',
-  'India',
-  'Latin America',
-  'Middle East',
-  'Netherlands',
-  'Poland',
-  'South Africa',
-  'Spain',
-  'Taiwan',
-  'Thailand',
-  'Türkiye',
-  'United States',
-  '대한민국 (South Korea)'
+  { code: 'en', name: 'International' },
+  { code: 'ar', name: 'العربية (Arabic)' },
+  { code: 'de', name: 'Germany' },
+  // Add other mappings if we have locales for them
 ]
 
 const FOOTER_LINKS = [
@@ -37,14 +22,20 @@ const FOOTER_LINKS = [
 ]
 
 const Footer = () => {
+  const t = useTranslations('Footer')
+  const pathname = usePathname()
+  const router = useRouter()
   const [isRegionDropdownOpen, setIsRegionDropdownOpen] = useState(false)
   const [selectedRegion, setSelectedRegion] = useState('International')
 
+  // Update selected region based on logic if needed, or keeping local state
+
   const toggleDropdown = () => setIsRegionDropdownOpen(!isRegionDropdownOpen)
 
-  const selectRegion = regionName => {
-    setSelectedRegion(regionName)
+  const selectRegion = region => {
+    setSelectedRegion(region.name)
     setIsRegionDropdownOpen(false)
+    router.replace(pathname, { locale: region.code })
   }
   const getRegionButtonClass = (region, isSelected) => {
     const baseClass =
@@ -57,7 +48,7 @@ const Footer = () => {
         className={`font-normal mb-2 text-blaupunkt-secondary-light font-myriad ${isMobile ? 'text-sm' : 'text-sm'
           }`}
       >
-        Select region:
+        {t('selectRegion')}
       </span>
       <div className='relative'>
         <button
@@ -78,12 +69,12 @@ const Footer = () => {
               <button
                 key={index}
                 className={getRegionButtonClass(
-                  region,
-                  selectedRegion === region
+                  region.name,
+                  selectedRegion === region.name
                 )}
                 onClick={() => selectRegion(region)}
               >
-                {region}
+                {region.name}
               </button>
             ))}
           </div>

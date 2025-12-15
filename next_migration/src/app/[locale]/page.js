@@ -1,5 +1,5 @@
-import HomePage from '../LegacyPages/HomePage'
-import OgImage from '../assets/Images/CatImages/Ev_charging.webp'
+import HomePage from '../../LegacyPages/HomePage'
+import OgImage from '../../assets/Images/CatImages/Ev_charging.webp'
 
 export const metadata = {
   title: "EV Charger UAE | Blaupunkt EV Charging Solutions",

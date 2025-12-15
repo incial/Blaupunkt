@@ -1,5 +1,5 @@
-import ChargingCables from '../../LegacyPages/ChargingCables'
-import { chargingCableProductImages } from '../../Data/index.js'
+import ChargingCables from '../../../LegacyPages/ChargingCables'
+import { chargingCableProductImages } from '../../../Data/index.js'
 
 export const metadata = {
     title: "EV Charging Cables UAE | Type 2 & 22kW Cables",

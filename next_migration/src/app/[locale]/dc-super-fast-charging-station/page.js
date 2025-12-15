@@ -1,5 +1,5 @@
-import DCSuperFastChargingStation from '../../LegacyPages/DCSuperFastChargingStation'
-import { ProductImages } from '../../Data/index.js'
+import DCSuperFastChargingStation from '../../../LegacyPages/DCSuperFastChargingStation'
+import { ProductImages } from '../../../Data/index.js'
 
 const dcSuperFastChargingStationImages = ProductImages.dcSuperFastChargingStation
 

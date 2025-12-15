@@ -1,5 +1,5 @@
-import Services from '../../LegacyPages/Services'
-import { Servicepage } from '../../Data/assets.js'
+import Services from '../../../LegacyPages/Services'
+import { Servicepage } from '../../../Data/assets.js'
 
 export const metadata = {
     title: "EV Charger Installation UAE | Blaupunkt Services",

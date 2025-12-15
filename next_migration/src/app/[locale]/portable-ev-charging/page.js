@@ -1,5 +1,5 @@
-import PortableEVCharging from '../../LegacyPages/PortableEVCharging'
-import { portableEvChargingProductImages } from '../../Data/index.js'
+import PortableEVCharging from '../../../LegacyPages/PortableEVCharging'
+import { portableEvChargingProductImages } from '../../../Data/index.js'
 
 export const metadata = {
     title: "Portable EV Charger UAE | Mobile & Emergency Chargers",

@@ -1,5 +1,5 @@
-import Company from '../../LegacyPages/Company'
-import { companyPageImgs } from '../../Data/assets.js'
+import Company from '../../../LegacyPages/Company'
+import { companyPageImgs } from '../../../Data/assets.js'
 
 export const metadata = {
     title: "EV Charging Solutions UAE | About Blaupunkt",

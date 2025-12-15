@@ -77,15 +77,15 @@ const ContactUs = () => {
             logger.info('Submitting form to:', apiConfig.endpoints.contact);
             logger.info('Form data:', trimmedData);
 
-            // Step 4: Make API call to PHP backend
-            // Endpoint: /api/contact.php (configured in src/config/api.js)
-            const response = await fetch(apiConfig.endpoints.contact, {
+            // Step 4: Make API call to Next.js API route
+            // Endpoint: /api/contact
+            const response = await fetch('/api/contact', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json',  // Tell server we're sending JSON
-                    'Accept': 'application/json'          // Tell server we expect JSON back
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
                 },
-                body: JSON.stringify(trimmedData)  // Convert JavaScript object to JSON string
+                body: JSON.stringify(trimmedData)
             });
 
             // Step 5: Log response details for debugging

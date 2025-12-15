@@ -1,5 +1,5 @@
-import ChargingStations from '../../LegacyPages/ChargingStations'
-import { chargingStationProductImages } from '../../Data/index.js'
+import ChargingStations from '../../../LegacyPages/ChargingStations'
+import { chargingStationProductImages } from '../../../Data/index.js'
 
 export const metadata = {
     title: "Home EV Charging Station UAE | Blaupunkt AC Chargers",
