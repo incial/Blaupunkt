@@ -79,7 +79,7 @@ const logoWhiteUrl = "/assets/Images/Logo_white.svg";
 // =============================================================================
 
 export const heroVids = {
-  heroSection: "/Videos/HeoIntro.mp4",
+  heroSection: "/Videos/HeroIntro.mp4",
 };
 
 // =============================================================================

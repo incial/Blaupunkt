@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 import { IoChevronDown } from 'react-icons/io5'
 import { createLogger } from '../utils/logger'
 // Fixed video import for Next.js (referencing public folder)
-const heroVideoSrc = '/Videos/HeoIntro.mp4'
+const heroVideoSrc = '/Videos/HeroIntro.mp4'
 
 const logger = createLogger('HeroSection')
 
