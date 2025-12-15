@@ -5,6 +5,8 @@ import { motion } from 'framer-motion'
 import MobileFilters from './MobileFilters'
 import DesktopFilters from './DesktopFilters'
 
+import { useTranslations } from 'next-intl'
+
 /**
  * FiltersContainer Component - Container for both mobile and desktop filters
  */
@@ -24,6 +26,8 @@ const FiltersContainer = ({
   productsPerPage,
   setProductsPerPage
 }) => {
+  const t = useTranslations('Products')
+
   return (
     <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8 relative z-30'>
       {/* Mobile Filter Button */}
@@ -36,7 +40,7 @@ const FiltersContainer = ({
           whileTap={{ scale: 0.97 }}
         >
           <FiFilter className='w-5 h-5' />
-          <span>Filters</span>
+          <span>{t('filters.mobileButton')}</span>
         </motion.button>
       </div>
 
@@ -53,9 +57,9 @@ const FiltersContainer = ({
         connectorType={connectorType}
         setConnectorType={setConnectorType}
         phaseType={phaseType}
-  setPhaseType={setPhaseType}
-  productsPerPage={productsPerPage}
-  setProductsPerPage={setProductsPerPage}
+        setPhaseType={setPhaseType}
+        productsPerPage={productsPerPage}
+        setProductsPerPage={setProductsPerPage}
       />
 
       {/* Desktop Filters */}

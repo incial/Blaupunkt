@@ -12,10 +12,13 @@ import ProductGrid from '../Components/Products/ProductGrid'
 import Pagination from '../Components/Products/Pagination'
 import { filterProducts, sortProducts } from '../Components/Products/filterUtils'
 
+import { useTranslations } from 'next-intl'
+
 /**
  * Products Page - Main product listing page with filtering and sorting
  */
 const Products = () => {
+  const t = useTranslations('Products')
   const router = useRouter();
   const searchParams = useSearchParams()
 
@@ -186,11 +189,11 @@ const Products = () => {
 
         {/* Page Header */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
-          <h1 className="sr-only">EV Charging Products UAE — Blaupunkt Complete Range</h1>
-          <h2 className="sr-only">AC chargers, DC fast chargers, and portable charging solutions</h2>
-          <h2 className="sr-only">Premium EV charging cables for all electric vehicles in UAE</h2>
+          <h1 className="sr-only">{t('seo.h1')}</h1>
+          <h2 className="sr-only">{t('seo.h2_1')}</h2>
+          <h2 className="sr-only">{t('seo.h2_2')}</h2>
           <div className="text-3xl sm:text-4xl font-semibold text-blaupunkt-dark font-myriad mb-6 text-center">
-            All Products
+            {t('title')}
           </div>
 
           {/* Search Bar */}
@@ -222,10 +225,12 @@ const Products = () => {
         <div className="hidden lg:flex max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-4 justify-end">
           <div className="w-36">
             <FilterDropdown
-              label="Items"
+              label={t('filters.itemsPerPage')}
               value={String(productsPerPage)}
               setValue={(v) => { setProductsPerPage(parseInt(v, 10)); setCurrentPage(1) }}
               options={["12", "24", "48", "96"]}
+              t={t}
+              isItemsPerPage={true}
             />
           </div>
         </div>

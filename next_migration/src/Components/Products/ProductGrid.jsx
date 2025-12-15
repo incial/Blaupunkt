@@ -3,6 +3,8 @@ import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import ProductCard from '../Common/ProductCard'
 
+import { useTranslations } from 'next-intl'
+
 /**
  * ProductGrid Component - Grid display of filtered products
  */
@@ -15,6 +17,7 @@ const ProductGrid = ({
   sortedProducts,
   onProductCardClick
 }) => {
+  const t = useTranslations('Products')
   // State to track if device is mobile
   const [isMobile, setIsMobile] = useState(false)
 
@@ -40,12 +43,12 @@ const ProductGrid = ({
       {/* Results Info */}
       <div className='mb-6 text-center'>
         <p className='text-blaupunkt-dark font-myriad text-sm'>
-          Showing {Math.min(indexOfFirstProduct + 1, sortedProducts.length)}-
-          {Math.min(indexOfLastProduct, sortedProducts.length)} of{' '}
-          {sortedProducts.length} products
+          {t('grid.showing')} {Math.min(indexOfFirstProduct + 1, sortedProducts.length)}-
+          {Math.min(indexOfLastProduct, sortedProducts.length)} {t('grid.of')}{' '}
+          {sortedProducts.length} {t('grid.products')}
           {searchQuery && (
             <span className='ml-2 text-blaupunkt-secondary'>
-              for "{searchQuery}"
+              {t('grid.for')} "{searchQuery}"
             </span>
           )}
         </p>
@@ -69,7 +72,7 @@ const ProductGrid = ({
       ) : (
         <div className='text-center py-16'>
           <p className='text-blaupunkt-dark font-myriad text-lg mb-4'>
-            No products found matching your criteria
+            {t('grid.noProducts')}
           </p>
           <motion.button
             onClick={handleClearFilters}
@@ -77,7 +80,7 @@ const ProductGrid = ({
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            Clear All Filters
+            {t('grid.clearFilters')}
           </motion.button>
         </div>
       )}

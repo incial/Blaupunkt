@@ -14,12 +14,7 @@ const REGIONS = [
   // Add other mappings if we have locales for them
 ]
 
-const FOOTER_LINKS = [
-  { to: '/', text: 'International', external: false },
-  { to: '/products?search=', text: 'Search', external: false },
-  { to: 'https://blaupunkt.com/privacy-statement/?ls=1', text: 'Privacy Statement', external: true },
-  { to: 'https://blaupunkt.com/imprint/', text: 'Imprint', external: true }
-]
+// Links are defined inside the component using useTranslations
 
 const Footer = () => {
   const t = useTranslations('Footer')
@@ -27,6 +22,13 @@ const Footer = () => {
   const router = useRouter()
   const [isRegionDropdownOpen, setIsRegionDropdownOpen] = useState(false)
   const [selectedRegion, setSelectedRegion] = useState('International')
+
+  const footerLinks = [
+    { to: '/', text: t('links.international'), external: false },
+    { to: '/products?search=', text: t('links.search'), external: false },
+    { to: 'https://blaupunkt.com/privacy-statement/?ls=1', text: t('links.privacy'), external: true },
+    { to: 'https://blaupunkt.com/imprint/', text: t('links.imprint'), external: true }
+  ]
 
   // Update selected region based on logic if needed, or keeping local state
 
@@ -107,7 +109,7 @@ const Footer = () => {
 
             <div className='flex justify-end'>
               <div className='flex flex-col space-y-3'>
-                {FOOTER_LINKS.map((link, index) => (
+                {footerLinks.map((link, index) => (
                   link.external ? (
                     <a
                       key={index}
@@ -155,7 +157,7 @@ const Footer = () => {
           <div className='flex justify-end'>
             {' '}
             <div className='grid grid-cols-2 gap-x-5 gap-y-2 md:gap-x-6 md:gap-y-3'>
-              {FOOTER_LINKS.map((link, index) => (
+              {footerLinks.map((link, index) => (
                 link.external ? (
                   <a
                     key={index}

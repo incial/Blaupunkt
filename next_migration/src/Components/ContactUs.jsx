@@ -1,17 +1,16 @@
 'use client'
 
+import { useTranslations } from 'next-intl';
 import React, { useState } from 'react';
-import { Toaster, toast } from 'react-hot-toast';
-import Link from 'next/link';
-import { useRouter } from 'next/navigation';
-import Breadcrumb from './Common/Breadcrumb';
+import { useRouter } from '../i18n/routing';
 import { createSimpleBreadcrumbs } from '../Data/Common/utilities';
-import { createLogger } from '../utils/logger';
+import Breadcrumb from './Common/Breadcrumb';
+import { toast, Toaster } from 'react-hot-toast';
+import logger from '../utils/logger';
 import { apiConfig } from '../config/api';
 
-const logger = createLogger('ContactUs');
-
 const ContactUs = () => {
+    const t = useTranslations('ContactUs');
     const router = useRouter();
     const breadcrumbItems = createSimpleBreadcrumbs('Contact');
 
@@ -58,17 +57,17 @@ const ContactUs = () => {
             // Step 2: Client-side validation - Check for empty fields after trimming
             // These checks provide immediate feedback before making API call
             if (!trimmedData.name) {
-                toast.error('Please enter your name', { duration: 4000 });
+                toast.error(t('messages.enterName'), { duration: 4000 });
                 setLoading(false);
                 return;
             }
             if (!trimmedData.email) {
-                toast.error('Please enter your email', { duration: 4000 });
+                toast.error(t('messages.enterEmail'), { duration: 4000 });
                 setLoading(false);
                 return;
             }
             if (!trimmedData.message) {
-                toast.error('Please enter a message', { duration: 4000 });
+                toast.error(t('messages.enterMessage'), { duration: 4000 });
                 setLoading(false);
                 return;
             }
@@ -129,7 +128,7 @@ const ContactUs = () => {
             // Step 9: Handle success/failure based on response data
             if (data.success) {
                 // Success: Show confirmation, clear form, redirect after 2 seconds
-                toast.success('Message sent successfully!', { duration: 6000 });
+                toast.success(t('messages.success'), { duration: 6000 });
                 setFormData({ name: '', email: '', phone: '', message: '' });
 
                 // Optional: Redirect to contact page after successful submission
@@ -138,7 +137,7 @@ const ContactUs = () => {
                 }, 2000);
             } else {
                 // Server processed request but returned failure
-                toast.error(data.message || 'Failed to send message. Please try again.', { duration: 6000 });
+                toast.error(data.message || t('messages.failure'), { duration: 6000 });
             }
         } catch (err) {
             // Step 10: Catch and handle any errors during the entire process
@@ -185,9 +184,9 @@ const ContactUs = () => {
 
                 {/* Header */}
                 <div className="text-center mb-12">
-                    <h1 className="text-3xl font-bold text-gray-900 mb-3 tracking-tight font-inter">Contact Us</h1>
+                    <h1 className="text-3xl font-bold text-gray-900 mb-3 tracking-tight font-inter">{t('title')}</h1>
                     <p className="text-blaupunkt-primary-darker font-medium text-md">
-                        Have questions or need assistance? We're here to help.
+                        {t('subtitle')}
                     </p>
                 </div>
 
@@ -197,7 +196,7 @@ const ContactUs = () => {
                         <input
                             type="text"
                             name="name"
-                            placeholder="Full Name"
+                            placeholder={t('form.namePlaceholder')}
                             value={formData.name}
                             onChange={handleInputChange}
                             className="w-full px-5 py-2 border-2 border-blue-300 rounded-2xl focus:ring-0 focus:border-blue-400 placeholder-gray-400 text-gray-700 text-base font-normal transition-colors bg-blue-50/30"
@@ -207,7 +206,7 @@ const ContactUs = () => {
                         <input
                             type="email"
                             name="email"
-                            placeholder="Email"
+                            placeholder={t('form.emailPlaceholder')}
                             value={formData.email}
                             onChange={handleInputChange}
                             className="w-full px-5 py-2 border-2 border-blue-300 rounded-2xl focus:ring-0 focus:border-blue-400 placeholder-gray-400 text-gray-700 text-base font-normal transition-colors bg-blue-50/30"
@@ -217,7 +216,7 @@ const ContactUs = () => {
                         <input
                             type="tel"
                             name="phone"
-                            placeholder="Phone"
+                            placeholder={t('form.phonePlaceholder')}
                             value={formData.phone}
                             onChange={handleInputChange}
                             className="placeholder-blue-800 w-full px-5 py-2 border-2 border-blue-300 rounded-2xl focus:ring-0 focus:border-blue-400 text-gray-700 text-base font-normal transition-colors bg-blue-50/30"
@@ -226,7 +225,7 @@ const ContactUs = () => {
 
                         <textarea
                             name="message"
-                            placeholder="Message"
+                            placeholder={t('form.messagePlaceholder')}
                             value={formData.message}
                             onChange={handleInputChange}
                             rows={8}
@@ -266,10 +265,10 @@ const ContactUs = () => {
                                                 d="M4 12a8 8 0 018-8v4l3-3-3-3v4a8 8 0 00-8 8h4z"
                                             ></path>
                                         </svg>
-                                        Sending...
+                                        {t('form.sendingButton')}
                                     </div>
                                 ) : (
-                                    'Submit'
+                                    t('form.submitButton')
                                 )}
                             </button>
                         </div>
@@ -279,20 +278,20 @@ const ContactUs = () => {
                 {/* Office Info */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div className="md:py-8 px-8 flex flex-col items-center md:items-start">
-                        <h2 className="text-xl font-semibold text-blaupunkt-primary-darker mb-3 font-myriad">Head Office</h2>
+                        <h2 className="text-xl font-semibold text-blaupunkt-primary-darker mb-3 font-myriad">{t('offices.headOfficeTitle')}</h2>
                         <div className="space-y-3 text-blaupunkt-primary-darker text-sm text-center md:text-left">
-                            <p>BLP EV Systems ApS<br />Ediths Allé 8<br />5250 Odense SV<br />Denmark</p>
+                            <p>BLP EV Systems ApS<br />Ediths Allé 8<br />5250 Odense SV<br />{t('offices.denmark')}</p>
                         </div>
                     </div>
 
                     <div className="md:py-8 px-8 flex flex-col items-center md:items-end">
-                        <h2 className="text-xl font-semibold text-blaupunkt-primary-darker mb-3 font-myriad">UAE Office</h2>
+                        <h2 className="text-xl font-semibold text-blaupunkt-primary-darker mb-3 font-myriad">{t('offices.uaeOfficeTitle')}</h2>
                         <div className="space-y-3 text-blaupunkt-primary-darker text-sm text-center md:text-right">
                             <p>
                                 BLP EV Systems – FZCO<br />
                                 Building A1, Dubai Digital Park<br />
                                 Dubai Silicon Oasis, Dubai<br />
-                                United Arab Emirates
+                                {t('offices.uae')}
                             </p>
                         </div>
                         <div className="space-y-3 text-blaupunkt-primary-darker text-sm text-center md:text-right mt-2 font-myriad">

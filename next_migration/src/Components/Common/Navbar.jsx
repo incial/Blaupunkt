@@ -1,12 +1,13 @@
 'use client'
 
+import { useTranslations } from 'next-intl'
 import React, { useState, useEffect } from 'react'
-import Link from 'next/link'
-import { usePathname, useRouter } from 'next/navigation'
-import { logos } from '../../Data/assets.js'
+import { Link, useRouter, usePathname } from '../../i18n/routing'
 import { FiSearch } from 'react-icons/fi'
+import { logos } from '../../Data/assets'
 
 const Navbar = () => {
+  const t = useTranslations('Navbar')
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
@@ -15,10 +16,10 @@ const Navbar = () => {
   const pathname = usePathname()
 
   const navigationLinks = [
-    { href: '/products', label: 'Products' },
-    { href: '/services', label: 'Services' },
-    { href: '/company', label: 'Company' },
-    { href: '/contact', label: 'Contact' }
+    { href: '/products', label: t('products') },
+    { href: '/services', label: t('services') },
+    { href: '/company', label: t('company') },
+    { href: '/contact', label: t('contact') }
   ]
 
   // Handle search submission
@@ -79,7 +80,7 @@ const Navbar = () => {
         </div>
 
         {/* Logo - Center */}
-        <div className='h-auto w-42 cursor-pointer flex-shrink-0'>
+        <div className='h-auto w-42 cursor-pointer shrink-0'>
           <Link href='/'>
             <img src={logos.main} alt='Blaupunkt' width='168' height='24' />
           </Link>
@@ -92,13 +93,13 @@ const Navbar = () => {
             <button
               type="submit"
               className="mr-3"
-              aria-label="Search products"
+              aria-label={t('searchLabel')}
             >
               <FiSearch className='w-4 h-4 text-blaupunkt-primary-darker hover:text-blaupunkt-primary transition-colors cursor-pointer' />
             </button>
             <input
               type='text'
-              placeholder='Search products...'
+              placeholder={t('searchPlaceholder')}
               value={searchQuery}
               onChange={e => setSearchQuery(e.target.value)}
               onKeyDown={handleSearchKeyDown}
@@ -111,7 +112,7 @@ const Navbar = () => {
             type="button"
             className='cursor-pointer lg:hidden flex items-center justify-center w-8 h-8'
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-label={isMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+            aria-label={isMenuOpen ? t('mobileMenuClose') : t('mobileMenuOpen')}
             aria-expanded={isMenuOpen}
             aria-controls="mobile-menu"
           >
@@ -149,7 +150,7 @@ const Navbar = () => {
           type="button"
           className='cursor-pointer'
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          aria-label={isMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+          aria-label={isMenuOpen ? t('mobileMenuClose') : t('mobileMenuOpen')}
           aria-expanded={isMenuOpen}
           aria-controls="mobile-menu"
         >
@@ -178,7 +179,7 @@ const Navbar = () => {
             type="button"
             className='absolute top-8 right-8 md:top-12 md:right-12 cursor-pointer'
             onClick={() => setIsMenuOpen(false)}
-            aria-label="Close navigation menu"
+            aria-label={t('mobileMenuClose')}
           >
             <div className='relative w-6 h-6'>
               <span className='absolute top-2.5 h-0.5 w-full bg-blaupunkt-primary rotate-45 transition-all duration-300'></span>
@@ -206,7 +207,7 @@ const Navbar = () => {
               <button
                 type="submit"
                 className="mr-3"
-                aria-label="Search products"
+                aria-label={t('searchLabel')}
               >
                 <svg
                   className='w-4 h-4 text-blaupunkt-primary-darker hover:text-blaupunkt-primary transition-colors cursor-pointer'
@@ -224,7 +225,7 @@ const Navbar = () => {
               </button>
               <input
                 type='text'
-                placeholder='Search products...'
+                placeholder={t('searchPlaceholder')}
                 value={searchQuery}
                 onChange={e => setSearchQuery(e.target.value)}
                 className='bg-[#96B2D1] text-blue-800 placeholder-blue-800 rounded-xl pr-10 pl-4 py-1.5 text-base font-normal focus:outline-none focus:ring-0 focus:ring-blue-500 focus:bg-blue-100 transition-colors duration-200 w-48'

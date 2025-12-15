@@ -10,7 +10,7 @@ export async function POST(request) {
 
         const data = await resend.emails.send({
             from: 'Blaupunkt Website <onboarding@resend.dev>', // Update this with verified domain later
-            to: ['info@blaupunkt-ev.com'],
+            to: [process.env.CONTACT_EMAIL || 'info@blaupunkt-ev.com'],
             subject: `New Contact Form Submission from ${name}`,
             html: `
         <h2>New Contact Form Submission</h2>

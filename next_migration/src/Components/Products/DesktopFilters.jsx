@@ -1,6 +1,7 @@
 'use client'
 import React, { useState, useRef, useEffect } from 'react'
 import { FiChevronDown } from 'react-icons/fi'
+import { useTranslations } from 'next-intl'
 import {
   SORT_OPTIONS,
   PRODUCT_TYPE_OPTIONS,
@@ -22,8 +23,10 @@ const DesktopFilters = ({
   connectorType,
   setConnectorType,
   phaseType,
+
   setPhaseType
 }) => {
+  const t = useTranslations('Products')
   // Dropdown states
   const [sortByOpen, setSortByOpen] = useState(false)
   const [productTypeOpen, setProductTypeOpen] = useState(false)
@@ -102,16 +105,16 @@ const DesktopFilters = ({
       <div className='flex items-center justify-center relative'>
         <div className='flex flex-nowrap items-center gap-4'>
           {/* Sort By Filter */}
-          <div className='flex items-center gap-2 flex-shrink-0'>
+          <div className='flex items-center gap-2 shrink-0'>
             <span className='text-blaupunkt-primary-dark font-myriad text-sm font-light whitespace-nowrap'>
-              Sort By:
+              {t('filters.sortBy')}:
             </span>
             <div className='relative' ref={dropdownRefs.sortBy}>
               <button
                 onClick={() => setSortByOpen(!sortByOpen)}
                 className='flex items-center gap-1.5 bg-blaupunkt-secondary text-white px-3 py-2 rounded-lg font-myriad text-sm font-normal cursor-pointer w-[150px] justify-between'
               >
-                <span className="truncate">{sortBy}</span>
+                <span className="truncate">{t(`filters.options.${sortBy}`)}</span>
                 <FiChevronDown className='w-3 h-3 flex-shrink-0' color='white' />
               </button>
               {/* Dropdown Menu */}
@@ -122,15 +125,15 @@ const DesktopFilters = ({
                       <button
                         key={option}
                         className={`${sortBy === option
-                            ? 'bg-gray-100 text-blaupunkt-primary-darker'
-                            : 'text-gray-700'
+                          ? 'bg-gray-100 text-blaupunkt-primary-darker'
+                          : 'text-gray-700'
                           } block w-full text-left px-4 py-2 text-sm hover:bg-gray-100`}
                         onClick={() => {
                           setSortBy(option)
                           setSortByOpen(false)
                         }}
                       >
-                        {option}
+                        {t(`filters.options.${option}`)}
                       </button>
                     ))}
                   </div>
@@ -140,17 +143,17 @@ const DesktopFilters = ({
           </div>
 
           {/* Product Type Filter */}
-          <div className='flex items-center gap-2 flex-shrink-0'>
+          <div className='flex items-center gap-2 shrink-0'>
             <span className='text-blaupunkt-primary-dark font-myriad text-sm font-light whitespace-nowrap'>
-              Type:
+              {t('filters.type')}:
             </span>
             <div className='relative' ref={dropdownRefs.productType}>
               <button
                 onClick={() => setProductTypeOpen(!productTypeOpen)}
                 className='flex items-center gap-1.5 bg-blaupunkt-secondary text-white px-3 py-2 rounded-lg font-myriad text-sm font-normal cursor-pointer w-[130px] justify-between'
               >
-                <span className="truncate">{productType}</span>
-                <FiChevronDown className='w-3 h-3 flex-shrink-0' color='white' />
+                <span className="truncate">{t(`filters.options.${productType}`)}</span>
+                <FiChevronDown className='w-3 h-3 shrink-0' color='white' />
               </button>
               {/* Dropdown Menu */}
               {productTypeOpen && (
@@ -160,15 +163,15 @@ const DesktopFilters = ({
                       <button
                         key={option}
                         className={`${productType === option
-                            ? 'bg-gray-100 text-blaupunkt-primary-darker'
-                            : 'text-gray-700'
+                          ? 'bg-gray-100 text-blaupunkt-primary-darker'
+                          : 'text-gray-700'
                           } block w-full text-left px-4 py-2 text-sm hover:bg-gray-100`}
                         onClick={() => {
                           setProductType(option)
                           setProductTypeOpen(false)
                         }}
                       >
-                        {option}
+                        {t(`filters.options.${option}`)}
                       </button>
                     ))}
                   </div>
@@ -178,17 +181,17 @@ const DesktopFilters = ({
           </div>
 
           {/* Charging Speed Filter */}
-          <div className='flex items-center gap-2 flex-shrink-0'>
+          <div className='flex items-center gap-2 shrink-0'>
             <span className='text-blaupunkt-primary-dark font-myriad text-sm font-light whitespace-nowrap'>
-              Speed:
+              {t('filters.speed')}:
             </span>
             <div className='relative' ref={dropdownRefs.chargingSpeed}>
               <button
                 onClick={() => setChargingSpeedOpen(!chargingSpeedOpen)}
                 className='flex items-center gap-1.5 bg-blaupunkt-secondary text-white px-3 py-2 rounded-lg font-myriad text-sm font-normal cursor-pointer w-[100px] justify-between'
               >
-                <span className="truncate">{chargingSpeed}</span>
-                <FiChevronDown className='w-3 h-3 flex-shrink-0' color='white' />
+                <span className="truncate">{t(`filters.options.${chargingSpeed.replace(/\./g, '_')}`)}</span>
+                <FiChevronDown className='w-3 h-3 shrink-0' color='white' />
               </button>
               {/* Dropdown Menu */}
               {chargingSpeedOpen && (
@@ -198,15 +201,15 @@ const DesktopFilters = ({
                       <button
                         key={option}
                         className={`${chargingSpeed === option
-                            ? 'bg-gray-100 text-blaupunkt-primary-darker'
-                            : 'text-gray-700'
+                          ? 'bg-gray-100 text-blaupunkt-primary-darker'
+                          : 'text-gray-700'
                           } block w-full text-left px-4 py-2 text-sm hover:bg-gray-100`}
                         onClick={() => {
                           setChargingSpeed(option)
                           setChargingSpeedOpen(false)
                         }}
                       >
-                        {option}
+                        {t(`filters.options.${option.replace(/\./g, '_')}`)}
                       </button>
                     ))}
                   </div>
@@ -216,17 +219,17 @@ const DesktopFilters = ({
           </div>
 
           {/* Connector Type Filter */}
-          <div className='flex items-center gap-2 flex-shrink-0'>
+          <div className='flex items-center gap-2 shrink-0'>
             <span className='text-blaupunkt-primary-dark font-myriad text-sm font-light whitespace-nowrap'>
-              Connector:
+              {t('filters.connector')}:
             </span>
             <div className='relative' ref={dropdownRefs.connectorType}>
               <button
                 onClick={() => setConnectorTypeOpen(!connectorTypeOpen)}
                 className='flex items-center gap-1.5 bg-blaupunkt-secondary text-white px-3 py-2 rounded-lg font-myriad text-sm font-normal cursor-pointer w-[110px] justify-between'
               >
-                <span className="truncate">{connectorType}</span>
-                <FiChevronDown className='w-3 h-3 flex-shrink-0' color='white' />
+                <span className="truncate">{t(`filters.options.${connectorType}`)}</span>
+                <FiChevronDown className='w-3 h-3 shrink-0' color='white' />
               </button>
               {/* Dropdown Menu */}
               {connectorTypeOpen && (
@@ -236,15 +239,15 @@ const DesktopFilters = ({
                       <button
                         key={option}
                         className={`${connectorType === option
-                            ? 'bg-gray-100 text-blaupunkt-primary-darker'
-                            : 'text-gray-700'
+                          ? 'bg-gray-100 text-blaupunkt-primary-darker'
+                          : 'text-gray-700'
                           } block w-full text-left px-4 py-2 text-sm hover:bg-gray-100`}
                         onClick={() => {
                           setConnectorType(option)
                           setConnectorTypeOpen(false)
                         }}
                       >
-                        {option}
+                        {t(`filters.options.${option}`)}
                       </button>
                     ))}
                   </div>
@@ -254,17 +257,17 @@ const DesktopFilters = ({
           </div>
 
           {/* Phase Type Filter */}
-          <div className='flex items-center gap-2 flex-shrink-0'>
+          <div className='flex items-center gap-2 shrink-0'>
             <span className='text-blaupunkt-primary-dark font-myriad text-sm font-light whitespace-nowrap'>
-              Phase:
+              {t('filters.phase')}:
             </span>
             <div className='relative' ref={dropdownRefs.phaseType}>
               <button
                 onClick={() => setPhaseTypeOpen(!phaseTypeOpen)}
                 className='flex items-center gap-1.5 bg-blaupunkt-secondary text-white px-3 py-2 rounded-lg font-myriad text-sm font-normal cursor-pointer w-[130px] justify-between'
               >
-                <span className="truncate">{phaseType}</span>
-                <FiChevronDown className='w-3 h-3 flex-shrink-0' color='white' />
+                <span className="truncate">{t(`filters.options.${phaseType}`)}</span>
+                <FiChevronDown className='w-3 h-3 shrink-0' color='white' />
               </button>
               {/* Dropdown Menu */}
               {phaseTypeOpen && (
@@ -274,15 +277,15 @@ const DesktopFilters = ({
                       <button
                         key={option}
                         className={`${phaseType === option
-                            ? 'bg-gray-100 text-blaupunkt-primary-darker'
-                            : 'text-gray-700'
+                          ? 'bg-gray-100 text-blaupunkt-primary-darker'
+                          : 'text-gray-700'
                           } block w-full text-left px-4 py-2 text-sm`}
                         onClick={() => {
                           setPhaseType(option)
                           setPhaseTypeOpen(false)
                         }}
                       >
-                        {option}
+                        {t(`filters.options.${option}`)}
                       </button>
                     ))}
                   </div>
